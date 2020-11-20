@@ -6,27 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/assets/android_checkstyle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/assets/detekt.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/pr.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CI.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/checkstyle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/checkstyle.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detekt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detekt.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ktlint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ktlint.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/startCLI" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/technokek/alchotracker/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/technokek/alchotracker/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-    </list>
+    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
