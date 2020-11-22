@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_friend">100dp</dimen>
+    <dimen name="height_friend">100dp</dimen>
+    <dimen name="width_event">100dp</dimen>
+    <dimen name="height_event">100dp</dimen>
+</resources>
