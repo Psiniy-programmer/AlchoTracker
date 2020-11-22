@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/profile_avatar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/profile_avatar_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:text="Brendan Moore"/>
+
+    <TextView
+        android:id="@+id/profile_status_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="24sp"
+        android:text="Status"
+        />
+
+    <LinearLayout
+        android:id="@+id/profile_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <LinearLayout
+            android:id="@+id/profile_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginEnd="15dp">
+            <TextView
+                android:id="@+id/profile_friends_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20,583"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:id="@+id/profile_friends_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Friends"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/profile_dates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="15dp">
+
+            <TextView
+                android:id="@+id/profile_dates_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9,112,824"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:id="@+id/profile_dates_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dates"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:text="Preferences"/>
+
+</LinearLayout>
