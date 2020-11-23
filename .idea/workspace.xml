@@ -21,38 +21,17 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/psina" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="without network connection">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/EventAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/FriendAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/EventViewHolder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/FriendViewHolder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/EventClickListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/FriendClickListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/EventLiveData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendLiveData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/EventModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/FriendModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/EventFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/EventViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/FriendViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_event.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_friend.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/one_event.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/one_friend.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/Profile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/Profile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="without network connection" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -290,6 +269,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
