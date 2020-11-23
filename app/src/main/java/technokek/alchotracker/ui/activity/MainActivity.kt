@@ -1,14 +1,13 @@
-package technokek.alchotracker
+package technokek.alchotracker.ui.activity
 
-import android.app.NotificationManager
-import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.fragment.app.FragmentManager
+import technokek.alchotracker.R
 import technokek.alchotracker.timer.NotificationActivity
-import technokek.alchotracker.timer.TimerFragment
+import technokek.alchotracker.ui.fragments.TimerFragment
+import technokek.alchotracker.ui.fragments.Profile
 
 class MainActivity : AppCompatActivity() {
     private val fragmentManager = supportFragmentManager
@@ -16,6 +15,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        val fragment = Profile();
+        fragmentTransaction.add(R.id.fragment_container, fragment)
+        fragmentTransaction.commit()
         notificationManager =
             NotificationManagerCompat.from(this)
         addTimerFragment()
@@ -25,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val timerFragment = TimerFragment()
         val transaction = fragmentManager
             .beginTransaction()
-            .replace(R.id.content_parent, timerFragment)
+            .replace(R.id.fragment_container, timerFragment)
             .addToBackStack(null)
             .commit()
     }

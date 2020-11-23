@@ -1,4 +1,4 @@
-package technokek.alchotracker.timer;
+package technokek.alchotracker.ui.fragments;
 
 import android.app.TimePickerDialog;
 import android.content.res.Resources;
@@ -22,8 +22,10 @@ import androidx.fragment.app.Fragment;
 
 import java.util.Calendar;
 
-import technokek.alchotracker.MainActivity;
 import technokek.alchotracker.R;
+import technokek.alchotracker.timer.State;
+import technokek.alchotracker.timer.TimerInterface;
+import technokek.alchotracker.ui.activity.MainActivity;
 
 public class TimerFragment extends Fragment implements TimerInterface {
     private int notificationIdCh1 = 1;
@@ -136,7 +138,7 @@ public class TimerFragment extends Fragment implements TimerInterface {
     private void sendFinishNotification() {
         if (startHour != tHour || startMinute != tMinute) {
             String drinkingTime = (startHour - tHour) + ":" + (startMinute - tMinute);
-            ((MainActivity)getActivity()).sendTimerFragmentNotificationChannel1(
+            ((technokek.alchotracker.ui.activity.MainActivity)getActivity()).sendTimerFragmentNotificationChannel1(
                     notificationIdCh1++,
                     "AlkoTime's up!",
                     "You've been drinking for " + drinkingTime
