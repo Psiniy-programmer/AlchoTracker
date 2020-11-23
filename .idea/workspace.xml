@@ -5,6 +5,9 @@
       <config />
     </shared>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -32,6 +35,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="without network connection" />
+    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/data/ProfileLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/data/ProfileLiveData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/data/models/ProfileModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/data/models/ProfileModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ui/fragments/Profile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ui/fragments/Profile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,8 +101,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -119,7 +130,19 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/values" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="memory.settings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="ui.fragments" />
+      <recent name="technokek.alchotracker.ui.activity" />
+      <recent name="technokek.alchotracker.ui.fragments" />
+      <recent name="ui.activity" />
+      <recent name="technokek.alchotracker.ui" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout/profile" />
+    </key>
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
@@ -277,7 +300,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="without network connection" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser" timestamp="1606057566046">
+    <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser" timestamp="1606119184146">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606057566046" />
@@ -290,6 +313,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="704" y="380" width="501" height="353" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.30.1920.1050@0.30.1920.1050" timestamp="1605892122424" />
+    <state x="604" y="349" width="304" height="445" key="AndroidCreateXmlResourceDialog" timestamp="1606124255802">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="604" y="349" width="304" height="445" key="AndroidCreateXmlResourceDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606124255802" />
     <state x="606" y="61" width="697" height="990" key="CommitChangelistDialog2" timestamp="1605890799452">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -298,22 +325,22 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="936" height="19" key="GridCell.Tab.0.bottom" timestamp="1606064135959">
+    <state width="1477" height="139" key="GridCell.Tab.0.bottom" timestamp="1606124729886">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="936" height="19" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606064135959" />
-    <state width="936" height="19" key="GridCell.Tab.0.center" timestamp="1606064135956">
+    <state width="1477" height="139" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606124729886" />
+    <state width="1477" height="139" key="GridCell.Tab.0.center" timestamp="1606124729886">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="936" height="19" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606064135956" />
-    <state width="936" height="19" key="GridCell.Tab.0.left" timestamp="1606064135955">
+    <state width="1477" height="139" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606124729886" />
+    <state width="1477" height="139" key="GridCell.Tab.0.left" timestamp="1606124729886">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="936" height="19" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606064135955" />
-    <state width="936" height="19" key="GridCell.Tab.0.right" timestamp="1606064135957">
+    <state width="1477" height="139" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606124729886" />
+    <state width="1477" height="139" key="GridCell.Tab.0.right" timestamp="1606124729886">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="936" height="19" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606064135957" />
+    <state width="1477" height="139" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606124729886" />
     <state width="936" height="19" key="GridCell.Tab.1.bottom" timestamp="1606064135964">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -330,10 +357,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="936" height="19" key="GridCell.Tab.1.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606064135962" />
-    <state x="398" y="131" width="992" height="733" key="SettingsEditor" timestamp="1605894057571">
+    <state x="616" y="154" width="992" height="733" key="SettingsEditor" timestamp="1606111813336">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="398" y="131" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1605894057571" />
+    <state x="616" y="154" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1606111813336" />
     <state x="623" y="261" width="672" height="678" key="search.everywhere.popup" timestamp="1606057689302">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
