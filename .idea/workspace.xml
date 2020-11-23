@@ -35,16 +35,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/adapters/ProfileAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/adapters/viewholders/ProfileViewHolder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/data/ProfileLiveData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/data/models/ProfileModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/viewmodels/ProfileViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/Profile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/Profile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_preferences_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_preferences_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ui/activity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/Profile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ui/fragments/Profile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +126,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="ui.fragments" />
       <recent name="technokek.alchotracker.ui.activity" />
+      <recent name="technokek.alchotracker.ui.fragments" />
+      <recent name="ui.activity" />
       <recent name="technokek.alchotracker.ui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -291,10 +290,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606119184146" />
-    <state x="709" y="49" width="625" height="1022" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1606064368171">
+    <state x="709" y="49" width="625" height="1022" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1606122310924">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="709" y="49" width="625" height="1022" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606064368171" />
+    <state x="709" y="49" width="625" height="1022" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606122310924" />
     <state x="704" y="380" width="501" height="353" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1605892122424">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -307,22 +306,22 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1517" height="134" key="GridCell.Tab.0.bottom" timestamp="1606120055590">
+    <state width="1487" height="139" key="GridCell.Tab.0.bottom" timestamp="1606122384968">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1517" height="134" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606120055590" />
-    <state width="1517" height="134" key="GridCell.Tab.0.center" timestamp="1606120055589">
+    <state width="1487" height="139" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606122384968" />
+    <state width="1487" height="139" key="GridCell.Tab.0.center" timestamp="1606122384967">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1517" height="134" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606120055589" />
-    <state width="1517" height="134" key="GridCell.Tab.0.left" timestamp="1606120055589">
+    <state width="1487" height="139" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606122384967" />
+    <state width="1487" height="139" key="GridCell.Tab.0.left" timestamp="1606122384967">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1517" height="134" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606120055589" />
-    <state width="1517" height="134" key="GridCell.Tab.0.right" timestamp="1606120055590">
+    <state width="1487" height="139" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606122384967" />
+    <state width="1487" height="139" key="GridCell.Tab.0.right" timestamp="1606122384967">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1517" height="134" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606120055590" />
+    <state width="1487" height="139" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606122384967" />
     <state width="936" height="19" key="GridCell.Tab.1.bottom" timestamp="1606064135964">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
