@@ -98,10 +98,9 @@
         android:textStyle="bold"
         android:text="Preferences"/>
 
-    <view class="androidx.appcompat.app.AlertController$RecycleListView"
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/profile_preferences_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent">
-    </view>
+        android:background="@color/colorAccent"/>
 </LinearLayout>
