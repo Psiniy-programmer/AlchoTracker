@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Alchotracker</string>
+    <string name="Preferences">Предпочтения</string>
+    <string name="friends">Друзей</string>
+    <string name="dates">Тусовок</string>
 </resources>
