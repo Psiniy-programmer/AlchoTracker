@@ -147,7 +147,8 @@ public class TimerFragment extends Fragment implements TimerInterface {
     }
 
     private void sendReminderNotification() {
-        if ((startMinute - tMinute) == 30 || (startMinute - tMinute) == 0) {
+        if (((startMinute - tMinute) == 30 || (startMinute - tMinute) == 0) && (startHour != tHour ||
+                startMinute != tMinute)) {
             String drinkingTime = (startHour - tHour) + ":" + (startMinute - tMinute);
             ((MainActivity)getActivity()).sendTimerFragmentNotificationChannel2(
                     notificationIdCh2++,
