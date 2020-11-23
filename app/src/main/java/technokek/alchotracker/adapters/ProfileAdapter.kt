@@ -1,6 +1,6 @@
-package adapters
+package technokek.alchotracker.adapters
 
-import adapters.viewholders.ProfileViewHolder
+import technokek.alchotracker.adapters.viewholders.ProfileViewHolder
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

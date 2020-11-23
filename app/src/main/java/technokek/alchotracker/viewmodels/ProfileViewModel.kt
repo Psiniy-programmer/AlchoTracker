@@ -1,7 +1,7 @@
-package viewmodels
+package technokek.alchotracker.viewmodels
 
 import androidx.lifecycle.ViewModel
-import data.ProfileLiveData
+import technokek.alchotracker.data.ProfileLiveData
 
 class ProfileViewModel: ViewModel() {
     var mProfileLiveData = ProfileLiveData()

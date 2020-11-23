@@ -1,4 +1,4 @@
-package data.models
+package technokek.alchotracker.data.models
 
 class ProfileModel(name: String, status: String, friendsCount: Int, datesCount: Int) {
     var name = name

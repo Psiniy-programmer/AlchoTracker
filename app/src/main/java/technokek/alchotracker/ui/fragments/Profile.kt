@@ -1,6 +1,6 @@
-package ui.fragments
+package technokek.alchotracker.ui.fragments
 
-import adapters.ProfileAdapter
+import technokek.alchotracker.adapters.ProfileAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +9,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
 import technokek.alchotracker.R
-import viewmodels.ProfileViewModel
+import technokek.alchotracker.viewmodels.ProfileViewModel
 
 class Profile : Fragment() {
 

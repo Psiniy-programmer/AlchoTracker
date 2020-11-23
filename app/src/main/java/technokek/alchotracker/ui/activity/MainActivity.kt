@@ -1,9 +1,9 @@
-package ui.activity
+package technokek.alchotracker.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import technokek.alchotracker.R
-import ui.fragments.Profile
+import technokek.alchotracker.ui.fragments.Profile
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

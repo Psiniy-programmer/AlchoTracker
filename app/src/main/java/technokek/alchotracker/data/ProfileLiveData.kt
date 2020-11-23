@@ -1,7 +1,7 @@
-package data
+package technokek.alchotracker.data
 
 import androidx.lifecycle.LiveData
-import data.models.ProfileModel
+import technokek.alchotracker.data.models.ProfileModel
 
 class ProfileLiveData : LiveData<ProfileModel>(){
     init {
