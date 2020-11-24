@@ -26,5 +26,4 @@
         android:layout_toEndOf="@id/friend_button"
         android:text="EventList" />
 
-
 </RelativeLayout>

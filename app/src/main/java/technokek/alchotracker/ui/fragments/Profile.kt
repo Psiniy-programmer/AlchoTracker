@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
 import technokek.alchotracker.viewmodels.ProfileViewModel
-
+// TODO Добавить прокидывание ID
 class Profile : Fragment() {
 
     private var mProfileViewModel = ProfileViewModel()
