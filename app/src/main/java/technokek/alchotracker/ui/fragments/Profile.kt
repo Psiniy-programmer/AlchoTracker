@@ -1,6 +1,5 @@
 package technokek.alchotracker.ui.fragments
 
-import technokek.alchotracker.adapters.ProfileAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +9,25 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
+import technokek.alchotracker.adapters.ProfileAdapter
 import technokek.alchotracker.viewmodels.ProfileViewModel
-// TODO Добавить прокидывание ID
-class Profile : Fragment() {
 
-    private var mProfileViewModel = ProfileViewModel()
+
+// TODO Добавить прокидывание ID
+class Profile : Fragment {
+    lateinit var mProfileViewModel: ProfileViewModel
+    lateinit var avatarText: TextView
+    lateinit var statusText: TextView
+    lateinit var friendsCounter: TextView
+    lateinit var eventsCounter: TextView
+
+    constructor() {
+        mProfileViewModel = ProfileViewModel()
+    }
+
+    constructor(uid: String) {
+        mProfileViewModel = ProfileViewModel(uid)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,16 +39,16 @@ class Profile : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val avatarText = view.findViewById<TextView>(R.id.profile_avatar_text)
-        val statusText = view.findViewById<TextView>(R.id.profile_status_text)
-        val friendsCounter = view.findViewById<TextView>(R.id.profile_friends_counter)
-        val datesCounter = view.findViewById<TextView>(R.id.profile_dates_counter)
+        avatarText = view.findViewById(R.id.profile_avatar_text)
+        statusText = view.findViewById(R.id.profile_status_text)
+        friendsCounter = view.findViewById(R.id.profile_friends_counter)
+        eventsCounter = view.findViewById(R.id.profile_events_counter)
 
         mProfileViewModel.mProfileLiveData.observe(this, {
             avatarText.text = it.name
             statusText.text = it.status
             friendsCounter.text = it.friendsCount.toString()
-            datesCounter.text = it.datesCount.toString()
+            eventsCounter.text = it.eventsCount.toString()
             val recyclerView: RecyclerView =
                 view.findViewById(R.id.profile_preferences_list)
             recyclerView.layoutManager = LinearLayoutManager(context)

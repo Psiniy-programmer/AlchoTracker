@@ -70,7 +70,7 @@
             android:layout_marginStart="15dp">
 
             <TextView
-                android:id="@+id/profile_dates_counter"
+                android:id="@+id/profile_events_counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="9,112,824"
