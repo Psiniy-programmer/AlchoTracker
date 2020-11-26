@@ -21,7 +21,7 @@
         android:layout_gravity="center_horizontal"
         android:textSize="36sp"
         android:textStyle="bold"
-        android:text="Brendan Moore"/>
+        tools:text="Brendan Moore"/>
 
     <TextView
         android:id="@+id/profile_status_text"
@@ -31,7 +31,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:textSize="24sp"
-        android:text="Status"
+        tools:text="Status"
         />
 
     <LinearLayout
@@ -49,7 +49,7 @@
                 android:id="@+id/profile_friends_counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20,583"
+                tools:text="20,583"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_marginEnd="10dp"
@@ -58,7 +58,7 @@
                 android:id="@+id/profile_friends_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Friends"
+                android:text="@string/friends"
                 android:textSize="16sp"
                 />
         </LinearLayout>
@@ -70,10 +70,10 @@
             android:layout_marginStart="15dp">
 
             <TextView
-                android:id="@+id/profile_dates_counter"
+                android:id="@+id/profile_events_counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9,112,824"
+                tools:text="9,112,824"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_marginEnd="10dp"
@@ -82,19 +82,25 @@
                 android:id="@+id/profile_dates_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dates"
+                android:text="@string/dates"
                 android:textSize="16sp"
                 />
         </LinearLayout>
     </LinearLayout>
 
     <TextView
+        android:id="@+id/preferences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:text="Preferences"/>
+        android:text="@string/Preferences"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_preferences_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"/>
 </LinearLayout>
