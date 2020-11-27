@@ -1,12 +1,10 @@
 package technokek.alchotracker.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +14,6 @@ import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.viewmodels.EventViewModel
 
 class EventFragment : Fragment() {
-
-    private lateinit var mEventViewModel: EventViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,17 +26,15 @@ class EventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mEventViewModel = ViewModelProvider(this)[EventViewModel::class.java]
-
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_event)
-        val listener = context as EventClickListener
-        val adapter = EventAdapter(mEventViewModel.events.value!!, listener)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = adapter
+        val mEventViewModel = ViewModelProvider(this)[EventViewModel::class.java]
 
         mEventViewModel.events.observe(this, {
-            adapter.notifyDataSetChanged()
-            Log.d("test", "success")
+            // Узнать правильно ли так делать!
+            val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_event)
+            val listener = context as EventClickListener
+            val adapter = EventAdapter(mEventViewModel.events.value!!, listener)
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            recyclerView.adapter = adapter
         })
     }
 

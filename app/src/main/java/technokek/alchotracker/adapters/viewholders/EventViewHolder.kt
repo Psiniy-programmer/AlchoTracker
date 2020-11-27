@@ -5,7 +5,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
-import technokek.alchotracker.api.EventClickListener
 
 class EventViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView) {

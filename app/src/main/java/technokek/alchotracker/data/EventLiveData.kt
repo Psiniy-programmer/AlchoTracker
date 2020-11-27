@@ -1,21 +1,22 @@
 package technokek.alchotracker.data
 
-import android.graphics.Bitmap
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.Query
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
+import com.google.firebase.database.*
 import technokek.alchotracker.data.models.EventModel
-import technokek.alchotracker.network.ApiRepo
 
 class EventLiveData() : MutableLiveData<MutableList<EventModel>>() {
 
     private lateinit var query: Query
     private val eventListener = EventListener()
+
+    constructor(ref: DatabaseReference) : this() {
+        query = ref
+    }
+
+    constructor(query: Query) : this() {
+        this.query = query
+    }
 
     override fun onActive() {
         super.onActive()
@@ -40,15 +41,15 @@ class EventLiveData() : MutableLiveData<MutableList<EventModel>>() {
             val events: MutableList<EventModel> = mutableListOf()
 
             for (i in snapshot.children) {
-                ApiRepo.child("${i.key}.jpg").downloadUrl.addOnSuccessListener {
-                    val event = EventModel(
-                        i.child("id").getValue(Int::class.java)!!,
-                        i.child("name").value.toString(),
-                        it.toString()
-                    )
-                    events.add(event)
-                }
+                val event = EventModel(
+                    i.child("id").getValue(Int::class.java)!!,
+                    i.child("name").value.toString(),
+                    i.child("avatar").value.toString()
+                )
+                events.add(event)
             }
+
+            value = events
         }
 
         override fun onCancelled(error: DatabaseError) {

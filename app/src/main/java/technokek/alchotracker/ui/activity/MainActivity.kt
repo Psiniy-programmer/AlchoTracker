@@ -47,5 +47,4 @@ class MainActivity : AppCompatActivity(), EventClickListener {
         val toast = Toast.makeText(this, "Event", Toast.LENGTH_SHORT)
         toast.show()
     }
-
 }
