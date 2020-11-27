@@ -11,7 +11,7 @@ import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.data.models.EventModel
 
 class EventAdapter(
-    private val mData: ArrayList<EventModel>,
+    private val mData: MutableList<EventModel>,
     private val listener: EventClickListener
 ) :
     RecyclerView.Adapter<EventViewHolder>() {
@@ -28,7 +28,6 @@ class EventAdapter(
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val model = mData[position]
         Picasso.get().load(model.avatar).into(holder.mImageView)
-        Log.d("Image", model.avatar)
         holder.mTextView.text = model.name
     }
 

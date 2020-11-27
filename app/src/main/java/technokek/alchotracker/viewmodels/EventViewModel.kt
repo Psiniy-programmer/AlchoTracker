@@ -1,26 +1,24 @@
 package technokek.alchotracker.viewmodels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.android.gms.common.api.Api
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.toCollection
 import kotlinx.coroutines.launch
 import technokek.alchotracker.data.models.EventModel
 import technokek.alchotracker.network.ApiRepo
 
 class EventViewModel : ViewModel() {
-
-    private var mApiRepo: ApiRepo = ApiRepo()
-    private var events: MutableLiveData<ArrayList<EventModel>>? = null
+    var events =  MutableLiveData<MutableList<EventModel>>()
+    private set
 
     init {
-        if (events == null) {
-            events = mApiRepo.getEvent()
+        viewModelScope.launch {
+            events.value = ApiRepo.getEvent()
         }
-    }
-
-    fun getEvents(): MutableLiveData<ArrayList<EventModel>>? {
-        return events
     }
 }
