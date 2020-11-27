@@ -25,7 +25,7 @@ class EventAdapter(
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val model = mData[position]
-        holder.mImageView.setImageBitmap(model.avatar)
+        //holder.mImageView.setImageBitmap(model.avatar)
         holder.mTextView.text = model.name
     }
 
