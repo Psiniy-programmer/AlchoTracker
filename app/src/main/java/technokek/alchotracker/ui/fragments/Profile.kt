@@ -1,13 +1,16 @@
 package technokek.alchotracker.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.ProfileAdapter
 import technokek.alchotracker.viewmodels.ProfileViewModel
@@ -15,11 +18,12 @@ import technokek.alchotracker.viewmodels.ProfileViewModel
 
 // TODO Добавить прокидывание ID
 class Profile : Fragment {
-    lateinit var mProfileViewModel: ProfileViewModel
+    var mProfileViewModel: ProfileViewModel
     lateinit var avatarText: TextView
     lateinit var statusText: TextView
     lateinit var friendsCounter: TextView
     lateinit var eventsCounter: TextView
+    lateinit var avatarView: ImageView
 
     constructor() {
         mProfileViewModel = ProfileViewModel()
@@ -43,12 +47,13 @@ class Profile : Fragment {
         statusText = view.findViewById(R.id.profile_status_text)
         friendsCounter = view.findViewById(R.id.profile_friends_counter)
         eventsCounter = view.findViewById(R.id.profile_events_counter)
-
+        avatarView = view.findViewById(R.id.profile_avatar)
         mProfileViewModel.mProfileLiveData.observe(this, {
             avatarText.text = it.name
             statusText.text = it.status
             friendsCounter.text = it.friendsCount.toString()
             eventsCounter.text = it.eventsCount.toString()
+            Picasso.get().load(it.avatar).into(avatarView)
             val recyclerView: RecyclerView =
                 view.findViewById(R.id.profile_preferences_list)
             recyclerView.layoutManager = LinearLayoutManager(context)

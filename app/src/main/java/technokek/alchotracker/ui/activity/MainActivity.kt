@@ -9,9 +9,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.fragment_container, Profile("1"))
-        fragmentTransaction.commit()
+
+        if (supportFragmentManager.findFragmentByTag(Profile.TAG) == null)
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, Profile("1"))
+                .commit()
     }
 }
