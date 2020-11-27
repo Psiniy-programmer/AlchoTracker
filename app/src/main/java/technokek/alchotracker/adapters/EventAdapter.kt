@@ -9,7 +9,7 @@ import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.data.models.EventModel
 
 class EventAdapter(
-    private val mData: MutableList<EventModel>,
+    private val mData: ArrayList<EventModel>,
     private val listener: EventClickListener
 ) :
     RecyclerView.Adapter<EventViewHolder>() {

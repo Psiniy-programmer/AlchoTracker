@@ -16,7 +16,6 @@ class EventViewModel : ViewModel() {
         if (events != null) {
             return
         }
-        mApiRepo.loadData()
         events = mApiRepo.getEvent()
     }
 
