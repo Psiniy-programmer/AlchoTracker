@@ -20,8 +20,7 @@ class EventAdapter(
         return EventViewHolder(
             LayoutInflater
                 .from(parent.context)
-                .inflate(R.layout.one_event, parent, false),
-            listener
+                .inflate(R.layout.one_event, parent, false)
         )
     }
 
@@ -29,6 +28,9 @@ class EventAdapter(
         val model = mData[position]
         Picasso.get().load(model.avatar).into(holder.mImageView)
         holder.mTextView.text = model.name
+        holder.mTextView.setOnClickListener {
+            listener.pressEvent()
+        }
     }
 
     override fun getItemCount(): Int {
