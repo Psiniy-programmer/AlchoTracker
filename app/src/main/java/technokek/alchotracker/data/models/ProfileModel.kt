@@ -1,6 +1,6 @@
 package technokek.alchotracker.data.models
 
-class ProfileModel(name: String, status: String, friendsCount: Int, eventsCount: Int) {
+class ProfileModel(name: String, status: String, friendsCount: Int, eventsCount: Int, avatar: String) {
     var name = name
         private set
     var status = status
@@ -10,5 +10,7 @@ class ProfileModel(name: String, status: String, friendsCount: Int, eventsCount:
     var eventsCount = eventsCount
         private set
     var preferencesList: MutableSet<String> = mutableSetOf()
+        private set
+    var avatar = avatar
         private set
 }
