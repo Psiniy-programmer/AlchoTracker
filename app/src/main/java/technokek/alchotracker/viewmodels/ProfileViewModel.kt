@@ -1,16 +1,19 @@
 package technokek.alchotracker.viewmodels
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import technokek.alchotracker.data.ProfileLiveData
-import technokek.alchotracker.data.models.ProfileModel
+import technokek.alchotracker.data.models.Profile
+import technokek.alchotracker.data.ProfileRepo
 
 class ProfileViewModel : ViewModel {
-    var mProfileLiveData: ProfileLiveData
+    var mProfileLiveData: MutableLiveData<Profile>
+    private val mRepo: ProfileRepo = ProfileRepo()
+
     constructor() {
-        mProfileLiveData = ProfileLiveData()
+        mProfileLiveData = mRepo.getProfile()
     }
 
     constructor(uid: String) {
-        mProfileLiveData = ProfileLiveData(uid)
+        mProfileLiveData = mRepo.getProfile(uid)
     }
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -16,21 +17,20 @@ import technokek.alchotracker.adapters.ProfileAdapter
 import technokek.alchotracker.viewmodels.ProfileViewModel
 
 
-// TODO Добавить прокидывание ID
 class Profile : Fragment {
-    var mProfileViewModel: ProfileViewModel
-    lateinit var avatarText: TextView
-    lateinit var statusText: TextView
-    lateinit var friendsCounter: TextView
-    lateinit var eventsCounter: TextView
-    lateinit var avatarView: ImageView
+    private var mProfileViewModel: ProfileViewModel
+    private lateinit var userText: TextView
+    private lateinit var statusText: TextView
+    private lateinit var friendsCounter: TextView
+    private lateinit var eventsCounter: TextView
+    private lateinit var avatarView: ImageView
 
     constructor() {
         mProfileViewModel = ProfileViewModel()
     }
 
     constructor(uid: String) {
-        mProfileViewModel = ProfileViewModel(uid)
+        mProfileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -43,23 +43,20 @@ class Profile : Fragment {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        avatarText = view.findViewById(R.id.profile_avatar_text)
+        userText = view.findViewById(R.id.profile_user_text)
         statusText = view.findViewById(R.id.profile_status_text)
         friendsCounter = view.findViewById(R.id.profile_friends_counter)
         eventsCounter = view.findViewById(R.id.profile_events_counter)
         avatarView = view.findViewById(R.id.profile_avatar)
+//        mProfileViewModel.mProfileLiveData.observe(this, {
+//            userText.text = it.name
+//        })
         mProfileViewModel.mProfileLiveData.observe(this, {
-            avatarText.text = it.name
+            userText.text = it.name
             statusText.text = it.status
             friendsCounter.text = it.friendsCount.toString()
-            eventsCounter.text = it.eventsCount.toString()
-            Picasso.get().load(it.avatar).into(avatarView)
-            val recyclerView: RecyclerView =
-                view.findViewById(R.id.profile_preferences_list)
-            recyclerView.layoutManager = LinearLayoutManager(context)
-            val adapter = it?.let { ProfileAdapter(it.preferencesList) }
-            recyclerView.layoutManager
-            recyclerView.adapter = adapter
+            eventsCounter.text = it.eventCount.toString()
+//            Picasso.get().load(it.avatar).into(avatarView)
         })
     }
 
