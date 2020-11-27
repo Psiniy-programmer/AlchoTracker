@@ -3,6 +3,7 @@ package technokek.alchotracker.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.viewholders.FriendViewHolder
 import technokek.alchotracker.api.FriendClickListener
@@ -19,14 +20,16 @@ class FriendAdapter(
             LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.one_friend, parent, false),
-            listener
         )
     }
 
     override fun onBindViewHolder(holder: FriendViewHolder, position: Int) {
         val model = mData[position]
-        holder.mImageView.setImageBitmap(model.avatar)
+        Picasso.get().load(model.avatar).into(holder.mImageView)
         holder.mTextView.text = model.name
+        holder.mTextView.setOnClickListener {
+            listener.pressFriend(model.id.toString())
+        }
     }
 
     override fun getItemCount(): Int {

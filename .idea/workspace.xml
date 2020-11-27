@@ -33,11 +33,21 @@
   <component name="ChangeListManager">
     <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="test changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/EventAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/EventAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/FriendAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/FriendAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/FriendViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/FriendViewHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/FriendClickListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/FriendClickListener.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendLiveData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/dataclasses/Event.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/dataclasses/Event.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/EventModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/EventModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/FriendModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/FriendModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/network/ApiRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/network/ApiRepo.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/EventFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/EventFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/EventViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/EventViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/FriendViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/FriendViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,10 +307,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="661" y="141" width="588" height="831" key="#app/0.30.1920.1050@0.30.1920.1050" timestamp="1606400547753" />
-    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1606437054678">
+    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1606488422910">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1606437054678" />
+    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1606488422910" />
     <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606402782735" />
     <state x="532" y="16" width="472" height="876" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1606070701929">
       <screen x="0" y="0" width="1440" height="900" />
@@ -323,21 +333,25 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1568" height="295" key="GridCell.Tab.0.bottom" timestamp="1606410745561">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state width="1396" height="203" key="GridCell.Tab.0.bottom" timestamp="1606489624616">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1396" height="203" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606489624616" />
     <state width="1568" height="295" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1568" height="295" key="GridCell.Tab.0.center" timestamp="1606410745561">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state width="1396" height="203" key="GridCell.Tab.0.center" timestamp="1606489624615">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1396" height="203" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606489624615" />
     <state width="1568" height="295" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1568" height="295" key="GridCell.Tab.0.left" timestamp="1606410745561">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state width="1396" height="203" key="GridCell.Tab.0.left" timestamp="1606489624615">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1396" height="203" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606489624615" />
     <state width="1568" height="295" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1568" height="295" key="GridCell.Tab.0.right" timestamp="1606410745561">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state width="1396" height="203" key="GridCell.Tab.0.right" timestamp="1606489624616">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1396" height="203" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606489624616" />
     <state width="1568" height="295" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
       <screen x="0" y="30" width="1920" height="1050" />

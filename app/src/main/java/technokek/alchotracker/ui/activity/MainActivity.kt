@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
 
     private var mFriendFragment: FriendFragment? = null
     private var mEventFragment: EventFragment? = null
+    private var mProfileFragment: Profile? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
             supportFragmentManager.findFragmentByTag(FriendFragment.TAG) as FriendFragment?
         mEventFragment =
             supportFragmentManager.findFragmentByTag(EventFragment.TAG) as EventFragment?
+        mProfileFragment =
+            supportFragmentManager.findFragmentByTag(Profile.TAG) as Profile?
 
         if (mFriendFragment == null)
             mFriendFragment = FriendFragment()
@@ -77,12 +80,36 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
     }
 
     override fun pressEvent() {
-        val toast = Toast.makeText(this, "EventList", Toast.LENGTH_SHORT)
+        val toast = Toast.makeText(this, "Event", Toast.LENGTH_SHORT)
         toast.show()
     }
 
-    override fun pressFriend() {
-        val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
+    override fun pressFriend(id: String) {
+        val toast = Toast.makeText(this, "Friend", Toast.LENGTH_SHORT)
         toast.show()
+        if (mProfileFragment == null)
+            mProfileFragment = Profile(id)
+
+        supportFragmentManager.findFragmentByTag(Profile.TAG)?.let {
+            supportFragmentManager.beginTransaction()
+                .remove(supportFragmentManager.findFragmentByTag(Profile.TAG)!!)
+                .commit()
+        }
+
+        supportFragmentManager.findFragmentByTag(FriendFragment.TAG)?.let {
+            supportFragmentManager.beginTransaction()
+                .remove(supportFragmentManager.findFragmentByTag(FriendFragment.TAG)!!)
+                .commit()
+        }
+
+        supportFragmentManager.findFragmentByTag(EventFragment.TAG)?.let {
+            supportFragmentManager.beginTransaction()
+                .remove(supportFragmentManager.findFragmentByTag(EventFragment.TAG)!!)
+                .commit()
+        }
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.content, mProfileFragment!!, EventFragment.TAG)
+            .commit()
     }
 }

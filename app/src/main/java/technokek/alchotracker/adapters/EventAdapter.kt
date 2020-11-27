@@ -1,8 +1,10 @@
 package technokek.alchotracker.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.viewholders.EventViewHolder
 import technokek.alchotracker.api.EventClickListener
@@ -25,7 +27,8 @@ class EventAdapter(
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val model = mData[position]
-        //holder.mImageView.setImageBitmap(model.avatar)
+        Picasso.get().load(model.avatar).into(holder.mImageView)
+        Log.d("Image", model.avatar)
         holder.mTextView.text = model.name
     }
 

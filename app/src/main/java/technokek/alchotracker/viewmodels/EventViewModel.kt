@@ -12,11 +12,10 @@ class EventViewModel : ViewModel() {
     private var mApiRepo: ApiRepo = ApiRepo()
     private var events: MutableLiveData<ArrayList<EventModel>>? = null
 
-    fun init() {
-        if (events != null) {
-            return
+    init {
+        if (events == null) {
+            events = mApiRepo.getEvent()
         }
-        events = mApiRepo.getEvent()
     }
 
     fun getEvents() : MutableLiveData<ArrayList<EventModel>>? {

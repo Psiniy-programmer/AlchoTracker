@@ -29,7 +29,7 @@ class FriendFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_friend)
         val listener = context as FriendClickListener
-        val adapter = mFriendViewModel.mFriendLiveData.value?.let { FriendAdapter(it, listener) }
+        val adapter = mFriendViewModel.getFriends()?.value?.let { FriendAdapter(it, listener) }
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
     }

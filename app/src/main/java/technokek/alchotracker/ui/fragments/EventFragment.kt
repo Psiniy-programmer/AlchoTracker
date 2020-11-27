@@ -29,7 +29,6 @@ class EventFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_event)
         val listener = context as EventClickListener
-        mEventViewModel.init() // load
         val adapter = mEventViewModel.getEvents()?.value?.let { EventAdapter(it, listener) }
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
