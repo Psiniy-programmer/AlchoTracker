@@ -66,7 +66,7 @@ class ApiRepo {
         })
 
         val list = MutableLiveData<ArrayList<EventModel>>()
-        list.value = events
+        list.postValue(events)
 
         return list
     }
