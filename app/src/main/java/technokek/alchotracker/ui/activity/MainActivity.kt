@@ -3,21 +3,41 @@ package technokek.alchotracker.ui.activity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import technokek.alchotracker.R
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.ui.fragments.EventFragment
 import technokek.alchotracker.ui.fragments.FriendFragment
+import technokek.alchotracker.ui.fragments.FriendProfileFragment
+import technokek.alchotracker.ui.fragments.MasterProfileFragment
+
 
 class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener {
 
     private var mFriendFragment: FriendFragment? = null
     private var mEventFragment: EventFragment? = null
+    private var mAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuth!!.signInWithEmailAndPassword("denislipoff@yandex.ru", "ssssss")
+            .addOnCompleteListener(this,
+                OnCompleteListener<AuthResult?> { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d("OKZ", mAuth!!.currentUser?.uid.toString())
+                    } else {
+                        Log.d("kek", "signInWithEmail:failure", task.exception)
+                    }
+                })
 
         mFriendFragment =
             supportFragmentManager.findFragmentByTag(FriendFragment.TAG) as FriendFragment?

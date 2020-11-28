@@ -15,7 +15,7 @@
         android:src="@drawable/avatar" />
 
     <TextView
-        android:id="@+id/profile_avatar_text"
+        android:id="@+id/profile_user_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
