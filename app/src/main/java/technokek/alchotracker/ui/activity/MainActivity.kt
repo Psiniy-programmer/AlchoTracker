@@ -120,7 +120,6 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.content, mFriendProfileFragment, FriendProfileFragment.TAG)
-            .addToBackStack(FriendProfileFragment.TAG)
             .commit()
     }
 }
