@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         if (supportFragmentManager.findFragmentByTag(MasterProfileFragment.TAG) == null)
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragment_container, FriendProfileFragment("0oyvKHqUx5hxILqeSmkCYOwj6wv2"))
+                .replace(R.id.fragment_container, MasterProfileFragment())
                 .commit()
     }
 
