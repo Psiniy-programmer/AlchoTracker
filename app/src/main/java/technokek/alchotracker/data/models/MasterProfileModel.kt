@@ -1,6 +1,6 @@
 package technokek.alchotracker.data.models
 
-public data class ProfileModel(
+data class MasterProfileModel(
     var avatar: String = "",
     var name: String = "",
     var status: String = "",
