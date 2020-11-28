@@ -61,6 +61,10 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         eventButton.setOnClickListener {
             showEventFragment()
         }
+        val profileButton = findViewById<Button>(R.id.profile_button)
+        profileButton.setOnClickListener {
+            showProfileFragment()
+        }
 
         if (savedInstanceState == null) {
             showMainFragment()
@@ -70,6 +74,16 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
     private fun showMainFragment() {
         supportFragmentManager.beginTransaction()
             .add(R.id.content, mMasterProfileFragment!!, MasterProfileFragment.TAG)
+            .commit()
+    }
+
+    private fun showProfileFragment() {
+        supportFragmentManager.findFragmentByTag(MasterProfileFragment.TAG)?.let {
+            return
+        }
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content, mMasterProfileFragment!!, MasterProfileFragment.TAG)
             .commit()
     }
 

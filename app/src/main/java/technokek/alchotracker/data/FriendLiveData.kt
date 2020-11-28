@@ -2,6 +2,7 @@ package technokek.alchotracker.data
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import technokek.alchotracker.data.models.FriendModel
 

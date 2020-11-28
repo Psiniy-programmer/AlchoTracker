@@ -13,11 +13,19 @@
         android:layout_above="@id/friend_button" />
 
     <Button
+        android:id="@+id/profile_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Profile"/>
+
+    <Button
         android:id="@+id/friend_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="FriendList" />
+        android:layout_toEndOf="@id/profile_button"
+        android:text="Friends" />
 
     <Button
         android:id="@+id/event_button"
@@ -25,6 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@id/friend_button"
-        android:text="EventList" />
+        android:text="Events" />
 
 </RelativeLayout>
