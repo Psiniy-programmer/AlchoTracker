@@ -10,7 +10,7 @@ import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.data.models.FriendModel
 
 class FriendAdapter(
-    private val mData: MutableList<FriendModel>,
+    private var mData: MutableList<FriendModel>,
     private val listener: FriendClickListener
 ) :
     RecyclerView.Adapter<FriendViewHolder>() {
@@ -34,5 +34,9 @@ class FriendAdapter(
 
     override fun getItemCount(): Int {
         return mData.size
+    }
+
+    fun refresh(mData: MutableList<FriendModel>) {
+        this.mData = mData
     }
 }

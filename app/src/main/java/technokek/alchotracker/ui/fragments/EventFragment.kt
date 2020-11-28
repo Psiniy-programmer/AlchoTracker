@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,14 +28,23 @@ class EventFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val mEventViewModel = ViewModelProvider(this)[EventViewModel::class.java]
+        val mProgressBar = view.findViewById<ProgressBar>(R.id.indeterminateBarEvent)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_event)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val listener = context as EventClickListener
 
+        val adapter = if (mEventViewModel.events.value != null) {
+            EventAdapter(mEventViewModel.events.value!!, listener)
+        } else {
+            EventAdapter(mutableListOf(), listener)
+        }
+
         mEventViewModel.events.observe(this, {
             if (recyclerView.adapter == null) {
-                val adapter = EventAdapter(mEventViewModel.events.value!!, listener)
+                mProgressBar.visibility = View.GONE
+                adapter.refresh(mEventViewModel.events.value!!)
+                adapter.notifyDataSetChanged()
                 recyclerView.adapter = adapter
             }
         })

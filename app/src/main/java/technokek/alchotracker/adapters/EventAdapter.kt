@@ -10,7 +10,7 @@ import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.data.models.EventModel
 
 class EventAdapter(
-    private val mData: MutableList<EventModel>,
+    private var mData: MutableList<EventModel>,
     private val listener: EventClickListener
 ) :
     RecyclerView.Adapter<EventViewHolder>() {
@@ -34,5 +34,9 @@ class EventAdapter(
 
     override fun getItemCount(): Int {
         return mData.size
+    }
+
+    fun refresh(mData: MutableList<EventModel>) {
+        this.mData = mData
     }
 }
