@@ -28,13 +28,15 @@ class EventFragment : Fragment() {
 
         val mEventViewModel = ViewModelProvider(this)[EventViewModel::class.java]
 
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_event)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        val listener = context as EventClickListener
+
         mEventViewModel.events.observe(this, {
-            // Узнать правильно ли так делать!
-            val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_event)
-            val listener = context as EventClickListener
-            val adapter = EventAdapter(mEventViewModel.events.value!!, listener)
-            recyclerView.layoutManager = LinearLayoutManager(context)
-            recyclerView.adapter = adapter
+            if (recyclerView.adapter == null) {
+                val adapter = EventAdapter(mEventViewModel.events.value!!, listener)
+                recyclerView.adapter = adapter
+            }
         })
     }
 

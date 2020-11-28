@@ -28,13 +28,15 @@ class FriendFragment : Fragment() {
 
         val mFriendViewModel = ViewModelProvider(this)[FriendViewModel::class.java]
 
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_friend)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        val listener = context as FriendClickListener
+
         mFriendViewModel.friends.observe(this, {
-            // Узнать правильно ли так делать!
-            val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_friend)
-            val listener = context as FriendClickListener
-            val adapter = FriendAdapter(mFriendViewModel.friends.value!!, listener)
-            recyclerView.layoutManager = LinearLayoutManager(context)
-            recyclerView.adapter = adapter
+            if (recyclerView.adapter == null) {
+                val adapter = FriendAdapter(mFriendViewModel.friends.value!!, listener)
+                recyclerView.adapter = adapter
+            }
         })
     }
 
