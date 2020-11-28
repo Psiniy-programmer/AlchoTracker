@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
 
     private var mFriendFragment: FriendFragment? = null
     private var mEventFragment: EventFragment? = null
+    private var mMasterProfileFragment: MasterProfileFragment? = null
     private var mAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,25 +30,28 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
 
         mAuth = FirebaseAuth.getInstance();
         mAuth!!.signInWithEmailAndPassword("denislipoff@yandex.ru", "ssssss")
-            .addOnCompleteListener(this,
-                OnCompleteListener<AuthResult?> { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d("OKZ", mAuth!!.currentUser?.uid.toString())
-                    } else {
-                        Log.d("kek", "signInWithEmail:failure", task.exception)
-                    }
-                })
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d("OKZ", mAuth!!.currentUser?.uid.toString())
+                } else {
+                    Log.d("kek", "signInWithEmail:failure", task.exception)
+                }
+            }
 
         mFriendFragment =
             supportFragmentManager.findFragmentByTag(FriendFragment.TAG) as FriendFragment?
         mEventFragment =
             supportFragmentManager.findFragmentByTag(EventFragment.TAG) as EventFragment?
+        mMasterProfileFragment =
+            supportFragmentManager.findFragmentByTag(MasterProfileFragment.TAG) as MasterProfileFragment?
 
         if (mFriendFragment == null)
             mFriendFragment = FriendFragment()
         if (mEventFragment == null)
             mEventFragment = EventFragment()
+        if (mMasterProfileFragment == null)
+            mMasterProfileFragment = MasterProfileFragment()
 
         val friendButton = findViewById<Button>(R.id.friend_button)
         friendButton.setOnClickListener {
@@ -59,8 +63,14 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         }
 
         if (savedInstanceState == null) {
-            showFriendFragment()
+            showMainFragment()
         }
+    }
+
+    private fun showMainFragment() {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.content, mMasterProfileFragment!!, MasterProfileFragment.TAG)
+            .commit()
     }
 
     private fun showFriendFragment() {
@@ -68,14 +78,8 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
             return
         }
 
-        supportFragmentManager.findFragmentByTag(EventFragment.TAG)?.let {
-            supportFragmentManager.beginTransaction()
-                .remove(supportFragmentManager.findFragmentByTag(EventFragment.TAG)!!)
-                .commit()
-        }
-
         supportFragmentManager.beginTransaction()
-            .add(R.id.content, mFriendFragment!!, FriendFragment.TAG)
+            .replace(R.id.content, mFriendFragment!!, FriendFragment.TAG)
             .commit()
     }
 
@@ -84,14 +88,8 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
             return
         }
 
-        supportFragmentManager.findFragmentByTag(FriendFragment.TAG)?.let {
-            supportFragmentManager.beginTransaction()
-                .remove(supportFragmentManager.findFragmentByTag(FriendFragment.TAG)!!)
-                .commit()
-        }
-
         supportFragmentManager.beginTransaction()
-            .add(R.id.content, mEventFragment!!, EventFragment.TAG)
+            .replace(R.id.content, mEventFragment!!, EventFragment.TAG)
             .commit()
     }
 
@@ -100,8 +98,15 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         toast.show()
     }
 
-    override fun pressFriend() {
+    override fun pressFriend(uid: String) {
         val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
         toast.show()
+
+        val mFriendProfileFragment = FriendProfileFragment(uid)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content, mFriendProfileFragment, FriendProfileFragment.TAG)
+            .addToBackStack(FriendProfileFragment.TAG)
+            .commit()
     }
 }

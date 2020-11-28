@@ -28,7 +28,7 @@ class FriendAdapter(
         Picasso.get().load(model.avatar).into(holder.mImageView)
         holder.mTextView.text = model.name
         holder.mTextView.setOnClickListener {
-            listener.pressFriend()
+            listener.pressFriend(model.id)
         }
     }
 

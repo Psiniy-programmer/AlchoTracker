@@ -37,6 +37,11 @@ class FriendProfileFragment: Fragment {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        savedInstanceState?.let {
+            uid = savedInstanceState.getString("uid").toString()
+        }
+
         userText = view.findViewById(R.id.profile_user_text)
         statusText = view.findViewById(R.id.profile_status_text)
         friendsCounter = view.findViewById(R.id.profile_friends_counter)
@@ -53,6 +58,12 @@ class FriendProfileFragment: Fragment {
             eventsCounter.text = it.eventCount.toString()
             Picasso.get().load(it.avatar).into(avatarView)
         })
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putString("uid", uid)
     }
 
     companion object {
