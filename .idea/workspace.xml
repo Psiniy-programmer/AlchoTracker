@@ -6,7 +6,8 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="test" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
@@ -32,11 +33,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="background set colorGray">
+    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="removed constructor with parameter from FriendProfileFragment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendLiveData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +81,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="MergeFP" />
+        <entry key="$PROJECT_DIR$" value="localBranch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -237,6 +237,7 @@
         <item itemvalue="Gradle.AlchoTracker [wrapper]" />
         <item itemvalue="Gradle.AlchoTracker [wrapper]" />
         <item itemvalue="Gradle.AlchoTracker [wrapper]" />
+        <item itemvalue="Gradle.AlchoTracker [wrapper]" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606609493986</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="removed constructor with parameter from FriendProfileFragment">
+      <created>1606611787740</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1606611787740</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -353,7 +361,8 @@
     <MESSAGE value="fix bugs" />
     <MESSAGE value="adapters received functions" />
     <MESSAGE value="background set colorGray" />
-    <option name="LAST_COMMIT_MESSAGE" value="background set colorGray" />
+    <MESSAGE value="removed constructor with parameter from FriendProfileFragment" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed constructor with parameter from FriendProfileFragment" />
   </component>
   <component name="WindowStateProjectService">
     <state x="598" y="320" key="#Notifications" timestamp="1606604651034">
@@ -368,10 +377,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="661" y="141" width="588" height="831" key="#app/0.30.1920.1050@0.30.1920.1050" timestamp="1606400547753" />
-    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1606561683086">
+    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1606657107970">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1606561683086" />
+    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1606657107970" />
     <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606402782735" />
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606496667083">
       <screen x="0" y="0" width="1440" height="900" />
@@ -459,14 +468,14 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="616" y="154" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1606111813336" />
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1606609496475">
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1606611793364">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606609496475" />
-    <state x="372" y="245" key="git4idea.merge.GitPullDialog" timestamp="1606559405429">
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606611793364" />
+    <state x="372" y="245" key="git4idea.merge.GitPullDialog" timestamp="1606648412131">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="372" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1606559405429" />
+    <state x="372" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1606648412131" />
     <state x="623" y="261" width="672" height="678" key="search.everywhere.popup" timestamp="1606057689302">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>

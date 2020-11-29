@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         setContentView(R.layout.activity_main)
 
         mAuth = FirebaseAuth.getInstance();
-        mAuth!!.signInWithEmailAndPassword("denislipoff@yandex.ru", "ssssss")
+        mAuth!!.signInWithEmailAndPassword("denyalipov@gmail.com", "my_password")
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d("OKZ", mAuth!!.currentUser?.uid.toString())
+                    Log.d("Success", mAuth!!.currentUser?.uid.toString())
                 } else {
-                    Log.d("kek", "signInWithEmail:failure", task.exception)
+                    Log.d("Denied", "signInWithEmail:failure", task.exception)
                 }
             }
 
@@ -64,5 +64,9 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         bundle.putString("uid", uid)
 
         navHostFragment.navController.navigate(R.id.action_friendFragment_to_friendProfileFragment, bundle)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

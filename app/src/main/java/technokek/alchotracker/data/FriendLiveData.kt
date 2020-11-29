@@ -2,6 +2,7 @@ package technokek.alchotracker.data
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import technokek.alchotracker.data.models.FriendModel
@@ -38,16 +39,22 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
     }
 
     inner class FriendListener : ValueEventListener {
+        private val mAuth = FirebaseAuth.getInstance()
+        private val currentUser = mAuth.currentUser
+
         override fun onDataChange(snapshot: DataSnapshot) {
             val friends: MutableList<FriendModel> = mutableListOf()
+            val listFriend: MutableList<String> = getListFriends(snapshot)
 
             for (i in snapshot.children) {
-                val friend = FriendModel(
-                    i.key.toString(),
-                    i.child("name").value.toString(),
-                    i.child("avatar").value.toString()
-                )
-                friends.add(friend)
+                if (listFriend.contains(i.key)) {
+                    val friend = FriendModel(
+                        i.key.toString(),
+                        i.child("name").value.toString(),
+                        i.child("avatar").value.toString()
+                    )
+                    friends.add(friend)
+                }
             }
 
             value = friends
@@ -55,6 +62,13 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
         override fun onCancelled(error: DatabaseError) {
             Log.d(TAG, "Can't listen query $query", error.toException())
+        }
+
+        private fun getListFriends(snapshot: DataSnapshot) : MutableList<String> {
+            val user = snapshot.child(currentUser!!.uid)
+            val rawList = user.child("friends").child("list").value.toString()
+
+            return rawList.split(";").toMutableList()
         }
     }
 }
