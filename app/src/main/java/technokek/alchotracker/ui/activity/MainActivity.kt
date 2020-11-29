@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         setContentView(R.layout.activity_main)
 
         mAuth = FirebaseAuth.getInstance();
-        mAuth!!.signInWithEmailAndPassword("denyalipov@gmail.com", "my_password")
+        mAuth!!.signOut()
+        mAuth!!.signInWithEmailAndPassword("login@maul.ru", "password")
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information

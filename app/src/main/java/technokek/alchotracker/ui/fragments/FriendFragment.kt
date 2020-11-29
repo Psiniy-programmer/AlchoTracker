@@ -11,10 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.FriendAdapter
+import technokek.alchotracker.adapters.FriendRequestAdapter
 import technokek.alchotracker.api.FriendClickListener
+import technokek.alchotracker.api.RequestClickListener
 import technokek.alchotracker.viewmodels.FriendViewModel
 
-class FriendFragment : Fragment() {
+class FriendFragment : Fragment(), RequestClickListener {
+
+    private lateinit var mFriendViewModel: FriendViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,27 +31,51 @@ class FriendFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mFriendViewModel = ViewModelProvider(this)[FriendViewModel::class.java]
+        mFriendViewModel = ViewModelProvider(this)[FriendViewModel::class.java]
         val mProgressBar = view.findViewById<ProgressBar>(R.id.indeterminateBarFriend)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_friend)
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        val requestRecyclerView = view.findViewById<RecyclerView>(R.id.recycler_friend_request)
+        requestRecyclerView.layoutManager = LinearLayoutManager(context)
+        val friendRecyclerView = view.findViewById<RecyclerView>(R.id.recycler_friend)
+        friendRecyclerView.layoutManager = LinearLayoutManager(context)
         val listener = context as FriendClickListener
 
-        var adapter = if (mFriendViewModel.friends.value != null) {
-            FriendAdapter(mFriendViewModel.friends.value!!, listener)
+        val adapterRequest = if (mFriendViewModel.mediatorRequestLiveData.value != null) {
+            FriendRequestAdapter(mFriendViewModel.mediatorRequestLiveData.value!!, listener, this as RequestClickListener)
+        } else {
+            FriendRequestAdapter(mutableListOf(), listener, this as RequestClickListener)
+        }
+        val adapterFriend = if (mFriendViewModel.mediatorFriendLiveData.value != null) {
+            FriendAdapter(mFriendViewModel.mediatorFriendLiveData.value!!, listener)
         } else {
             FriendAdapter(mutableListOf(), listener)
         }
 
-        mFriendViewModel.friends.observe(this, {
-            if (recyclerView.adapter == null) {
+        mFriendViewModel.mediatorFriendLiveData.observe(this, {
+            if (friendRecyclerView.adapter == null) {
                 mProgressBar.visibility = View.GONE
-                adapter.refresh(mFriendViewModel.friends.value!!)
-                adapter.notifyDataSetChanged()
-                recyclerView.adapter = adapter
+                adapterFriend.refresh(mFriendViewModel.mediatorFriendLiveData.value!!)
+                adapterFriend.notifyDataSetChanged()
+                friendRecyclerView.adapter = adapterFriend
             }
         })
+
+        mFriendViewModel.mediatorRequestLiveData.observe(this, {
+            if (requestRecyclerView.adapter == null) {
+                mProgressBar.visibility = View.GONE
+                adapterRequest.refresh(mFriendViewModel.mediatorRequestLiveData.value!!)
+                adapterFriend.notifyDataSetChanged()
+                requestRecyclerView.adapter = adapterRequest
+            }
+        })
+    }
+
+    override fun accept(uid: String) {
+        mFriendViewModel.acceptRequest(uid)
+    }
+
+    override fun deny(uid: String) {
+        mFriendViewModel.denyRequest(uid)
     }
 
     companion object {
