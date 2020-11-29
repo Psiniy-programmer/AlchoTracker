@@ -1,10 +1,13 @@
 package technokek.alchotracker.ui.activity
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import technokek.alchotracker.R
+import technokek.alchotracker.calendar.CalendarFragment
+import technokek.alchotracker.databinding.ActivityMainBinding
 import technokek.alchotracker.timer.NotificationActivity
 import technokek.alchotracker.ui.fragments.TimerFragment
 import technokek.alchotracker.ui.fragments.Profile
@@ -12,6 +15,7 @@ import technokek.alchotracker.ui.fragments.Profile
 class MainActivity : AppCompatActivity() {
     private val fragmentManager = supportFragmentManager
     private lateinit var notificationManager: NotificationManagerCompat
+    internal lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,6 +26,12 @@ class MainActivity : AppCompatActivity() {
         notificationManager =
             NotificationManagerCompat.from(this)
         addTimerFragment()
+        //addExampleFragment()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
     }
 
     private fun addTimerFragment() {
@@ -49,5 +59,15 @@ class MainActivity : AppCompatActivity() {
             .setContentText(text)
         val notification = builder.build()
         notificationManager.notify(id, notification)
+    }
+
+
+    private fun addExampleFragment() {
+        val calendarFragment = CalendarFragment()
+        val transaction = fragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, calendarFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
