@@ -32,14 +32,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="fix bugs">
+    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="adapters received functions">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/EventAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/EventAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/FriendAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/FriendAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/EventFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/EventFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_event.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_event.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_friend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_friend.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,13 +79,15 @@
         <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="resourceFile" />
+        <option value="navigationResourceFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="friendtoprofile" />
+        <entry key="$PROJECT_DIR$" value="MergeFP" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -301,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606589431619</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="adapters received functions">
+      <created>1606603267218</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1606603267220</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -338,9 +350,14 @@
     <MESSAGE value="complete" />
     <MESSAGE value="change main activity" />
     <MESSAGE value="fix bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
+    <MESSAGE value="adapters received functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="adapters received functions" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="598" y="320" key="#Notifications" timestamp="1606604651034">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="598" y="320" key="#Notifications/0.0.1440.900@0.0.1440.900" timestamp="1606604651034" />
     <state x="576" y="137" width="1024" height="848" key="#Project_Structure" timestamp="1606400594648">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -371,9 +388,18 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="AVDManager/0.0.1440.900@0.0.1440.900" timestamp="1606589514115" />
-    <state x="604" y="349" width="304" height="445" key="AndroidCreateXmlResourceDialog" timestamp="1606124255802">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="308" y="212" key="AndroidCreateResourceDirectoryDialog" timestamp="1606607200265">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="308" y="212" key="AndroidCreateResourceDirectoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1606607200265" />
+    <state x="308" y="212" key="AndroidCreateResourceFileDialog" timestamp="1606605421922">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="308" y="212" key="AndroidCreateResourceFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1606605421922" />
+    <state x="453" y="273" width="356" height="382" key="AndroidCreateXmlResourceDialog" timestamp="1606603989924">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="453" y="273" width="356" height="382" key="AndroidCreateXmlResourceDialog/0.0.1440.900@0.0.1440.900" timestamp="1606603989924" />
     <state x="604" y="349" width="304" height="445" key="AndroidCreateXmlResourceDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606124255802" />
     <state x="606" y="61" width="697" height="990" key="CommitChangelistDialog2" timestamp="1605890799452">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -383,25 +409,25 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1396" height="203" key="GridCell.Tab.0.bottom" timestamp="1606586801217">
+    <state width="1396" height="203" key="GridCell.Tab.0.bottom" timestamp="1606604197677">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="203" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606586801217" />
+    <state width="1396" height="203" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
     <state width="1568" height="295" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1396" height="203" key="GridCell.Tab.0.center" timestamp="1606586801216">
+    <state width="1396" height="203" key="GridCell.Tab.0.center" timestamp="1606604197677">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="203" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606586801216" />
+    <state width="1396" height="203" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
     <state width="1568" height="295" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1396" height="203" key="GridCell.Tab.0.left" timestamp="1606586801216">
+    <state width="1396" height="203" key="GridCell.Tab.0.left" timestamp="1606604197676">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="203" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606586801216" />
+    <state width="1396" height="203" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606604197676" />
     <state width="1568" height="295" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1396" height="203" key="GridCell.Tab.0.right" timestamp="1606586801217">
+    <state width="1396" height="203" key="GridCell.Tab.0.right" timestamp="1606604197677">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="203" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606586801217" />
+    <state width="1396" height="203" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
     <state width="1568" height="295" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -431,10 +457,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="616" y="154" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1606111813336" />
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1606589435083">
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1606603272031">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606589435083" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606603272031" />
     <state x="372" y="245" key="git4idea.merge.GitPullDialog" timestamp="1606559405429">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

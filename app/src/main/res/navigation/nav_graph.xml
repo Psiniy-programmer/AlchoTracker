@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/masterProfileFragment">
+
+    <fragment
+        android:id="@+id/masterProfileFragment"
+        android:name="technokek.alchotracker.ui.fragments.MasterProfileFragment"
+        android:label="MasterProfileFragment" >
+        <action
+            android:id="@+id/action_masterProfileFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="technokek.alchotracker.ui.fragments.EventFragment"
+        android:label="EventFragment" >
+        <action
+            android:id="@+id/action_eventFragment_to_friendFragment"
+            app:destination="@id/friendFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendFragment"
+        android:name="technokek.alchotracker.ui.fragments.FriendFragment"
+        android:label="FriendFragment" />
+</navigation>

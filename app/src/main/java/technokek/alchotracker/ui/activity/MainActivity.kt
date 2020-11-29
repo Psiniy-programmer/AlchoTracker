@@ -5,7 +5,10 @@ import android.widget.Button
 import android.widget.Toast
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import technokek.alchotracker.R
@@ -19,10 +22,8 @@ import technokek.alchotracker.ui.fragments.MasterProfileFragment
 
 class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener {
 
-    private var mFriendFragment: FriendFragment? = null
-    private var mEventFragment: EventFragment? = null
-    private var mMasterProfileFragment: MasterProfileFragment? = null
     private var mAuth: FirebaseAuth? = null
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,72 +40,14 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
                 }
             }
 
-        mFriendFragment =
-            supportFragmentManager.findFragmentByTag(FriendFragment.TAG) as FriendFragment?
-        mEventFragment =
-            supportFragmentManager.findFragmentByTag(EventFragment.TAG) as EventFragment?
-        mMasterProfileFragment =
-            supportFragmentManager.findFragmentByTag(MasterProfileFragment.TAG) as MasterProfileFragment?
-
-        if (mFriendFragment == null)
-            mFriendFragment = FriendFragment()
-        if (mEventFragment == null)
-            mEventFragment = EventFragment()
-        if (mMasterProfileFragment == null)
-            mMasterProfileFragment = MasterProfileFragment()
-
-        val friendButton = findViewById<Button>(R.id.friend_button)
-        friendButton.setOnClickListener {
-            showFriendFragment()
-        }
-        val eventButton = findViewById<Button>(R.id.event_button)
-        eventButton.setOnClickListener {
-            showEventFragment()
-        }
-        val profileButton = findViewById<Button>(R.id.profile_button)
-        profileButton.setOnClickListener {
-            showProfileFragment()
-        }
-
-        if (savedInstanceState == null) {
-            showMainFragment()
-        }
+        setUpNavigation()
     }
 
-    private fun showMainFragment() {
-        supportFragmentManager.beginTransaction()
-            .add(R.id.content, mMasterProfileFragment!!, MasterProfileFragment.TAG)
-            .commit()
-    }
-
-    private fun showProfileFragment() {
-        supportFragmentManager.findFragmentByTag(MasterProfileFragment.TAG)?.let {
-            return
-        }
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.content, mMasterProfileFragment!!, MasterProfileFragment.TAG)
-            .commit()
-    }
-
-    private fun showFriendFragment() {
-        supportFragmentManager.findFragmentByTag(FriendFragment.TAG)?.let {
-            return
-        }
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.content, mFriendFragment!!, FriendFragment.TAG)
-            .commit()
-    }
-
-    private fun showEventFragment() {
-        supportFragmentManager.findFragmentByTag(EventFragment.TAG)?.let {
-            return
-        }
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.content, mEventFragment!!, EventFragment.TAG)
-            .commit()
+    fun setUpNavigation() {
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
+        val navHostFragment: NavHostFragment = supportFragmentManager
+            .findFragmentById(R.id.content) as NavHostFragment
+        NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment.navController)
     }
 
     override fun pressEvent() {
