@@ -32,16 +32,16 @@ class MasterProfileLiveData() : MutableLiveData<MasterProfileModel>() {
 
         override fun onDataChange(snapshot: DataSnapshot) {
             val mAuth = FirebaseAuth.getInstance()
-            setProfile(snapshot.child(mAuth.currentUser?.uid.toString()))
+            getProfile(snapshot.child(mAuth.currentUser?.uid.toString()))
         }
 
         override fun onCancelled(error: DatabaseError) {
-            Log.d("kek", error.toString())
+            Log.d("ERROR_MSG", error.toString())
         }
 
     }
 
-    fun setProfile(x: DataSnapshot) {
+    fun getProfile(x: DataSnapshot) {
         value = MasterProfileModel(
             x.child("avatar").value.toString(),
             x.child("name").value.toString(),

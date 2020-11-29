@@ -11,6 +11,12 @@
         <action
             android:id="@+id/action_masterProfileFragment_to_eventFragment"
             app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_masterProfileFragment_to_profileSettingsFragment"
+            app:destination="@id/profileSettingsFragment" />
+        <action
+            android:id="@+id/action_masterProfileFragment_to_preferencesFragment"
+            app:destination="@id/preferencesFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventFragment"
@@ -31,5 +37,17 @@
     <fragment
         android:id="@+id/friendProfileFragment"
         android:name="technokek.alchotracker.ui.fragments.FriendProfileFragment"
-        android:label="FriendProfileFragment" />
+        android:label="FriendProfileFragment" >
+        <action
+            android:id="@+id/action_friendProfileFragment_to_preferencesFragment2"
+            app:destination="@id/preferencesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileSettingsFragment"
+        android:name="technokek.alchotracker.ui.fragments.ProfileSettingsFragment"
+        android:label="ProfileSettingsFragment" />
+    <fragment
+        android:id="@+id/preferencesFragment"
+        android:name="technokek.alchotracker.ui.fragments.PreferencesFragment"
+        android:label="PreferencesFragment" />
 </navigation>

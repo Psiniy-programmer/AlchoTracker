@@ -9,8 +9,5 @@ public interface ProfileApi {
 
     data class PreferencesDrinks(var drink: String)
 
-    fun getProfile(): MutableLiveData<MasterProfileModel>
-    fun getProfile(uid: String): MutableLiveData<MasterProfileModel>
-    fun setProfile(x: DataSnapshot, avatar: Uri)
-    fun getPreferencersDrinks(): Array<PreferencesDrinks>
+    fun setAvatar()
 }

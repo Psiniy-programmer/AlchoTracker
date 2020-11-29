@@ -6,7 +6,8 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="KEKTEST" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
@@ -33,10 +34,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="background set colorGray">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/PreferencesAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/PreferencesViewHolder.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/PreferencesLiveData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/ProfileSettingsLiveData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/PreferencesModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/SettingsProfileModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/PreferencesFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/ProfileSettingsFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/PreferencesViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/ProfileSettingsViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/friend_profile_fragment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/preferences.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/ProfileApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/ProfileApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/MasterProfileLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/MasterProfileLiveData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/MasterProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/MasterProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/factories/FriendProfileFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/factories/FriendProfileFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_friend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_friend.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/master_profile_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_preferences_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/preferences_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,14 +91,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Object" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
         <option value="resourceFile" />
         <option value="navigationResourceFile" />
+        <option value="Class" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -97,15 +121,20 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_4_API_30" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-29T17:34:20.802Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SelectDeploymentTargetsDialog.selectedDevices" value="ce011821892ea0920c&#10;Pixel_4_API_30" />
+    <property name="android-custom-view/home/paner/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="multi-representation-preview/home/paner/Android/Sdk/sources/android-30/android/view/View.java_selected" value="Custom views" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="memory.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
@@ -368,11 +397,11 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="661" y="141" width="588" height="831" key="#app/0.30.1920.1050@0.30.1920.1050" timestamp="1606400547753" />
-    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1606561683086">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="734" y="274" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1606674573130">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1606561683086" />
-    <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606402782735" />
+    <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606674573130" />
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606496667083">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -386,23 +415,25 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="704" y="380" width="501" height="353" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.30.1920.1050@0.30.1920.1050" timestamp="1605892122424" />
-    <state x="100" y="100" width="1240" height="700" key="AVDManager" timestamp="1606589514115">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="133" y="147" width="1654" height="817" key="AVDManager" timestamp="1606666151984">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="AVDManager/0.0.1440.900@0.0.1440.900" timestamp="1606589514115" />
+    <state x="133" y="147" width="1654" height="817" key="AVDManager/0.30.1920.1050@0.30.1920.1050" timestamp="1606666151984" />
     <state x="308" y="212" key="AndroidCreateResourceDirectoryDialog" timestamp="1606607200265">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="308" y="212" key="AndroidCreateResourceDirectoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1606607200265" />
-    <state x="308" y="212" key="AndroidCreateResourceFileDialog" timestamp="1606605421922">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="411" y="277" width="824" height="487" key="AndroidCreateResourceFileDialog" timestamp="1606673282749">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="308" y="212" key="AndroidCreateResourceFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1606605421922" />
-    <state x="453" y="273" width="356" height="382" key="AndroidCreateXmlResourceDialog" timestamp="1606603989924">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="411" y="277" width="824" height="487" key="AndroidCreateResourceFileDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606673282749" />
+    <state x="604" y="349" width="356" height="382" key="AndroidCreateXmlResourceDialog" timestamp="1606671509263">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="453" y="273" width="356" height="382" key="AndroidCreateXmlResourceDialog/0.0.1440.900@0.0.1440.900" timestamp="1606603989924" />
-    <state x="604" y="349" width="304" height="445" key="AndroidCreateXmlResourceDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606124255802" />
+    <state x="604" y="349" width="304" height="445" key="AndroidCreateXmlResourceDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606671509263" />
     <state x="606" y="61" width="697" height="990" key="CommitChangelistDialog2" timestamp="1605890799452">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -411,26 +442,26 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1396" height="203" key="GridCell.Tab.0.bottom" timestamp="1606604197677">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1402" height="195" key="GridCell.Tab.0.bottom" timestamp="1606671258662">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1568" height="295" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1396" height="203" key="GridCell.Tab.0.center" timestamp="1606604197677">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1402" height="195" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606671258662" />
+    <state width="1402" height="195" key="GridCell.Tab.0.center" timestamp="1606671258662">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1568" height="295" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1396" height="203" key="GridCell.Tab.0.left" timestamp="1606604197676">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1402" height="195" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606671258662" />
+    <state width="1402" height="195" key="GridCell.Tab.0.left" timestamp="1606671258662">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606604197676" />
-    <state width="1568" height="295" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1396" height="203" key="GridCell.Tab.0.right" timestamp="1606604197677">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1402" height="195" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606671258662" />
+    <state width="1402" height="195" key="GridCell.Tab.0.right" timestamp="1606671258662">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1568" height="295" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
+    <state width="1402" height="195" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606671258662" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -455,21 +486,37 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="356" y="218" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1606559785927" />
-    <state x="616" y="154" width="992" height="733" key="SettingsEditor" timestamp="1606111813336">
+    <state x="616" y="154" width="992" height="733" key="SettingsEditor" timestamp="1606668750167">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="616" y="154" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1606111813336" />
+    <state x="616" y="154" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1606668750167" />
     <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1606609496475">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606609496475" />
+    <state x="428" y="366" width="580" height="380" key="com.android.tools.idea.run.deployment.ModifyDeviceSetDialog" timestamp="1606666580622">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="428" y="366" width="580" height="380" key="com.android.tools.idea.run.deployment.ModifyDeviceSetDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606666580622" />
+    <state x="506" y="177" width="598" height="903" key="find.popup" timestamp="1606641302701">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="506" y="177" width="598" height="903" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606641302701" />
     <state x="372" y="245" key="git4idea.merge.GitPullDialog" timestamp="1606559405429">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="372" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1606559405429" />
-    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup" timestamp="1606057689302">
+    <state x="644" y="324" width="340" height="464" key="refactoring.ChangeSignatureDialog" timestamp="1606655745371">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606057689302" />
+    <state x="644" y="324" width="340" height="464" key="refactoring.ChangeSignatureDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606655745371" />
+    <state x="483" y="254" key="run.anything.popup" timestamp="1606674882067">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="483" y="254" key="run.anything.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606674882067" />
+    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup" timestamp="1606658973173">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606658973173" />
   </component>
 </project>

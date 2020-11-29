@@ -1,9 +1,11 @@
 package technokek.alchotracker.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import android.util.Log
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -11,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.theartofdev.edmodo.cropper.CropImage
 import technokek.alchotracker.R
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FriendClickListener
@@ -29,12 +32,11 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        supportActionBar?.hide()
         mAuth = FirebaseAuth.getInstance();
         mAuth!!.signInWithEmailAndPassword("denislipoff@yandex.ru", "ssssss")
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d("OKZ", mAuth!!.currentUser?.uid.toString())
                 } else {
                     Log.d("kek", "signInWithEmail:failure", task.exception)
