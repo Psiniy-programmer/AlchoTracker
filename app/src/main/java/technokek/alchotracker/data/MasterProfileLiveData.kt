@@ -28,7 +28,7 @@ class MasterProfileLiveData() : MutableLiveData<MasterProfileModel>() {
         Log.d(TAG, "onInactive")
     }
 
-    inner class ProfileListener : ValueEventListener {
+    inner class ProfileListener : ValueEventListener {  
 
         override fun onDataChange(snapshot: DataSnapshot) {
             val mAuth = FirebaseAuth.getInstance()
