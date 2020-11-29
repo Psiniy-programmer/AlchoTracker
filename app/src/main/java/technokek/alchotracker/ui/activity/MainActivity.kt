@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         setUpNavigation()
     }
 
-    fun setUpNavigation() {
+    private fun setUpNavigation() {
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         val navHostFragment: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.content) as NavHostFragment
