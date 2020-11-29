@@ -2,5 +2,5 @@ package technokek.alchotracker.api
 
 interface FriendClickListener {
 
-    fun pressFriend()
+    fun pressFriend(uid: String)
 }

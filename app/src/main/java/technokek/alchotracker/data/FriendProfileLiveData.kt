@@ -49,9 +49,9 @@ class FriendProfileLiveData(): MutableLiveData<FriendProfileModel>() {
             x.child("avatar").value.toString(),
             x.child("name").value.toString(),
             x.child("status").value.toString(),
-            x.child("info").child("friendsCount").getValue(Int::class.java)!!,
-            x.child("info").child("eventsCount").getValue(Int::class.java)!!,
-            x.child("info").child("favouriteDrink").value.toString()
+            x.child("alchoinfo").child("friendsCount").getValue(Int::class.java)!!,
+            x.child("alchoinfo").child("eventsCount").getValue(Int::class.java)!!,
+            x.child("alchoinfo").child("favouriteDrink").value.toString()
         )
     }
 

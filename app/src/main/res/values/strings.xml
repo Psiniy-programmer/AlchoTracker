@@ -3,4 +3,7 @@
     <string name="Preferences">Предпочтения</string>
     <string name="friends">Друзей</string>
     <string name="dates">Тусовок</string>
+    <string name="text_label_1">Profile</string>
+    <string name="text_label_2">Events</string>
+    <string name="text_label_3">Friends</string>
 </resources>
