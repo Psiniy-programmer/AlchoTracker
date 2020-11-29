@@ -5,9 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.viewholders.PreferencesViewHolder
+import technokek.alchotracker.api.PreferencesClickListener
 import technokek.alchotracker.data.models.PreferencesModel
 
-class PreferencesAdapter(private var mData: MutableList<PreferencesModel>) :
+class PreferencesAdapter(
+    private var mData: MutableList<PreferencesModel>,
+    private val listener: PreferencesClickListener
+) :
     RecyclerView.Adapter<PreferencesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PreferencesViewHolder {
         return PreferencesViewHolder(
@@ -20,6 +24,9 @@ class PreferencesAdapter(private var mData: MutableList<PreferencesModel>) :
     override fun onBindViewHolder(holder: PreferencesViewHolder, position: Int) {
         val model = mData[position]
         holder.mNameView.text = model.name
+        holder.mDeleteView.setOnClickListener {
+            listener.pressEventAddPreference()
+        }
     }
 
     override fun getItemCount(): Int {

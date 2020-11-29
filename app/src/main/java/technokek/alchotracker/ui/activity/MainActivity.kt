@@ -17,13 +17,14 @@ import com.theartofdev.edmodo.cropper.CropImage
 import technokek.alchotracker.R
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FriendClickListener
+import technokek.alchotracker.api.PreferencesClickListener
 import technokek.alchotracker.ui.fragments.EventFragment
 import technokek.alchotracker.ui.fragments.FriendFragment
 import technokek.alchotracker.ui.fragments.FriendProfileFragment
 import technokek.alchotracker.ui.fragments.MasterProfileFragment
 
 
-class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener {
+class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener, PreferencesClickListener {
 
     private var mAuth: FirebaseAuth? = null
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -66,5 +67,10 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         bundle.putString("uid", uid)
 
         navHostFragment.navController.navigate(R.id.action_friendFragment_to_friendProfileFragment, bundle)
+    }
+
+    override fun pressEventAddPreference() {
+        val toast = Toast.makeText(this, "addPreference", Toast.LENGTH_SHORT)
+        toast.show()
     }
 }

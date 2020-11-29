@@ -6,6 +6,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MediatorLiveData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.CoroutineScope
@@ -15,7 +16,7 @@ import technokek.alchotracker.data.ProfileSettingsLiveData
 import technokek.alchotracker.data.models.SettingsProfileModel
 
 class ProfileSettingsViewModel(application: Application) : AndroidViewModel(application) {
-    private var profileSettings = ProfileSettingsLiveData(dbRef, sRef)
+    private var profileSettings = ProfileSettingsLiveData(dbRef, sRef, aRef)
     private val mMediatorLiveData = MediatorLiveData<SettingsProfileModel>()
 
     init {
@@ -55,5 +56,6 @@ class ProfileSettingsViewModel(application: Application) : AndroidViewModel(appl
     companion object {
         private val dbRef = FirebaseDatabase.getInstance().getReference("users")
         private val sRef = FirebaseStorage.getInstance().reference
+        private val aRef = FirebaseAuth.getInstance()
     }
 }

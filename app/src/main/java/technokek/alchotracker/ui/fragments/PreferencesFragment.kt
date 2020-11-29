@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.PreferencesAdapter
+import technokek.alchotracker.api.PreferencesClickListener
 import technokek.alchotracker.viewmodels.PreferencesViewModel
 
 class PreferencesFragment : Fragment() {
@@ -31,11 +32,12 @@ class PreferencesFragment : Fragment() {
         mPreferencesViewModel = ViewModelProvider(this)[PreferencesViewModel::class.java]
         recyclerView = view.findViewById(R.id.profile_preferences_list)
         recyclerView.layoutManager = LinearLayoutManager(context)
+        val listener = context as PreferencesClickListener
 
         val adapter = if (mPreferencesViewModel.preferences.value != null) {
-            PreferencesAdapter(mPreferencesViewModel.preferences.value!!)
+            PreferencesAdapter(mPreferencesViewModel.preferences.value!!, listener)
         } else {
-            PreferencesAdapter(mutableListOf())
+            PreferencesAdapter(mutableListOf(), listener)
         }
 
         mPreferencesViewModel.preferences.observe(viewLifecycleOwner, {

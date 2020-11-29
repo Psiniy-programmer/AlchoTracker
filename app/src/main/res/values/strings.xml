@@ -16,4 +16,6 @@
     <string name="input_new_drink">Введите новый любимый напиток</string>
     <string name="sign_out">Выйти из аккаунта</string>
     <string name="preferences_text">Список предпочтений</string>
+    <string name="add_preference">Добавить</string>
+    <string name="delete_preference_item">Удалить</string>
 </resources>

@@ -14,12 +14,13 @@ import technokek.alchotracker.data.models.SettingsProfileModel
 class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
     private lateinit var query: Query
     private lateinit var storage: StorageReference
+    private lateinit var mAuth: FirebaseAuth
     private var settingsListener = SettingsListener()
-    private var mAuth = FirebaseAuth.getInstance()
 
-    constructor(query: Query, storage: StorageReference) : this() {
+    constructor(query: Query, storage: StorageReference, mAuth: FirebaseAuth) : this() {
         this.query = query
         this.storage = storage
+        this.mAuth = mAuth
     }
 
     override fun onActive() {
