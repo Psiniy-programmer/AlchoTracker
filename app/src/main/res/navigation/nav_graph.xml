@@ -23,5 +23,13 @@
     <fragment
         android:id="@+id/friendFragment"
         android:name="technokek.alchotracker.ui.fragments.FriendFragment"
-        android:label="FriendFragment" />
+        android:label="FriendFragment" >
+        <action
+            android:id="@+id/action_friendFragment_to_friendProfileFragment"
+            app:destination="@id/friendProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendProfileFragment"
+        android:name="technokek.alchotracker.ui.fragments.FriendProfileFragment"
+        android:label="FriendProfileFragment" />
 </navigation>

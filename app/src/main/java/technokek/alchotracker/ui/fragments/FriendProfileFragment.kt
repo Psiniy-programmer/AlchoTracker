@@ -13,7 +13,7 @@ import technokek.alchotracker.R
 import technokek.alchotracker.viewmodels.FriendProfileViewModel
 import technokek.alchotracker.viewmodels.factories.FriendProfileFactory
 
-class FriendProfileFragment: Fragment {
+class FriendProfileFragment: Fragment() {
     private lateinit var uid: String
     private lateinit var mProfileViewModel: FriendProfileViewModel
     private lateinit var userText: TextView
@@ -21,11 +21,6 @@ class FriendProfileFragment: Fragment {
     private lateinit var friendsCounter: TextView
     private lateinit var eventsCounter: TextView
     private lateinit var avatarView: ImageView
-
-    constructor(){}
-    constructor(uid: String) {
-        this.uid = uid
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +32,8 @@ class FriendProfileFragment: Fragment {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        uid = arguments?.get("uid") as String
 
         savedInstanceState?.let {
             uid = savedInstanceState.getString("uid").toString()

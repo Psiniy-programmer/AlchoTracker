@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
 
     private var mAuth: FirebaseAuth? = null
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var navHostFragment: NavHostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
 
     private fun setUpNavigation() {
         bottomNavigationView = findViewById(R.id.bottom_navigation)
-        val navHostFragment: NavHostFragment = supportFragmentManager
+        navHostFragment = supportFragmentManager
             .findFragmentById(R.id.content) as NavHostFragment
         NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment.navController)
     }
@@ -59,10 +60,9 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
         toast.show()
 
-        val mFriendProfileFragment = FriendProfileFragment(uid)
+        val bundle = Bundle()
+        bundle.putString("uid", uid)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.content, mFriendProfileFragment, FriendProfileFragment.TAG)
-            .commit()
+        navHostFragment.navController.navigate(R.id.action_friendFragment_to_friendProfileFragment, bundle)
     }
 }
