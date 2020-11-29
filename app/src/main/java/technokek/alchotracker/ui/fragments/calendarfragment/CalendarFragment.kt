@@ -1,23 +1,24 @@
-package technokek.alchotracker.calendar
+package technokek.alchotracker.ui.fragments.calendarfragment
 
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.ColorRes
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.children
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
@@ -27,7 +28,12 @@ import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.utils.next
 import com.kizitonwose.calendarview.utils.previous
 import technokek.alchotracker.R
+import technokek.alchotracker.adapters.AlkoEventsAdapter
+import technokek.alchotracker.data.models.CalendarModel
+import technokek.alchotracker.ui.fragments.calendarfragment.utils.*
+import technokek.alchotracker.ui.fragments.calendarfragment.utils.setTextColorRes
 import technokek.alchotracker.databinding.*
+import technokek.alchotracker.viewmodels.CalendarViewModel
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.YearMonth
@@ -35,82 +41,36 @@ import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.*
 
-/*
-Дата класс, который описывает события и их место
- */
-data class AlkoEvent(val time: LocalDateTime, val eventPlace: Place, @ColorRes val color: Int) {
-    data class Place(val costs: String, val place: String)
-}
-
-class AlkoEventsAdapter(private val actionListener: ActionListener) : RecyclerView.Adapter<AlkoEventsAdapter.AlkoEventsViewHolder>() {
-
-    val events = mutableListOf<AlkoEvent>()
-
-    private val formatter = DateTimeFormatter.ofPattern("EEE'\n'dd MMM'\n'HH:mm")
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlkoEventsViewHolder {
-        return AlkoEventsViewHolder(
-            AlkoEventItemViewBinding.inflate(parent.context.layoutInflater, parent, false),
-            actionListener = actionListener
-        )
-    }
-
-    override fun onBindViewHolder(viewHolder: AlkoEventsViewHolder, position: Int) {
-        viewHolder.bind(events[position])
-    }
-
-    interface ActionListener {
-        fun onEventClick(alkoEvent: AlkoEvent)
-    }
-
-    override fun getItemCount(): Int = events.size
-
-    inner class AlkoEventsViewHolder(val binding: AlkoEventItemViewBinding, private val actionListener: ActionListener) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(alkoEvent: AlkoEvent) {
-            binding.itemAlkoEventDateText.apply {
-                text = formatter.format(alkoEvent.time)
-                setBackgroundColor(itemView.context.getColorCompat(alkoEvent.color))
-            }
-
-            binding.itemAlkoEventCodeText.text = alkoEvent.eventPlace.place
-            binding.itemAlkoEventPlaceCityText.text = alkoEvent.eventPlace.costs
-            binding.alkoEventItem.setOnClickListener {
-                actionListener.onEventClick(alkoEvent)
-            }
-        }
-    }
-}
-
-class CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, AlkoEventsAdapter.ActionListener {
-
-    override val toolbar: Toolbar?
-        get() = null
-
-    override val titleRes: Int = R.string.calendar_title
+class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter.ActionListener {
 
     private var selectedDate: LocalDate? = null
-    private var selectedAlkoEvent: AlkoEvent? = null
+    private var selectedCalendarModel: CalendarModel? = null
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
 
-    private val alkoEventsAdapter = AlkoEventsAdapter(this)
-    private var alkoEvents: MutableMap<LocalDate, MutableList<AlkoEvent>> = generateAlkoEvents().groupBy { it.time.toLocalDate() } as MutableMap<LocalDate, MutableList<AlkoEvent>>
-
+    private lateinit var alkoEventsAdapter: AlkoEventsAdapter
+    private var alkoEvents: MutableMap<LocalDate, MutableList<CalendarModel>> = generateAlkoEvents().groupBy { it.time.toLocalDate() } as MutableMap<LocalDate, MutableList<CalendarModel>>
+    private lateinit var mCalendarViewModel: CalendarViewModel
     private lateinit var binding: CalendarFragmentBinding
 
     private lateinit var dialog: Dialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = CalendarFragmentBinding.bind(view)
+        //set ViewModel
+        mCalendarViewModel = ViewModelProvider(this)[CalendarViewModel::class.java]
+        alkoEventsAdapter = AlkoEventsAdapter(actionListener = this)
 
+        binding = CalendarFragmentBinding.bind(view)
         binding.calendarRv.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             adapter = alkoEventsAdapter
             addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
         }
         alkoEventsAdapter.notifyDataSetChanged()
+
+        mCalendarViewModel.mMediatorLiveData.observe(viewLifecycleOwner, {
+            updateAdapterForDate(selectedDate)
+        })
 
         val daysOfWeek = daysOfWeekFromLocale()
 
@@ -155,7 +115,10 @@ class CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, A
                     textView.setTextColorRes(R.color.calendar_text_grey)
                     layout.setBackgroundResource(if (selectedDate == day.date) R.drawable.calendar_selected_bg else 0)
 
-                    val dayEvents = alkoEvents[day.date]
+                    var dayEvents: MutableList<CalendarModel>? = null
+                    if (mCalendarViewModel.mMediatorLiveData.value?.get(day.date) != null) {
+                        dayEvents = mCalendarViewModel.mMediatorLiveData.value!![day.date]
+                    }
                     if (dayEvents != null) {
                         if (dayEvents.count() == 1) {
                             alkoEventBottomView.setBackgroundColor(view.context.getColorCompat(dayEvents[0].color))
@@ -216,6 +179,7 @@ class CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, A
                 binding.calendarFragmentCalendar.smoothScrollToMonth(it.yearMonth.previous)
             }
         }
+
         //pop up dialog binding
         binding.buttonAdd.setOnClickListener {
             showPopUp(selectedDate)
@@ -223,24 +187,12 @@ class CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, A
         //button delete logic
         binding.buttonDelete.isEnabled = false
         binding.buttonDelete.setOnClickListener {
-            //TODO delete one event
-            deleteEvent(selectedDate, selectedAlkoEvent)
+            deleteEvent(selectedDate, selectedCalendarModel)
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        requireActivity().window.statusBarColor = requireContext().getColorCompat(R.color.calendar_toolbar_color)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        requireActivity().window.statusBarColor = requireContext().getColorCompat(R.color.colorPrimaryDark)
-    }
-
     private fun updateAdapterForDate(date: LocalDate?) {
-        alkoEventsAdapter.events.clear()
-        alkoEventsAdapter.events.addAll(alkoEvents[date].orEmpty())
+        alkoEventsAdapter.refresh(date, mCalendarViewModel.mMediatorLiveData.value!!)
         alkoEventsAdapter.notifyDataSetChanged()
     }
 
@@ -248,15 +200,17 @@ class CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, A
         dialog = Dialog(this.requireContext())
         dialog.setContentView(R.layout.popup_add_menu)
         val buttonClose = dialog.findViewById<Button>(R.id.button_close)
-        buttonClose!!.setOnClickListener {
-            dialog.dismiss()
-        }
         lateinit var time: LocalDateTime
         val etEventName = dialog.findViewById<EditText>(R.id.pop_up_place)
         val etEventCosts = dialog.findViewById<EditText>(R.id.pop_up_costs)
         val openTimePicker = dialog.findViewById<Button>(R.id.pop_up_time)
         var openTimePickerClicked = false
         val buttonSubmit = dialog.findViewById<Button>(R.id.button_submit)
+
+        buttonClose!!.setOnClickListener {
+            dialog.dismiss()
+        }
+
         openTimePicker.setOnClickListener {
             val timePickerDialog = TimePickerDialog(
                 this.activity,
@@ -284,14 +238,14 @@ class CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, A
                     etEventCosts,
                     time
                 )
-                if (!alkoEvents.containsKey(date)) {
-                    alkoEvents.put(date!!, mutableListOf(newAlkoEvent)
+                if (!mCalendarViewModel.mMediatorLiveData.value!!.containsKey(date)) {
+                    mCalendarViewModel.mMediatorLiveData.value!!.put(date!!, mutableListOf(newAlkoEvent)
                     )
                 }
                 else {
-                    val eventsThisDate = alkoEvents[date]
+                    val eventsThisDate = mCalendarViewModel.mMediatorLiveData.value!![date]
                     eventsThisDate!!.add(newAlkoEvent)
-                    alkoEvents.put(date!!, eventsThisDate)
+                    mCalendarViewModel.mMediatorLiveData.value!!.put(date!!, eventsThisDate)
                 }
                 //TODO renew DB
                 updateAdapterForDate(date)
@@ -304,21 +258,24 @@ class CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, A
 
     private fun formAlkoEvent(eventName: EditText,
                               eventCosts: EditText,
-                              eventTime: LocalDateTime): AlkoEvent {
+                              eventTime: LocalDateTime): CalendarModel {
         val place = eventName.text.toString()
         val costs = eventCosts.text.toString()
-        return AlkoEvent(
+        //TODO should have ask name of the event also
+        return CalendarModel(
             eventTime,
-            PlaceLoc(costs, place),
-            R.color.teal_700
+            PlaceLoc(place, costs, place),
+            R.color.teal_700,
+            adminId = FirebaseAuth.getInstance().currentUser.toString(),
+            id = (mCalendarViewModel.mMediatorLiveData.value!!.values.size + 1).toString()
         )
     }
 
-    private fun deleteEvent(date: LocalDate?, alkoEvent: AlkoEvent?) {
-        var thisDayAlkoEvents = alkoEvents.remove(date)
-        thisDayAlkoEvents!!.remove(alkoEvent)
+    private fun deleteEvent(date: LocalDate?, calendarModel: CalendarModel?) {
+        var thisDayAlkoEvents = mCalendarViewModel.mMediatorLiveData.value!!.remove(date)
+        thisDayAlkoEvents!!.remove(calendarModel)
         if (thisDayAlkoEvents.isNotEmpty()) {
-            alkoEvents.put(date!!, thisDayAlkoEvents)
+            mCalendarViewModel.mMediatorLiveData.value!!.put(date!!, thisDayAlkoEvents)
         }
         else {
             //TODO this cant be here with MVVM cos its UI
@@ -328,11 +285,10 @@ class CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, A
         updateAdapterForDate(date)
     }
 
-    override fun onEventClick(alkoEvent: AlkoEvent) {
-        selectedAlkoEvent = alkoEvent
+    override fun onEventClick(calendarModel: CalendarModel) {
+        selectedCalendarModel = calendarModel
         binding.buttonDelete.isEnabled = true
-        //Toast.makeText(this.context, "Alko event selected!", Toast.LENGTH_LONG).show()
     }
 }
 
-private typealias PlaceLoc = AlkoEvent.Place
+private typealias PlaceLoc = CalendarModel.Place

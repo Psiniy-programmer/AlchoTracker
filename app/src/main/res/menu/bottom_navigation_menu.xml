@@ -19,4 +19,11 @@
         android:icon="@drawable/icon_3"
         android:title="@string/text_label_3"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/calendarFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_3"
+        android:title="@string/text_label_3"
+        app:showAsAction="always" />
 </menu>

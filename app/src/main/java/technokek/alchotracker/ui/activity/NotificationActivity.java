@@ -1,10 +1,12 @@
-package technokek.alchotracker.timer;
+package technokek.alchotracker.ui.activity;
 
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
-
+/*
+Этот класс нужен для создания notifications из таймера
+ */
 public class NotificationActivity extends Application {
     public static final String CHANNEL_1_ID = "channel1";
     public static final String CHANNEL_2_ID = "channel2";

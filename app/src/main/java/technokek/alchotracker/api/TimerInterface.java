@@ -1,4 +1,4 @@
-package technokek.alchotracker.timer;
+package technokek.alchotracker.api;
 
 public interface TimerInterface {
     void onChoose();

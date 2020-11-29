@@ -6,8 +6,8 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Firebase" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="AutoImportSettings">
@@ -33,63 +33,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc623071-b54a-49a4-92ce-40a487d0b0e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/EventAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/FriendAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/EventViewHolder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/FriendViewHolder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/EventClickListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/FriendClickListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/ProfileApi.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/EventLiveData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendLiveData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendProfileLiveData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/MasterProfileLiveData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/EventModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/FriendModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/FriendProfileModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/MasterProfileModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/EventFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendProfileFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/MasterProfileFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/EventViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/FriendProfileViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/FriendViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/MasterProfileViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/factories/FriendProfileFactory.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_event.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_friend.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/one_event.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/one_friend.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_preferences_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AlchoTracker.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/AlkoEventsAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/AlkoEventsViewHolder.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/CalendarLiveData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/CalendarModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/CalendarViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/calendar/BaseFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/calendar/CalendarFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/calendarfragment/CalendarFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/calendar/Extensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/calendarfragment/utils/Extensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/calendar/Utils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/calendarfragment/utils/Utils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/timer/NotificationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/NotificationActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/timer/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/timer/TimerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/TimerInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/Profile.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_fragment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/TimerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/TimerFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_3_XL_API_26]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -134,9 +104,9 @@
         <option value="Kotlin Object" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
         <option value="resourceFile" />
         <option value="navigationResourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -162,7 +132,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="android-custom-viewC:/Users/dmitr/AppData/Local/Android/Sdk/sources/android-30/android/widget/ProgressBar.java_SELECTED" value="ProgressBar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/calendarfragment" />
+    <property name="multi-representation-previewC:/Users/dmitr/AppData/Local/Android/Sdk/sources/android-30/android/widget/ProgressBar.java_selected" value="Custom views" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -171,14 +143,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="technokek.alchotracker.data.models" />
+      <recent name="technokek.alchotracker.ui.fragments.calendarfragment" />
+      <recent name="technokek.alchotracker.adapters" />
       <recent name="technokek.alchotracker.data" />
       <recent name="technokek.alchotracker.api" />
-      <recent name="technokek.alchotracker.adapters" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/values" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="technokek.alchotracker.data.dataclasses" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="technokek.alchotracker.ui.fragments" />
@@ -187,11 +159,21 @@
       <recent name="technokek.alchotracker.livedatas" />
       <recent name="technokek.alchotracker.viewmodels" />
     </key>
-    <key name="CreateKotlinClassDialog.RecentsKey">
-      <recent name="technokek.alchotracker.data.dataclasses" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dmitr\AndroidStudioProjects\AlchoTracker\app\src\main\java\technokek\alchotracker\ui\fragments\calendarfragment" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="technokek.alchotracker.api" />
+      <recent name="technokek.alchotracker.ui.activity" />
+      <recent name="technokek.alchotracker.ui.fragments.calendarfragment" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/values" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.AlchoTracker [init]">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -256,6 +238,44 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AlchoTracker [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="AlchoTracker [cleanBuildCache]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="cleanBuildCache" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="AlchoTracker [init]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -296,6 +316,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.AlchoTracker [build]" />
+        <item itemvalue="Gradle.AlchoTracker [cleanBuildCache]" />
         <item itemvalue="Gradle.AlchoTracker [wrapper]" />
         <item itemvalue="Gradle.AlchoTracker [wrapper]" />
         <item itemvalue="Gradle.AlchoTracker [wrapper]" />
@@ -307,7 +329,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="" />
+      <changelist id="bc623071-b54a-49a4-92ce-40a487d0b0e3" name="Default Changelist" comment="" />
       <created>1605889427308</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -435,23 +457,46 @@
     </state>
     <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1606561683086" />
     <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606402782735" />
-    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606496667083">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="499" y="189" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1606654267129">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="189" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1606654267129" />
+    <state x="551" y="307" width="433" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1606647859185">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="551" y="307" width="433" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1606647859185" />
+    <state x="566" y="319" width="471" height="185" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1606646761609">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="566" y="319" width="471" height="185" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1606646761609" />
+    <state x="1067" y="266" key="#com.intellij.refactoring.move.moveInner.MoveInnerDialog" timestamp="1606646199480">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="1067" y="266" key="#com.intellij.refactoring.move.moveInner.MoveInnerDialog/0.0.1536.824@0.0.1536.824" timestamp="1606646199480" />
+    <state x="83" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606654310958">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="83" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1606654310958" />
+    <state x="489" y="187" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606647795559">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1606496667082" />
-    <state x="532" y="16" width="689" height="403" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1606510852874">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="489" y="187" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606647795559" />
+    <state x="567" y="15" width="735" height="383" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1606654271615">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="532" y="16" width="689" height="403" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1606510852874" />
+    <state x="567" y="15" width="735" height="383" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606654271615" />
     <state x="709" y="49" width="625" height="1022" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606064368171" />
     <state x="704" y="380" width="501" height="353" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1605892122424">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="704" y="380" width="501" height="353" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.30.1920.1050@0.30.1920.1050" timestamp="1605892122424" />
-    <state x="100" y="100" width="1240" height="700" key="AVDManager" timestamp="1606589514115">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="107" y="92" width="1323" height="641" key="AVDManager" timestamp="1606661941011">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="AVDManager/0.0.1440.900@0.0.1440.900" timestamp="1606589514115" />
+    <state x="107" y="92" width="1323" height="641" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1606661941011" />
     <state x="308" y="212" key="AndroidCreateResourceDirectoryDialog" timestamp="1606607200265">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -469,33 +514,34 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="606" y="61" width="697" height="990" key="CommitChangelistDialog2/0.30.1920.1050@0.30.1920.1050" timestamp="1605890799452" />
-    <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl" timestamp="1606058150211">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="594" y="223" width="424" height="487" key="FileChooserDialogImpl" timestamp="1606678433488">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="594" y="223" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606678433488" />
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1491" height="210" key="GridCell.Tab.0.bottom" timestamp="1606643249717">
+    <state width="1491" height="316" key="GridCell.Tab.0.bottom" timestamp="1606677394309">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1491" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606643249717" />
+    <state width="1491" height="316" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606677394309" />
     <state width="1568" height="295" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1491" height="210" key="GridCell.Tab.0.center" timestamp="1606643249717">
+    <state width="1491" height="316" key="GridCell.Tab.0.center" timestamp="1606677394307">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1491" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606643249717" />
+    <state width="1491" height="316" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606677394307" />
     <state width="1568" height="295" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1491" height="210" key="GridCell.Tab.0.left" timestamp="1606643249716">
+    <state width="1491" height="316" key="GridCell.Tab.0.left" timestamp="1606677394307">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606604197676" />
-    <state width="1491" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606643249716" />
+    <state width="1491" height="316" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606677394307" />
     <state width="1568" height="295" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1491" height="210" key="GridCell.Tab.0.right" timestamp="1606643249717">
+    <state width="1491" height="316" key="GridCell.Tab.0.right" timestamp="1606677394307">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1491" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606643249717" />
+    <state width="1491" height="316" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606677394307" />
     <state width="1568" height="295" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -533,9 +579,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="372" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1606559405429" />
-    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup" timestamp="1606057689302">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="498" y="181" width="672" height="533" key="search.everywhere.popup" timestamp="1606664913189">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="498" y="181" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1606664913189" />
     <state x="623" y="261" width="672" height="678" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606057689302" />
   </component>
 </project>

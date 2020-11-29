@@ -1,7 +1,6 @@
 package technokek.alchotracker.ui.activity
 
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import android.util.Log
 import android.os.PersistableBundle
@@ -10,22 +9,14 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import technokek.alchotracker.R
-import technokek.alchotracker.calendar.CalendarFragment
+import technokek.alchotracker.ui.fragments.calendarfragment.CalendarFragment
 import technokek.alchotracker.databinding.ActivityMainBinding
-import technokek.alchotracker.timer.NotificationActivity
 import technokek.alchotracker.ui.fragments.TimerFragment
-import technokek.alchotracker.ui.fragments.Profile
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FriendClickListener
-import technokek.alchotracker.ui.fragments.EventFragment
-import technokek.alchotracker.ui.fragments.FriendFragment
-import technokek.alchotracker.ui.fragments.FriendProfileFragment
-import technokek.alchotracker.ui.fragments.MasterProfileFragment
 
 
 class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener {
@@ -51,7 +42,9 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
                 }
             }
 
-        setUpNavigation()
+        //setUpNavigation()
+        addCalendarFragment()
+        //addTimerFragment()
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
@@ -109,7 +102,7 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
     }
 
 
-    private fun addExampleFragment() {
+    private fun addCalendarFragment() {
         val calendarFragment = CalendarFragment()
         val transaction = fragmentManager
             .beginTransaction()

@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_masterProfileFragment_to_eventFragment"
             app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_masterProfileFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventFragment"
@@ -32,4 +35,8 @@
         android:id="@+id/friendProfileFragment"
         android:name="technokek.alchotracker.ui.fragments.FriendProfileFragment"
         android:label="FriendProfileFragment" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="technokek.alchotracker.ui.fragments.calendarfragment.CalendarFragment"
+        android:label="CalendarFragment" />
 </navigation>

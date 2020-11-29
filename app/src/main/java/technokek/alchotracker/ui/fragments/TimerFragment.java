@@ -23,8 +23,8 @@ import androidx.fragment.app.Fragment;
 import java.util.Calendar;
 
 import technokek.alchotracker.R;
-import technokek.alchotracker.timer.State;
-import technokek.alchotracker.timer.TimerInterface;
+import technokek.alchotracker.api.State;
+import technokek.alchotracker.api.TimerInterface;
 import technokek.alchotracker.ui.activity.MainActivity;
 
 public class TimerFragment extends Fragment implements TimerInterface {
