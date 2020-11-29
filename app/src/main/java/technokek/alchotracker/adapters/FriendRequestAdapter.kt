@@ -1,13 +1,11 @@
 package technokek.alchotracker.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.viewholders.FriendRequestViewHolder
-import technokek.alchotracker.adapters.viewholders.FriendViewHolder
 import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.api.RequestClickListener
 import technokek.alchotracker.data.models.FriendModel
@@ -36,10 +34,10 @@ class FriendRequestAdapter(
             listener.pressFriend(model.id)
         }
         holder.acceptImageButton.setOnClickListener {
-            requestListener.accept(model.id)
+            requestListener.accept(model.id, position)
         }
         holder.denyImageButton.setOnClickListener {
-            requestListener.deny(model.id)
+            requestListener.deny(model.id, position)
         }
     }
 

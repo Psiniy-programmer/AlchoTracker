@@ -10,6 +10,8 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
     private lateinit var query: Query
     private val friendRequestListener = FriendRequestListener()
+    private val mAuth = FirebaseAuth.getInstance()
+    private val currentUser = mAuth.currentUser
 
     constructor(ref: DatabaseReference) : this() {
         query = ref
@@ -33,17 +35,94 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
         Log.d(TAG, "onInactive")
     }
 
-    fun acceptRequest(uid: String) {
-        val s: String = query.ref.child(uid)
+    fun acceptRequest(uid: String, pos: Int, currUser: FriendModel) {
+        var valueToPush = value!![pos]
+        var outgoing = valueToPush.outgoing
+        var outFriendsCount = valueToPush.friendsCount
+        var outFriendList = valueToPush.friendsList
+
+        outgoing.replace(currentUser!!.uid, "")
+        if (outgoing.isEmpty()) {
+            outgoing = ""
+        }
+        outFriendsCount += 1
+        if (outFriendList.isEmpty()) {
+            outFriendList = currentUser.uid
+        } else {
+            outFriendList.plus(";").plus(currentUser.uid)
+        }
+
+        valueToPush = currUser
+
+        var incoming = valueToPush.outgoing
+        var inFriendCount = valueToPush.friendsCount + 1
+        var inFriendList = valueToPush.friendsList
+
+        Log.d("Test", "$inFriendList !!!!")
+
+        incoming.replace(uid, "")
+        if (incoming.isEmpty()) {
+            incoming = ""
+        }
+        inFriendList = if (inFriendList.isEmpty()) {
+            uid
+        } else {
+            inFriendList.plus(";").plus(uid)
+        }
+
+        Log.d("Test", "$inFriendList Plus")
+
+        query.ref.child(uid)
             .child("friends")
             .child("requests")
-            .child("outgoing").
+            .child("outgoing")
+            .setValue(outgoing)
+        query.ref.child(uid)
+            .child("alchoinfo")
+            .child("friendsCount")
+            .setValue(outFriendsCount)
+        query.ref.child(uid)
+            .child("friends")
+            .child("list").setValue(outFriendList)
 
-        Log.d("test1", "${s}")
+        query.ref.child(currentUser.uid)
+            .child("friends")
+            .child("requests")
+            .child("incoming")
+            .setValue(incoming)
+        query.ref.child(currentUser.uid)
+            .child("alchoinfo")
+            .child("friendsCount")
+            .setValue(inFriendCount)
+        query.ref.child(currentUser.uid)
+            .child("friends")
+            .child("list")
+            .setValue(inFriendList)
     }
 
-    fun denyRequest(uid: String) {
+    fun denyRequest(uid: String, pos: Int, currUser: FriendModel) {
+        var valueToPush = value!![pos]
+        val outgoing = valueToPush.outgoing
 
+        outgoing.replace(currentUser!!.uid, "")
+
+        valueToPush = currUser
+
+        val incoming = valueToPush.outgoing
+
+        incoming.replace(uid, "")
+
+        query.ref.child(uid)
+            .child("friends")
+            .child("requests")
+            .child("outgoing")
+            .setValue(outgoing + "")
+
+        query.ref.child(currentUser.uid)
+            .child("friends")
+            .child("requests")
+            .child("incoming")
+            .setValue(incoming + "")
     }
 
     companion object {
@@ -51,8 +130,6 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
     }
 
     inner class FriendRequestListener : ValueEventListener {
-        private val mAuth = FirebaseAuth.getInstance()
-        private val currentUser = mAuth.currentUser
 
         override fun onDataChange(snapshot: DataSnapshot) {
             val friendRequests: MutableList<FriendModel> = mutableListOf()
@@ -61,9 +138,14 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             for (i in snapshot.children) {
                 if (listRequestFriend.contains(i.key)) {
                     val potentialFriend = FriendModel(
-                        i.key.toString(),
-                        i.child("name").value.toString(),
-                        i.child("avatar").value.toString()
+                        id = i.key.toString(),
+                        name = i.child("name").value.toString(),
+                        avatar = i.child("avatar").value.toString(),
+                        incoming = i.child("friends").child("incoming").value.toString(),
+                        outgoing = i.child("friends").child("outgoing").value.toString(),
+                        friendsCount = i.child("alchoinfo").child("friendsCount")
+                            .getValue(Int::class.java)!!,
+                        friendsList = i.child("friends").child("list").value.toString()
                     )
                     friendRequests.add(potentialFriend)
                 }
@@ -76,7 +158,7 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             Log.d(TAG, "Can't listen query $query", error.toException())
         }
 
-        private fun getListRequestFriends(snapshot: DataSnapshot) : MutableList<String> {
+        private fun getListRequestFriends(snapshot: DataSnapshot): MutableList<String> {
             val user = snapshot.child(currentUser!!.uid)
             val rawList = user.child("friends").child("requests").child("incoming").value.toString()
 

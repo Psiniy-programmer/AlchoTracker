@@ -1,6 +1,7 @@
 package technokek.alchotracker.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,10 @@ import technokek.alchotracker.viewmodels.FriendViewModel
 class FriendFragment : Fragment(), RequestClickListener {
 
     private lateinit var mFriendViewModel: FriendViewModel
+    private lateinit var requestRecyclerView: RecyclerView
+    private lateinit var friendRecyclerView: RecyclerView
+    private lateinit var adapterRequest: FriendRequestAdapter
+    private lateinit var adapterFriend: FriendAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,48 +39,70 @@ class FriendFragment : Fragment(), RequestClickListener {
         mFriendViewModel = ViewModelProvider(this)[FriendViewModel::class.java]
         val mProgressBar = view.findViewById<ProgressBar>(R.id.indeterminateBarFriend)
 
-        val requestRecyclerView = view.findViewById<RecyclerView>(R.id.recycler_friend_request)
+        requestRecyclerView = view.findViewById(R.id.recycler_friend_request)
         requestRecyclerView.layoutManager = LinearLayoutManager(context)
-        val friendRecyclerView = view.findViewById<RecyclerView>(R.id.recycler_friend)
+        friendRecyclerView = view.findViewById(R.id.recycler_friend)
         friendRecyclerView.layoutManager = LinearLayoutManager(context)
         val listener = context as FriendClickListener
 
-        val adapterRequest = if (mFriendViewModel.mediatorRequestLiveData.value != null) {
-            FriendRequestAdapter(mFriendViewModel.mediatorRequestLiveData.value!!, listener, this as RequestClickListener)
+        adapterRequest = if (mFriendViewModel.mediatorRequestLiveData.value != null) {
+            FriendRequestAdapter(
+                mFriendViewModel.mediatorRequestLiveData.value!!,
+                listener,
+                this as RequestClickListener
+            )
         } else {
             FriendRequestAdapter(mutableListOf(), listener, this as RequestClickListener)
         }
-        val adapterFriend = if (mFriendViewModel.mediatorFriendLiveData.value != null) {
+        adapterFriend = if (mFriendViewModel.mediatorFriendLiveData.value != null) {
             FriendAdapter(mFriendViewModel.mediatorFriendLiveData.value!!, listener)
         } else {
             FriendAdapter(mutableListOf(), listener)
         }
 
-        mFriendViewModel.mediatorFriendLiveData.observe(this, {
+        mFriendViewModel.mediatorFriendLiveData.observe(viewLifecycleOwner, {
             if (friendRecyclerView.adapter == null) {
                 mProgressBar.visibility = View.GONE
                 adapterFriend.refresh(mFriendViewModel.mediatorFriendLiveData.value!!)
                 adapterFriend.notifyDataSetChanged()
                 friendRecyclerView.adapter = adapterFriend
             }
+            adapterFriend.notifyDataSetChanged()
         })
 
-        mFriendViewModel.mediatorRequestLiveData.observe(this, {
+        mFriendViewModel.mediatorRequestLiveData.observe(viewLifecycleOwner, {
             if (requestRecyclerView.adapter == null) {
                 mProgressBar.visibility = View.GONE
                 adapterRequest.refresh(mFriendViewModel.mediatorRequestLiveData.value!!)
-                adapterFriend.notifyDataSetChanged()
+                adapterRequest.notifyDataSetChanged()
                 requestRecyclerView.adapter = adapterRequest
             }
+
+            adapterRequest.notifyDataSetChanged()
+        })
+
+        mFriendViewModel.mediatorCurrentUser.observe(viewLifecycleOwner, {
+            if (mFriendViewModel.mediatorFriendLiveData.value != null) {
+                adapterFriend.refresh(mFriendViewModel.mediatorFriendLiveData.value!!)
+                adapterFriend.notifyDataSetChanged()
+            }
+
+            if (mFriendViewModel.mediatorRequestLiveData.value != null) {
+                adapterRequest.refresh(mFriendViewModel.mediatorRequestLiveData.value!!)
+                adapterRequest.notifyDataSetChanged()
+            }
+            Log.d("Currentuser", "СРАБАТЫВАЕТ")
         })
     }
 
-    override fun accept(uid: String) {
-        mFriendViewModel.acceptRequest(uid)
+    override fun accept(uid: String, pos: Int) {
+        mFriendViewModel.acceptRequest(uid, pos)
+        adapterRequest.notifyItemRemoved(pos)
     }
 
-    override fun deny(uid: String) {
-        mFriendViewModel.denyRequest(uid)
+    override fun deny(uid: String, pos: Int) {
+        mFriendViewModel.denyRequest(uid, pos)
+        adapterRequest.notifyItemRemoved(pos)
     }
 
     companion object {
