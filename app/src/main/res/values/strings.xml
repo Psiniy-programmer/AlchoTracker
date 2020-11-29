@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Alchotracker</string>
+    <string name="Preferences">Предпочтения</string>
+    <string name="friends">Друзей</string>
+    <string name="dates">Тусовок</string>
+    <string name="text_label_1">Profile</string>
+    <string name="text_label_2">Events</string>
+    <string name="text_label_3">Friends</string>
     <string name="stop_button_text">Stop</string>
     <string name="select_timer_hint">Select time</string>
     <string name="button_interrupt_text">Interrupt</string>

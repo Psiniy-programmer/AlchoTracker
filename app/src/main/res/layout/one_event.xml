@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/event_image"
+        android:layout_width="@dimen/width_event"
+        android:layout_height="@dimen/height_event" />
+
+    <TextView
+        android:id="@+id/event_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_event"
+        android:layout_toEndOf="@id/event_image"
+        tools:text="Hello" />
+
+</RelativeLayout>
