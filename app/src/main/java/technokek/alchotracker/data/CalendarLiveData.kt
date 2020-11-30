@@ -9,10 +9,12 @@ import technokek.alchotracker.data.models.FriendModel
 import java.time.LocalDate
 import java.time.LocalDateTime
 import technokek.alchotracker.R
+import java.lang.Exception
 
 class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<CalendarModel>>>() {
     private lateinit var query: Query
     private val calendarListener = CalendarListener()
+    private var valueSize: Int = 0
 
     constructor(ref: DatabaseReference) : this() {
         query = ref
@@ -38,17 +40,62 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
 
     companion object {
         const val TAG = "CalendarLiveData"
+        const val AVATAR = "avatar"
+        const val DATE = "date"
+        const val EVENT_ID = "id"
+        const val MEMBERS = "members"
+        const val ADMIN = "admin"
+        const val ADMIN_ID = "id"
+        const val NAME = "name"
+        const val PLACE = "place"
+        const val PRICE = "price"
+        const val TIME = "time"
     }
 
-    /*fun refresh() {
-        query.
-    }*/
+    fun pushDataToDB(date: LocalDate, event: CalendarModel) {
+        if (!value!!.containsKey(date)) {
+            //Кладём значение в liveData
+            value!![date] = mutableListOf(event)
+            //Записываем в БД по ссылке
+            pushEventToBD(date, event, ++valueSize)
+        }
+        else {
+            //Кладём значение в liveData
+            val eventsThisDate = value!![date]
+            eventsThisDate!!.add(event)
+            value!![date] = eventsThisDate
+            //Записываем в БД по ссылке
+            pushEventToBD(date, event, ++valueSize)
+        }
+    }
+
+    private fun pushEventToBD(date: LocalDate, event: CalendarModel, eventNumber: Int) {
+        query.ref.child(eventNumber.toString()).apply {
+            child(AVATAR).setValue(event.avatar)
+            child(DATE).setValue(date.toString())
+            child(EVENT_ID).setValue(event.id)
+            child(MEMBERS)
+                .child(ADMIN)
+                .child(ADMIN_ID)
+                .setValue(event.adminId)
+            child(NAME).setValue(event.eventPlace.name)
+            child(PLACE).setValue(event.eventPlace.place)
+            child(PRICE).setValue(event.eventPlace.price)
+            child(TIME).setValue(localDateTimeToTimeString(event.time))
+        }
+    }
+
+    private fun localDateTimeToTimeString(localDateTime: LocalDateTime): String {
+        return localDateTime.toString().substringAfter('T')
+    }
 
     inner class CalendarListener : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val calendarEvents: MutableMap<LocalDate, MutableList<CalendarModel>> = mutableMapOf()
 
 
+            valueSize = snapshot.children.count()
+            Log.d("DBSize", valueSize.toString())
             for (i in snapshot.children) {
                 //Get data
                 retrieveData(i, calendarEvents)
@@ -61,15 +108,25 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
         }
 
         private fun stringDateToLocalDate(date: String): LocalDate {
-            val dateInStringList = date.split(
+            val dateInStringList:List<String?> = date.split(
                 delimiters = charArrayOf('-'),
                 limit = 3
             )
-            return LocalDate.of(
-                dateInStringList[0].toInt(),
-                dateInStringList[1].toInt(),
-                dateInStringList[2].toInt()
-            )
+            Log.d("CheckNull", date)
+            try {
+                return LocalDate.of(
+                    dateInStringList[0]!!.toInt(),
+                    dateInStringList[1]!!.toInt(),
+                    dateInStringList[2]!!.toInt()
+                )
+            }
+            catch (e: Exception) {
+                return LocalDate.of(
+                    2020,
+                    11,
+                    1
+                )
+            }
         }
 
         private fun timeToLocalDateTime(date: LocalDate, time: String): LocalDateTime {
@@ -77,10 +134,19 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
                 delimiters = charArrayOf(':'),
                 limit = 2
             )
-            return date.atTime(
-                timeInStringList[0].toInt(),
-                timeInStringList[1].toInt()
-            )
+            try {
+                return date.atTime(
+                    timeInStringList[0].toInt(),
+                    timeInStringList[1].toInt()
+                )
+            }
+            catch (e: Exception) {
+                return date.atTime(
+                    0,
+                    0
+                )
+            }
+
         }
 
         private fun retrieveData(i:DataSnapshot,

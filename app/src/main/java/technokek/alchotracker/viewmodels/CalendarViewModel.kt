@@ -27,6 +27,13 @@ class CalendarViewModel : ViewModel() {
         }
     }
 
+    fun pushData(date: LocalDate, event: CalendarModel) {
+        //В корутине делаем запрос на изменение данных в БД
+        CoroutineScope(Dispatchers.IO).launch {
+            calendarEvents.pushDataToDB(date, event)
+        }
+    }
+
     companion object {
         private val STOCK_REF = FirebaseDatabase
             .getInstance()

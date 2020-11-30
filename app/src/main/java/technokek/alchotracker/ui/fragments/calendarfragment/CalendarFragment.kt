@@ -59,6 +59,9 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         //set ViewModel
         mCalendarViewModel = ViewModelProvider(this)[CalendarViewModel::class.java]
         alkoEventsAdapter = AlkoEventsAdapter(actionListener = this)
+        mCalendarViewModel.mMediatorLiveData.observe(viewLifecycleOwner, {
+            updateAdapterForDate(selectedDate)
+        })
 
         binding = CalendarFragmentBinding.bind(view)
         binding.calendarRv.apply {
@@ -68,9 +71,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         }
         alkoEventsAdapter.notifyDataSetChanged()
 
-        mCalendarViewModel.mMediatorLiveData.observe(viewLifecycleOwner, {
-            updateAdapterForDate(selectedDate)
-        })
 
         val daysOfWeek = daysOfWeekFromLocale()
 
@@ -118,6 +118,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                     var dayEvents: MutableList<CalendarModel>? = null
                     if (mCalendarViewModel.mMediatorLiveData.value?.get(day.date) != null) {
                         dayEvents = mCalendarViewModel.mMediatorLiveData.value!![day.date]
+
                     }
                     if (dayEvents != null) {
                         if (dayEvents.count() == 1) {
@@ -126,6 +127,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                             alkoEventTopView.setBackgroundColor(view.context.getColorCompat(dayEvents[0].color))
                             alkoEventBottomView.setBackgroundColor(view.context.getColorCompat(dayEvents[1].color))
                         }
+                        updateAdapterForDate(day.date)
                     }
                 } else {
                     textView.setTextColorRes(R.color.calendar_text_grey_light)
@@ -238,16 +240,8 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                     etEventCosts,
                     time
                 )
-                if (!mCalendarViewModel.mMediatorLiveData.value!!.containsKey(date)) {
-                    mCalendarViewModel.mMediatorLiveData.value!!.put(date!!, mutableListOf(newAlkoEvent)
-                    )
-                }
-                else {
-                    val eventsThisDate = mCalendarViewModel.mMediatorLiveData.value!![date]
-                    eventsThisDate!!.add(newAlkoEvent)
-                    mCalendarViewModel.mMediatorLiveData.value!!.put(date!!, eventsThisDate)
-                }
-                //TODO renew DB
+                //Прокидываем в VM
+                mCalendarViewModel.pushData(date!!, newAlkoEvent)
                 updateAdapterForDate(date)
                 dialog.dismiss()
             }
