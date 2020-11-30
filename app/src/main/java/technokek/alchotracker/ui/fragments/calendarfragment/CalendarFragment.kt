@@ -59,11 +59,13 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         //set ViewModel
         mCalendarViewModel = ViewModelProvider(this)[CalendarViewModel::class.java]
         alkoEventsAdapter = AlkoEventsAdapter(actionListener = this)
+        binding = CalendarFragmentBinding.bind(view)
         mCalendarViewModel.mMediatorLiveData.observe(viewLifecycleOwner, {
             updateAdapterForDate(selectedDate)
+            binding.calendarFragmentCalendar.notifyCalendarChanged()
         })
 
-        binding = CalendarFragmentBinding.bind(view)
+
         binding.calendarRv.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             adapter = alkoEventsAdapter
@@ -127,7 +129,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                             alkoEventTopView.setBackgroundColor(view.context.getColorCompat(dayEvents[0].color))
                             alkoEventBottomView.setBackgroundColor(view.context.getColorCompat(dayEvents[1].color))
                         }
-                        updateAdapterForDate(day.date)
                     }
                 } else {
                     textView.setTextColorRes(R.color.calendar_text_grey_light)
