@@ -162,7 +162,7 @@ public class TimerFragment extends Fragment implements TimerInterface {
     private void startCountDown() {
         if (state != State.RUNNING) {
             Log.d("TimeInMillis", Long.toString(chosenTimeToMillis()));
-            countDownTimer = new CountDownTimer(chosenTimeToMillis(), (long) res.getInteger(R.integer.countdown_interval)) {
+            countDownTimer = new CountDownTimer(chosenTimeToMillis(), res.getInteger(R.integer.countdown_interval)) {
 
                 @Override
                 public void onTick(long millisUntilFinished) {
