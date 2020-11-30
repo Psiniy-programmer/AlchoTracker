@@ -34,19 +34,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="background set colorGray">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/PreferencesClickListener.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/PreferencesAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/PreferencesAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/PreferencesViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/PreferencesViewHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/ProfileApi.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/PreferencesClickListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/PreferencesClickListener.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/MasterProfileLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/MasterProfileLiveData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/PreferencesLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/PreferencesLiveData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/ProfileSettingsLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/ProfileSettingsLiveData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/PreferencesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/PreferencesFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/ProfileSettingsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/ProfileSettingsViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/preferences.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/preferences_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/preferences_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/PreferencesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/MasterPreferencesFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/MasterProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/MasterProfileViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/PreferencesViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/PreferencesViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,11 +114,14 @@
     <property name="android-custom-view/home/paner/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="multi-representation-preview/home/paner/Android/Sdk/sources/android-30/android/view/View.java_selected" value="Custom views" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Suggestions" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
@@ -375,6 +376,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="598" y="320" key="#Notifications/0.0.1440.900@0.0.1440.900" timestamp="1606604651034" />
+    <state x="444" y="295" width="950" height="533" key="#PSD" timestamp="1606692110696">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="444" y="295" width="950" height="533" key="#PSD/0.30.1920.1050@0.30.1920.1050" timestamp="1606692110696" />
     <state x="576" y="137" width="1024" height="848" key="#Project_Structure" timestamp="1606400594648">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -383,11 +388,11 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="661" y="141" width="588" height="831" key="#app/0.30.1920.1050@0.30.1920.1050" timestamp="1606400547753" />
-    <state x="734" y="274" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1606674573130">
+    <state x="734" y="274" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1606690544657">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1606561683086" />
-    <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606674573130" />
+    <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606690544657" />
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606496667083">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -428,26 +433,26 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1526" height="202" key="GridCell.Tab.0.bottom" timestamp="1606679434645">
+    <state width="1470" height="194" key="GridCell.Tab.0.bottom" timestamp="1606693640782">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1526" height="202" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606679434645" />
-    <state width="1526" height="202" key="GridCell.Tab.0.center" timestamp="1606679434645">
+    <state width="1470" height="194" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606693640782" />
+    <state width="1470" height="194" key="GridCell.Tab.0.center" timestamp="1606693640782">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1526" height="202" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606679434645" />
-    <state width="1526" height="202" key="GridCell.Tab.0.left" timestamp="1606679434645">
+    <state width="1470" height="194" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606693640782" />
+    <state width="1470" height="194" key="GridCell.Tab.0.left" timestamp="1606693640782">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606604197676" />
-    <state width="1526" height="202" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606679434645" />
-    <state width="1526" height="202" key="GridCell.Tab.0.right" timestamp="1606679434645">
+    <state width="1470" height="194" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606693640782" />
+    <state width="1470" height="194" key="GridCell.Tab.0.right" timestamp="1606693640782">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1526" height="202" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606679434645" />
+    <state width="1470" height="194" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606693640782" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -472,10 +477,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="356" y="218" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1606559785927" />
-    <state x="616" y="154" width="992" height="733" key="SettingsEditor" timestamp="1606668750167">
+    <state x="616" y="154" width="992" height="733" key="SettingsEditor" timestamp="1606692083729">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="616" y="154" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1606668750167" />
+    <state x="616" y="154" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1606692083729" />
     <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1606609496475">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -500,9 +505,9 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="483" y="254" key="run.anything.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606675588768" />
-    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup" timestamp="1606678340236">
+    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup" timestamp="1606691778075">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606678340236" />
+    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606691778075" />
   </component>
 </project>

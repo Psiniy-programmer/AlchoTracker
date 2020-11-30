@@ -4,28 +4,28 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
-import technokek.alchotracker.adapters.viewholders.PreferencesViewHolder
+import technokek.alchotracker.adapters.viewholders.MasterPreferencesViewHolder
 import technokek.alchotracker.api.PreferencesClickListener
-import technokek.alchotracker.data.models.PreferencesModel
+import technokek.alchotracker.data.models.MasterPreferencesModel
 
-class PreferencesAdapter(
-    private var mData: MutableList<PreferencesModel>,
+class MasterPreferencesAdapter(
+    private var mData: MutableList<MasterPreferencesModel>,
     private val listener: PreferencesClickListener
 ) :
-    RecyclerView.Adapter<PreferencesViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PreferencesViewHolder {
-        return PreferencesViewHolder(
+    RecyclerView.Adapter<MasterPreferencesViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MasterPreferencesViewHolder {
+        return MasterPreferencesViewHolder(
             LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.preferences_item, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: PreferencesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MasterPreferencesViewHolder, position: Int) {
         val model = mData[position]
         holder.mNameView.text = model.name
         holder.mDeleteView.setOnClickListener {
-            listener.pressEventAddPreference()
+            listener.pressEventAddPreference(model.name)
         }
     }
 
@@ -33,7 +33,7 @@ class PreferencesAdapter(
         return mData.size
     }
 
-    fun refresh(mData: MutableList<PreferencesModel>) {
+    fun refresh(mData: MutableList<MasterPreferencesModel>) {
         this.mData = mData
     }
 }

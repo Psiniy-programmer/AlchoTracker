@@ -3,18 +3,17 @@ package technokek.alchotracker.data
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.Query
-import com.google.firebase.database.ValueEventListener
-import technokek.alchotracker.data.models.PreferencesModel
+import com.google.firebase.database.*
+import technokek.alchotracker.data.models.MasterPreferencesModel
 
-class PreferencesLiveData() : MutableLiveData<MutableList<PreferencesModel>>() {
+class MasterPreferencesLiveData() : MutableLiveData<MutableList<MasterPreferencesModel>>() {
     private lateinit var query: Query
+    private lateinit var mAuth: FirebaseAuth
     private var preferencesListener = PreferencesListener()
 
-    constructor(query: Query) : this() {
+    constructor(query: Query, mAuth: FirebaseAuth) : this() {
         this.query = query
+        this.mAuth = mAuth
     }
 
     override fun onActive() {
@@ -33,21 +32,33 @@ class PreferencesLiveData() : MutableLiveData<MutableList<PreferencesModel>>() {
 
     inner class PreferencesListener : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
-            val preferences: MutableList<PreferencesModel> = mutableListOf()
-            val mAuth = FirebaseAuth.getInstance()
+            val preferences: MutableList<MasterPreferencesModel> = mutableListOf()
             for (x in snapshot.child(mAuth.currentUser?.uid.toString()).child("alchoinfo")
                 .child("preferences").children) {
-                val preferenceItem = PreferencesModel(x.value.toString())
+                val preferenceItem = MasterPreferencesModel(x.key.toString())
                 preferences.add(preferenceItem)
             }
-
             value = preferences
         }
 
         override fun onCancelled(error: DatabaseError) {
-            TODO("Not yet implemented")
+            Log.e("ERROR", error.toString())
         }
+    }
 
+    fun addPreferenceItem(text: String) {
+        query.ref.child(mAuth.currentUser?.uid.toString())
+            .child("alchoinfo")
+            .child("preferences")
+            .child(text)
+            .setValue("")
+    }
+
+    fun removePreferenceItem(text: String) {
+        query.ref.child(mAuth.currentUser?.uid.toString())
+            .child("alchoinfo")
+            .child("preferences")
+            .child(text).removeValue()
     }
 
     companion object {

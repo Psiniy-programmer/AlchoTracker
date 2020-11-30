@@ -48,6 +48,6 @@
         android:label="ProfileSettingsFragment" />
     <fragment
         android:id="@+id/preferencesFragment"
-        android:name="technokek.alchotracker.ui.fragments.PreferencesFragment"
+        android:name="technokek.alchotracker.ui.fragments.MasterPreferencesFragment"
         android:label="PreferencesFragment" />
 </navigation>

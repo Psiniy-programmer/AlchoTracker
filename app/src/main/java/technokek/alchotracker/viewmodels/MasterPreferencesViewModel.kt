@@ -7,15 +7,15 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import technokek.alchotracker.data.MasterProfileLiveData
-import technokek.alchotracker.data.models.MasterProfileModel
+import technokek.alchotracker.data.MasterPreferencesLiveData
+import technokek.alchotracker.data.models.MasterPreferencesModel
 
-class MasterProfileViewModel : ViewModel() {
-    var profile = MasterProfileLiveData(dbRef, aRef)
-    private val mMediatorLiveData = MediatorLiveData<MasterProfileModel>()
+class MasterPreferencesViewModel: ViewModel() {
+    var preferences = MasterPreferencesLiveData(dbRef, aRef)
+    private val mMediatorLiveData = MediatorLiveData<MutableList<MasterPreferencesModel>>()
 
     init {
-        mMediatorLiveData.addSource(profile) {
+        mMediatorLiveData.addSource(preferences) {
             if (it != null) {
                 CoroutineScope(Dispatchers.IO).launch {
                     mMediatorLiveData.postValue(it)
@@ -23,6 +23,18 @@ class MasterProfileViewModel : ViewModel() {
             } else {
                 mMediatorLiveData.value = null
             }
+        }
+    }
+
+    fun removePreferenceItem(text: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            preferences.removePreferenceItem(text)
+        }
+    }
+
+    fun addPreferenceItem(text: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            preferences.addPreferenceItem(text)
         }
     }
 

@@ -43,7 +43,7 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
         }
 
         override fun onCancelled(error: DatabaseError) {
-            Log.d("ERROR_MSG", error.toString())
+            Log.e("ERROR_MSG", error.toString())
         }
     }
 
@@ -56,8 +56,9 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
     }
 
     fun setStatus(newStatus: String) {
-        value?.status = newStatus
-        query.ref.child(mAuth.currentUser?.uid.toString()).child("status").setValue(newStatus)
+        query.ref.child(mAuth.currentUser?.uid.toString())
+            .child("status")
+            .setValue(newStatus)
     }
 
     fun setAvatar(newAvatar: Uri) {
@@ -67,19 +68,19 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
                 storage.downloadUrl.addOnCompleteListener { downloadTask ->
                     if (downloadTask.isSuccessful) {
                         val avatarUrl = downloadTask.result.toString()
-                        Log.d("KEKTEST", avatarUrl)
                         query.ref.child(mAuth.currentUser?.uid.toString()).child("avatar")
                             .setValue(avatarUrl)
                     }
                 }
-            } else Log.d("KEKTEST", putTask.exception.toString())
+            } else Log.e("ERROR", putTask.exception.toString())
         }
     }
 
     fun setDrink(newDrink: String) {
-        value?.drink = newDrink
-        query.ref.child(mAuth.currentUser?.uid.toString()).child("alchoinfo")
-            .child("favouriteDrink").setValue(newDrink)
+        query.ref.child(mAuth.currentUser?.uid.toString())
+            .child("alchoinfo")
+            .child("favouriteDrink")
+            .setValue(newDrink)
     }
 
     fun signOut() {

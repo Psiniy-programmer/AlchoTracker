@@ -1,30 +1,18 @@
 package technokek.alchotracker.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import android.util.Log
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.theartofdev.edmodo.cropper.CropImage
 import technokek.alchotracker.R
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FriendClickListener
-import technokek.alchotracker.api.PreferencesClickListener
-import technokek.alchotracker.ui.fragments.EventFragment
-import technokek.alchotracker.ui.fragments.FriendFragment
-import technokek.alchotracker.ui.fragments.FriendProfileFragment
-import technokek.alchotracker.ui.fragments.MasterProfileFragment
 
-
-class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener, PreferencesClickListener {
+class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener{
 
     private var mAuth: FirebaseAuth? = null
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -67,10 +55,5 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         bundle.putString("uid", uid)
 
         navHostFragment.navController.navigate(R.id.action_friendFragment_to_friendProfileFragment, bundle)
-    }
-
-    override fun pressEventAddPreference() {
-        val toast = Toast.makeText(this, "addPreference", Toast.LENGTH_SHORT)
-        toast.show()
     }
 }

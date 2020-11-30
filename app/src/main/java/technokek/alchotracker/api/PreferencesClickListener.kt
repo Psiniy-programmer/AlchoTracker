@@ -1,5 +1,5 @@
 package technokek.alchotracker.api
 
 interface PreferencesClickListener {
-    fun pressEventAddPreference()
+    fun pressEventAddPreference(text: String)
 }

@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
 
-class PreferencesViewHolder(itemView: View) :
+class MasterPreferencesViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView) {
         var mNameView: TextView = itemView.findViewById(R.id.preferences_item_text)
             private set
