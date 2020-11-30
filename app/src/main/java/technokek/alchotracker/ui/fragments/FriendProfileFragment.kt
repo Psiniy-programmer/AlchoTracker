@@ -15,7 +15,7 @@ import technokek.alchotracker.R
 import technokek.alchotracker.viewmodels.FriendProfileViewModel
 import technokek.alchotracker.viewmodels.factories.FriendProfileFactory
 
-class FriendProfileFragment: Fragment() {
+class FriendProfileFragment : Fragment() {
     private lateinit var uid: String
     private lateinit var mProfileViewModel: FriendProfileViewModel
     private lateinit var userText: TextView
@@ -51,7 +51,10 @@ class FriendProfileFragment: Fragment() {
         favouriteDrink = view.findViewById(R.id.friend_drink)
 
         activity?.application?.let {
-            mProfileViewModel = ViewModelProvider(this, FriendProfileFactory(it, uid))[FriendProfileViewModel::class.java]
+            mProfileViewModel = ViewModelProvider(
+                this,
+                FriendProfileFactory(it, uid)
+            )[FriendProfileViewModel::class.java]
         }
 
         mProfileViewModel.profile.observe(viewLifecycleOwner, {
@@ -66,7 +69,9 @@ class FriendProfileFragment: Fragment() {
         preferencesBtn.setOnClickListener {
             val navController =
                 activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
-            navController?.navigate(R.id.action_friendProfileFragment_to_preferencesFragment2)
+            val bundle = Bundle()
+            bundle.putString("uid", uid)
+            navController?.navigate(R.id.action_friendProfileFragment_to_friendPreferencesFragment, arguments)
         }
     }
 

@@ -17,7 +17,7 @@ class MasterPreferencesAdapter(
         return MasterPreferencesViewHolder(
             LayoutInflater
                 .from(parent.context)
-                .inflate(R.layout.preferences_item, parent, false)
+                .inflate(R.layout.master_preferences_item, parent, false)
         )
     }
 

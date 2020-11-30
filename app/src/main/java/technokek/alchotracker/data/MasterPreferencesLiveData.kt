@@ -33,8 +33,14 @@ class MasterPreferencesLiveData() : MutableLiveData<MutableList<MasterPreference
     inner class PreferencesListener : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val preferences: MutableList<MasterPreferencesModel> = mutableListOf()
-            for (x in snapshot.child(mAuth.currentUser?.uid.toString()).child("alchoinfo")
-                .child("preferences").children) {
+            val snap = snapshot.child(mAuth.currentUser?.uid.toString())
+                .child("alchoinfo")
+                .child("preferences")
+                .children
+            for (x in snapshot.child(mAuth.currentUser?.uid.toString())
+                .child("alchoinfo")
+                .child("preferences")
+                .children) {
                 val preferenceItem = MasterPreferencesModel(x.key.toString())
                 preferences.add(preferenceItem)
             }
