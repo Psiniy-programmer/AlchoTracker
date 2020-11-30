@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <TextView
+        android:id="@+id/errorHandler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/type_name_field"
+        android:textSize="@dimen/default_font"
+        android:textColor="@color/colorRed"
+        tools:text="Минимальная длина пароля 6 симв."
+        android:layout_marginBottom="@dimen/light_step"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"/>
+    <EditText
+        android:id="@+id/type_name_field"
+        android:hint="@string/type_name"
+        android:textSize="@dimen/default_font"
+        android:layout_width="@dimen/input_width"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightGray"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/type_login_field"
+        android:textColor="@color/colorBlack"/>
+    <EditText
+        android:id="@+id/type_login_field"
+        android:hint="@string/type_login"
+        android:textSize="@dimen/default_font"
+        android:layout_width="@dimen/input_width"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="@dimen/light_step"
+        android:background="@color/colorLightGray"
+        android:textColor="@color/colorBlack"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/type_password_field"/>
+    <EditText
+        android:id="@+id/type_password_field"
+        android:hint="@string/type_password"
+        android:textSize="@dimen/default_font"
+        android:layout_width="@dimen/input_width"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/light_step"
+        android:background="@color/colorLightGray"
+        android:textColor="@color/colorBlack"/>
+    <EditText
+        android:id="@+id/type_password_again_field"
+        android:hint="@string/type_password_again"
+        android:textSize="@dimen/default_font"
+        android:layout_width="@dimen/input_width"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/light_step"
+        android:background="@color/colorLightGray"
+        android:layout_below="@id/type_password_field"
+        android:textColor="@color/colorBlack"/>
+    <Button
+        android:id="@+id/registrationButton"
+        android:layout_marginTop="@dimen/light_step"
+        android:layout_centerHorizontal="true"
+        android:text="@string/registration"
+        android:layout_below="@id/type_password_again_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"/>
+    <Button
+        android:id="@+id/authentification_button"
+        android:layout_width="@dimen/start_button_width"
+        android:layout_height="wrap_content"
+        android:text="@string/autentification"
+        android:layout_below="@+id/registrationButton"
+        android:layout_centerHorizontal="true"
+        />
+
+
+
+</RelativeLayout>

@@ -6,7 +6,6 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Test" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
@@ -33,16 +32,31 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="fix bugs">
+    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="added filter">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/AuthLiveData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/RegistrLiveData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/AuthentificationActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/StartRegistrationActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/AuthViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/RegistrViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/autentification_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/registration_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/fonts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendRequestLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendRequestLiveData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_4_API_30]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -96,14 +110,14 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_4_API_30" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-29T17:34:20.802Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="RF8MB1NL08B" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-30T13:35:46.064Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SelectDeploymentTargetsDialog.selectedDevices" value="ce011821892ea0920c&#10;Pixel_4_API_30" />
     <property name="android-custom-view/home/paner/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data" />
     <property name="multi-representation-preview/home/paner/Android/Sdk/sources/android-30/android/view/View.java_selected" value="Custom views" />
     <property name="project.structure.last.edited" value="Suggestions" />
     <property name="project.structure.proportion" value="0.17" />
@@ -115,15 +129,13 @@
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="technokek.alchotracker.data.dataclasses" />
+    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="technokek.alchotracker.data" />
       <recent name="technokek.alchotracker.api" />
       <recent name="technokek.alchotracker.adapters" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/values" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="technokek.alchotracker.ui.fragments" />
@@ -132,8 +144,15 @@
       <recent name="technokek.alchotracker.livedatas" />
       <recent name="technokek.alchotracker.viewmodels" />
     </key>
-    <key name="CreateKotlinClassDialog.RecentsKey">
-      <recent name="technokek.alchotracker.data.dataclasses" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="technokek.alchotracker.data" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/values" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -351,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606736606262</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added filter">
+      <created>1606742410430</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1606742410430</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -396,7 +422,8 @@
     <MESSAGE value="added list friend requests" />
     <MESSAGE value="workspace" />
     <MESSAGE value="Хуйня" />
-    <option name="LAST_COMMIT_MESSAGE" value="Хуйня" />
+    <MESSAGE value="added filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="added filter" />
   </component>
   <component name="WindowStateProjectService">
     <state x="598" y="320" key="#Notifications" timestamp="1606604651034">
@@ -464,28 +491,28 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1396" height="179" key="GridCell.Tab.0.bottom" timestamp="1606740582720">
+    <state width="875" height="179" key="GridCell.Tab.0.bottom" timestamp="1606742805363">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606740582720" />
+    <state width="875" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606742805363" />
     <state width="1398" height="179" key="GridCell.Tab.0.bottom/0.23.1440.836@0.23.1440.836" timestamp="1606736512786" />
     <state width="1470" height="83" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983168" />
-    <state width="1396" height="179" key="GridCell.Tab.0.center" timestamp="1606740582719">
+    <state width="875" height="179" key="GridCell.Tab.0.center" timestamp="1606742805361">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606740582719" />
+    <state width="875" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606742805361" />
     <state width="1398" height="179" key="GridCell.Tab.0.center/0.23.1440.836@0.23.1440.836" timestamp="1606736512785" />
     <state width="1470" height="83" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983167" />
-    <state width="1396" height="179" key="GridCell.Tab.0.left" timestamp="1606740582719">
+    <state width="875" height="179" key="GridCell.Tab.0.left" timestamp="1606742805360">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606740582719" />
+    <state width="875" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606742805360" />
     <state width="1398" height="179" key="GridCell.Tab.0.left/0.23.1440.836@0.23.1440.836" timestamp="1606736512784" />
     <state width="1470" height="83" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983167" />
-    <state width="1396" height="179" key="GridCell.Tab.0.right" timestamp="1606740582720">
+    <state width="875" height="179" key="GridCell.Tab.0.right" timestamp="1606742805362">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606740582720" />
+    <state width="875" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606742805362" />
     <state width="1398" height="179" key="GridCell.Tab.0.right/0.23.1440.836@0.23.1440.836" timestamp="1606736512785" />
     <state width="1470" height="83" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983168" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
@@ -516,10 +543,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="616" y="154" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1606692083729" />
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1606609496475">
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1606742417428">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606609496475" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606742417428" />
     <state x="428" y="366" width="580" height="380" key="com.android.tools.idea.run.deployment.ModifyDeviceSetDialog" timestamp="1606666580622">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
