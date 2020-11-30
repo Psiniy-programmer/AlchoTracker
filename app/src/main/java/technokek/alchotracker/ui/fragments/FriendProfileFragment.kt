@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -25,6 +26,9 @@ class FriendProfileFragment : Fragment() {
     private lateinit var avatarView: ImageView
     private lateinit var favouriteDrink: TextView
     private lateinit var preferencesBtn: Button
+    private lateinit var addFriendBtn: ImageButton
+    private lateinit var deleteFriendBtn: ImageButton
+    private lateinit var cancelRequestBtn: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,13 +40,11 @@ class FriendProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         uid = arguments?.get("uid") as String
 
         savedInstanceState?.let {
             uid = savedInstanceState.getString("uid").toString()
         }
-
         userText = view.findViewById(R.id.friend_profile_user_text)
         statusText = view.findViewById(R.id.friend_profile_status_text)
         friendsCounter = view.findViewById(R.id.friend_profile_friends_counter)
@@ -66,18 +68,51 @@ class FriendProfileFragment : Fragment() {
             Picasso.get().load(it.avatar).into(avatarView)
         })
         preferencesBtn = view.findViewById(R.id.friend_preferences_list)
+
         preferencesBtn.setOnClickListener {
             val navController =
                 activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
             val bundle = Bundle()
             bundle.putString("uid", uid)
-            navController?.navigate(R.id.action_friendProfileFragment_to_friendPreferencesFragment, arguments)
+            navController?.navigate(
+                R.id.action_friendProfileFragment_to_friendPreferencesFragment,
+                arguments
+            )
+        }
+        addFriendBtn = view.findViewById(R.id.add_friend_button)
+        deleteFriendBtn = view.findViewById(R.id.delete_friend_button)
+        cancelRequestBtn = view.findViewById(R.id.cancel_friend_button)
+
+        mProfileViewModel.requests.observe(viewLifecycleOwner, {
+            if (it.inFriend) {
+                deleteFriendBtn.visibility = View.VISIBLE
+                addFriendBtn.visibility = View.GONE
+                cancelRequestBtn.visibility = View.GONE
+            } else if (it.requestIsSended){
+                cancelRequestBtn.visibility = View.VISIBLE
+                deleteFriendBtn.visibility = View.GONE
+                addFriendBtn.visibility = View.GONE
+            } else {
+                addFriendBtn.visibility = View.VISIBLE
+                deleteFriendBtn.visibility = View.GONE
+                cancelRequestBtn.visibility = View.GONE
+            }
+        })
+        addFriendBtn.setOnClickListener {
+            mProfileViewModel.addFriend()
+        }
+
+        deleteFriendBtn.setOnClickListener {
+            mProfileViewModel.deleteFriend()
+        }
+
+        cancelRequestBtn.setOnClickListener {
+
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-
         outState.putString("uid", uid)
     }
 

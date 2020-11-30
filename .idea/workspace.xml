@@ -30,26 +30,23 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:psina" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="background set colorGray">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendPreferencesLiveData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/FriendPreferencesModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/FriendPreferencesViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/factories/FriendPreferencesFactory.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/friend_preference_item.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendToggleRequestLiveData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/FriendToggleRequestModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/FriendPreferencesAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/FriendPreferencesAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/MasterPreferencesAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/MasterPreferencesAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/FriendPreferencesViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/FriendPreferencesViewHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/MasterPreferencesViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/adapters/viewholders/MasterPreferencesViewHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/MasterPreferencesLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/MasterPreferencesLiveData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendPreferencesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendPreferencesFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friend_preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/friend_preferences.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/preferences_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/master_preferences_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/FriendProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/FriendProfileViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friend_profile_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/friend_profile_fragment.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +108,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_4_API_30" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-29T17:34:20.802Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-30T12:50:26.776Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -412,11 +409,11 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="661" y="141" width="588" height="831" key="#app/0.30.1920.1050@0.30.1920.1050" timestamp="1606400547753" />
-    <state x="734" y="274" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1606695319633">
+    <state x="734" y="274" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1606722609784">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1606561683086" />
-    <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606695319633" />
+    <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606722609784" />
     <state x="1023" y="30" width="865" height="1050" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606694494443">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -434,11 +431,11 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="704" y="380" width="501" height="353" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.30.1920.1050@0.30.1920.1050" timestamp="1605892122424" />
-    <state x="133" y="147" width="1654" height="817" key="AVDManager" timestamp="1606666151984">
+    <state x="133" y="147" width="1654" height="817" key="AVDManager" timestamp="1606741139156">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="AVDManager/0.0.1440.900@0.0.1440.900" timestamp="1606589514115" />
-    <state x="133" y="147" width="1654" height="817" key="AVDManager/0.30.1920.1050@0.30.1920.1050" timestamp="1606666151984" />
+    <state x="133" y="147" width="1654" height="817" key="AVDManager/0.30.1920.1050@0.30.1920.1050" timestamp="1606741139156" />
     <state x="308" y="212" key="AndroidCreateResourceDirectoryDialog" timestamp="1606607200265">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -461,26 +458,26 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1470" height="83" key="GridCell.Tab.0.bottom" timestamp="1606696983168">
+    <state width="1414" height="267" key="GridCell.Tab.0.bottom" timestamp="1606741274295">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1470" height="83" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983168" />
-    <state width="1470" height="83" key="GridCell.Tab.0.center" timestamp="1606696983167">
+    <state width="1414" height="267" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606741274295" />
+    <state width="1414" height="267" key="GridCell.Tab.0.center" timestamp="1606741274295">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1470" height="83" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983167" />
-    <state width="1470" height="83" key="GridCell.Tab.0.left" timestamp="1606696983167">
+    <state width="1414" height="267" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606741274295" />
+    <state width="1414" height="267" key="GridCell.Tab.0.left" timestamp="1606741274291">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606604197676" />
-    <state width="1470" height="83" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983167" />
-    <state width="1470" height="83" key="GridCell.Tab.0.right" timestamp="1606696983168">
+    <state width="1414" height="267" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606741274291" />
+    <state width="1414" height="267" key="GridCell.Tab.0.right" timestamp="1606741274295">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1470" height="83" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983168" />
+    <state width="1414" height="267" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606741274295" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -533,9 +530,9 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="483" y="254" key="run.anything.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606675588768" />
-    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup" timestamp="1606696391097">
+    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup" timestamp="1606726771697">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606696391097" />
+    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606726771697" />
   </component>
 </project>
