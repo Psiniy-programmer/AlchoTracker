@@ -3,10 +3,7 @@ package technokek.alchotracker.data
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.Query
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import technokek.alchotracker.data.models.FriendToggleRequestModel
 
 class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>() {
@@ -99,20 +96,16 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
     }
 
     fun addFriend() {
-        val masterPath = query.ref.child(mAuth.currentUser?.uid.toString())
-            .child("friends")
-            .child("requests")
-        val friendPath = query.ref.child(uid)
-            .child("friends")
-            .child("requests")
-        if (value?.masterOutReq?.length == 0) {
+        val masterPath = getPath(mAuth.currentUser?.uid.toString(), "requests")
+        val friendPath = getPath(uid, "requests")
+        if (value?.masterOutReq?.isEmpty() == true) {
             masterPath.child("outgoing")
                 .setValue(uid)
         } else {
             masterPath.child("outgoing")
                 .setValue("${value?.masterOutReq};$uid")
         }
-        if (value?.friendInReq?.length == 4) {
+        if (value?.friendInReq?.isEmpty() == true) {
             friendPath.child("incoming")
                 .setValue(mAuth.currentUser?.uid.toString())
         } else {
@@ -122,27 +115,30 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
     }
 
     fun deleteFriend() {
-        val masterPath = query.ref.child(mAuth.currentUser?.uid.toString())
-            .child("friends")
-            .child("list")
-        val friendPath = query.ref.child(uid)
-            .child("friends")
-            .child("list")
+        val masterPath = getPath(mAuth.currentUser?.uid.toString(), "list")
+        val friendPath = getPath(uid, "list")
         val friendList =
             value?.friendList?.split(";")?.filter { it != mAuth.currentUser?.uid.toString() }
         val masterList = value?.masterList?.split(";")?.filter { it != uid }
-        var masterStr = ""
-        var friendStr = ""
-        friendList?.map {
-            if( friendStr == "" ) friendStr = it
-            else friendStr += ";$it"
-        }
-        masterList?.map {
-            if( masterStr == "" ) masterStr = it
-            else masterStr += ";$it"
-        }
+        val masterStr = masterList?.let { setStr(it) }
+        val friendStr = friendList?.let { setStr(it) }
         masterPath.setValue(masterStr)
         friendPath.setValue(friendStr)
+    }
+
+    private fun setStr(list: List<String>): String {
+        var res = ""
+        list.map {
+            if (res.isEmpty()) res = it
+            else res += it
+        }
+        return res
+    }
+
+    private fun getPath(uid: String, type: String): DatabaseReference {
+        return query.ref.child(uid)
+            .child("friends")
+            .child(type)
     }
 
     fun cancelRequest() {
