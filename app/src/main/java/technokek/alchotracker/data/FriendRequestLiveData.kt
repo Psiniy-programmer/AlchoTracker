@@ -36,19 +36,17 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
     }
 
     private fun pushAcceptToFriend(friend: FriendModel, uid: String) {
-        var outgoing = friend.outgoing.split(";")
+        var outgoing = friend.outgoing.split(";").filter { it != currentUser!!.uid }
         var outFriendsCount = friend.friendsCount
         var outFriendList = friend.friendsList
 
         Log.d("Test", "outgoing: $outgoing")
         var outgoingChange = String()
         for (i in outgoing) {
-            if (i != currentUser!!.uid) {
-                if (outgoingChange.isEmpty()) {
-                    outgoingChange = i
-                } else {
-                    outgoingChange.plus(";").plus(i)
-                }
+            if (outgoingChange.isEmpty()) {
+                outgoingChange = i
+            } else {
+                outgoingChange.plus(";").plus(i)
             }
         }
         Log.d("Test", "outgoingChange: $outgoingChange")
@@ -74,7 +72,7 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
     }
 
     private fun pushAcceptToCurrUser(user: FriendModel, uid: String) {
-        var incoming = user.incoming.split(";")
+        var incoming = user.incoming.split(";").filter { it != uid }
         var inFriendCount = user.friendsCount + 1
         var inFriendList = user.friendsList
         var currentID = user.id
@@ -83,12 +81,10 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
         var incomingChange = String()
         for (i in incoming) {
-            if (i != uid) {
-                if (incomingChange.isEmpty()) {
-                    incomingChange = i
-                } else {
-                    incomingChange.plus(";").plus(i)
-                }
+            if (incomingChange.isEmpty()) {
+                incomingChange = i
+            } else {
+                incomingChange.plus(";").plus(i)
             }
         }
         Log.d("Test", "incomingChange: $incomingChange")
