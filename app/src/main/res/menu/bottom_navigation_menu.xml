@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/masterProfileFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_1"
+        android:title="@string/text_label_1"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/eventFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_2"
+        android:title="@string/text_label_2"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/friendFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_3"
+        android:title="@string/text_label_3"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/calendarFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="@string/text_label_4"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/timerFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_timer_24"
+        android:title="@string/text_label_5"
+        app:showAsAction="always" />
+</menu>

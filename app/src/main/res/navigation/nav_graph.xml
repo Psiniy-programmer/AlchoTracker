@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/masterProfileFragment">
+
+    <fragment
+        android:id="@+id/masterProfileFragment"
+        android:name="technokek.alchotracker.ui.fragments.MasterProfileFragment"
+        android:label="MasterProfileFragment" >
+        <action
+            android:id="@+id/action_masterProfileFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_masterProfileFragment_to_profileSettingsFragment"
+            app:destination="@id/profileSettingsFragment" />
+        <action
+            android:id="@+id/action_masterProfileFragment_to_preferencesFragment"
+            app:destination="@id/preferencesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="technokek.alchotracker.ui.fragments.EventFragment"
+        android:label="EventFragment" >
+        <action
+            android:id="@+id/action_eventFragment_to_friendFragment"
+            app:destination="@id/friendFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendFragment"
+        android:name="technokek.alchotracker.ui.fragments.FriendFragment"
+        android:label="FriendFragment" >
+        <action
+            android:id="@+id/action_friendFragment_to_friendProfileFragment"
+            app:destination="@id/friendProfileFragment" />
+        <action
+            android:id="@+id/action_friendFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendProfileFragment"
+        android:name="technokek.alchotracker.ui.fragments.FriendProfileFragment"
+        android:label="FriendProfileFragment" >
+        <action
+            android:id="@+id/action_friendProfileFragment_to_friendPreferencesFragment"
+            app:destination="@id/friendPreferencesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileSettingsFragment"
+        android:name="technokek.alchotracker.ui.fragments.ProfileSettingsFragment"
+        android:label="ProfileSettingsFragment" />
+    <fragment
+        android:id="@+id/preferencesFragment"
+        android:name="technokek.alchotracker.ui.fragments.MasterPreferencesFragment"
+        android:label="PreferencesFragment" />
+    <fragment
+        android:id="@+id/friendPreferencesFragment"
+        android:name="technokek.alchotracker.ui.fragments.FriendPreferencesFragment"
+        android:label="FriendPreferencesFragment" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="technokek.alchotracker.ui.fragments.calendarfragment.CalendarFragment"
+        android:label="CalendarFragment" >
+        <action
+            android:id="@+id/action_calendarFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="technokek.alchotracker.ui.fragments.TimerFragment"
+        android:label="TimerFragment" />
+</navigation>

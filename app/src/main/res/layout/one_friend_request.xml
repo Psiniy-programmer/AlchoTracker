@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/friend_request_image"
+        android:layout_width="@dimen/width_friend"
+        android:layout_height="@dimen/height_friend"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/friend_request_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_friend"
+        android:layout_toEndOf="@id/friend_request_image"
+        tools:text="Hello" />
+
+    <ImageButton
+        android:id="@+id/accept_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/accept"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="TODO" />
+
+    <ImageButton
+        android:id="@+id/deny_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/deny"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/accept_request"
+        android:contentDescription="TODO" />
+
+</RelativeLayout>

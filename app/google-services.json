@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "538047431518",
+    "firebase_url": "https://alchotracker-4e1ca.firebaseio.com",
+    "project_id": "alchotracker-4e1ca",
+    "storage_bucket": "alchotracker-4e1ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538047431518:android:e1919922480f53f0c4c5cf",
+        "android_client_info": {
+          "package_name": "technokek.alchotracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538047431518-tpnmfn65mee8h0thbbe1m1afo1ld653t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj_lHFcY45rg5BjLsbGwkIilOxsOlRdVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538047431518-tpnmfn65mee8h0thbbe1m1afo1ld653t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
