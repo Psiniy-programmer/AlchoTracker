@@ -28,4 +28,12 @@
     <string name="calendar_title">Calendar</string>
     <string name="text_label_4">Calendar</string>
     <string name="text_label_5">Timer</string>
+    <string name="registration">Регистрация</string>
+    <string name="autentification">Вход</string>
+    <string name="type_login">Введите login</string>
+    <string name="type_password">Введите пароль</string>
+    <string name="type_name">Введите имя</string>
+    <string name="type_password_again">Введите пароль ещё раз</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="signOut">Выйти</string>
 </resources>

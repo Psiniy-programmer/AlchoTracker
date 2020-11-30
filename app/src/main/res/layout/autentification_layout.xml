@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/type_login_field"
+        android:hint="@string/type_login"
+        android:textSize="@dimen/default_font"
+        android:layout_width="@dimen/input_width"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:background="@color/colorLightGray"
+        android:textColor="@color/colorBlack"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/type_password_field"/>
+    <EditText
+        android:id="@+id/type_password_field"
+        android:hint="@string/type_password"
+        android:textSize="@dimen/default_font"
+        android:layout_width="@dimen/input_width"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/light_step"
+        android:background="@color/colorLightGray"
+        android:textColor="@color/colorBlack"/>
+    <Button
+        android:id="@+id/authentification"
+        android:layout_marginTop="@dimen/light_step"
+        android:layout_centerHorizontal="true"
+        android:text="@string/autentification"
+        android:layout_below="@id/type_password_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"/>
+
+
+
+
+</RelativeLayout>

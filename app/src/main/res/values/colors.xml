@@ -21,4 +21,7 @@
     <color name="blue_800">#1565C0</color>
     <color name="cyan_700">#0097A7</color>
     <color name="colorGray">#9E9E9E</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorLightGray">#B8B8B8</color>
+    <color name="colorRed">#8F0303</color>
 </resources>
