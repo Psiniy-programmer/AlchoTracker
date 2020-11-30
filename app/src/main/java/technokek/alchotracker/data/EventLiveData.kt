@@ -42,7 +42,7 @@ class EventLiveData() : MutableLiveData<MutableList<EventModel>>() {
 
             for (i in snapshot.children) {
                 val event = EventModel(
-                    i.child("id").getValue(Int::class.java)!!,
+                    i.child("id").value.toString(),
                     i.child("name").value.toString(),
                     i.child("avatar").value.toString()
                 )
