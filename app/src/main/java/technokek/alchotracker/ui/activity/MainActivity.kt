@@ -1,22 +1,40 @@
 package technokek.alchotracker.ui.activity
 
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.widget.Button
 import android.widget.Toast
 import android.util.Log
+import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import technokek.alchotracker.R
+import technokek.alchotracker.ui.fragments.calendarfragment.CalendarFragment
+import technokek.alchotracker.databinding.ActivityMainBinding
+import technokek.alchotracker.ui.fragments.TimerFragment
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FriendClickListener
+import technokek.alchotracker.ui.fragments.EventFragment
+import technokek.alchotracker.ui.fragments.FriendFragment
+import technokek.alchotracker.ui.fragments.FriendProfileFragment
+import technokek.alchotracker.ui.fragments.MasterProfileFragment
 
-class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener{
+
+class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener {
 
     private var mAuth: FirebaseAuth? = null
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
+    private lateinit var notificationManager: NotificationManagerCompat
+    internal lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +45,21 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         mAuth!!.signInWithEmailAndPassword("login@maul.ru", "password")
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
                     Log.d("OKZ", mAuth!!.currentUser?.uid.toString())
                 } else {
                     Log.d("Denied", "signInWithEmail:failure", task.exception)
                 }
             }
+        //Mandatory for notifications!!!
+        notificationManager = NotificationManagerCompat.from(this)
 
         setUpNavigation()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
     }
 
     private fun setUpNavigation() {
@@ -58,7 +84,22 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         navHostFragment.navController.navigate(R.id.action_friendFragment_to_friendProfileFragment, bundle)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    fun sendTimerFragmentNotificationChannel1(id:Int, title:String, text:String) {
+        val builder = NotificationCompat.Builder(this, NotificationActivity.CHANNEL_1_ID)
+            .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
+            .setContentTitle(title)
+            .setContentText(text)
+        val notification = builder.build()
+        notificationManager.notify(id, notification)
+        Log.d("Notification1", "Im here")
+    }
+
+    fun sendTimerFragmentNotificationChannel2(id:Int, title:String, text:String) {
+        val builder = NotificationCompat.Builder(this, NotificationActivity.CHANNEL_2_ID)
+            .setSmallIcon(R.drawable.ic_notification_time_interval)
+            .setContentTitle(title)
+            .setContentText(text)
+        val notification = builder.build()
+        notificationManager.notify(id, notification)
     }
 }

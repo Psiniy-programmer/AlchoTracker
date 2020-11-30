@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="seconds_in_hour">3600</integer>
+    <integer name="seconds_in_minute">60</integer>
+    <integer name="millis_in_seconds">1000</integer>
+    <integer name="countdown_interval">60000</integer>
+</resources>

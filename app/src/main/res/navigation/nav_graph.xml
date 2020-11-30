@@ -54,4 +54,12 @@
         android:id="@+id/friendPreferencesFragment"
         android:name="technokek.alchotracker.ui.fragments.FriendPreferencesFragment"
         android:label="FriendPreferencesFragment" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="technokek.alchotracker.ui.fragments.calendarfragment.CalendarFragment"
+        android:label="CalendarFragment" />
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="technokek.alchotracker.ui.fragments.TimerFragment"
+        android:label="TimerFragment" />
 </navigation>
