@@ -2,30 +2,19 @@ package technokek.alchotracker.ui.activity
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.widget.Button
-import android.widget.Toast
 import android.util.Log
-import android.os.PersistableBundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import technokek.alchotracker.R
-import technokek.alchotracker.ui.fragments.calendarfragment.CalendarFragment
-import technokek.alchotracker.databinding.ActivityMainBinding
-import technokek.alchotracker.ui.fragments.TimerFragment
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FriendClickListener
-import technokek.alchotracker.ui.fragments.EventFragment
-import technokek.alchotracker.ui.fragments.FriendFragment
-import technokek.alchotracker.ui.fragments.FriendProfileFragment
-import technokek.alchotracker.ui.fragments.MasterProfileFragment
+import technokek.alchotracker.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener {
