@@ -15,7 +15,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.theartofdev.edmodo.cropper.CropImage
 import technokek.alchotracker.R
+import technokek.alchotracker.ui.activity.AuthentificationActivity
 import technokek.alchotracker.ui.activity.MainActivity
+import technokek.alchotracker.ui.activity.StartRegistrationActivity
 import technokek.alchotracker.viewmodels.MasterProfileViewModel
 import technokek.alchotracker.viewmodels.ProfileSettingsViewModel
 
@@ -67,6 +69,7 @@ class ProfileSettingsFragment : Fragment() {
 
         signOutBtn.setOnClickListener {
             mProfileViewModel.signOut()
+            startActivity(Intent(context, StartRegistrationActivity::class.java))
         }
     }
 
