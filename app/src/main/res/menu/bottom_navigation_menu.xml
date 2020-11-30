@@ -19,4 +19,17 @@
         android:icon="@drawable/icon_3"
         android:title="@string/text_label_3"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/calendarFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="@string/text_label_4"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/timerFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_timer_24"
+        android:title="@string/text_label_5"
+        app:showAsAction="always" />
 </menu>

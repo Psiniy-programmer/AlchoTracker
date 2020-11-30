@@ -18,4 +18,14 @@
     <string name="preferences_text">Список предпочтений</string>
     <string name="add_preference">Добавить</string>
     <string name="delete_preference_item">Удалить</string>
+    <string name="stop_button_text">Stop</string>
+    <string name="select_timer_hint">Select time</string>
+    <string name="button_interrupt_text">Interrupt</string>
+    <string name="button_start_text">Start</string>
+    <string name="button_pause_text">Pause</string>
+    <string name="button_continue_text">Continue</string>
+    <string name="time_left_default">00:00</string>
+    <string name="calendar_title">Calendar</string>
+    <string name="text_label_4">Calendar</string>
+    <string name="text_label_5">Timer</string>
 </resources>

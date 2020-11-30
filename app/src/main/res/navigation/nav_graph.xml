@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_friendFragment_to_friendProfileFragment"
             app:destination="@id/friendProfileFragment" />
+        <action
+            android:id="@+id/action_friendFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
     </fragment>
     <fragment
         android:id="@+id/friendProfileFragment"
@@ -54,4 +57,16 @@
         android:id="@+id/friendPreferencesFragment"
         android:name="technokek.alchotracker.ui.fragments.FriendPreferencesFragment"
         android:label="FriendPreferencesFragment" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="technokek.alchotracker.ui.fragments.calendarfragment.CalendarFragment"
+        android:label="CalendarFragment" >
+        <action
+            android:id="@+id/action_calendarFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="technokek.alchotracker.ui.fragments.TimerFragment"
+        android:label="TimerFragment" />
 </navigation>
