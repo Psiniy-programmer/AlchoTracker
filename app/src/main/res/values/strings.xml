@@ -1,9 +1,21 @@
 <resources>
     <string name="app_name">Alchotracker</string>
-    <string name="Preferences">Предпочтения</string>
+    <string name="Preferences">Любимый напиток</string>
     <string name="friends">Друзей</string>
     <string name="dates">Тусовок</string>
     <string name="text_label_1">Profile</string>
     <string name="text_label_2">Events</string>
     <string name="text_label_3">Friends</string>
+    <string name="settings">settingsButton</string>
+    <string name="avatar">avatar</string>
+    <string name="add">add</string>
+    <string name="change_profile_avatar">Изменить фото профиля</string>
+    <string name="change_profile_status">Изменить статус профиля</string>
+    <string name="change_profile_drink">Изменить любимый напиток</string>
+    <string name="input_new_status">Введите новый статус</string>
+    <string name="input_new_drink">Введите новый любимый напиток</string>
+    <string name="sign_out">Выйти из аккаунта</string>
+    <string name="preferences_text">Список предпочтений</string>
+    <string name="add_preference">Добавить</string>
+    <string name="delete_preference_item">Удалить</string>
 </resources>

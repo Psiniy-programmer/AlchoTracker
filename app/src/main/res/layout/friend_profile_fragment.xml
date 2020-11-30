@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profile"
+    android:id="@+id/friend_profile"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:ignore="UseCompoundDrawables">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorGray"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/add_button"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/add"
+            android:src="@android:drawable/ic_menu_add" />
+    </LinearLayout>
+
     <ImageView
-        android:id="@+id/profile_avatar"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="10dp"
+        android:id="@+id/friend_profile_avatar"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/avatar" />
+        android:src="@drawable/avatar"
+        android:contentDescription="@string/avatar" />
 
     <TextView
-        android:id="@+id/profile_user_text"
+        android:id="@+id/friend_profile_user_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -24,7 +42,7 @@
         tools:text="Brendan Moore"/>
 
     <TextView
-        android:id="@+id/profile_status_text"
+        android:id="@+id/friend_profile_status_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -35,18 +53,18 @@
         />
 
     <LinearLayout
-        android:id="@+id/profile_info"
+        android:id="@+id/friend_profile_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
         <LinearLayout
-            android:id="@+id/profile_friends"
+            android:id="@+id/friend_profile_friends"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginEnd="15dp">
             <TextView
-                android:id="@+id/profile_friends_counter"
+                android:id="@+id/friend_profile_friends_counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="20,583"
@@ -55,7 +73,7 @@
                 android:layout_marginEnd="10dp"
                 />
             <TextView
-                android:id="@+id/profile_friends_text"
+                android:id="@+id/friend_profile_friends_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/friends"
@@ -63,14 +81,14 @@
                 />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/profile_dates"
+            android:id="@+id/friend_profile_dates"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginStart="15dp">
 
             <TextView
-                android:id="@+id/profile_events_counter"
+                android:id="@+id/friend_profile_events_counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="9,112,824"
@@ -79,7 +97,7 @@
                 android:layout_marginEnd="10dp"
                 />
             <TextView
-                android:id="@+id/profile_dates_text"
+                android:id="@+id/friend_profile_dates_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dates"
@@ -89,7 +107,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/preferences"
+        android:id="@+id/friend_preferences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -98,9 +116,19 @@
         android:textStyle="bold"
         android:text="@string/Preferences"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/profile_preferences_list"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/friend_drink"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp"
+        tools:text="Пивко"/>
+
+    <Button
+        android:id="@+id/friend_preferences_list"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:text="@string/preferences_text"
+        android:textSize="36sp"/>
 </LinearLayout>

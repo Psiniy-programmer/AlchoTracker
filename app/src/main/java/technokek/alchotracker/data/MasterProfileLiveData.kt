@@ -8,10 +8,12 @@ import technokek.alchotracker.data.models.MasterProfileModel
 
 class MasterProfileLiveData() : MutableLiveData<MasterProfileModel>() {
     private lateinit var query: Query
+    private lateinit var mAuth: FirebaseAuth
     private val profileListener = ProfileListener()
 
-    constructor(query: Query) : this() {
+    constructor(query: Query, mAuth: FirebaseAuth) : this() {
         this.query = query
+        this.mAuth = mAuth
     }
 
     override fun onActive() {
@@ -28,20 +30,19 @@ class MasterProfileLiveData() : MutableLiveData<MasterProfileModel>() {
         Log.d(TAG, "onInactive")
     }
 
-    inner class ProfileListener : ValueEventListener {
+    inner class ProfileListener : ValueEventListener {  
 
         override fun onDataChange(snapshot: DataSnapshot) {
-            val mAuth = FirebaseAuth.getInstance()
-            setProfile(snapshot.child(mAuth.currentUser?.uid.toString()))
+            getProfile(snapshot.child(mAuth.currentUser?.uid.toString()))
         }
 
         override fun onCancelled(error: DatabaseError) {
-            Log.d("kek", error.toString())
+            Log.d("ERROR_MSG", error.toString())
         }
 
     }
 
-    fun setProfile(x: DataSnapshot) {
+    fun getProfile(x: DataSnapshot) {
         value = MasterProfileModel(
             x.child("avatar").value.toString(),
             x.child("name").value.toString(),

@@ -1,21 +1,22 @@
 package technokek.alchotracker.viewmodels
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import technokek.alchotracker.data.MasterProfileLiveData
-import technokek.alchotracker.data.models.MasterProfileModel
+import technokek.alchotracker.data.FriendPreferencesLiveData
+import technokek.alchotracker.data.models.FriendPreferencesModel
 
-class MasterProfileViewModel : ViewModel() {
-    var profile = MasterProfileLiveData(dbRef, aRef)
-    private val mMediatorLiveData = MediatorLiveData<MasterProfileModel>()
+class FriendPreferencesViewModel(application: Application,uid: String): AndroidViewModel(application) {
+    var preferences = FriendPreferencesLiveData(dbRef, uid)
+    private val mMediatorLiveData = MediatorLiveData<MutableList<FriendPreferencesModel>>()
 
     init {
-        mMediatorLiveData.addSource(profile) {
+        mMediatorLiveData.addSource(preferences) {
             if (it != null) {
                 CoroutineScope(Dispatchers.IO).launch {
                     mMediatorLiveData.postValue(it)
@@ -28,6 +29,5 @@ class MasterProfileViewModel : ViewModel() {
 
     companion object {
         private val dbRef = FirebaseDatabase.getInstance().getReference("users")
-        private val aRef = FirebaseAuth.getInstance()
     }
 }
