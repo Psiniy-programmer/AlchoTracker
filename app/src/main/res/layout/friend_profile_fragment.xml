@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/friend_profile"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:ignore="UseCompoundDrawables">
@@ -13,24 +14,45 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/add_button"
+            android:id="@+id/add_friend_button"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
             android:contentDescription="@string/add"
-            android:src="@android:drawable/ic_menu_add" />
+            android:src="@android:drawable/ic_menu_add"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/delete_friend_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/add"
+            android:src="@android:drawable/ic_menu_delete"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/cancel_friend_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/add"
+            android:src="@drawable/deny"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <ImageView
         android:id="@+id/friend_profile_avatar"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="50dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/avatar"
-        android:contentDescription="@string/avatar" />
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/avatar"
+        android:src="@drawable/avatar" />
 
     <TextView
         android:id="@+id/friend_profile_user_text"
@@ -39,7 +61,7 @@
         android:layout_gravity="center_horizontal"
         android:textSize="36sp"
         android:textStyle="bold"
-        tools:text="Brendan Moore"/>
+        tools:text="Brendan Moore" />
 
     <TextView
         android:id="@+id/friend_profile_status_text"
@@ -49,60 +71,60 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:textSize="24sp"
-        tools:text="Status"
-        />
+        tools:text="Status" />
 
     <LinearLayout
         android:id="@+id/friend_profile_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
+
         <LinearLayout
             android:id="@+id/friend_profile_friends"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginEnd="15dp">
+            android:layout_marginEnd="15dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/friend_profile_friends_counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="20,583"
+                android:layout_marginEnd="10dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginEnd="10dp"
-                />
+                tools:text="20,583" />
+
             <TextView
                 android:id="@+id/friend_profile_friends_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/friends"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/friend_profile_dates"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="15dp">
+            android:layout_marginStart="15dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/friend_profile_events_counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="9,112,824"
+                android:layout_marginEnd="10dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginEnd="10dp"
-                />
+                tools:text="9,112,824" />
+
             <TextView
                 android:id="@+id/friend_profile_dates_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dates"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -112,9 +134,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
+        android:text="@string/Preferences"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:text="@string/Preferences"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/friend_drink"
@@ -123,12 +145,12 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:textSize="24sp"
-        tools:text="Пивко"/>
+        tools:text="Пивко" />
 
     <Button
         android:id="@+id/friend_preferences_list"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:text="@string/preferences_text"
-        android:textSize="36sp"/>
+        android:textSize="36sp" />
 </LinearLayout>
