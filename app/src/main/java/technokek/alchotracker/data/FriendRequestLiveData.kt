@@ -57,11 +57,19 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             outFriendList.plus(";").plus(currentUser!!.uid)
         }
 
-        query.ref.child(uid)
-            .child("friends")
-            .child("requests")
-            .child("outgoing")
-            .setValue(outgoingChange)
+        if (outgoingChange.isEmpty()) {
+            query.ref.child(uid)
+                .child("friends")
+                .child("requests")
+                .child("outgoing")
+                .setValue("")
+        } else {
+            query.ref.child(uid)
+                .child("friends")
+                .child("requests")
+                .child("outgoing")
+                .setValue(outgoingChange)
+        }
         query.ref.child(uid)
             .child("alchoinfo")
             .child("friendsCount")
@@ -94,11 +102,19 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             inFriendList.plus(";").plus(uid)
         }
 
-        query.ref.child(currentID)
-            .child("friends")
-            .child("requests")
-            .child("incoming")
-            .setValue(incomingChange)
+        if (incomingChange.isEmpty()) {
+            query.ref.child(currentID)
+                .child("friends")
+                .child("requests")
+                .child("incoming")
+                .setValue("")
+        } else {
+            query.ref.child(currentID)
+                .child("friends")
+                .child("requests")
+                .child("incoming")
+                .setValue(incomingChange)
+        }
         query.ref.child(currentID)
             .child("alchoinfo")
             .child("friendsCount")
@@ -119,27 +135,56 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
     fun denyRequest(uid: String, pos: Int, currUser: FriendModel) {
         var valueToPush = value!![pos]
-        val outgoing = valueToPush.outgoing
 
-        outgoing.replace(currentUser!!.uid, "")
+        val outgoing = valueToPush.outgoing.split(";").filter { it != currentUser!!.uid }
+        var outgoingChange = String()
+        for (i in outgoing) {
+            if (outgoingChange.isEmpty()) {
+                outgoingChange = i
+            } else {
+                outgoingChange.plus(";").plus(i)
+            }
+        }
 
         valueToPush = currUser
 
-        val incoming = valueToPush.outgoing
+        val incoming = valueToPush.incoming.split(";").filter { it != uid }
+        var incomingChange = String()
+        for (i in incoming) {
+            if (incomingChange.isEmpty()) {
+                incomingChange = i
+            } else {
+                incomingChange.plus(";").plus(i)
+            }
+        }
 
-        incoming.replace(uid, "")
+        if (outgoingChange.isEmpty()) {
+            query.ref.child(uid)
+                .child("friends")
+                .child("requests")
+                .child("outgoing")
+                .setValue("")
+        } else {
+            query.ref.child(uid)
+                .child("friends")
+                .child("requests")
+                .child("outgoing")
+                .setValue(outgoingChange)
+        }
 
-        query.ref.child(uid)
-            .child("friends")
-            .child("requests")
-            .child("outgoing")
-            .setValue(outgoing + "")
-
-        query.ref.child(currentUser.uid)
-            .child("friends")
-            .child("requests")
-            .child("incoming")
-            .setValue(incoming + "")
+        if (incomingChange.isEmpty()) {
+            query.ref.child(currentUser!!.uid)
+                .child("friends")
+                .child("requests")
+                .child("incoming")
+                .setValue("")
+        } else {
+            query.ref.child(currentUser!!.uid)
+                .child("friends")
+                .child("requests")
+                .child("incoming")
+                .setValue(incomingChange)
+        }
     }
 
     companion object {

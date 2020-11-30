@@ -32,8 +32,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="ready to test">
+    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="Workspace">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendRequestLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendRequestLiveData.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -375,7 +376,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606746345667</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Workspace">
+      <created>1606747601286</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1606747601286</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -422,7 +430,8 @@
     <MESSAGE value="Хуйня" />
     <MESSAGE value="added filter" />
     <MESSAGE value="ready to test" />
-    <option name="LAST_COMMIT_MESSAGE" value="ready to test" />
+    <MESSAGE value="Workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="Workspace" />
   </component>
   <component name="WindowStateProjectService">
     <state x="598" y="320" key="#Notifications" timestamp="1606604651034">
@@ -534,10 +543,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="101" y="43" key="MergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1606746368625" />
-    <state x="356" y="218" key="MultipleFileMergeDialog" timestamp="1606746371759">
+    <state x="356" y="218" key="MultipleFileMergeDialog" timestamp="1606747623457">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="356" y="218" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1606746371759" />
+    <state x="356" y="218" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1606747623457" />
     <state x="616" y="154" width="992" height="733" key="SettingsEditor" timestamp="1606692083729">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -554,10 +563,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="506" y="177" width="598" height="903" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606641302701" />
-    <state x="372" y="245" key="git4idea.merge.GitPullDialog" timestamp="1606747580470">
+    <state x="372" y="245" key="git4idea.merge.GitPullDialog" timestamp="1606747635806">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="372" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1606747580470" />
+    <state x="372" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1606747635806" />
     <state x="644" y="324" width="340" height="464" key="refactoring.ChangeSignatureDialog" timestamp="1606655745371">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
