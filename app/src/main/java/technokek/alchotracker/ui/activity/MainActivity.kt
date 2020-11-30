@@ -10,7 +10,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
 import technokek.alchotracker.R
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FriendClickListener
@@ -19,7 +18,6 @@ import technokek.alchotracker.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener {
 
-    private var mAuth: FirebaseAuth? = null
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var notificationManager: NotificationManagerCompat
@@ -29,16 +27,6 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
-        mAuth = FirebaseAuth.getInstance()
-        mAuth!!.signInWithEmailAndPassword("login1@maul.ru", "password")
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("OKZ", mAuth!!.currentUser?.uid.toString())
-                } else {
-                    Log.d("Denied", "signInWithEmail:failure", task.exception)
-                }
-            }
         //Mandatory for notifications!!!
         notificationManager = NotificationManagerCompat.from(this)
 
