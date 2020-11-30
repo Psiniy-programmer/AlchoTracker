@@ -33,17 +33,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="background set colorGray">
+    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="fix bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/CurrentUserLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/CurrentUserLiveData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendRequestLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendRequestLiveData.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_4_API_30]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -81,7 +78,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="psina" />
+        <entry key="$PROJECT_DIR$" value="local_calendar_branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -242,6 +239,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.AlchoTracker [wrapper]" />
         <item itemvalue="Gradle.AlchoTracker [wrapper]" />
         <item itemvalue="Gradle.AlchoTracker [wrapper]" />
         <item itemvalue="Gradle.AlchoTracker [wrapper]" />
@@ -456,25 +454,29 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1396" height="179" key="GridCell.Tab.0.bottom" timestamp="1606734150441">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="179" key="GridCell.Tab.0.bottom" timestamp="1606736512786">
+      <screen x="0" y="23" width="1440" height="836" />
     </state>
     <state width="1396" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606734150441" />
+    <state width="1398" height="179" key="GridCell.Tab.0.bottom/0.23.1440.836@0.23.1440.836" timestamp="1606736512786" />
     <state width="1470" height="83" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983168" />
-    <state width="1396" height="179" key="GridCell.Tab.0.center" timestamp="1606734150440">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="179" key="GridCell.Tab.0.center" timestamp="1606736512785">
+      <screen x="0" y="23" width="1440" height="836" />
     </state>
     <state width="1396" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606734150440" />
+    <state width="1398" height="179" key="GridCell.Tab.0.center/0.23.1440.836@0.23.1440.836" timestamp="1606736512785" />
     <state width="1470" height="83" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983167" />
-    <state width="1396" height="179" key="GridCell.Tab.0.left" timestamp="1606734150440">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="179" key="GridCell.Tab.0.left" timestamp="1606736512784">
+      <screen x="0" y="23" width="1440" height="836" />
     </state>
     <state width="1396" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606734150440" />
+    <state width="1398" height="179" key="GridCell.Tab.0.left/0.23.1440.836@0.23.1440.836" timestamp="1606736512784" />
     <state width="1470" height="83" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983167" />
-    <state width="1396" height="179" key="GridCell.Tab.0.right" timestamp="1606734150441">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="179" key="GridCell.Tab.0.right" timestamp="1606736512785">
+      <screen x="0" y="23" width="1440" height="836" />
     </state>
     <state width="1396" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606734150441" />
+    <state width="1398" height="179" key="GridCell.Tab.0.right/0.23.1440.836@0.23.1440.836" timestamp="1606736512785" />
     <state width="1470" height="83" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983168" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
       <screen x="0" y="30" width="1920" height="1050" />
