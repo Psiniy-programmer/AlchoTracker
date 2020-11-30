@@ -50,8 +50,8 @@ class CurrentUserLiveData() : MutableLiveData<FriendModel>() {
                         id = i.key.toString(),
                         name = i.child("name").value.toString(),
                         avatar = i.child("avatar").value.toString(),
-                        incoming = i.child("friends").child("incoming").value.toString(),
-                        outgoing = i.child("friends").child("outgoing").value.toString(),
+                        incoming = i.child("friends").child("requests").child("incoming").value.toString(),
+                        outgoing = i.child("friends").child("requests").child("outgoing").value.toString(),
                         friendsCount = i.child("alchoinfo").child("friendsCount")
                             .getValue(Int::class.java)!!,
                         friendsList = i.child("friends").child("list").value.toString()

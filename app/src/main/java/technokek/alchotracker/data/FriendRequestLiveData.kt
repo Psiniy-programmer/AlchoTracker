@@ -35,48 +35,35 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
         Log.d(TAG, "onInactive")
     }
 
-    fun acceptRequest(uid: String, pos: Int, currUser: FriendModel) {
-        var valueToPush = value!![pos]
-        var outgoing = valueToPush.outgoing
-        var outFriendsCount = valueToPush.friendsCount
-        var outFriendList = valueToPush.friendsList
+    private fun pushAcceptToFriend(friend: FriendModel, uid: String) {
+        var outgoing = friend.outgoing.split(";")
+        var outFriendsCount = friend.friendsCount
+        var outFriendList = friend.friendsList
 
-        outgoing.replace(currentUser!!.uid, "")
-        if (outgoing.isEmpty()) {
-            outgoing = ""
+        Log.d("Test", "outgoing: $outgoing")
+        var outgoingChange = String()
+        for (i in outgoing) {
+            if (i != currentUser!!.uid) {
+                if (outgoingChange.isEmpty()) {
+                    outgoingChange = i
+                } else {
+                    outgoingChange.plus(";").plus(i)
+                }
+            }
         }
+        Log.d("Test", "outgoingChange: $outgoingChange")
         outFriendsCount += 1
         if (outFriendList.isEmpty()) {
-            outFriendList = currentUser.uid
+            outFriendList = currentUser!!.uid
         } else {
-            outFriendList.plus(";").plus(currentUser.uid)
+            outFriendList.plus(";").plus(currentUser!!.uid)
         }
-
-        valueToPush = currUser
-
-        var incoming = valueToPush.outgoing
-        var inFriendCount = valueToPush.friendsCount + 1
-        var inFriendList = valueToPush.friendsList
-
-        Log.d("Test", "$inFriendList !!!!")
-
-        incoming.replace(uid, "")
-        if (incoming.isEmpty()) {
-            incoming = ""
-        }
-        inFriendList = if (inFriendList.isEmpty()) {
-            uid
-        } else {
-            inFriendList.plus(";").plus(uid)
-        }
-
-        Log.d("Test", "$inFriendList Plus")
 
         query.ref.child(uid)
             .child("friends")
             .child("requests")
             .child("outgoing")
-            .setValue(outgoing)
+            .setValue(outgoingChange)
         query.ref.child(uid)
             .child("alchoinfo")
             .child("friendsCount")
@@ -84,20 +71,54 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
         query.ref.child(uid)
             .child("friends")
             .child("list").setValue(outFriendList)
+    }
 
-        query.ref.child(currentUser.uid)
+    private fun pushAcceptToCurrUser(user: FriendModel, uid: String) {
+        var incoming = user.incoming.split(";")
+        var inFriendCount = user.friendsCount + 1
+        var inFriendList = user.friendsList
+        var currentID = user.id
+
+        Log.d("Test", "incoming: $incoming")
+
+        var incomingChange = String()
+        for (i in incoming) {
+            if (i != uid) {
+                if (incomingChange.isEmpty()) {
+                    incomingChange = i
+                } else {
+                    incomingChange.plus(";").plus(i)
+                }
+            }
+        }
+        Log.d("Test", "incomingChange: $incomingChange")
+        inFriendList = if (inFriendList.isEmpty()) {
+            uid
+        } else {
+            inFriendList.plus(";").plus(uid)
+        }
+
+        query.ref.child(currentID)
             .child("friends")
             .child("requests")
             .child("incoming")
-            .setValue(incoming)
-        query.ref.child(currentUser.uid)
+            .setValue(incomingChange)
+        query.ref.child(currentID)
             .child("alchoinfo")
             .child("friendsCount")
             .setValue(inFriendCount)
-        query.ref.child(currentUser.uid)
+        query.ref.child(currentID)
             .child("friends")
             .child("list")
             .setValue(inFriendList)
+    }
+
+    fun acceptRequest(uid: String, pos: Int, currUser: FriendModel) {
+        var valueToPush = value!![pos]
+        pushAcceptToFriend(valueToPush, uid)
+
+        valueToPush = currUser
+        pushAcceptToCurrUser(valueToPush, uid)
     }
 
     fun denyRequest(uid: String, pos: Int, currUser: FriendModel) {
@@ -141,8 +162,8 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
                         id = i.key.toString(),
                         name = i.child("name").value.toString(),
                         avatar = i.child("avatar").value.toString(),
-                        incoming = i.child("friends").child("incoming").value.toString(),
-                        outgoing = i.child("friends").child("outgoing").value.toString(),
+                        incoming = i.child("friends").child("requests").child("incoming").value.toString(),
+                        outgoing = i.child("friends").child("requests").child("outgoing").value.toString(),
                         friendsCount = i.child("alchoinfo").child("friendsCount")
                             .getValue(Int::class.java)!!,
                         friendsList = i.child("friends").child("list").value.toString()
