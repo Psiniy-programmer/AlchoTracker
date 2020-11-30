@@ -112,7 +112,7 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
             masterPath.child("outgoing")
                 .setValue("${value?.masterOutReq};$uid")
         }
-        if (value?.friendInReq?.length == 0) {
+        if (value?.friendInReq?.length == 4) {
             friendPath.child("incoming")
                 .setValue(mAuth.currentUser?.uid.toString())
         } else {
@@ -147,10 +147,6 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
 
     fun cancelRequest() {
         //TODO("cancelRequest")
-    }
-
-    fun getNewStr(str: String): String {
-        return str
     }
 
     companion object {

@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         supportActionBar?.hide()
         mAuth = FirebaseAuth.getInstance();
 //        mAuth!!.signOut()
-        mAuth!!.signInWithEmailAndPassword("login@maul.ru", "password")
+        mAuth!!.signInWithEmailAndPassword("login2@mail.ru", "ssssss")
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
