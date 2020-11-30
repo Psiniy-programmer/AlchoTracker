@@ -39,17 +39,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="background set colorGray">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendToggleRequestLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendToggleRequestLiveData.kt" afterDir="false" />
-    </list>
+    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="background set colorGray" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[ce011821892ea0920c]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_4_API_30]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -87,7 +83,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TestMergeFP" />
+        <entry key="$PROJECT_DIR$" value="MergeFP" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -372,7 +368,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/mergeT" />
+                        <option value="origin/MergeFP" />
                       </list>
                     </value>
                   </entry>
@@ -535,10 +531,11 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="506" y="177" width="598" height="903" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606641302701" />
-    <state x="372" y="245" key="git4idea.merge.GitPullDialog" timestamp="1606736844671">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="496" y="316" width="602" height="451" key="git4idea.merge.GitPullDialog" timestamp="1606744053663">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="372" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1606736844671" />
+    <state x="496" y="316" width="602" height="451" key="git4idea.merge.GitPullDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606744053663" />
     <state x="644" y="324" width="340" height="464" key="refactoring.ChangeSignatureDialog" timestamp="1606655745371">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
