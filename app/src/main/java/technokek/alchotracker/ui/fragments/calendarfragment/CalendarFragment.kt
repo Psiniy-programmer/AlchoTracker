@@ -34,6 +34,7 @@ import technokek.alchotracker.ui.fragments.calendarfragment.utils.*
 import technokek.alchotracker.ui.fragments.calendarfragment.utils.setTextColorRes
 import technokek.alchotracker.databinding.*
 import technokek.alchotracker.viewmodels.CalendarViewModel
+import java.lang.Exception
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.YearMonth
@@ -48,7 +49,9 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
 
     private lateinit var alkoEventsAdapter: AlkoEventsAdapter
-    private var alkoEvents: MutableMap<LocalDate, MutableList<CalendarModel>> = generateAlkoEvents().groupBy { it.time.toLocalDate() } as MutableMap<LocalDate, MutableList<CalendarModel>>
+    //Statically generated events
+    /*private var alkoEvents: MutableMap<LocalDate, MutableList<CalendarModel>> =
+        generateAlkoEvents().groupBy { it.time.toLocalDate() } as MutableMap<LocalDate, MutableList<CalendarModel>>*/
     private lateinit var mCalendarViewModel: CalendarViewModel
     private lateinit var binding: CalendarFragmentBinding
 
@@ -77,12 +80,17 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         val daysOfWeek = daysOfWeekFromLocale()
 
         val currentMonth = YearMonth.now()
-        binding.calendarFragmentCalendar.setup(currentMonth.minusMonths(10), currentMonth.plusMonths(10), daysOfWeek.first())
+        binding.calendarFragmentCalendar.setup(
+            currentMonth.minusMonths(10),
+            currentMonth.plusMonths(10),
+            daysOfWeek.first()
+        )
         binding.calendarFragmentCalendar.scrollToMonth(currentMonth)
 
         class DayViewContainer(view: View) : ViewContainer(view) {
             lateinit var day: CalendarDay // Will be set when this container is bound.
             val binding = CalendarDayBinding.bind(view)
+
             init {
                 view.setOnClickListener {
                     if (day.owner == DayOwner.THIS_MONTH) {
@@ -124,10 +132,22 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                     }
                     if (dayEvents != null) {
                         if (dayEvents.count() == 1) {
-                            alkoEventBottomView.setBackgroundColor(view.context.getColorCompat(dayEvents[0].color))
+                            alkoEventBottomView.setBackgroundColor(
+                                view.context.getColorCompat(
+                                    dayEvents[0].color
+                                )
+                            )
                         } else {
-                            alkoEventTopView.setBackgroundColor(view.context.getColorCompat(dayEvents[0].color))
-                            alkoEventBottomView.setBackgroundColor(view.context.getColorCompat(dayEvents[1].color))
+                            alkoEventTopView.setBackgroundColor(
+                                view.context.getColorCompat(
+                                    dayEvents[0].color
+                                )
+                            )
+                            alkoEventBottomView.setBackgroundColor(
+                                view.context.getColorCompat(
+                                    dayEvents[1].color
+                                )
+                            )
                         }
                     }
                 } else {
@@ -140,22 +160,27 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         class MonthViewContainer(view: View) : ViewContainer(view) {
             val legendLayout = CalendarHeaderBinding.bind(view).legendLayout.root
         }
-        binding.calendarFragmentCalendar.monthHeaderBinder = object : MonthHeaderFooterBinder<MonthViewContainer> {
-            override fun create(view: View) = MonthViewContainer(view)
-            override fun bind(container: MonthViewContainer, month: CalendarMonth) {
-                // Setup each header day text if we have not done that already.
-                if (container.legendLayout.tag == null) {
-                    container.legendLayout.tag = month.yearMonth
-                    container.legendLayout.children.map { it as TextView }.forEachIndexed { index, tv ->
-                        tv.text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.ENGLISH)
-                            .toUpperCase(Locale.ENGLISH)
-                        tv.setTextColorRes(R.color.calendar_text_grey)
-                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
+        binding.calendarFragmentCalendar.monthHeaderBinder =
+            object : MonthHeaderFooterBinder<MonthViewContainer> {
+                override fun create(view: View) = MonthViewContainer(view)
+                override fun bind(container: MonthViewContainer, month: CalendarMonth) {
+                    // Setup each header day text if we have not done that already.
+                    if (container.legendLayout.tag == null) {
+                        container.legendLayout.tag = month.yearMonth
+                        container.legendLayout.children.map { it as TextView }
+                            .forEachIndexed { index, tv ->
+                                tv.text = daysOfWeek[index].getDisplayName(
+                                    TextStyle.SHORT,
+                                    Locale.ENGLISH
+                                )
+                                    .toUpperCase(Locale.ENGLISH)
+                                tv.setTextColorRes(R.color.calendar_text_grey)
+                                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
+                            }
+                        month.yearMonth
                     }
-                    month.yearMonth
                 }
             }
-        }
 
         binding.calendarFragmentCalendar.monthScrollListener = { month ->
             val title = "${monthTitleFormatter.format(month.yearMonth)} ${month.yearMonth.year}"
@@ -221,7 +246,8 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                 { view, hourOfDay, minute ->
                     time = date!!.atTime(hourOfDay, minute)
                     openTimePickerClicked = true
-                    buttonSubmit!!.isEnabled = !(isEmpty(etEventName) && isEmpty(etEventCosts) && !openTimePickerClicked)
+                    buttonSubmit!!.isEnabled =
+                        !(isEmpty(etEventName) && isEmpty(etEventCosts) && !openTimePickerClicked)
                 }, 0, 0, true
             )
             timePickerDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -234,8 +260,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         buttonSubmit.setOnClickListener {
             if (isEmpty(etEventName) || isEmpty(etEventCosts)) {
                 Toast.makeText(this.context, "Fill in all the fields!", Toast.LENGTH_LONG).show()
-            }
-            else {
+            } else {
                 val newAlkoEvent = formAlkoEvent(
                     etEventName,
                     etEventCosts,
@@ -251,32 +276,44 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         dialog.show()
     }
 
-    private fun formAlkoEvent(eventName: EditText,
-                              eventCosts: EditText,
-                              eventTime: LocalDateTime): CalendarModel {
+    private fun formAlkoEvent(
+        eventName: EditText,
+        eventCosts: EditText,
+        eventTime: LocalDateTime
+    ): CalendarModel {
         val place = eventName.text.toString()
         val costs = eventCosts.text.toString()
         //TODO should have ask name of the event also
+        Log.d(
+            "ValueSize",
+            mCalendarViewModel.mMediatorLiveData.value!!.values.flatMap { it.toList() }.size.toString()
+        )
         return CalendarModel(
             eventTime,
             PlaceLoc(place, costs, place),
             R.color.teal_700,
             adminId = FirebaseAuth.getInstance().currentUser.toString(),
-            id = (mCalendarViewModel.mMediatorLiveData.value!!.values.size + 1).toString()
+            id = (mCalendarViewModel.mMediatorLiveData.value!!.values.flatMap { it.toList() }.size + 1).toString()
         )
     }
 
     private fun deleteEvent(date: LocalDate?, calendarModel: CalendarModel?) {
-        var thisDayAlkoEvents = mCalendarViewModel.mMediatorLiveData.value!!.remove(date)
-        thisDayAlkoEvents!!.remove(calendarModel)
-        if (thisDayAlkoEvents.isNotEmpty()) {
-            mCalendarViewModel.mMediatorLiveData.value!!.put(date!!, thisDayAlkoEvents)
+        //Прокидываем в VM
+        //TODO нужно сделать callback для отключения кнопки
+        if (calendarModel == null || selectedDate != date) {
+            Toast.makeText(this.context, "You didnt choose the event!", Toast.LENGTH_LONG).show()
+            return
         }
-        else {
-            //TODO this cant be here with MVVM cos its UI
+        try {
+            if (mCalendarViewModel.mMediatorLiveData.value!![date]!!.isNotEmpty()) {
+                mCalendarViewModel.pushDeleteEvent(date!!, calendarModel)
+            }
+        } catch (e: Exception) {
+            Toast.makeText(this.context, "Nothing to delete!", Toast.LENGTH_LONG).show()
+        }
+        /*else {
             binding.buttonDelete.isEnabled = false
-        }
-        //TODO renew DB
+        }*/
         updateAdapterForDate(date)
     }
 

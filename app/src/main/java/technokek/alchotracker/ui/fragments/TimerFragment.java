@@ -133,6 +133,7 @@ public class TimerFragment extends Fragment implements TimerInterface {
         //TODO save DATA in DB
         //TODO send notification to function
         sendFinishNotification();
+        onChoose();
     }
 
     private void sendFinishNotification() {

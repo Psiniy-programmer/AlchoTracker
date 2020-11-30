@@ -58,8 +58,7 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
             value!![date] = mutableListOf(event)
             //Записываем в БД по ссылке
             pushEventToBD(date, event, ++valueSize)
-        }
-        else {
+        } else {
             //Кладём значение в liveData
             val eventsThisDate = value!![date]
             eventsThisDate!!.add(event)
@@ -73,7 +72,7 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
         query.ref.child(eventNumber.toString()).apply {
             child(AVATAR).setValue(event.avatar)
             child(DATE).setValue(date.toString())
-            child(EVENT_ID).setValue(event.id)
+            child(EVENT_ID).setValue(eventNumber.toString())
             child(MEMBERS)
                 .child(ADMIN)
                 .child(ADMIN_ID)
@@ -83,6 +82,20 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
             child(PRICE).setValue(event.eventPlace.price)
             child(TIME).setValue(localDateTimeToTimeString(event.time))
         }
+    }
+
+    fun pushDeleteEventToDB(date: LocalDate, calendarModel: CalendarModel) {
+        //TODO delete only possible if its admin of the event
+        //TODO decide reindexing problem
+        if (value!![date]!!.size == 1) {
+            value!!.remove(date)
+        } else {
+            val todayEvents = value!![date]
+            todayEvents!!.remove(calendarModel)
+            value!![date] = todayEvents
+        }
+        //Предполагаю, что id == eventNumber
+        query.ref.child(calendarModel.id).removeValue()
     }
 
     private fun localDateTimeToTimeString(localDateTime: LocalDateTime): String {
@@ -108,7 +121,7 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
         }
 
         private fun stringDateToLocalDate(date: String): LocalDate {
-            val dateInStringList:List<String?> = date.split(
+            val dateInStringList: List<String?> = date.split(
                 delimiters = charArrayOf('-'),
                 limit = 3
             )
@@ -119,8 +132,7 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
                     dateInStringList[1]!!.toInt(),
                     dateInStringList[2]!!.toInt()
                 )
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
                 return LocalDate.of(
                     2020,
                     11,
@@ -139,8 +151,7 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
                     timeInStringList[0].toInt(),
                     timeInStringList[1].toInt()
                 )
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
                 return date.atTime(
                     0,
                     0
@@ -149,8 +160,10 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
 
         }
 
-        private fun retrieveData(i:DataSnapshot,
-                                 calendarEvents: MutableMap<LocalDate, MutableList<CalendarModel>>) {
+        private fun retrieveData(
+            i: DataSnapshot,
+            calendarEvents: MutableMap<LocalDate, MutableList<CalendarModel>>
+        ) {
             val localDate = stringDateToLocalDate(i.child("date").value.toString())
             val localDateTime = timeToLocalDateTime(
                 localDate,
@@ -172,8 +185,7 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
             )
             if (!calendarEvents.containsKey(localDate)) {
                 calendarEvents.put(localDate, mutableListOf(calendarEvent))
-            }
-            else {
+            } else {
                 val eventsThisDate = calendarEvents[localDate]
                 eventsThisDate!!.add(calendarEvent)
                 calendarEvents.put(localDate, eventsThisDate)

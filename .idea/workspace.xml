@@ -33,8 +33,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="background set colorGray">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_timer_24.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/CalendarLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/CalendarLiveData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/TimerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/TimerFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/calendarfragment/CalendarFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/calendarfragment/CalendarFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/CalendarViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/CalendarViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_timer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_timer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -487,10 +497,11 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="308" y="212" key="AndroidCreateResourceFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1606605421922" />
-    <state x="453" y="273" width="356" height="382" key="AndroidCreateXmlResourceDialog" timestamp="1606603989924">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="614" y="257" width="356" height="382" key="AndroidCreateXmlResourceDialog" timestamp="1606732459980">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="453" y="273" width="356" height="382" key="AndroidCreateXmlResourceDialog/0.0.1440.900@0.0.1440.900" timestamp="1606603989924" />
+    <state x="614" y="257" key="AndroidCreateXmlResourceDialog/0.0.1536.824@0.0.1536.824" timestamp="1606732459980" />
     <state x="604" y="349" width="304" height="445" key="AndroidCreateXmlResourceDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606124255802" />
     <state x="606" y="61" width="697" height="990" key="CommitChangelistDialog2" timestamp="1605890799452">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -501,29 +512,29 @@
     </state>
     <state x="594" y="223" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606678433488" />
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1491" height="179" key="GridCell.Tab.0.bottom" timestamp="1606694408725">
+    <state width="1491" height="116" key="GridCell.Tab.0.bottom" timestamp="1606731977689">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1491" height="179" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606694408725" />
+    <state width="1491" height="116" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606731977689" />
     <state width="1568" height="295" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1491" height="179" key="GridCell.Tab.0.center" timestamp="1606694408724">
+    <state width="1491" height="116" key="GridCell.Tab.0.center" timestamp="1606731977688">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1491" height="179" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606694408724" />
+    <state width="1491" height="116" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606731977688" />
     <state width="1568" height="295" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1491" height="179" key="GridCell.Tab.0.left" timestamp="1606694408721">
+    <state width="1491" height="116" key="GridCell.Tab.0.left" timestamp="1606731977688">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606604197676" />
-    <state width="1491" height="179" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606694408721" />
+    <state width="1491" height="116" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606731977688" />
     <state width="1568" height="295" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
-    <state width="1491" height="179" key="GridCell.Tab.0.right" timestamp="1606694408725">
+    <state width="1491" height="116" key="GridCell.Tab.0.right" timestamp="1606731977689">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1396" height="203" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606604197677" />
-    <state width="1491" height="179" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606694408725" />
+    <state width="1491" height="116" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606731977688" />
     <state width="1568" height="295" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606410745561" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -561,10 +572,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="372" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1606559405429" />
-    <state x="498" y="181" width="672" height="533" key="search.everywhere.popup" timestamp="1606693404931">
+    <state x="498" y="181" width="672" height="533" key="search.everywhere.popup" timestamp="1606724858607">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="181" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1606693404931" />
+    <state x="498" y="181" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1606724858607" />
     <state x="623" y="261" width="672" height="678" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606057689302" />
   </component>
 </project>

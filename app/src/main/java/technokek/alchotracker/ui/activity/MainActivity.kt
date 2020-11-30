@@ -41,10 +41,12 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
                     Log.d("kek", "signInWithEmail:failure", task.exception)
                 }
             }
+        //Mandatory for notifications!!!
+        notificationManager = NotificationManagerCompat.from(this)
 
         //setUpNavigation()
-        addCalendarFragment()
-        //addTimerFragment()
+        //addCalendarFragment()
+        addTimerFragment()
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
@@ -90,6 +92,7 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
             .setContentText(text)
         val notification = builder.build()
         notificationManager.notify(id, notification)
+        Log.d("Notification1", "Im here")
     }
 
     fun sendTimerFragmentNotificationChannel2(id:Int, title:String, text:String) {

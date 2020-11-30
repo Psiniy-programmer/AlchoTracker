@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    tools:context=".ui.activity.MainActivity">
 
     <Button
         android:layout_width="match_parent"

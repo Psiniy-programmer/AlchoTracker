@@ -14,14 +14,14 @@ class CalendarViewModel : ViewModel() {
     private var calendarEvents = CalendarLiveData(STOCK_REF)
     var mMediatorLiveData = MediatorLiveData<MutableMap<LocalDate, MutableList<CalendarModel>>>()
         private set
+
     init {
         mMediatorLiveData.addSource(calendarEvents) {
             if (it != null) {
                 CoroutineScope(Dispatchers.IO).launch {
                     mMediatorLiveData.postValue(it)
                 }
-            }
-            else {
+            } else {
                 mMediatorLiveData.value = null
             }
         }
@@ -31,6 +31,13 @@ class CalendarViewModel : ViewModel() {
         //В корутине делаем запрос на изменение данных в БД
         CoroutineScope(Dispatchers.IO).launch {
             calendarEvents.pushDataToDB(date, event)
+        }
+    }
+
+    fun pushDeleteEvent(date: LocalDate, calendarModel: CalendarModel) {
+        //В корутине делаем запрос на изменение данных в БД
+        CoroutineScope(Dispatchers.IO).launch {
+            calendarEvents.pushDeleteEventToDB(date, calendarModel)
         }
     }
 
