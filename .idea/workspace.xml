@@ -40,20 +40,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="background set colorGray">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendToggleRequestLiveData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/models/FriendToggleRequestModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/FriendProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/FriendProfileViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friend_profile_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/friend_profile_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendToggleRequestLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendToggleRequestLiveData.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_4_API_30]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[ce011821892ea0920c]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -107,8 +103,8 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_4_API_30" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-30T12:50:26.776Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="ce011821892ea0920c" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-30T13:37:29.033Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -475,30 +471,30 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1396" height="179" key="GridCell.Tab.0.bottom" timestamp="1606740582720">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1404" height="168" key="GridCell.Tab.0.bottom" timestamp="1606743457063">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606740582720" />
     <state width="1398" height="179" key="GridCell.Tab.0.bottom/0.23.1440.836@0.23.1440.836" timestamp="1606736512786" />
-    <state width="1470" height="83" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983168" />
-    <state width="1396" height="179" key="GridCell.Tab.0.center" timestamp="1606740582719">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1404" height="168" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606743457063" />
+    <state width="1404" height="168" key="GridCell.Tab.0.center" timestamp="1606743457062">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606740582719" />
     <state width="1398" height="179" key="GridCell.Tab.0.center/0.23.1440.836@0.23.1440.836" timestamp="1606736512785" />
-    <state width="1470" height="83" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983167" />
-    <state width="1396" height="179" key="GridCell.Tab.0.left" timestamp="1606740582719">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1404" height="168" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606743457062" />
+    <state width="1404" height="168" key="GridCell.Tab.0.left" timestamp="1606743457061">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606740582719" />
     <state width="1398" height="179" key="GridCell.Tab.0.left/0.23.1440.836@0.23.1440.836" timestamp="1606736512784" />
-    <state width="1470" height="83" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983167" />
-    <state width="1396" height="179" key="GridCell.Tab.0.right" timestamp="1606740582720">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1404" height="168" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606743457061" />
+    <state width="1404" height="168" key="GridCell.Tab.0.right" timestamp="1606743457063">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1396" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606740582720" />
     <state width="1398" height="179" key="GridCell.Tab.0.right/0.23.1440.836@0.23.1440.836" timestamp="1606736512785" />
-    <state width="1470" height="83" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983168" />
+    <state width="1404" height="168" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606743457063" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -531,10 +527,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606609496475" />
-    <state x="428" y="366" width="580" height="380" key="com.android.tools.idea.run.deployment.ModifyDeviceSetDialog" timestamp="1606666580622">
+    <state x="428" y="366" width="580" height="380" key="com.android.tools.idea.run.deployment.ModifyDeviceSetDialog" timestamp="1606743451563">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="428" y="366" width="580" height="380" key="com.android.tools.idea.run.deployment.ModifyDeviceSetDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606666580622" />
+    <state x="428" y="366" width="580" height="380" key="com.android.tools.idea.run.deployment.ModifyDeviceSetDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606743451563" />
     <state x="506" y="177" width="598" height="903" key="find.popup" timestamp="1606641302701">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
