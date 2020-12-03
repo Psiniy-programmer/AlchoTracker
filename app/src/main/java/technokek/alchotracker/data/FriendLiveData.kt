@@ -3,7 +3,6 @@ package technokek.alchotracker.data
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import technokek.alchotracker.data.models.FriendModel
 
@@ -69,7 +68,7 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             Log.d(TAG, "Can't listen query $query", error.toException())
         }
 
-        private fun getListFriends(snapshot: DataSnapshot) : MutableList<String> {
+        private fun getListFriends(snapshot: DataSnapshot): MutableList<String> {
             val user = snapshot.child(currentUser!!.uid)
             val rawList = user.child("friends").child("list").value.toString()
 

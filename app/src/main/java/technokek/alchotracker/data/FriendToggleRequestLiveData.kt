@@ -92,7 +92,6 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
         override fun onCancelled(error: DatabaseError) {
             Log.e("ERROR", error.toString())
         }
-
     }
 
     fun addFriend() {
@@ -110,7 +109,7 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
                 .setValue(mAuth.currentUser?.uid.toString())
         } else {
             friendPath.child("incoming")
-                .setValue("${value?.friendInReq};${mAuth.currentUser?.uid.toString()}")
+                .setValue("${value?.friendInReq};${mAuth.currentUser?.uid}")
         }
     }
 
@@ -142,7 +141,7 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
     }
 
     fun cancelRequest() {
-        //TODO("cancelRequest")
+        // TODO("cancelRequest")
     }
 
     companion object {

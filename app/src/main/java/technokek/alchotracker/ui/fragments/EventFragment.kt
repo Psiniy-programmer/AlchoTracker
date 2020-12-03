@@ -40,14 +40,17 @@ class EventFragment : Fragment() {
             EventAdapter(mutableListOf(), listener)
         }
 
-        mEventViewModel.events.observe(this, {
-            if (recyclerView.adapter == null) {
-                mProgressBar.visibility = View.GONE
-                adapter.refresh(mEventViewModel.events.value!!)
-                adapter.notifyDataSetChanged()
-                recyclerView.adapter = adapter
+        mEventViewModel.events.observe(
+            viewLifecycleOwner,
+            {
+                if (recyclerView.adapter == null) {
+                    mProgressBar.visibility = View.GONE
+                    adapter.refresh(mEventViewModel.events.value!!)
+                    adapter.notifyDataSetChanged()
+                    recyclerView.adapter = adapter
+                }
             }
-        })
+        )
     }
 
     companion object {

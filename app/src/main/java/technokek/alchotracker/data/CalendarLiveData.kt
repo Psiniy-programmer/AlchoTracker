@@ -4,12 +4,11 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import technokek.alchotracker.data.models.CalendarModel
-import technokek.alchotracker.data.models.FriendModel
+import java.lang.Exception
 import java.time.LocalDate
 import java.time.LocalDateTime
 import technokek.alchotracker.R
-import java.lang.Exception
+import technokek.alchotracker.data.models.CalendarModel
 
 class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<CalendarModel>>>() {
     private lateinit var query: Query
@@ -54,16 +53,16 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
 
     fun pushDataToDB(date: LocalDate, event: CalendarModel) {
         if (!value!!.containsKey(date)) {
-            //Кладём значение в liveData
+            // Кладём значение в liveData
             value!![date] = mutableListOf(event)
-            //Записываем в БД по ссылке
+            // Записываем в БД по ссылке
             pushEventToBD(date, event, ++valueSize)
         } else {
-            //Кладём значение в liveData
+            // Кладём значение в liveData
             val eventsThisDate = value!![date]
             eventsThisDate!!.add(event)
             value!![date] = eventsThisDate
-            //Записываем в БД по ссылке
+            // Записываем в БД по ссылке
             pushEventToBD(date, event, ++valueSize)
         }
     }
@@ -85,8 +84,8 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
     }
 
     fun pushDeleteEventToDB(date: LocalDate, calendarModel: CalendarModel) {
-        //TODO delete only possible if its admin of the event
-        //TODO decide reindexing problem
+        // TODO delete only possible if its admin of the event
+        // TODO decide reindexing problem
         if (value!![date]!!.size == 1) {
             value!!.remove(date)
         } else {
@@ -94,7 +93,7 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
             todayEvents!!.remove(calendarModel)
             value!![date] = todayEvents
         }
-        //Предполагаю, что id == eventNumber
+        // Предполагаю, что id == eventNumber
         query.ref.child(calendarModel.id).removeValue()
     }
 
@@ -106,11 +105,10 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
         override fun onDataChange(snapshot: DataSnapshot) {
             val calendarEvents: MutableMap<LocalDate, MutableList<CalendarModel>> = mutableMapOf()
 
-
             valueSize = snapshot.children.count()
             Log.d("DBSize", valueSize.toString())
             for (i in snapshot.children) {
-                //Get data
+                // Get data
                 retrieveData(i, calendarEvents)
             }
             value = calendarEvents
@@ -157,7 +155,6 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
                     0
                 )
             }
-
         }
 
         private fun retrieveData(

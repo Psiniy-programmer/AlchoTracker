@@ -37,10 +37,12 @@ class MasterPreferencesLiveData() : MutableLiveData<MutableList<MasterPreference
                 .child("alchoinfo")
                 .child("preferences")
                 .children
-            for (x in snapshot.child(mAuth.currentUser?.uid.toString())
-                .child("alchoinfo")
-                .child("preferences")
-                .children) {
+            for (
+                x in snapshot.child(mAuth.currentUser?.uid.toString())
+                    .child("alchoinfo")
+                    .child("preferences")
+                    .children
+            ) {
                 val preferenceItem = MasterPreferencesModel(x.key.toString())
                 preferences.add(preferenceItem)
             }

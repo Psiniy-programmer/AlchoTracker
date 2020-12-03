@@ -59,14 +59,17 @@ class FriendProfileFragment : Fragment() {
             )[FriendProfileViewModel::class.java]
         }
 
-        mProfileViewModel.profile.observe(viewLifecycleOwner, {
-            userText.text = it.name
-            statusText.text = it.status
-            favouriteDrink.text = it.favouriteDrink
-            friendsCounter.text = it.friendsCount.toString()
-            eventsCounter.text = it.eventCount.toString()
-            Picasso.get().load(it.avatar).into(avatarView)
-        })
+        mProfileViewModel.profile.observe(
+            viewLifecycleOwner,
+            {
+                userText.text = it.name
+                statusText.text = it.status
+                favouriteDrink.text = it.favouriteDrink
+                friendsCounter.text = it.friendsCount.toString()
+                eventsCounter.text = it.eventCount.toString()
+                Picasso.get().load(it.avatar).into(avatarView)
+            }
+        )
         preferencesBtn = view.findViewById(R.id.friend_preferences_list)
 
         preferencesBtn.setOnClickListener {
@@ -83,21 +86,24 @@ class FriendProfileFragment : Fragment() {
         deleteFriendBtn = view.findViewById(R.id.delete_friend_button)
         cancelRequestBtn = view.findViewById(R.id.cancel_friend_button)
 
-        mProfileViewModel.requests.observe(viewLifecycleOwner, {
-            if (it.inFriend) {
-                deleteFriendBtn.visibility = View.VISIBLE
-                addFriendBtn.visibility = View.GONE
-                cancelRequestBtn.visibility = View.GONE
-            } else if (it.requestIsSended){
-                cancelRequestBtn.visibility = View.VISIBLE
-                deleteFriendBtn.visibility = View.GONE
-                addFriendBtn.visibility = View.GONE
-            } else {
-                addFriendBtn.visibility = View.VISIBLE
-                deleteFriendBtn.visibility = View.GONE
-                cancelRequestBtn.visibility = View.GONE
+        mProfileViewModel.requests.observe(
+            viewLifecycleOwner,
+            {
+                if (it.inFriend) {
+                    deleteFriendBtn.visibility = View.VISIBLE
+                    addFriendBtn.visibility = View.GONE
+                    cancelRequestBtn.visibility = View.GONE
+                } else if (it.requestIsSended) {
+                    cancelRequestBtn.visibility = View.VISIBLE
+                    deleteFriendBtn.visibility = View.GONE
+                    addFriendBtn.visibility = View.GONE
+                } else {
+                    addFriendBtn.visibility = View.VISIBLE
+                    deleteFriendBtn.visibility = View.GONE
+                    cancelRequestBtn.visibility = View.GONE
+                }
             }
-        })
+        )
         addFriendBtn.setOnClickListener {
             mProfileViewModel.addFriend()
         }
@@ -107,7 +113,6 @@ class FriendProfileFragment : Fragment() {
         }
 
         cancelRequestBtn.setOnClickListener {
-
         }
     }
 

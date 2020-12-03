@@ -8,7 +8,7 @@ import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import technokek.alchotracker.data.models.FriendProfileModel
 
-class FriendProfileLiveData(): MutableLiveData<FriendProfileModel>() {
+class FriendProfileLiveData() : MutableLiveData<FriendProfileModel>() {
     private lateinit var uid: String
     private lateinit var query: Query
     private val profileListener = ProfileListener()
@@ -41,7 +41,6 @@ class FriendProfileLiveData(): MutableLiveData<FriendProfileModel>() {
         override fun onCancelled(error: DatabaseError) {
             Log.d("kek", error.toString())
         }
-
     }
 
     fun setProfile(x: DataSnapshot) {

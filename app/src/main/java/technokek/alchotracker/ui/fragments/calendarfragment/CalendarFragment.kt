@@ -27,13 +27,6 @@ import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.utils.next
 import com.kizitonwose.calendarview.utils.previous
-import technokek.alchotracker.R
-import technokek.alchotracker.adapters.AlkoEventsAdapter
-import technokek.alchotracker.data.models.CalendarModel
-import technokek.alchotracker.ui.fragments.calendarfragment.utils.*
-import technokek.alchotracker.ui.fragments.calendarfragment.utils.setTextColorRes
-import technokek.alchotracker.databinding.*
-import technokek.alchotracker.viewmodels.CalendarViewModel
 import java.lang.Exception
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -41,6 +34,13 @@ import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.*
+import technokek.alchotracker.R
+import technokek.alchotracker.adapters.AlkoEventsAdapter
+import technokek.alchotracker.data.models.CalendarModel
+import technokek.alchotracker.databinding.*
+import technokek.alchotracker.ui.fragments.calendarfragment.utils.*
+import technokek.alchotracker.ui.fragments.calendarfragment.utils.setTextColorRes
+import technokek.alchotracker.viewmodels.CalendarViewModel
 
 class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter.ActionListener {
 
@@ -49,7 +49,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
 
     private lateinit var alkoEventsAdapter: AlkoEventsAdapter
-    //Statically generated events
+    // Statically generated events
     /*private var alkoEvents: MutableMap<LocalDate, MutableList<CalendarModel>> =
         generateAlkoEvents().groupBy { it.time.toLocalDate() } as MutableMap<LocalDate, MutableList<CalendarModel>>*/
     private lateinit var mCalendarViewModel: CalendarViewModel
@@ -59,15 +59,17 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //set ViewModel
+        // set ViewModel
         mCalendarViewModel = ViewModelProvider(this)[CalendarViewModel::class.java]
         alkoEventsAdapter = AlkoEventsAdapter(actionListener = this)
         binding = CalendarFragmentBinding.bind(view)
-        mCalendarViewModel.mMediatorLiveData.observe(viewLifecycleOwner, {
-            updateAdapterForDate(selectedDate)
-            binding.calendarFragmentCalendar.notifyCalendarChanged()
-        })
-
+        mCalendarViewModel.mMediatorLiveData.observe(
+            viewLifecycleOwner,
+            {
+                updateAdapterForDate(selectedDate)
+                binding.calendarFragmentCalendar.notifyCalendarChanged()
+            }
+        )
 
         binding.calendarRv.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -75,7 +77,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
             addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
         }
         alkoEventsAdapter.notifyDataSetChanged()
-
 
         val daysOfWeek = daysOfWeekFromLocale()
 
@@ -100,7 +101,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                             val binding = this@CalendarFragment.binding
                             binding.calendarFragmentCalendar.notifyDateChanged(day.date)
                             binding.buttonAdd.isEnabled = true
-                            //binding.buttonDelete.isEnabled = alkoEvents[day.date] != null
+                            // binding.buttonDelete.isEnabled = alkoEvents[day.date] != null
                             oldDate?.let { binding.calendarFragmentCalendar.notifyDateChanged(it) }
                             updateAdapterForDate(day.date)
                         }
@@ -123,12 +124,13 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
 
                 if (day.owner == DayOwner.THIS_MONTH) {
                     textView.setTextColorRes(R.color.calendar_text_grey)
-                    layout.setBackgroundResource(if (selectedDate == day.date) R.drawable.calendar_selected_bg else 0)
+                    layout.setBackgroundResource(
+                        if (selectedDate == day.date) R.drawable.calendar_selected_bg else 0
+                    )
 
                     var dayEvents: MutableList<CalendarModel>? = null
                     if (mCalendarViewModel.mMediatorLiveData.value?.get(day.date) != null) {
                         dayEvents = mCalendarViewModel.mMediatorLiveData.value!![day.date]
-
                     }
                     if (dayEvents != null) {
                         if (dayEvents.count() == 1) {
@@ -208,11 +210,11 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
             }
         }
 
-        //pop up dialog binding
+        // pop up dialog binding
         binding.buttonAdd.setOnClickListener {
             showPopUp(selectedDate)
         }
-        //button delete logic
+        // button delete logic
         binding.buttonDelete.isEnabled = false
         binding.buttonDelete.setOnClickListener {
             deleteEvent(selectedDate, selectedCalendarModel)
@@ -248,14 +250,17 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                     openTimePickerClicked = true
                     buttonSubmit!!.isEnabled =
                         !(isEmpty(etEventName) && isEmpty(etEventCosts) && !openTimePickerClicked)
-                }, 0, 0, true
+                },
+                0,
+                0,
+                true
             )
             timePickerDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            //TODO fix this crash
-            //timePickerDialog.updateTime(time.hour, time.minute)
+            // TODO fix this crash
+            // timePickerDialog.updateTime(time.hour, time.minute)
             timePickerDialog.show()
         }
-        //button submit logic
+        // button submit logic
         buttonSubmit.isEnabled = false
         buttonSubmit.setOnClickListener {
             if (isEmpty(etEventName) || isEmpty(etEventCosts)) {
@@ -266,7 +271,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                     etEventCosts,
                     time
                 )
-                //Прокидываем в VM
+                // Прокидываем в VM
                 mCalendarViewModel.pushData(date!!, newAlkoEvent)
                 updateAdapterForDate(date)
                 dialog.dismiss()
@@ -283,23 +288,25 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     ): CalendarModel {
         val place = eventName.text.toString()
         val costs = eventCosts.text.toString()
-        //TODO should have ask name of the event also
+        // TODO should have ask name of the event also
         Log.d(
             "ValueSize",
-            mCalendarViewModel.mMediatorLiveData.value!!.values.flatMap { it.toList() }.size.toString()
+            mCalendarViewModel.mMediatorLiveData.value!!
+                .values.flatMap { it.toList() }.size.toString()
         )
         return CalendarModel(
             eventTime,
             PlaceLoc(place, costs, place),
             R.color.teal_700,
             adminId = FirebaseAuth.getInstance().currentUser.toString(),
-            id = (mCalendarViewModel.mMediatorLiveData.value!!.values.flatMap { it.toList() }.size + 1).toString()
+            id = (mCalendarViewModel.mMediatorLiveData.value!!
+                .values.flatMap { it.toList() }.size + 1).toString()
         )
     }
 
     private fun deleteEvent(date: LocalDate?, calendarModel: CalendarModel?) {
-        //Прокидываем в VM
-        //TODO нужно сделать callback для отключения кнопки
+        // Прокидываем в VM
+        // TODO нужно сделать callback для отключения кнопки
         if (calendarModel == null || selectedDate != date) {
             Toast.makeText(this.context, "You didnt choose the event!", Toast.LENGTH_LONG).show()
             return

@@ -15,7 +15,6 @@ import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener {
 
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
-        //Mandatory for notifications!!!
+        // Mandatory for notifications!!!
         notificationManager = NotificationManagerCompat.from(this)
 
         setUpNavigation()
@@ -57,10 +56,13 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         val bundle = Bundle()
         bundle.putString("uid", uid)
 
-        navHostFragment.navController.navigate(R.id.action_friendFragment_to_friendProfileFragment, bundle)
+        navHostFragment.navController.navigate(
+            R.id.action_friendFragment_to_friendProfileFragment,
+            bundle
+        )
     }
 
-    fun sendTimerFragmentNotificationChannel1(id:Int, title:String, text:String) {
+    fun sendTimerFragmentNotificationChannel1(id: Int, title: String, text: String) {
         val builder = NotificationCompat.Builder(this, NotificationActivity.CHANNEL_1_ID)
             .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
             .setContentTitle(title)
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         Log.d("Notification1", "Im here")
     }
 
-    fun sendTimerFragmentNotificationChannel2(id:Int, title:String, text:String) {
+    fun sendTimerFragmentNotificationChannel2(id: Int, title: String, text: String) {
         val builder = NotificationCompat.Builder(this, NotificationActivity.CHANNEL_2_ID)
             .setSmallIcon(R.drawable.ic_notification_time_interval)
             .setContentTitle(title)

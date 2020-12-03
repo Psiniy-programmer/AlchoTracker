@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.viewholders.FriendPreferencesViewHolder
 import technokek.alchotracker.data.models.FriendPreferencesModel
-import technokek.alchotracker.data.models.MasterPreferencesModel
 
 class FriendPreferencesAdapter(private var mData: MutableList<FriendPreferencesModel>) :
     RecyclerView.Adapter<FriendPreferencesViewHolder>() {

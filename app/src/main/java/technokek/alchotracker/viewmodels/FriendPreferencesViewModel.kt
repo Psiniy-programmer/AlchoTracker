@@ -3,7 +3,6 @@ package technokek.alchotracker.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.ViewModel
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,7 +10,9 @@ import kotlinx.coroutines.launch
 import technokek.alchotracker.data.FriendPreferencesLiveData
 import technokek.alchotracker.data.models.FriendPreferencesModel
 
-class FriendPreferencesViewModel(application: Application,uid: String): AndroidViewModel(application) {
+class FriendPreferencesViewModel(application: Application, uid: String) : AndroidViewModel(
+    application
+) {
     var preferences = FriendPreferencesLiveData(dbRef, uid)
     private val mMediatorLiveData = MediatorLiveData<MutableList<FriendPreferencesModel>>()
 

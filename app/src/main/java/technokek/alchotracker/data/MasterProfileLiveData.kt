@@ -30,7 +30,7 @@ class MasterProfileLiveData() : MutableLiveData<MasterProfileModel>() {
         Log.d(TAG, "onInactive")
     }
 
-    inner class ProfileListener : ValueEventListener {  
+    inner class ProfileListener : ValueEventListener {
 
         override fun onDataChange(snapshot: DataSnapshot) {
             getProfile(snapshot.child(mAuth.currentUser?.uid.toString()))
@@ -39,7 +39,6 @@ class MasterProfileLiveData() : MutableLiveData<MasterProfileModel>() {
         override fun onCancelled(error: DatabaseError) {
             Log.d("ERROR_MSG", error.toString())
         }
-
     }
 
     fun getProfile(x: DataSnapshot) {

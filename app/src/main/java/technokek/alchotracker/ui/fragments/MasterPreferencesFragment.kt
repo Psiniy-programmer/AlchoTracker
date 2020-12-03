@@ -44,16 +44,19 @@ class MasterPreferencesFragment : Fragment(), PreferencesClickListener {
             MasterPreferencesAdapter(mutableListOf(), listener)
         }
 
-        mPreferencesViewModel.preferences.observe(viewLifecycleOwner, {
-            if (recyclerView.adapter == null) {
-                adapter.refresh(mPreferencesViewModel.preferences.value!!)
-                adapter.notifyDataSetChanged()
-                recyclerView.adapter = adapter
-            } else {
-                adapter.refresh(mPreferencesViewModel.preferences.value!!)
-                adapter.notifyDataSetChanged()
+        mPreferencesViewModel.preferences.observe(
+            viewLifecycleOwner,
+            {
+                if (recyclerView.adapter == null) {
+                    adapter.refresh(mPreferencesViewModel.preferences.value!!)
+                    adapter.notifyDataSetChanged()
+                    recyclerView.adapter = adapter
+                } else {
+                    adapter.refresh(mPreferencesViewModel.preferences.value!!)
+                    adapter.notifyDataSetChanged()
+                }
             }
-        })
+        )
         addBtn = view.findViewById(R.id.add_preference_button)
         editText = view.findViewById(R.id.add_preference_edit_text)
         addBtn.setOnClickListener {

@@ -1,13 +1,16 @@
 package technokek.alchotracker.adapters.viewholders
 
 import androidx.recyclerview.widget.RecyclerView
+import java.time.format.DateTimeFormatter
 import technokek.alchotracker.adapters.AlkoEventsAdapter
 import technokek.alchotracker.data.models.CalendarModel
-import technokek.alchotracker.ui.fragments.calendarfragment.utils.getColorCompat
 import technokek.alchotracker.databinding.AlkoEventItemViewBinding
-import java.time.format.DateTimeFormatter
+import technokek.alchotracker.ui.fragments.calendarfragment.utils.getColorCompat
 
-class AlkoEventsViewHolder(val binding: AlkoEventItemViewBinding, private val actionListener: AlkoEventsAdapter.ActionListener) :
+class AlkoEventsViewHolder(
+    val binding: AlkoEventItemViewBinding,
+    private val actionListener: AlkoEventsAdapter.ActionListener
+) :
     RecyclerView.ViewHolder(binding.root) {
     private val formatter = DateTimeFormatter.ofPattern("EEE'\n'dd MMM'\n'HH:mm")
 

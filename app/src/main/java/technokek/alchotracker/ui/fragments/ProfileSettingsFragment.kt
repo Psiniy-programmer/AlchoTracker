@@ -3,9 +3,7 @@ package technokek.alchotracker.ui.fragments
 import android.app.Activity.RESULT_OK
 import android.app.Application
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.theartofdev.edmodo.cropper.CropImage
 import technokek.alchotracker.R
-import technokek.alchotracker.ui.activity.AuthentificationActivity
 import technokek.alchotracker.ui.activity.MainActivity
 import technokek.alchotracker.ui.activity.StartRegistrationActivity
-import technokek.alchotracker.viewmodels.MasterProfileViewModel
 import technokek.alchotracker.viewmodels.ProfileSettingsViewModel
 
 class ProfileSettingsFragment : Fragment() {

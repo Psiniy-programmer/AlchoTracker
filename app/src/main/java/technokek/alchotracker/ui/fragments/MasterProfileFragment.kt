@@ -1,7 +1,6 @@
 package technokek.alchotracker.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,14 +44,17 @@ class MasterProfileFragment : Fragment() {
         favouriteDrink = view.findViewById(R.id.master_drink)
         val mProfileViewModel = ViewModelProvider(this)[MasterProfileViewModel()::class.java]
 
-        mProfileViewModel.profile.observe(viewLifecycleOwner, {
-            userText.text = it.name
-            statusText.text = it.status
-            favouriteDrink.text = it.favouriteDrink
-            friendsCounter.text = it.friendsCount.toString()
-            eventsCounter.text = it.eventCount.toString()
-            Picasso.get().load(it.avatar).into(avatarView)
-        })
+        mProfileViewModel.profile.observe(
+            viewLifecycleOwner,
+            {
+                userText.text = it.name
+                statusText.text = it.status
+                favouriteDrink.text = it.favouriteDrink
+                friendsCounter.text = it.friendsCount.toString()
+                eventsCounter.text = it.eventCount.toString()
+                Picasso.get().load(it.avatar).into(avatarView)
+            }
+        )
         settingsBtn = view.findViewById(R.id.settings_button)
         preferencesBtn = view.findViewById(R.id.master_preferences_list_btn)
 
@@ -73,4 +75,3 @@ class MasterProfileFragment : Fragment() {
         const val TAG = "MasterProfileFragment"
     }
 }
-

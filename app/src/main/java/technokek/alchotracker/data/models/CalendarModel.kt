@@ -1,7 +1,6 @@
 package technokek.alchotracker.data.models
 
 import androidx.annotation.ColorRes
-import technokek.alchotracker.R
 import java.time.LocalDateTime
 
 /*

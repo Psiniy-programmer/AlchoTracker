@@ -1,7 +1,6 @@
 package technokek.alchotracker.viewmodels
 
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineScope

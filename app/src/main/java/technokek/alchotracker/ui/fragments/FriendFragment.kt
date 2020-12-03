@@ -30,7 +30,8 @@ class FriendFragment : Fragment(), RequestClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_friend, container, false)
+        return inflater
+            .inflate(R.layout.fragment_friend, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,39 +61,48 @@ class FriendFragment : Fragment(), RequestClickListener {
             FriendAdapter(mutableListOf(), listener)
         }
 
-        mFriendViewModel.mediatorFriendLiveData.observe(viewLifecycleOwner, {
-            if (friendRecyclerView.adapter == null) {
-                mProgressBar.visibility = View.GONE
-                adapterFriend.refresh(mFriendViewModel.mediatorFriendLiveData.value!!)
-                adapterFriend.notifyDataSetChanged()
-                friendRecyclerView.adapter = adapterFriend
-            }
-            adapterFriend.notifyDataSetChanged()
-        })
-
-        mFriendViewModel.mediatorRequestLiveData.observe(viewLifecycleOwner, {
-            if (requestRecyclerView.adapter == null) {
-                mProgressBar.visibility = View.GONE
-                adapterRequest.refresh(mFriendViewModel.mediatorRequestLiveData.value!!)
-                adapterRequest.notifyDataSetChanged()
-                requestRecyclerView.adapter = adapterRequest
-            }
-
-            adapterRequest.notifyDataSetChanged()
-        })
-
-        mFriendViewModel.mediatorCurrentUser.observe(viewLifecycleOwner, {
-            if (mFriendViewModel.mediatorFriendLiveData.value != null) {
-                adapterFriend.refresh(mFriendViewModel.mediatorFriendLiveData.value!!)
+        mFriendViewModel.mediatorFriendLiveData.observe(
+            viewLifecycleOwner,
+            {
+                if (friendRecyclerView.adapter == null) {
+                    mProgressBar.visibility = View.GONE
+                    adapterFriend.refresh(mFriendViewModel.mediatorFriendLiveData.value!!)
+                    adapterFriend.notifyDataSetChanged()
+                    friendRecyclerView.adapter = adapterFriend
+                }
                 adapterFriend.notifyDataSetChanged()
             }
+        )
 
-            if (mFriendViewModel.mediatorRequestLiveData.value != null) {
-                adapterRequest.refresh(mFriendViewModel.mediatorRequestLiveData.value!!)
+        mFriendViewModel.mediatorRequestLiveData.observe(
+            viewLifecycleOwner,
+            {
+                if (requestRecyclerView.adapter == null) {
+                    mProgressBar.visibility = View.GONE
+                    adapterRequest.refresh(mFriendViewModel.mediatorRequestLiveData.value!!)
+                    adapterRequest.notifyDataSetChanged()
+                    requestRecyclerView.adapter = adapterRequest
+                }
+
                 adapterRequest.notifyDataSetChanged()
             }
-            Log.d("Currentuser", "СРАБАТЫВАЕТ")
-        })
+        )
+
+        mFriendViewModel.mediatorCurrentUser.observe(
+            viewLifecycleOwner,
+            {
+                if (mFriendViewModel.mediatorFriendLiveData.value != null) {
+                    adapterFriend.refresh(mFriendViewModel.mediatorFriendLiveData.value!!)
+                    adapterFriend.notifyDataSetChanged()
+                }
+
+                if (mFriendViewModel.mediatorRequestLiveData.value != null) {
+                    adapterRequest.refresh(mFriendViewModel.mediatorRequestLiveData.value!!)
+                    adapterRequest.notifyDataSetChanged()
+                }
+                Log.d("Currentuser", "СРАБАТЫВАЕТ")
+            }
+        )
     }
 
     override fun accept(uid: String, pos: Int) {

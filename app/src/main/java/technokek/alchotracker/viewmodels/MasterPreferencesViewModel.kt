@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import technokek.alchotracker.data.MasterPreferencesLiveData
 import technokek.alchotracker.data.models.MasterPreferencesModel
 
-class MasterPreferencesViewModel: ViewModel() {
+class MasterPreferencesViewModel : ViewModel() {
     var preferences = MasterPreferencesLiveData(dbRef, aRef)
     private val mMediatorLiveData = MediatorLiveData<MutableList<MasterPreferencesModel>>()
 
