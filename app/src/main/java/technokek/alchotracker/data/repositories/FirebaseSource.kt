@@ -13,11 +13,9 @@ class FirebaseSource {
     private lateinit var email: String
     private lateinit var password: String
 
-
     private val firebaseAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
-
 
     fun login(email: String, password: String) = Completable.create { emitter ->
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
@@ -70,5 +68,4 @@ class FirebaseSource {
     fun logout() = firebaseAuth.signOut()
 
     fun currentUser() = firebaseAuth.currentUser
-
 }

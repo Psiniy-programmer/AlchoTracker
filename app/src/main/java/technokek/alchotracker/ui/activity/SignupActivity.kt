@@ -34,23 +34,16 @@ class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware {
         binding.viewmodel = viewModel
 
         viewModel.authListener = this
-
-        viewModel.mediatorAuth.observe(this, {
-            startMainActivity()
-        })
     }
 
     override fun onStarted() {
         progressbar.visibility = View.VISIBLE
-        /*Intent(this, MainActivity::class.java).also {
-            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(it)
-        }*/
     }
 
     override fun onSuccess() {
         viewModel.setDefaultValue()
         progressbar.visibility = View.GONE
+        startMainActivity()
     }
 
     override fun onFailure(message: String) {

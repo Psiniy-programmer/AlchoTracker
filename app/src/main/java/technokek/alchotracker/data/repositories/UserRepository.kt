@@ -11,5 +11,4 @@ class UserRepository (
     fun setDefaultValue() = firebase.setDefaultValue()
 
     fun currentUser() = firebase.currentUser()
-    
 }

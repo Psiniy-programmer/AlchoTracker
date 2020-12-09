@@ -2,18 +2,11 @@ package technokek.alchotracker.viewmodels
 
 import android.content.Intent
 import android.view.View
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.database.FirebaseDatabase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import technokek.alchotracker.api.AuthListener
-import technokek.alchotracker.data.AuthLiveData
-import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.data.repositories.UserRepository
 import technokek.alchotracker.ui.activity.LoginActivity
 import technokek.alchotracker.ui.activity.SignupActivity
@@ -29,22 +22,6 @@ class AuthViewModel(
 
     //auth listener
     var authListener: AuthListener? = null
-
-    private val authLiveData = AuthLiveData(HOT_STOCK_REF)
-    var mediatorAuth = MediatorLiveData<FriendModel>()
-        private set
-
-    init {
-        mediatorAuth.addSource(authLiveData) {
-            if (it != null) {
-                CoroutineScope(Dispatchers.IO).launch {
-                    mediatorAuth.postValue(it)
-                }
-            } else {
-                mediatorAuth.value = null
-            }
-        }
-    }
 
     //disposable to dispose the Completable
     private val disposables = CompositeDisposable()
@@ -112,16 +89,9 @@ class AuthViewModel(
         }
     }
 
-
     //disposing the disposables
     override fun onCleared() {
         super.onCleared()
         disposables.dispose()
-    }
-
-    companion object {
-        private val HOT_STOCK_REF = FirebaseDatabase
-            .getInstance()
-            .getReference("users")
     }
 }

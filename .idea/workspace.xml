@@ -32,36 +32,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="ktlint auto">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/api/AuthListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/AuthLiveData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/repositories/Constants.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/repositories/FirebaseSource.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/repositories/UserRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/LoginActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/NotificationActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/SignupActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/utils/ViewUtils.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/AuthViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/factories/AuthViewModelFactory.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_email.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_lock.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_name.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" afterDir="false" />
+    <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/AuthLiveData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/RegistrLiveData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/AuthentificationActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/NotificationActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/StartRegistrationActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/ProfileSettingsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/ProfileSettingsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/AuthViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/RegistrViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/autentification_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/registration_layout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/AuthLiveData.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/repositories/FirebaseSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/repositories/FirebaseSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/repositories/UserRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/repositories/UserRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/SignupActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/SignupActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/AuthViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/viewmodels/AuthViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -432,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607006072223</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="test">
+      <created>1607540652255</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1607540652255</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -481,7 +465,8 @@
     <MESSAGE value="ready to test" />
     <MESSAGE value="Workspace" />
     <MESSAGE value="ktlint auto" />
-    <option name="LAST_COMMIT_MESSAGE" value="ktlint auto" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="WindowStateProjectService">
     <state x="598" y="320" key="#Notifications" timestamp="1606604651034">
@@ -626,9 +611,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="483" y="254" key="run.anything.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606675588768" />
-    <state x="623" y="261" width="672" height="678" key="search.everywhere.popup" timestamp="1606748279040">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="467" y="198" width="670" height="582" key="search.everywhere.popup" timestamp="1607540383435">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="467" y="198" width="670" height="582" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1607540383435" />
     <state x="623" y="261" width="672" height="678" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1606748279040" />
   </component>
 </project>
