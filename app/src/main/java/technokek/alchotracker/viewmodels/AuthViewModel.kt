@@ -1,0 +1,127 @@
+package technokek.alchotracker.viewmodels
+
+import android.content.Intent
+import android.view.View
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.ViewModel
+import com.google.firebase.database.FirebaseDatabase
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import technokek.alchotracker.api.AuthListener
+import technokek.alchotracker.data.AuthLiveData
+import technokek.alchotracker.data.models.FriendModel
+import technokek.alchotracker.data.repositories.UserRepository
+import technokek.alchotracker.ui.activity.LoginActivity
+import technokek.alchotracker.ui.activity.SignupActivity
+
+class AuthViewModel(
+    private val repository: UserRepository
+) : ViewModel() {
+
+    //email and password for the input
+    var email: String? = null
+    var password: String? = null
+    var name: String? = null
+
+    //auth listener
+    var authListener: AuthListener? = null
+
+    private val authLiveData = AuthLiveData(HOT_STOCK_REF)
+    var mediatorAuth = MediatorLiveData<FriendModel>()
+        private set
+
+    init {
+        mediatorAuth.addSource(authLiveData) {
+            if (it != null) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    mediatorAuth.postValue(it)
+                }
+            } else {
+                mediatorAuth.value = null
+            }
+        }
+    }
+
+    //disposable to dispose the Completable
+    private val disposables = CompositeDisposable()
+
+    val user by lazy {
+        repository.currentUser()
+    }
+
+    //function to perform login
+    fun login() {
+
+        //validating email and password
+        if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
+            authListener?.onFailure("Invalid email or password")
+            return
+        }
+
+        //authentication started
+        authListener?.onStarted()
+
+        //calling login from repository to perform the actual authentication
+        val disposable = repository.login(email!!, password!!)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                //sending a success callback
+                authListener?.onSuccess()
+            }, {
+                //sending a failure callback
+                authListener?.onFailure(it.message!!)
+            })
+        disposables.add(disposable)
+    }
+
+    //Doing same thing with signup
+    fun signup() {
+        if (email.isNullOrEmpty() || password.isNullOrEmpty() || name.isNullOrEmpty()) {
+            authListener?.onFailure("Please input all values")
+            return
+        }
+
+        authListener?.onStarted()
+        val disposable = repository.register(email!!, password!!, name!!)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                authListener?.onSuccess()
+            }, {
+                authListener?.onFailure(it.message!!)
+            })
+        disposables.add(disposable)
+    }
+
+    fun setDefaultValue() = repository.setDefaultValue()
+
+    fun goToSignup(view: View) {
+        Intent(view.context, SignupActivity::class.java).also {
+            view.context.startActivity(it)
+        }
+    }
+
+    fun goToLogin(view: View) {
+        Intent(view.context, LoginActivity::class.java).also {
+            view.context.startActivity(it)
+        }
+    }
+
+
+    //disposing the disposables
+    override fun onCleared() {
+        super.onCleared()
+        disposables.dispose()
+    }
+
+    companion object {
+        private val HOT_STOCK_REF = FirebaseDatabase
+            .getInstance()
+            .getReference("users")
+    }
+}
