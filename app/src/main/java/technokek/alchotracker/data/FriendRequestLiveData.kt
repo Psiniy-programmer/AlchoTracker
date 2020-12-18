@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import technokek.alchotracker.data.models.FriendModel
+import technokek.alchotracker.data.Constants.*
 
 class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
@@ -59,24 +60,24 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
         if (outgoingChange.isEmpty()) {
             query.ref.child(uid)
-                .child("friends")
-                .child("requests")
-                .child("outgoing")
+                .child(FRIENDS)
+                .child(REQUESTS)
+                .child(OUTGOING)
                 .setValue("")
         } else {
             query.ref.child(uid)
-                .child("friends")
-                .child("requests")
-                .child("outgoing")
+                .child(FRIENDS)
+                .child(REQUESTS)
+                .child(OUTGOING)
                 .setValue(outgoingChange)
         }
         query.ref.child(uid)
-            .child("alchoinfo")
-            .child("friendsCount")
+            .child(ALCHOINFO)
+            .child(FRIENDSCOUNT)
             .setValue(outFriendsCount)
         query.ref.child(uid)
-            .child("friends")
-            .child("list").setValue(outFriendList)
+            .child(FRIENDS)
+            .child(LIST).setValue(outFriendList)
     }
 
     private fun pushAcceptToCurrUser(user: FriendModel, uid: String) {
@@ -104,24 +105,24 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
         if (incomingChange.isEmpty()) {
             query.ref.child(currentID)
-                .child("friends")
-                .child("requests")
-                .child("incoming")
+                .child(FRIENDS)
+                .child(REQUESTS)
+                .child(INCOMING)
                 .setValue("")
         } else {
             query.ref.child(currentID)
-                .child("friends")
-                .child("requests")
-                .child("incoming")
+                .child(FRIENDS)
+                .child(REQUESTS)
+                .child(INCOMING)
                 .setValue(incomingChange)
         }
         query.ref.child(currentID)
-            .child("alchoinfo")
-            .child("friendsCount")
+            .child(ALCHOINFO)
+            .child(FRIENDSCOUNT)
             .setValue(inFriendCount)
         query.ref.child(currentID)
-            .child("friends")
-            .child("list")
+            .child(FRIENDS)
+            .child(LIST)
             .setValue(inFriendList)
     }
 
@@ -160,29 +161,29 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
         if (outgoingChange.isEmpty()) {
             query.ref.child(uid)
-                .child("friends")
-                .child("requests")
-                .child("outgoing")
+                .child(FRIENDS)
+                .child(REQUESTS)
+                .child(OUTGOING)
                 .setValue("")
         } else {
             query.ref.child(uid)
-                .child("friends")
-                .child("requests")
-                .child("outgoing")
+                .child(FRIENDS)
+                .child(REQUESTS)
+                .child(OUTGOING)
                 .setValue(outgoingChange)
         }
 
         if (incomingChange.isEmpty()) {
             query.ref.child(currentUser!!.uid)
-                .child("friends")
-                .child("requests")
-                .child("incoming")
+                .child(FRIENDS)
+                .child(REQUESTS)
+                .child(INCOMING)
                 .setValue("")
         } else {
             query.ref.child(currentUser!!.uid)
-                .child("friends")
-                .child("requests")
-                .child("incoming")
+                .child(FRIENDS)
+                .child(REQUESTS)
+                .child(INCOMING)
                 .setValue(incomingChange)
         }
     }
@@ -201,15 +202,15 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
                 if (listRequestFriend.contains(i.key)) {
                     val potentialFriend = FriendModel(
                         id = i.key.toString(),
-                        name = i.child("name").value.toString(),
-                        avatar = i.child("avatar").value.toString(),
-                        incoming = i.child("friends").child("requests")
-                            .child("incoming").value.toString(),
-                        outgoing = i.child("friends").child("requests")
-                            .child("outgoing").value.toString(),
-                        friendsCount = i.child("alchoinfo").child("friendsCount")
+                        name = i.child(NAME).value.toString(),
+                        avatar = i.child(AVATAR).value.toString(),
+                        incoming = i.child(FRIENDS).child(REQUESTS)
+                            .child(INCOMING).value.toString(),
+                        outgoing = i.child(FRIENDS).child(REQUESTS)
+                            .child(OUTGOING).value.toString(),
+                        friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
                             .getValue(Int::class.java)!!,
-                        friendsList = i.child("friends").child("list").value.toString()
+                        friendsList = i.child(FRIENDS).child(LIST).value.toString()
                     )
                     friendRequests.add(potentialFriend)
                 }
@@ -224,7 +225,7 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
         private fun getListRequestFriends(snapshot: DataSnapshot): MutableList<String> {
             val user = snapshot.child(currentUser!!.uid)
-            val rawList = user.child("friends").child("requests").child("incoming").value.toString()
+            val rawList = user.child(FRIENDS).child(REQUESTS).child(INCOMING).value.toString()
 
             Log.d("test", "$user : ${rawList.split(";").toMutableList()}")
 
