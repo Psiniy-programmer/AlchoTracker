@@ -36,4 +36,7 @@
     <string name="type_password_again">Введите пароль ещё раз</string>
     <string name="confirm">Подтвердить</string>
     <string name="signOut">Выйти</string>
+    <string name="request_in_friends">Заявки в друзья</string>
+    <string name="list_friends">Друзья</string>
+    <string name="search_hint">search</string>
 </resources>

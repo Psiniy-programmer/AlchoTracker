@@ -5,6 +5,7 @@ import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.NavHostFragment
@@ -20,12 +21,16 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var notificationManager: NotificationManagerCompat
-    internal lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+    lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar?.hide()
+
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         // Mandatory for notifications!!!
         notificationManager = NotificationManagerCompat.from(this)
 

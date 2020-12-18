@@ -1,11 +1,12 @@
 package technokek.alchotracker.ui.fragments
 
+import android.app.ActionBar
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,20 +26,32 @@ class FriendFragment : Fragment(), RequestClickListener {
     private lateinit var adapterRequest: FriendRequestAdapter
     private lateinit var adapterFriend: FriendAdapter
 
+    private lateinit var requestTextView: TextView
+    private lateinit var friendTextView: TextView
+    private lateinit var mProgressBar: ProgressBar
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater
+        val view = inflater
             .inflate(R.layout.fragment_friend, container, false)
+
+        requestTextView = view.findViewById(R.id.request_in_friends)
+        friendTextView = view.findViewById(R.id.list_friends)
+        mProgressBar = view.findViewById(R.id.indeterminateBarFriend)
+        activity?.title = "Friends"
+
+        setHasOptionsMenu(true)
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         mFriendViewModel = ViewModelProvider(this)[FriendViewModel::class.java]
-        val mProgressBar = view.findViewById<ProgressBar>(R.id.indeterminateBarFriend)
 
         requestRecyclerView = view.findViewById(R.id.recycler_friend_request)
         requestRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -71,6 +84,12 @@ class FriendFragment : Fragment(), RequestClickListener {
                     friendRecyclerView.adapter = adapterFriend
                 }
                 adapterFriend.notifyDataSetChanged()
+
+                if (mFriendViewModel.mediatorFriendLiveData.value!!.isEmpty()) {
+                    friendTextView.visibility = View.GONE
+                } else {
+                    friendTextView.visibility = View.VISIBLE
+                }
             }
         )
 
@@ -85,6 +104,11 @@ class FriendFragment : Fragment(), RequestClickListener {
                 }
 
                 adapterRequest.notifyDataSetChanged()
+                if (mFriendViewModel.mediatorRequestLiveData.value!!.isEmpty()) {
+                    requestTextView.visibility = View.GONE
+                } else {
+                    requestTextView.visibility = View.VISIBLE
+                }
             }
         )
 
@@ -94,15 +118,41 @@ class FriendFragment : Fragment(), RequestClickListener {
                 if (mFriendViewModel.mediatorFriendLiveData.value != null) {
                     adapterFriend.refresh(mFriendViewModel.mediatorFriendLiveData.value!!)
                     adapterFriend.notifyDataSetChanged()
+
+                    if (mFriendViewModel.mediatorFriendLiveData.value!!.isEmpty()) {
+                        friendTextView.visibility = View.GONE
+                    } else {
+                        friendTextView.visibility = View.VISIBLE
+                    }
                 }
 
                 if (mFriendViewModel.mediatorRequestLiveData.value != null) {
                     adapterRequest.refresh(mFriendViewModel.mediatorRequestLiveData.value!!)
                     adapterRequest.notifyDataSetChanged()
+
+                    if (mFriendViewModel.mediatorRequestLiveData.value!!.isEmpty()) {
+                        requestTextView.visibility = View.GONE
+                    } else {
+                        requestTextView.visibility = View.VISIBLE
+                    }
                 }
                 Log.d("Currentuser", "СРАБАТЫВАЕТ")
             }
         )
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.user_info_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_search) {
+
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun accept(uid: String, pos: Int) {

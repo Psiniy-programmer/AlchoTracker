@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Suka" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="SUKA" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
@@ -34,9 +34,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ed43d23-5263-423a-aad4-be0da01800d8" name="Default Changelist" comment="test">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_search_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/user_info_menu.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendRequestLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendRequestLiveData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendToggleRequestLiveData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/data/FriendToggleRequestLiveData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/activity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/technokek/alchotracker/ui/fragments/FriendFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_friend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_friend.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,12 +75,12 @@
       <list>
         <option value="Kotlin Object" />
         <option value="Kotlin Data Class" />
-        <option value="resourceFile" />
         <option value="navigationResourceFile" />
         <option value="Class" />
         <option value="Kotlin Interface" />
         <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -414,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607540652255</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="test">
+      <created>1608314701970</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1608314701970</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -483,10 +496,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="661" y="141" width="588" height="831" key="#app/0.30.1920.1050@0.30.1920.1050" timestamp="1606400547753" />
-    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1607363966559">
+    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser" timestamp="1608318893333">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1607363966559" />
+    <state x="551" y="209" width="442" height="485" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1608318893333" />
     <state x="734" y="274" width="441" height="565" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1606695319633" />
     <state x="1023" y="30" width="865" height="1050" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606694494443">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -520,10 +533,10 @@
     </state>
     <state x="308" y="212" key="AndroidCreateResourceFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1606605421922" />
     <state x="716" y="238" width="824" height="487" key="AndroidCreateResourceFileDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606694915698" />
-    <state x="604" y="349" width="356" height="382" key="AndroidCreateXmlResourceDialog" timestamp="1606677013467">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="453" y="273" width="356" height="382" key="AndroidCreateXmlResourceDialog" timestamp="1608318714913">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="453" y="273" width="356" height="382" key="AndroidCreateXmlResourceDialog/0.0.1440.900@0.0.1440.900" timestamp="1606603989924" />
+    <state x="453" y="273" width="356" height="382" key="AndroidCreateXmlResourceDialog/0.0.1440.900@0.0.1440.900" timestamp="1608318714913" />
     <state x="604" y="349" width="304" height="445" key="AndroidCreateXmlResourceDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606677013467" />
     <state x="606" y="61" width="697" height="990" key="CommitChangelistDialog2" timestamp="1605890799452">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -533,28 +546,28 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="743" y="314" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1606058150211" />
-    <state width="1396" height="245" key="GridCell.Tab.0.bottom" timestamp="1607365302313">
+    <state width="1396" height="168" key="GridCell.Tab.0.bottom" timestamp="1608319359121">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1607365302313" />
+    <state width="1396" height="168" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608319359121" />
     <state width="1398" height="179" key="GridCell.Tab.0.bottom/0.23.1440.836@0.23.1440.836" timestamp="1606736512786" />
     <state width="1470" height="83" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983168" />
-    <state width="1396" height="245" key="GridCell.Tab.0.center" timestamp="1607365302311">
+    <state width="1396" height="168" key="GridCell.Tab.0.center" timestamp="1608319359119">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1607365302311" />
+    <state width="1396" height="168" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608319359119" />
     <state width="1398" height="179" key="GridCell.Tab.0.center/0.23.1440.836@0.23.1440.836" timestamp="1606736512785" />
     <state width="1470" height="83" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983167" />
-    <state width="1396" height="245" key="GridCell.Tab.0.left" timestamp="1607365302309">
+    <state width="1396" height="168" key="GridCell.Tab.0.left" timestamp="1608319359119">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1607365302309" />
+    <state width="1396" height="168" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608319359119" />
     <state width="1398" height="179" key="GridCell.Tab.0.left/0.23.1440.836@0.23.1440.836" timestamp="1606736512784" />
     <state width="1470" height="83" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1606696983167" />
-    <state width="1396" height="245" key="GridCell.Tab.0.right" timestamp="1607365302312">
+    <state width="1396" height="168" key="GridCell.Tab.0.right" timestamp="1608319359120">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1396" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1607365302312" />
+    <state width="1396" height="168" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608319359120" />
     <state width="1398" height="179" key="GridCell.Tab.0.right/0.23.1440.836@0.23.1440.836" timestamp="1606736512785" />
     <state width="1432" height="120" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606747298118" />
     <state width="1575" height="267" key="GridCell.Tab.1.bottom" timestamp="1606404447183">
@@ -573,14 +586,14 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1575" height="267" key="GridCell.Tab.1.right/0.30.1920.1050@0.30.1920.1050" timestamp="1606404447183" />
-    <state x="101" y="43" key="MergeDialog" timestamp="1606746368625">
+    <state x="101" y="43" key="MergeDialog" timestamp="1608314737673">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="101" y="43" key="MergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1606746368625" />
-    <state x="356" y="218" key="MultipleFileMergeDialog" timestamp="1606747623457">
+    <state x="101" y="43" key="MergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1608314737673" />
+    <state x="356" y="218" key="MultipleFileMergeDialog" timestamp="1608314737694">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="356" y="218" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1606747623457" />
+    <state x="356" y="218" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1608314737694" />
     <state x="616" y="154" width="992" height="733" key="SettingsEditor" timestamp="1606692083729">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -602,10 +615,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="444" y="170" key="git4idea.branch.GitSmartOperationDialog/0.0.1440.900@0.0.1440.900" timestamp="1608311408008" />
-    <state x="372" y="245" key="git4idea.merge.GitPullDialog" timestamp="1607361944189">
+    <state x="372" y="245" key="git4idea.merge.GitPullDialog" timestamp="1608314718049">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="372" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1607361944189" />
+    <state x="372" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1608314718049" />
     <state x="644" y="324" width="340" height="464" key="refactoring.ChangeSignatureDialog" timestamp="1606655745371">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
