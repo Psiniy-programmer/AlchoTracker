@@ -104,7 +104,7 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
             masterPath.child("outgoing")
                 .setValue("${value?.masterOutReq};$uid")
         }
-        if (value?.friendInReq?.isEmpty() == true) {
+        if (!value?.friendInReq.isNullOrEmpty()) {
             friendPath.child("incoming")
                 .setValue(mAuth.currentUser?.uid.toString())
         } else {

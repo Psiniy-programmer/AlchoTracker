@@ -36,25 +36,24 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
     }
 
     private fun pushAcceptToFriend(friend: FriendModel, uid: String) {
-        var outgoing = friend.outgoing.split(";").filter { it != currentUser!!.uid }
+        val outgoing = friend.outgoing.split(";").filter { it != currentUser!!.uid }
         var outFriendsCount = friend.friendsCount
         var outFriendList = friend.friendsList
 
         Log.d("Test", "outgoing: $outgoing")
         var outgoingChange = String()
         for (i in outgoing) {
-            if (outgoingChange.isEmpty()) {
-                outgoingChange = i
+            outgoingChange = if (outgoingChange.isEmpty()) {
+                i
             } else {
                 outgoingChange.plus(";").plus(i)
             }
         }
-        Log.d("Test", "outgoingChange: $outgoingChange")
         outFriendsCount += 1
-        if (outFriendList.isEmpty()) {
-            outFriendList = currentUser!!.uid
+        outFriendList = if (outFriendList.isEmpty()) {
+            currentUser!!.uid
         } else {
-            outFriendList.plus(";").plus(currentUser!!.uid)
+            "${outFriendList};${currentUser!!.uid}"
         }
 
         if (outgoingChange.isEmpty()) {
@@ -80,17 +79,17 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
     }
 
     private fun pushAcceptToCurrUser(user: FriendModel, uid: String) {
-        var incoming = user.incoming.split(";").filter { it != uid }
-        var inFriendCount = user.friendsCount + 1
+        val incoming = user.incoming.split(";").filter { it != uid }
+        val inFriendCount = user.friendsCount + 1
         var inFriendList = user.friendsList
-        var currentID = user.id
+        val currentID = user.id
 
         Log.d("Test", "incoming: $incoming")
 
         var incomingChange = String()
         for (i in incoming) {
-            if (incomingChange.isEmpty()) {
-                incomingChange = i
+            incomingChange = if (incomingChange.isEmpty()) {
+                i
             } else {
                 incomingChange.plus(";").plus(i)
             }
@@ -139,8 +138,8 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
         val outgoing = valueToPush.outgoing.split(";").filter { it != currentUser!!.uid }
         var outgoingChange = String()
         for (i in outgoing) {
-            if (outgoingChange.isEmpty()) {
-                outgoingChange = i
+            outgoingChange = if (outgoingChange.isEmpty()) {
+                i
             } else {
                 outgoingChange.plus(";").plus(i)
             }
@@ -151,8 +150,8 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
         val incoming = valueToPush.incoming.split(";").filter { it != uid }
         var incomingChange = String()
         for (i in incoming) {
-            if (incomingChange.isEmpty()) {
-                incomingChange = i
+            incomingChange = if (incomingChange.isEmpty()) {
+                i
             } else {
                 incomingChange.plus(";").plus(i)
             }
