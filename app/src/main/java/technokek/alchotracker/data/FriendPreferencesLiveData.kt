@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import technokek.alchotracker.data.models.FriendPreferencesModel
+import technokek.alchotracker.data.Constants.*
 
 class FriendPreferencesLiveData() : MutableLiveData<MutableList<FriendPreferencesModel>>() {
     private lateinit var uid: String
@@ -36,8 +37,8 @@ class FriendPreferencesLiveData() : MutableLiveData<MutableList<FriendPreference
         override fun onDataChange(snapshot: DataSnapshot) {
             val preferences: MutableList<FriendPreferencesModel> = mutableListOf()
             val snap = snapshot.child(uid)
-                .child("alchoinfo")
-                .child("preferences")
+                .child(ALCHOINFO)
+                .child(PREFERENCES)
                 .children
             for (x in snap) {
                 val preferenceItem = FriendPreferencesModel(x.key.toString())

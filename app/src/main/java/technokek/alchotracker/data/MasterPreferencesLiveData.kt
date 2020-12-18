@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import technokek.alchotracker.data.Constants.*
 import technokek.alchotracker.data.models.MasterPreferencesModel
 
 class MasterPreferencesLiveData() : MutableLiveData<MutableList<MasterPreferencesModel>>() {
@@ -33,14 +34,10 @@ class MasterPreferencesLiveData() : MutableLiveData<MutableList<MasterPreference
     inner class PreferencesListener : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val preferences: MutableList<MasterPreferencesModel> = mutableListOf()
-            val snap = snapshot.child(mAuth.currentUser?.uid.toString())
-                .child("alchoinfo")
-                .child("preferences")
-                .children
             for (
                 x in snapshot.child(mAuth.currentUser?.uid.toString())
-                    .child("alchoinfo")
-                    .child("preferences")
+                    .child(ALCHOINFO)
+                    .child(PREFERENCES)
                     .children
             ) {
                 val preferenceItem = MasterPreferencesModel(x.key.toString())
@@ -56,16 +53,16 @@ class MasterPreferencesLiveData() : MutableLiveData<MutableList<MasterPreference
 
     fun addPreferenceItem(text: String) {
         query.ref.child(mAuth.currentUser?.uid.toString())
-            .child("alchoinfo")
-            .child("preferences")
+            .child(ALCHOINFO)
+            .child(PREFERENCES)
             .child(text)
             .setValue("")
     }
 
     fun removePreferenceItem(text: String) {
         query.ref.child(mAuth.currentUser?.uid.toString())
-            .child("alchoinfo")
-            .child("preferences")
+            .child(ALCHOINFO)
+            .child(PREFERENCES)
             .child(text).removeValue()
     }
 

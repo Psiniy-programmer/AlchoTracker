@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import technokek.alchotracker.data.models.MasterProfileModel
+import technokek.alchotracker.data.Constants.*
 
 class MasterProfileLiveData() : MutableLiveData<MasterProfileModel>() {
     private lateinit var query: Query
@@ -43,12 +44,12 @@ class MasterProfileLiveData() : MutableLiveData<MasterProfileModel>() {
 
     fun getProfile(x: DataSnapshot) {
         value = MasterProfileModel(
-            x.child("avatar").value.toString(),
-            x.child("name").value.toString(),
-            x.child("status").value.toString(),
-            x.child("alchoinfo").child("friendsCount").getValue(Int::class.java)!!,
-            x.child("alchoinfo").child("eventsCount").getValue(Int::class.java)!!,
-            x.child("alchoinfo").child("favouriteDrink").value.toString()
+            x.child(AVATAR).value.toString(),
+            x.child(NAME).value.toString(),
+            x.child(STATUS).value.toString(),
+            x.child(ALCHOINFO).child(FRIENDSCOUNT).getValue(Int::class.java)!!,
+            x.child(ALCHOINFO).child(EVENTSCOUNT).getValue(Int::class.java)!!,
+            x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString()
         )
     }
 

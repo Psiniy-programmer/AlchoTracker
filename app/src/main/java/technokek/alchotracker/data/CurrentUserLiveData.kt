@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import technokek.alchotracker.data.models.FriendModel
+import technokek.alchotracker.data.Constants.*
 
 class CurrentUserLiveData() : MutableLiveData<FriendModel>() {
 
@@ -48,15 +49,15 @@ class CurrentUserLiveData() : MutableLiveData<FriendModel>() {
                 if (currentUser!!.uid == i.key) {
                     currUser = FriendModel(
                         id = i.key.toString(),
-                        name = i.child("name").value.toString(),
-                        avatar = i.child("avatar").value.toString(),
-                        incoming = i.child("friends").child("requests")
-                            .child("incoming").value.toString(),
-                        outgoing = i.child("friends").child("requests")
-                            .child("outgoing").value.toString(),
-                        friendsCount = i.child("alchoinfo").child("friendsCount")
+                        name = i.child(NAME).value.toString(),
+                        avatar = i.child(AVATAR).value.toString(),
+                        incoming = i.child(FRIENDS).child(REQUESTS)
+                            .child(INCOMING).value.toString(),
+                        outgoing = i.child(FRIENDS).child(REQUESTS)
+                            .child(OUTGOING).value.toString(),
+                        friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
                             .getValue(Int::class.java)!!,
-                        friendsList = i.child("friends").child("list").value.toString()
+                        friendsList = i.child(FRIENDS).child(LIST).value.toString()
                     )
                     break
                 }

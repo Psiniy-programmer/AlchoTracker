@@ -6,6 +6,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
+import technokek.alchotracker.data.Constants.*
 import technokek.alchotracker.data.models.FriendProfileModel
 
 class FriendProfileLiveData() : MutableLiveData<FriendProfileModel>() {
@@ -39,18 +40,18 @@ class FriendProfileLiveData() : MutableLiveData<FriendProfileModel>() {
         }
 
         override fun onCancelled(error: DatabaseError) {
-            Log.d("kek", error.toString())
+            Log.e("error", error.toString())
         }
     }
 
     fun setProfile(x: DataSnapshot) {
         value = FriendProfileModel(
-            x.child("avatar").value.toString(),
-            x.child("name").value.toString(),
-            x.child("status").value.toString(),
-            x.child("alchoinfo").child("friendsCount").getValue(Int::class.java)!!,
-            x.child("alchoinfo").child("eventsCount").getValue(Int::class.java)!!,
-            x.child("alchoinfo").child("favouriteDrink").value.toString()
+            x.child(AVATAR).value.toString(),
+            x.child(NAME).value.toString(),
+            x.child(STATUS).value.toString(),
+            x.child(ALCHOINFO).child(FRIENDSCOUNT).getValue(Int::class.java)!!,
+            x.child(ALCHOINFO).child(EVENTSCOUNT).getValue(Int::class.java)!!,
+            x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString()
         )
     }
 

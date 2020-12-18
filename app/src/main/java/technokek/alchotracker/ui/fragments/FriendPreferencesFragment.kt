@@ -54,11 +54,11 @@ class FriendPreferencesFragment : Fragment() {
 
         mPreferencesViewModel.preferences.observe(viewLifecycleOwner) {
             if (recyclerView.adapter == null) {
-                adapter.refresh(mPreferencesViewModel.preferences.value!!)
+                adapter.refresh(it)
                 adapter.notifyDataSetChanged()
                 recyclerView.adapter = adapter
             } else {
-                adapter.refresh(mPreferencesViewModel.preferences.value!!)
+                adapter.refresh(it)
                 adapter.notifyDataSetChanged()
             }
         }
