@@ -97,14 +97,14 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
     fun addFriend() {
         val masterPath = getPath(mAuth.currentUser?.uid.toString(), "requests")
         val friendPath = getPath(uid, "requests")
-        if (value?.masterOutReq?.isEmpty() == true) {
+        if (value?.masterOutReq.isNullOrEmpty()) {
             masterPath.child("outgoing")
                 .setValue(uid)
         } else {
             masterPath.child("outgoing")
                 .setValue("${value?.masterOutReq};$uid")
         }
-        if (value?.friendInReq?.isEmpty() == true) {
+        if (!value?.friendInReq.isNullOrEmpty()) {
             friendPath.child("incoming")
                 .setValue(mAuth.currentUser?.uid.toString())
         } else {
@@ -126,7 +126,7 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
     }
 
     private fun setStr(list: List<String>): String {
-        var res = ""
+        var res = String()
         list.map {
             if (res.isEmpty()) res = it
             else res += it

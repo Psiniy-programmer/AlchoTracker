@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
 import technokek.alchotracker.data.models.EventModel
+import technokek.alchotracker.data.Constants.*
 
 class EventLiveData() : MutableLiveData<MutableList<EventModel>>() {
 
@@ -42,9 +43,9 @@ class EventLiveData() : MutableLiveData<MutableList<EventModel>>() {
 
             for (i in snapshot.children) {
                 val event = EventModel(
-                    i.child("id").value.toString(),
-                    i.child("name").value.toString(),
-                    i.child("avatar").value.toString()
+                    i.child(ID).value.toString(),
+                    i.child(NAME).value.toString(),
+                    i.child(AVATAR).value.toString()
                 )
                 events.add(event)
             }

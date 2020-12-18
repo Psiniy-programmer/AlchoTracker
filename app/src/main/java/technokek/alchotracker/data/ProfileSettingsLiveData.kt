@@ -10,6 +10,7 @@ import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.StorageReference
 import technokek.alchotracker.data.models.SettingsProfileModel
+import technokek.alchotracker.data.Constants.*
 
 class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
     private lateinit var query: Query
@@ -49,15 +50,15 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
 
     fun getModel(x: DataSnapshot) {
         value = SettingsProfileModel(
-            x.child("avatar").value.toString(),
-            x.child("status").value.toString(),
-            x.child("alchoinfo").child("favouriteDrink").value.toString()
+            x.child(AVATAR).value.toString(),
+            x.child(STATUS).value.toString(),
+            x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString()
         )
     }
 
     fun setStatus(newStatus: String) {
         query.ref.child(mAuth.currentUser?.uid.toString())
-            .child("status")
+            .child(STATUS)
             .setValue(newStatus)
     }
 
@@ -68,7 +69,7 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
                 storage.downloadUrl.addOnCompleteListener { downloadTask ->
                     if (downloadTask.isSuccessful) {
                         val avatarUrl = downloadTask.result.toString()
-                        query.ref.child(mAuth.currentUser?.uid.toString()).child("avatar")
+                        query.ref.child(mAuth.currentUser?.uid.toString()).child(AVATAR)
                             .setValue(avatarUrl)
                     }
                 }
@@ -78,8 +79,8 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
 
     fun setDrink(newDrink: String) {
         query.ref.child(mAuth.currentUser?.uid.toString())
-            .child("alchoinfo")
-            .child("favouriteDrink")
+            .child(ALCHOINFO)
+            .child(FAVOURITEDRINK)
             .setValue(newDrink)
     }
 
