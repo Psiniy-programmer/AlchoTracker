@@ -11,12 +11,14 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import technokek.alchotracker.R
 import technokek.alchotracker.api.EventClickListener
+import technokek.alchotracker.api.FoundUserListener
 import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener {
+class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener, FoundUserListener {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
@@ -52,6 +54,25 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
     override fun pressEvent() {
         val toast = Toast.makeText(this, "EventList", Toast.LENGTH_SHORT)
         toast.show()
+    }
+
+    override fun pressUser(uid: String) {
+        val toast = Toast.makeText(this, "FoundUser", Toast.LENGTH_SHORT)
+        toast.show()
+
+        if (uid == FirebaseAuth.getInstance().uid) {
+            navHostFragment.navController.navigate(
+                R.id.action_friendFragment_to_masterProfileFragment
+            )
+        } else {
+            val bundle = Bundle()
+            bundle.putString("uid", uid)
+
+            navHostFragment.navController.navigate(
+                R.id.action_friendFragment_to_friendProfileFragment,
+                bundle
+            )
+        }
     }
 
     override fun pressFriend(uid: String) {

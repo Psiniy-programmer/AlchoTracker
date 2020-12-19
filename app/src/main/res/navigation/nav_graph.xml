@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_friendFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_friendFragment_to_masterProfileFragment"
+            app:destination="@id/masterProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/friendProfileFragment"
