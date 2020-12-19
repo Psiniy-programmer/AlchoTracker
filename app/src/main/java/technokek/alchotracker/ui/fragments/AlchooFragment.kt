@@ -10,19 +10,19 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.DiffUtil
 import com.yuyakaido.android.cardstackview.*
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.AlchooAdapter
-import technokek.alchotracker.callbacks.CardStackCallback
-import technokek.alchotracker.data.models.AlchooCardModel
+import technokek.alchotracker.api.AlchooTouchListener
 import technokek.alchotracker.viewmodels.AlchooViewModel
 
 
-class AlchooFragment : Fragment() {
+class AlchooFragment : Fragment(), AlchooTouchListener {
     lateinit var manager: CardStackLayoutManager
     lateinit var adapter: AlchooAdapter
     private lateinit var mAlchooViewModel: AlchooViewModel
+    private lateinit var cardStackView:CardStackView
+    private lateinit var touchedUid: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +30,16 @@ class AlchooFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.alchoo, container, false)
-        val cardStackView = view.findViewById<CardStackView>(R.id.alchoo_card)
+
+        cardStackView = view.findViewById(R.id.alchoo_card)
         mAlchooViewModel = ViewModelProvider(this)[AlchooViewModel()::class.java]
+        activity?.title = title
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val listener = this as AlchooTouchListener
 
         manager = CardStackLayoutManager(context, object : CardStackListener {
             override fun onCardDragging(direction: Direction?, ratio: Float) {
@@ -40,27 +48,11 @@ class AlchooFragment : Fragment() {
                 }
             }
             override fun onCardSwiped(direction: Direction?) {
-                Log.d(TAG, "onCardSwiped: p=" + manager.getTopPosition() + " d=" + direction);
                 if (direction == Direction.Right) {
-                    Toast.makeText(context, "Direction Right", Toast.LENGTH_SHORT).show();
-                }
-                if (direction == Direction.Top) {
-                    Toast.makeText(context, "Direction Top", Toast.LENGTH_SHORT).show();
+                    mAlchooViewModel.acceptBody(touchedUid)
                 }
                 if (direction == Direction.Left) {
-                    Toast.makeText(context, "Direction Left", Toast.LENGTH_SHORT).show();
-                }
-                if (direction == Direction.Bottom) {
-                    Toast.makeText(context, "Direction Bottom", Toast.LENGTH_SHORT).show();
-                }
-
-                if (manager.getTopPosition() == adapter.itemCount - 5) {
-                    val old: MutableList<AlchooCardModel> = adapter.getData()
-                    val baru: MutableList<AlchooCardModel> = ArrayList(addData())
-                    val callback = CardStackCallback(old, baru)
-                    val hasil = DiffUtil.calculateDiff(callback)
-                    adapter.setData(baru)
-                    hasil.dispatchUpdatesTo(adapter)
+                    mAlchooViewModel.declineBody(touchedUid)
                 }
             }
 
@@ -73,11 +65,11 @@ class AlchooFragment : Fragment() {
             }
 
             override fun onCardAppeared(view: View?, position: Int) {
-                Log.d(TAG, "onCardAppeared: " + position.toString() + ", nama: ")
+                Log.d(TAG, "accepted")
             }
 
             override fun onCardDisappeared(view: View?, position: Int) {
-                Log.d(TAG, "onCardAppeared: " + position.toString() + ", nama: ")
+                Log.d(TAG, "decline")
             }
         })
 
@@ -92,12 +84,13 @@ class AlchooFragment : Fragment() {
         manager.setSwipeableMethod(SwipeableMethod.Manual)
         manager.setOverlayInterpolator(LinearInterpolator())
         adapter = if (mAlchooViewModel.alchoo.value != null) {
-            AlchooAdapter(mAlchooViewModel.alchoo.value!!)
+            AlchooAdapter(mAlchooViewModel.alchoo.value!!, listener)
         } else {
-            AlchooAdapter(mutableListOf())
+            AlchooAdapter(mutableListOf(), listener)
         }
+
         mAlchooViewModel.alchoo.observe(viewLifecycleOwner, {
-            if (adapter == null) {
+            if (cardStackView.adapter == null) {
                 adapter.setData(it)
                 adapter.notifyDataSetChanged()
                 cardStackView.adapter = adapter
@@ -106,36 +99,18 @@ class AlchooFragment : Fragment() {
                 adapter.notifyDataSetChanged()
             }
         })
-//        adapter = AlchooAdapter(addData()) // прокинуть в лайвдату
-        // TODO Сделать заполнение даты из сети и прокидывание сюда вместо готового списка
         cardStackView.layoutManager = manager
-//        cardStackView.adapter = adapter
         cardStackView.itemAnimator = DefaultItemAnimator()
-
-        return view
-    }
-
-    private fun addData(): MutableList<AlchooCardModel> {
-        val data: MutableList<AlchooCardModel> = ArrayList()
-        data.add(AlchooCardModel("kek", "lol"))
-        data.add(AlchooCardModel("kek", "lol"))
-        data.add(AlchooCardModel("kek", "lol"))
-        data.add(AlchooCardModel("kek", "lol"))
-        data.add(AlchooCardModel("kek", "lol"))
-        data.add(AlchooCardModel("kek", "lol"))
-        data.add(AlchooCardModel("kek", "lol"))
-        data.add(AlchooCardModel("kek", "lol"))
-        data.add(AlchooCardModel("kek", "lol"))
-        return data
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.title = title
         super.onViewCreated(view, savedInstanceState)
     }
 
     companion object {
         const val TAG = "AlchooFragment"
         const val title = "Alchoo"
+    }
+
+    override fun touchBody(uid: String) {
+        touchedUid = uid
+//        save
     }
 }

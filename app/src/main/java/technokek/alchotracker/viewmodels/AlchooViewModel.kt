@@ -1,6 +1,5 @@
 package technokek.alchotracker.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -8,10 +7,11 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import technokek.alchotracker.api.AlchooInterface
 import technokek.alchotracker.data.AlchooLiveData
 import technokek.alchotracker.data.models.AlchooCardModel
 
-class AlchooViewModel : ViewModel() {
+class AlchooViewModel : ViewModel(), AlchooInterface {
     var alchoo = AlchooLiveData(dbRef, aRef)
     private val mMediatorLiveData = MediatorLiveData<MutableList<AlchooCardModel>>()
 
@@ -20,11 +20,22 @@ class AlchooViewModel : ViewModel() {
             if (it != null) {
                 CoroutineScope(Dispatchers.IO).launch {
                     mMediatorLiveData.postValue(it)
-                    Log.d("SYKA", "TEST")
                 }
             } else {
                 mMediatorLiveData.value = null
             }
+        }
+    }
+
+    override fun acceptBody(uid: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            alchoo.acceptBody(uid)
+        }
+    }
+
+    override fun declineBody(uid: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            alchoo.declineBody(uid)
         }
     }
 
