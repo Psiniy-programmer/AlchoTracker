@@ -1,5 +1,6 @@
 package technokek.alchotracker.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -19,6 +20,7 @@ class AlchooViewModel : ViewModel() {
             if (it != null) {
                 CoroutineScope(Dispatchers.IO).launch {
                     mMediatorLiveData.postValue(it)
+                    Log.d("SYKA", "TEST")
                 }
             } else {
                 mMediatorLiveData.value = null

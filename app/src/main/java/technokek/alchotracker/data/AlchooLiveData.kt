@@ -41,6 +41,7 @@ class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>() {
             for (x in snapshot.child("users").children) {
                 Log.d("SYKA", x.toString())
             }
+            value = alchoo
         }
 
         override fun onCancelled(error: DatabaseError) {

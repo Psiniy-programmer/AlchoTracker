@@ -31,7 +31,7 @@ class AlchooFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.alchoo, container, false)
         val cardStackView = view.findViewById<CardStackView>(R.id.alchoo_card)
-
+        mAlchooViewModel = ViewModelProvider(this)[AlchooViewModel()::class.java]
 
         manager = CardStackLayoutManager(context, object : CardStackListener {
             override fun onCardDragging(direction: Direction?, ratio: Float) {
@@ -80,7 +80,6 @@ class AlchooFragment : Fragment() {
                 Log.d(TAG, "onCardAppeared: " + position.toString() + ", nama: ")
             }
         })
-        mAlchooViewModel = ViewModelProvider(this)[AlchooViewModel()::class.java]
 
         manager.setStackFrom(StackFrom.None)
         manager.setVisibleCount(3)
@@ -92,10 +91,25 @@ class AlchooFragment : Fragment() {
         manager.setCanScrollHorizontal(true)
         manager.setSwipeableMethod(SwipeableMethod.Manual)
         manager.setOverlayInterpolator(LinearInterpolator())
-        adapter = AlchooAdapter(addData()) // прокинуть в лайвдату
+        adapter = if (mAlchooViewModel.alchoo.value != null) {
+            AlchooAdapter(mAlchooViewModel.alchoo.value!!)
+        } else {
+            AlchooAdapter(mutableListOf())
+        }
+        mAlchooViewModel.alchoo.observe(viewLifecycleOwner, {
+            if (adapter == null) {
+                adapter.setData(it)
+                adapter.notifyDataSetChanged()
+                cardStackView.adapter = adapter
+            } else {
+                adapter.setData(it)
+                adapter.notifyDataSetChanged()
+            }
+        })
+//        adapter = AlchooAdapter(addData()) // прокинуть в лайвдату
         // TODO Сделать заполнение даты из сети и прокидывание сюда вместо готового списка
         cardStackView.layoutManager = manager
-        cardStackView.adapter = adapter
+//        cardStackView.adapter = adapter
         cardStackView.itemAnimator = DefaultItemAnimator()
 
         return view
