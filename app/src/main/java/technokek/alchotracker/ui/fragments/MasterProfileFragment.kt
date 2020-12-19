@@ -1,9 +1,8 @@
 package technokek.alchotracker.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -22,9 +21,9 @@ class MasterProfileFragment : Fragment() {
     private lateinit var friendsCounter: TextView
     private lateinit var eventsCounter: TextView
     private lateinit var avatarView: ImageView
-    private lateinit var settingsBtn: ImageButton
     private lateinit var preferencesBtn: Button
     private lateinit var favouriteDrink: TextView
+    private lateinit var mProfileViewModel: MasterProfileViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +41,10 @@ class MasterProfileFragment : Fragment() {
         eventsCounter = view.findViewById(R.id.master_profile_events_counter)
         avatarView = view.findViewById(R.id.master_profile_avatar)
         favouriteDrink = view.findViewById(R.id.master_drink)
-        val mProfileViewModel = ViewModelProvider(this)[MasterProfileViewModel()::class.java]
+        mProfileViewModel = ViewModelProvider(this)[MasterProfileViewModel()::class.java]
+        activity?.title = "Мой Профиль"
+
+        setHasOptionsMenu(true)
 
         mProfileViewModel.profile.observe(
             viewLifecycleOwner,
@@ -55,20 +57,28 @@ class MasterProfileFragment : Fragment() {
                 Picasso.get().load(it.avatar).into(avatarView)
             }
         )
-        settingsBtn = view.findViewById(R.id.settings_button)
         preferencesBtn = view.findViewById(R.id.master_preferences_list_btn)
-
-        settingsBtn.setOnClickListener {
-            val navController =
-                activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
-            navController?.navigate(R.id.action_masterProfileFragment_to_profileSettingsFragment)
-        }
 
         preferencesBtn.setOnClickListener {
             val navController =
                 activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
             navController?.navigate(R.id.action_masterProfileFragment_to_preferencesFragment)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.master_profile_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_settings) {
+            val navController =
+                activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
+            navController?.navigate(R.id.action_masterProfileFragment_to_profileSettingsFragment)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

@@ -9,22 +9,14 @@
         android:name="technokek.alchotracker.ui.fragments.MasterProfileFragment"
         android:label="MasterProfileFragment" >
         <action
-            android:id="@+id/action_masterProfileFragment_to_eventFragment"
-            app:destination="@id/eventFragment" />
-        <action
             android:id="@+id/action_masterProfileFragment_to_profileSettingsFragment"
             app:destination="@id/profileSettingsFragment" />
         <action
             android:id="@+id/action_masterProfileFragment_to_preferencesFragment"
             app:destination="@id/preferencesFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/eventFragment"
-        android:name="technokek.alchotracker.ui.fragments.EventFragment"
-        android:label="EventFragment" >
         <action
-            android:id="@+id/action_eventFragment_to_friendFragment"
-            app:destination="@id/friendFragment" />
+            android:id="@+id/action_masterProfileFragment_to_alchooFragment2"
+            app:destination="@id/alchooFragment" />
     </fragment>
     <fragment
         android:id="@+id/friendFragment"
@@ -69,4 +61,8 @@
         android:id="@+id/timerFragment"
         android:name="technokek.alchotracker.ui.fragments.TimerFragment"
         android:label="TimerFragment" />
+    <fragment
+        android:id="@+id/alchooFragment"
+        android:name="technokek.alchotracker.ui.fragments.AlchooFragment"
+        android:label="AlchooFragment" />
 </navigation>

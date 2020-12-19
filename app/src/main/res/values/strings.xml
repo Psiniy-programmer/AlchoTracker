@@ -4,7 +4,7 @@
     <string name="friends">Друзей</string>
     <string name="dates">Тусовок</string>
     <string name="text_label_1">Profile</string>
-    <string name="text_label_2">Events</string>
+    <string name="text_label_2">Alchoo</string>
     <string name="text_label_3">Friends</string>
     <string name="settings">settingsButton</string>
     <string name="avatar">avatar</string>
@@ -39,4 +39,5 @@
     <string name="request_in_friends">Заявки в друзья</string>
     <string name="list_friends">Друзья</string>
     <string name="search_hint">search</string>
+    <string name="settings_hint">settings</string>
 </resources>

@@ -8,9 +8,9 @@
         android:title="@string/text_label_1"
         app:showAsAction="always" />
     <item
-        android:id="@+id/eventFragment"
+        android:id="@+id/alchooFragment"
         android:enabled="true"
-        android:icon="@drawable/icon_2"
+        android:icon="@drawable/ic_emoji_people_black_24dp"
         android:title="@string/text_label_2"
         app:showAsAction="always" />
     <item
