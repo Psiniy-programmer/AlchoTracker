@@ -6,9 +6,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
 
-class CardStackViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//    var mAvatar: ImageView = itemView.findViewById(R.id.card_avatar)
-//        private set
+class AlchooViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    var mAvatar: ImageView = itemView.findViewById(R.id.card_avatar)
+        private set
     var mName: TextView = itemView.findViewById(R.id.card_name)
         private set
     var mStatus: TextView = itemView.findViewById(R.id.card_status)

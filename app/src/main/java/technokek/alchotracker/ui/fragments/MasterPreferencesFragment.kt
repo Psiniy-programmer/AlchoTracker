@@ -59,11 +59,13 @@ class MasterPreferencesFragment : Fragment(), PreferencesClickListener {
         )
         addBtn = view.findViewById(R.id.add_preference_button)
         editText = view.findViewById(R.id.add_preference_edit_text)
+
         addBtn.setOnClickListener {
             mPreferencesViewModel.addPreferenceItem(editText.text.toString())
             editText.setText("")
         }
     }
+
     override fun pressEventAddPreference(text: String) {
         mPreferencesViewModel.removePreferenceItem(text)
     }

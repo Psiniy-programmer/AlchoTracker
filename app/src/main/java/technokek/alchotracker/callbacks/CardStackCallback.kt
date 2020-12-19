@@ -1,13 +1,13 @@
 package technokek.alchotracker.callbacks
 
 import androidx.recyclerview.widget.DiffUtil
-import technokek.alchotracker.data.models.CardModel
+import technokek.alchotracker.data.models.AlchooCardModel
 
 class CardStackCallback(): DiffUtil.Callback() {
-    private lateinit var old: MutableList<CardModel>
-    private lateinit var baru: MutableList<CardModel>
+    private lateinit var old: MutableList<AlchooCardModel>
+    private lateinit var baru: MutableList<AlchooCardModel>
 
-    constructor(old: MutableList<CardModel>, baru: MutableList<CardModel>) : this() {
+    constructor(old: MutableList<AlchooCardModel>, baru: MutableList<AlchooCardModel>) : this() {
         this.old = old
         this.baru = baru
     }
