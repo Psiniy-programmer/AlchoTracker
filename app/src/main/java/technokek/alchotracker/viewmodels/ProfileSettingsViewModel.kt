@@ -48,6 +48,18 @@ class ProfileSettingsViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
+    override fun onAlchoo() {
+        CoroutineScope(Dispatchers.IO).launch {
+            profileSettings.onAlchoo()
+        }
+    }
+
+    override fun offAlchoo() {
+        CoroutineScope(Dispatchers.IO).launch {
+            profileSettings.offAlchoo()
+        }
+    }
+
     override fun signOut() {
         profileSettings.signOut()
     }

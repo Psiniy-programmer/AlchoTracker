@@ -41,6 +41,7 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
 
     inner class SettingsListener : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
+
             getModel(snapshot.child(mAuth.currentUser?.uid.toString()))
         }
 
@@ -53,7 +54,8 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
         value = SettingsProfileModel(
             x.child(AVATAR).value.toString(),
             x.child(STATUS).value.toString(),
-            x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString()
+            x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString(),
+            x.child(ALCHOINFO).child(ALCHOO).value as Boolean
         )
     }
 
@@ -83,6 +85,20 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
             .child(ALCHOINFO)
             .child(FAVOURITEDRINK)
             .setValue(newDrink)
+    }
+
+    override fun onAlchoo() {
+        query.ref.child(mAuth.currentUser?.uid.toString())
+            .child(ALCHOINFO)
+            .child(ALCHOO)
+            .setValue(true)
+    }
+
+    override fun offAlchoo() {
+        query.ref.child(mAuth.currentUser?.uid.toString())
+            .child(ALCHOINFO)
+            .child(ALCHOO)
+            .setValue(false)
     }
 
     override fun signOut() {

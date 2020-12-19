@@ -4,6 +4,7 @@ import android.app.Activity.RESULT_OK
 import android.app.Application
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.theartofdev.edmodo.cropper.CropImage
 import technokek.alchotracker.R
 import technokek.alchotracker.ui.activity.LoginActivity
@@ -24,6 +26,7 @@ class ProfileSettingsFragment : Fragment() {
     private lateinit var signOutBtn: Button
     private lateinit var inputStatus: EditText
     private lateinit var inputDrink: EditText
+    private lateinit var alchooSwitcher: SwitchMaterial
     private lateinit var mProfileViewModel: ProfileSettingsViewModel
 
     override fun onCreateView(
@@ -43,6 +46,7 @@ class ProfileSettingsFragment : Fragment() {
         signOutBtn = view.findViewById(R.id.sign_out_btn)
         inputStatus = view.findViewById(R.id.edit_status)
         inputDrink = view.findViewById(R.id.edit_drink)
+        alchooSwitcher = view.findViewById(R.id.alchoo_switcher)
 
         mProfileViewModel =
             ViewModelProvider(this)[ProfileSettingsViewModel(Application())::class.java]
@@ -66,6 +70,13 @@ class ProfileSettingsFragment : Fragment() {
         signOutBtn.setOnClickListener {
             mProfileViewModel.signOut()
             startActivity(Intent(context, LoginActivity::class.java))
+        }
+
+        alchooSwitcher.setOnCheckedChangeListener { buttonView, isChecheck ->
+            if (alchooSwitcher.isChecked)
+                mProfileViewModel.onAlchoo()
+            else
+                mProfileViewModel.offAlchoo()
         }
     }
 

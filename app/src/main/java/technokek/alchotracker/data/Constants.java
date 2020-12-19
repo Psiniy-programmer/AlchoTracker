@@ -24,6 +24,6 @@ public class Constants {
     public static final String NOTEQUALPASSWORERROR = "Пароли не совпадают.";
     public static final String MISSINGNAMEERROR = "Введите имя.";
     public static final String SHORTPASSWORDERROR = "Минимальная длина пароля 6 симв.";
-
+    public static final String ALCHOO = "alchoo";
 }
 
