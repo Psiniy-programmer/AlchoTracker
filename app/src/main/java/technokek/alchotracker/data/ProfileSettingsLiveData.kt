@@ -9,10 +9,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.StorageReference
+import technokek.alchotracker.api.ProfileSettingsInterface
 import technokek.alchotracker.data.models.SettingsProfileModel
 import technokek.alchotracker.data.Constants.*
 
-class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
+class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), ProfileSettingsInterface {
     private lateinit var query: Query
     private lateinit var storage: StorageReference
     private lateinit var mAuth: FirebaseAuth
@@ -56,13 +57,13 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
         )
     }
 
-    fun setStatus(newStatus: String) {
+    override fun setStatus(newStatus: String) {
         query.ref.child(mAuth.currentUser?.uid.toString())
             .child(STATUS)
             .setValue(newStatus)
     }
 
-    fun setAvatar(newAvatar: Uri) {
+    override fun setAvatar(newAvatar: Uri) {
 
         storage.putFile(newAvatar).addOnCompleteListener { putTask ->
             if (putTask.isSuccessful) {
@@ -77,14 +78,14 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
         }
     }
 
-    fun setDrink(newDrink: String) {
+    override fun setDrink(newDrink: String) {
         query.ref.child(mAuth.currentUser?.uid.toString())
             .child(ALCHOINFO)
             .child(FAVOURITEDRINK)
             .setValue(newDrink)
     }
 
-    fun signOut() {
+    override fun signOut() {
         mAuth.signOut()
     }
 

@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/master_profile"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:ignore="UseCompoundDrawables">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorGray"
-        android:orientation="vertical">
-
-        <ImageButton
-            style="@style/Widget.AppCompat.Button"
-            android:id="@+id/settings_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="10dp"
-            android:contentDescription="@string/settings"
-            android:src="@android:drawable/ic_menu_manage" />
-    </LinearLayout>
 
     <ImageView
         android:id="@+id/master_profile_avatar"

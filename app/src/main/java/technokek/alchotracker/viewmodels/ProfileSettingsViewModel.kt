@@ -10,10 +10,11 @@ import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import technokek.alchotracker.api.ProfileSettingsInterface
 import technokek.alchotracker.data.ProfileSettingsLiveData
 import technokek.alchotracker.data.models.SettingsProfileModel
 
-class ProfileSettingsViewModel(application: Application) : AndroidViewModel(application) {
+class ProfileSettingsViewModel(application: Application) : AndroidViewModel(application), ProfileSettingsInterface {
     private var profileSettings = ProfileSettingsLiveData(dbRef, sRef, aRef)
     private val mMediatorLiveData = MediatorLiveData<SettingsProfileModel>()
 
@@ -29,25 +30,25 @@ class ProfileSettingsViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
-    fun setStatus(newStatus: String) {
+    override fun setStatus(newStatus: String) {
         CoroutineScope(Dispatchers.IO).launch {
             profileSettings.setStatus(newStatus)
         }
     }
 
-    fun setAvatar(newAvatar: Uri) {
+    override fun setAvatar(newAvatar: Uri) {
         CoroutineScope(Dispatchers.IO).launch {
             profileSettings.setAvatar(newAvatar)
         }
     }
 
-    fun setDrink(newDrink: String) {
+    override fun setDrink(newDrink: String) {
         CoroutineScope(Dispatchers.IO).launch {
             profileSettings.setDrink(newDrink)
         }
     }
 
-    fun signOut() {
+    override fun signOut() {
         profileSettings.signOut()
     }
 
