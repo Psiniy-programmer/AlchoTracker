@@ -74,7 +74,7 @@ class SingleChatLiveData() : MutableLiveData<MutableList<SingleChatMessageModel>
         val newNode = query.ref
             .child(chatID)
             .child(ALLMESSAGES)
-            .child(value?.size.toString() + 1)
+            .child((value?.size?.plus(1)).toString())
 
         val sdf = SimpleDateFormat("hh:mm:ss")
         val currentDate = sdf.format(Date())

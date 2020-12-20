@@ -35,8 +35,9 @@ class SignleChatFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         chatID = arguments?.get("chatID") as String
-//        friendID = arguments?.get("uid") as String
-        friendID = "zsdZKC8DDfYFfWNf5EULs6jbyMX2"
+        friendID = arguments?.get("uid") as String
+        Log.d("SYKA", "TEST == $friendID")
+//        friendID = "zsdZKC8DDfYFfWNf5EULs6jbyMX2"
 //        name = arguments?.get("name") as String
 //        avatar = arguments?.get("avatar") as String
 

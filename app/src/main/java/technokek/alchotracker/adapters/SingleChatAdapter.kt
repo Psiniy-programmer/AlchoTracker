@@ -23,8 +23,8 @@ class SingleChatAdapter(
 
     override fun onBindViewHolder(holder: ChatMessageViewHolder, position: Int) {
         val model = mData[position]
-//        Log.d("SYKA", "in - $friendID \n model - ${model.fromId}")
-//        Log.d("SYKA", "KEK = ${friendID == model.fromId}")
+        Log.d("SYKA", "in - $friendID \n model - ${model.fromId}")
+        Log.d("SYKA", "KEK = ${friendID == model.fromId}")
         if (friendID == model.fromId) {
             holder.mFriendLayout.visibility = View.VISIBLE
             holder.mFriendMessage.text = model.message
