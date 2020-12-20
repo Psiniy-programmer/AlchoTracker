@@ -53,7 +53,7 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
 
             val y = snapshot.child(uid)
                 .child(FRIENDS)
-            
+
             val friendIncList = y.child(INCOMING_REQUESTS)
                 .child(REQUESTS)
                 .value.toString()
