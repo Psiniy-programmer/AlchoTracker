@@ -122,7 +122,7 @@ class MainActivity :
         bundle.putString("chatID", chatID)
         bundle.putString("avatar", model.avatar)
         bundle.putString("name", model.name)
-        bundle.putString("uid", model.userID)
+        bundle.putString("uid", model.friendID)
 
         Log.d("SUKA", "PRESSCHATFRIEND: $chatID, $model")
 
