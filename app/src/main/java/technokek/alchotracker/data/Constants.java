@@ -35,5 +35,10 @@ public class Constants {
     public static final String DATETIME = "date_time";
     public static final String TEXTMESSAGE = "text_message";
     public static final String LASTSENDERID = "last_sender_id";
+    public static final int START_NOTIFICATION_ID = 0;
+    public static final String START_NOTIFICATION_TITLE = "AlkoEvent!";
+    public static final String START_NOTIFICATION_TEXT = "Your event has started!";
+    public static final String TIMER_TIMESTAMPS_IN_SP = "TIMER_TIMESTAMPS_IN_SP";
+    public static final String SHARED_PREFS = "SHARED_PREFS";
 }
 

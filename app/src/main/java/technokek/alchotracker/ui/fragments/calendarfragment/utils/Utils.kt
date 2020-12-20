@@ -7,6 +7,7 @@ import technokek.alchotracker.data.models.CalendarModel
 
 private typealias Place = CalendarModel.Place
 
+
 fun generateAlkoEvents(): MutableList<CalendarModel> {
     val list = mutableListOf<CalendarModel>()
     val currentMonth = YearMonth.now()
@@ -118,3 +119,4 @@ fun isEmpty(eText: EditText): Boolean {
         return false
     return true
 }
+

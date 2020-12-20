@@ -33,5 +33,7 @@ class AlkoEventsAdapter(
 
     interface ActionListener {
         fun onEventClick(calendarModel: CalendarModel)
+        fun onAcceptClick(calendarModel: CalendarModel)
+        fun onDenyClick(calendarModel: CalendarModel)
     }
 }
