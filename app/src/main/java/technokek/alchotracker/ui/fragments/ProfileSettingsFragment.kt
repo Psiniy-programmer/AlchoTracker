@@ -109,7 +109,6 @@ class ProfileSettingsFragment : Fragment() {
                     val result = context?.contentResolver?.let { ImageDecoder.createSource(it, filePath) }
                     val bitmap: Bitmap? = result?.let { ImageDecoder.decodeBitmap(it) }
                     if (bitmap != null) {
-                        Log.d("SYKA", "1st")
                         mSettingsViewModel.setAvatar(bitmap)
                     }
                 } catch (e: IOException) {
@@ -117,5 +116,5 @@ class ProfileSettingsFragment : Fragment() {
                 }
             }
         }
-    }
+    }0
 }

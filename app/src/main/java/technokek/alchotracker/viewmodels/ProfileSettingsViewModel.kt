@@ -45,7 +45,6 @@ class ProfileSettingsViewModel(application: Application) : AndroidViewModel(appl
 
     override fun setAvatar(newAvatar: Bitmap) {
         CoroutineScope(Dispatchers.IO).launch {
-            Log.d("SYKA", "2nd")
             profileSettings.setAvatar(newAvatar)
         }
     }
