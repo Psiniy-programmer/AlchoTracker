@@ -10,8 +10,8 @@ public class Constants {
     public static final String FRIENDS = "friends";
     public static final String LIST = "list";
     public static final String REQUESTS = "requests";
-    public static final String OUTGOING = "outgoing";
-    public static final String INCOMING = "incoming";
+    public static final String OUTGOING_REQUESTS = "outgoing";
+    public static final String INCOMING_REQUESTS = "incoming";
     public static final String ALCHOINFO = "alchoinfo";
     public static final String EVENTSCOUNT = "eventsCount";
     public static final String FRIENDSCOUNT = "friendsCount";

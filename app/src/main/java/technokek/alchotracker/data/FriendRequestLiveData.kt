@@ -61,13 +61,13 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             query.ref.child(uid)
                 .child(FRIENDS)
                 .child(REQUESTS)
-                .child(OUTGOING)
+                .child(OUTGOING_REQUESTS)
                 .setValue("")
         } else {
             query.ref.child(uid)
                 .child(FRIENDS)
                 .child(REQUESTS)
-                .child(OUTGOING)
+                .child(OUTGOING_REQUESTS)
                 .setValue(outgoingChange)
         }
         query.ref.child(uid)
@@ -106,13 +106,13 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             query.ref.child(currentID)
                 .child(FRIENDS)
                 .child(REQUESTS)
-                .child(INCOMING)
+                .child(INCOMING_REQUESTS)
                 .setValue("")
         } else {
             query.ref.child(currentID)
                 .child(FRIENDS)
                 .child(REQUESTS)
-                .child(INCOMING)
+                .child(INCOMING_REQUESTS)
                 .setValue(incomingChange)
         }
         query.ref.child(currentID)
@@ -162,13 +162,13 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             query.ref.child(uid)
                 .child(FRIENDS)
                 .child(REQUESTS)
-                .child(OUTGOING)
+                .child(OUTGOING_REQUESTS)
                 .setValue("")
         } else {
             query.ref.child(uid)
                 .child(FRIENDS)
                 .child(REQUESTS)
-                .child(OUTGOING)
+                .child(OUTGOING_REQUESTS)
                 .setValue(outgoingChange)
         }
 
@@ -176,13 +176,13 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             query.ref.child(currentUser!!.uid)
                 .child(FRIENDS)
                 .child(REQUESTS)
-                .child(INCOMING)
+                .child(INCOMING_REQUESTS)
                 .setValue("")
         } else {
             query.ref.child(currentUser!!.uid)
                 .child(FRIENDS)
                 .child(REQUESTS)
-                .child(INCOMING)
+                .child(INCOMING_REQUESTS)
                 .setValue(incomingChange)
         }
     }
@@ -204,9 +204,9 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
                         name = i.child(NAME).value.toString(),
                         avatar = i.child(AVATAR).value.toString(),
                         incoming = i.child(FRIENDS).child(REQUESTS)
-                            .child(INCOMING).value.toString(),
+                            .child(INCOMING_REQUESTS).value.toString(),
                         outgoing = i.child(FRIENDS).child(REQUESTS)
-                            .child(OUTGOING).value.toString(),
+                            .child(OUTGOING_REQUESTS).value.toString(),
                         friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
                             .getValue(Int::class.java)!!,
                         friendsList = i.child(FRIENDS).child(LIST).value.toString()
@@ -224,7 +224,7 @@ class FriendRequestLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
         private fun getListRequestFriends(snapshot: DataSnapshot): MutableList<String> {
             val user = snapshot.child(currentUser!!.uid)
-            val rawList = user.child(FRIENDS).child(REQUESTS).child(INCOMING).value.toString()
+            val rawList = user.child(FRIENDS).child(REQUESTS).child(INCOMING_REQUESTS).value.toString()
 
             Log.d("test", "$user : ${rawList.split(";").toMutableList()}")
 

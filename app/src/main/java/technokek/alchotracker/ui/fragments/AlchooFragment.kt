@@ -48,11 +48,9 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
                 }
             }
             override fun onCardSwiped(direction: Direction?) {
-                if (direction == Direction.Right) {
-                    mAlchooViewModel.acceptBody(touchedUid)
-                }
-                if (direction == Direction.Left) {
-                    mAlchooViewModel.declineBody(touchedUid)
+                when (direction) {
+                    Direction.Right -> mAlchooViewModel.acceptBody(touchedUid)
+                    Direction.Left -> mAlchooViewModel.declineBody(touchedUid)
                 }
             }
 
@@ -111,6 +109,5 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
 
     override fun touchBody(uid: String) {
         touchedUid = uid
-//        save
     }
 }

@@ -52,9 +52,9 @@ class CurrentUserLiveData() : MutableLiveData<FriendModel>() {
                         name = i.child(NAME).value.toString(),
                         avatar = i.child(AVATAR).value.toString(),
                         incoming = i.child(FRIENDS).child(REQUESTS)
-                            .child(INCOMING).value.toString(),
+                            .child(INCOMING_REQUESTS).value.toString(),
                         outgoing = i.child(FRIENDS).child(REQUESTS)
-                            .child(OUTGOING).value.toString(),
+                            .child(OUTGOING_REQUESTS).value.toString(),
                         friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
                             .getValue(Int::class.java)!!,
                         friendsList = i.child(FRIENDS).child(LIST).value.toString()

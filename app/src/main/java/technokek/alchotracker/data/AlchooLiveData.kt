@@ -3,10 +3,7 @@ package technokek.alchotracker.data
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.Query
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import technokek.alchotracker.api.AlchooInterface
 import technokek.alchotracker.data.Constants.*
 import technokek.alchotracker.data.models.AlchooCardModel
@@ -14,6 +11,8 @@ import technokek.alchotracker.data.models.AlchooCardModel
 class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>(), AlchooInterface {
     private lateinit var query: Query
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var curUserIncomeRequests: String
+    private lateinit var curUserOutgoingRequests: String
     private var alchooListener = AlchooListener()
 
     constructor(query: Query, mAuth: FirebaseAuth) : this() {
@@ -38,16 +37,35 @@ class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>(), Alchoo
     inner class AlchooListener : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val alchoo: MutableList<AlchooCardModel> = mutableListOf()
+//            Log.d("SYKA","snapshot ${snapshot.child(mAuth.currentUser!!.uid)}")
+            curUserIncomeRequests = snapshot
+                .child(mAuth.currentUser!!.uid)
+                .child(FRIENDS)
+                .child(REQUESTS)
+                .child(INCOMING_REQUESTS).value.toString()
+            curUserOutgoingRequests = snapshot
+                .child(mAuth.currentUser!!.uid)
+                .child(FRIENDS)
+                .child(REQUESTS)
+                .child(OUTGOING_REQUESTS).value.toString()
+
             for (x in snapshot.children) {
-                if (x.child(ID).value.toString() != mAuth.currentUser!!.uid)
+                if (x.child(ID).value.toString() != mAuth.currentUser!!.uid
+                    && x.child(ALCHOINFO).child(ALCHOO).value.toString() == "true"
+                    && !inFriendList(x)
+                    && !inRequestsList(curUserIncomeRequests, curUserOutgoingRequests, x)
+                ) {
                     alchoo.add(
                         AlchooCardModel(
                             x.child(AVATAR).value.toString(),
                             x.child(NAME).value.toString(),
                             x.child(STATUS).value.toString(),
-                            x.child(ID).value.toString()
+                            x.child(ID).value.toString(),
+                            x.child(FRIENDS).child(INCOMING_REQUESTS).value.toString(),
+                            x.child(FRIENDS).child(OUTGOING_REQUESTS).value.toString(),
                         )
                     )
+                }
             }
             value = alchoo
         }
@@ -63,12 +81,48 @@ class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>(), Alchoo
     }
 
     override fun acceptBody(uid: String) {
+        val masterPath = getPath(mAuth.currentUser?.uid.toString(), REQUESTS)
+        val friendPath = getPath(uid, REQUESTS)
+        if (!curUserOutgoingRequests.isNullOrEmpty()) {
+            masterPath.child(OUTGOING_REQUESTS)
+                .setValue(uid)
+        } else {
+            masterPath.child(OUTGOING_REQUESTS)
+                .setValue("${curUserOutgoingRequests};$uid")
+        }
+
+        for (item in value!!) {
+            if (item.id == uid) {
+                if (!item.incomingRequests.isNullOrEmpty())
+                    friendPath.child(INCOMING_REQUESTS)
+                        .setValue(mAuth.currentUser?.uid.toString())
+                else
+                    friendPath.child(INCOMING_REQUESTS)
+                        .setValue("${item.incomingRequests};${mAuth.currentUser?.uid.toString()}")
+            }
+        }
         Log.d("SYKA", "accepted $uid")
-//        TODO("Not yet implemented")
+    }
+
+    private fun getPath(uid: String, type: String): DatabaseReference {
+        return query.ref.child(uid)
+            .child(FRIENDS)
+            .child(type)
+    }
+
+    private fun inFriendList(snapshot: DataSnapshot): Boolean {
+        val friends = snapshot.child(FRIENDS).child(LIST).value.toString()
+        return friends.contains(mAuth.currentUser?.uid.toString(), ignoreCase = true)
+    }
+
+    private fun inRequestsList(i: String, o: String, item: DataSnapshot): Boolean {
+        val friendId =
+            item.child(ID).value.toString()
+        return (i.contains(friendId, ignoreCase = true)
+                || o.contains(friendId, ignoreCase = true))
     }
 
     override fun declineBody(uid: String) {
         Log.d("SYKA", "declined $uid")
-//        TODO("Not yet implemented")
     }
 }
