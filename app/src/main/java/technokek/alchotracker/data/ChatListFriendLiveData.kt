@@ -47,11 +47,12 @@ class ChatListFriendLiveData() :
             val chatCurrentUser = snapshot.child(currentUser!!.uid).child(Constants.CHATID)
 
             for (i in chatCurrentUser.children) {
-                val users: List<String> = i.child(Constants.USERS).value.toString().split(";")
+                val users: List<String> = i.child(Constants.USERS).value.toString().split(";").filter { it != currentUser.uid }
                 val listChats: MutableList<SearchFriendModel> = mutableListOf()
 
                 for (j in snapshot.children) {
-                    if (users.contains(j.key)) {
+                    Log.d("SUKA", "users: ${users}  ${j.key.toString()}")
+                    if (users.contains(j.key.toString())) {
                         val itemList = SearchFriendModel(
                             id = j.key.toString(),
                             name = j.child(Constants.NAME).value.toString(),

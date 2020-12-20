@@ -94,6 +94,19 @@ class MainActivity :
         )
     }
 
+    override fun pressChat(chatID: String) {
+        val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
+        toast.show()
+
+        val bundle = Bundle()
+        bundle.putString("chatID", chatID)
+
+        navHostFragment.navController.navigate(
+            R.id.action_chatListFragment_to_chatFragment,
+            bundle
+        )
+    }
+
     override fun pressChatFriend(chatID: String) {
         val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
         toast.show()

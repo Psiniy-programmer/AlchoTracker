@@ -18,7 +18,7 @@ class ChatViewModel : ViewModel() {
 
     private val chatListLiveData = ChatListFriendLiveData(HOT_STOCK_REF)
     private val chatFriendLiveData = ChatFriendLiveData(HOT_STOCK_CHAT)
-    private val friends = FriendLiveData(HOT_STOCK_REF)
+    private val friends = FriendLiveData(HOT_STOCK_REF, true)
     var mediatorChatListLiveData = MediatorLiveData<HashMap<String, MutableList<SearchFriendModel>>>()
         private set
     var mediatorChatLiveData = MediatorLiveData<MutableList<ChatFriendModel>>()
