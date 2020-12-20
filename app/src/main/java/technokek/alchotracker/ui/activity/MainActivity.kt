@@ -106,6 +106,8 @@ class MainActivity :
         bundle.putString("avatar", model.avatar)
         bundle.putString("uid", model.id)
 
+        Log.d("SUKA", "PRESSCHAT: $chatID, $model")
+
         navHostFragment.navController.navigate(
             R.id.action_chatListFragment_to_chatFragment,
             bundle
@@ -121,6 +123,8 @@ class MainActivity :
         bundle.putString("avatar", model.avatar)
         bundle.putString("name", model.name)
         bundle.putString("uid", model.userID)
+
+        Log.d("SUKA", "PRESSCHATFRIEND: $chatID, $model")
 
         navHostFragment.navController.navigate(
             R.id.action_chatListFragment_to_chatFragment,
