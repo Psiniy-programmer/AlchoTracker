@@ -49,6 +49,8 @@ class FirebaseSource {
         db = FirebaseDatabase.getInstance().getReference()
         uid = FirebaseAuth.getInstance().currentUser!!.uid;
         db.child(Constants.USERS).child(uid).child(Constants.ID).setValue(uid)
+        db.child(Constants.USERS).child(uid).child(Constants.ALCHOINFO).child(Constants.ALCHOO).child(Constants.DECLINELIST).setValue("")
+        db.child(Constants.USERS).child(uid).child(Constants.ALCHOINFO).child(Constants.ALCHOO).child(Constants.FINDER).setValue(Constants.FALSE)
         db.child(Constants.USERS).child(uid).child(Constants.ALCHOINFO).child(Constants.EVENTSCOUNT).setValue(0)
         db.child(Constants.USERS).child(uid).child(Constants.ALCHOINFO).child(Constants.FAVOURITEDRINK).setValue("")
         db.child(Constants.USERS).child(uid).child(Constants.ALCHOINFO).child(Constants.FRIENDSCOUNT).setValue(0)
