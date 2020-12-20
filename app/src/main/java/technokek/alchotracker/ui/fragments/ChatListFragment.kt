@@ -3,11 +3,10 @@ package technokek.alchotracker.ui.fragments
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.*
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -15,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.ChatListAdapter
+import technokek.alchotracker.adapters.FriendAdapter
 import technokek.alchotracker.api.ChatListListener
+import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.viewmodels.ChatViewModel
 
 class ChatListFragment : Fragment() {
@@ -24,8 +25,11 @@ class ChatListFragment : Fragment() {
     private lateinit var chatListRecyclerView: RecyclerView
     private lateinit var chatListAdapter: ChatListAdapter
 
+    private lateinit var chatFriendListRecyclerView: RecyclerView
+    private lateinit var chatFriendListAdapter: FriendAdapter
+
     private lateinit var mProgressBar: ProgressBar
-    private lateinit var searchView: SearchView
+    private lateinit var buttonView: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,11 +55,39 @@ class ChatListFragment : Fragment() {
         chatListRecyclerView = view.findViewById(R.id.chat_list_view)
         chatListRecyclerView.layoutManager = LinearLayoutManager(context)
 
+        chatFriendListRecyclerView = view.findViewById(R.id.chat_list_friend)
+        chatFriendListRecyclerView.layoutManager = LinearLayoutManager(context)
+
         chatListAdapter = if (mChatViewModel.mediatorChatLiveData.value != null) {
-            ChatListAdapter(mChatViewModel.mediatorChatLiveData.value!!, activity as ChatListListener)
+            ChatListAdapter(
+                mChatViewModel.mediatorChatLiveData.value!!,
+                activity as ChatListListener
+            )
         } else {
             ChatListAdapter(mutableListOf(), activity as ChatListListener)
         }
+
+        chatFriendListAdapter = if (mChatViewModel.mediatorFriendLiveData.value != null) {
+            FriendAdapter(
+                mChatViewModel.mediatorFriendLiveData.value!!,
+                activity as FriendClickListener
+            )
+        } else {
+            FriendAdapter(mutableListOf(), activity as FriendClickListener)
+        }
+
+        mChatViewModel.mediatorFriendLiveData.observe(
+            viewLifecycleOwner,
+            {
+                if (chatFriendListRecyclerView.adapter == null) {
+                    mProgressBar.visibility = View.GONE
+                    chatFriendListAdapter.refresh(mChatViewModel.mediatorFriendLiveData.value!!)
+                    chatFriendListRecyclerView.adapter = chatFriendListAdapter
+                }
+
+                chatFriendListAdapter.notifyDataSetChanged()
+            }
+        )
 
         mChatViewModel.mediatorChatListLiveData.observe(
             viewLifecycleOwner,
@@ -80,42 +112,36 @@ class ChatListFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.search_friends, menu)
+        inflater.inflate(R.menu.create_private_chat, menu)
 
-        val searchItem: MenuItem = menu.findItem(R.id.search_friend)
+        val searchItem: MenuItem = menu.findItem(R.id.private_chat)
+        searchItem.isVisible = true
         searchItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-                TODO("Not yet implemented")
+                chatListRecyclerView.visibility = View.GONE
+                chatFriendListRecyclerView.visibility = View.VISIBLE
+                searchItem.isVisible = false
+
+                return false
             }
 
             override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-                TODO("Not yet implemented")
+                return false
             }
         })
 
-        searchView = searchItem.actionView as SearchView
-        searchView.setOnCloseListener { true }
+        buttonView = searchItem.actionView as Button
+//        buttonView.visibility = View.GONE
+//        buttonView.setOnCloseListener { true }
+    }
 
-        val searchPlateView = searchView.findViewById<View>(androidx.appcompat.R.id.search_plate)
-        searchPlateView.setBackgroundColor(
-            ContextCompat.getColor(
-                requireContext(),
-                android.R.color.transparent
-            )
-        )
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            chatListRecyclerView.visibility = View.VISIBLE
+            chatFriendListRecyclerView.visibility = View.GONE
+            item.isVisible = true
+        }
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                TODO("Not yet implemented")
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                TODO("Not yet implemented")
-            }
-        })
-
-        val searchManager =
-            activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
+        return super.onOptionsItemSelected(item)
     }
 }

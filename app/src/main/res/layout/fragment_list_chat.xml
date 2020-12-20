@@ -8,6 +8,13 @@
         android:layout_height="wrap_content"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_list_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
     <ProgressBar
         android:id="@+id/chat_list_progress_bar"
         android:layout_width="wrap_content"
