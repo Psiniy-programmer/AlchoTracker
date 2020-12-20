@@ -7,5 +7,6 @@ data class ChatFriendModel(
     var lastMessage: String = "",
     var lastDateTime: String = "",
     var userID: String = "",
-    var lastSenderID: String = ""
+    var lastSenderID: String = "",
+    var friendID: String = ""
 )

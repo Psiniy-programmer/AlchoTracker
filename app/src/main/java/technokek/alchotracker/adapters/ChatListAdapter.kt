@@ -28,22 +28,22 @@ class ChatListAdapter(
 
         Picasso.get().load(model.avatar).into(holder.mImageView)
         holder.mImageView.setOnClickListener {
-            listener.pressChatFriend(model.chatID)
+            listener.pressChatFriend(model.chatID, model)
         }
 
         holder.nameTextView.text = model.name
         holder.nameTextView.setOnClickListener {
-            listener.pressChatFriend(model.chatID)
+            listener.pressChatFriend(model.chatID, model)
         }
 
         holder.textTextView.text = model.lastMessage
         holder.textTextView.setOnClickListener {
-            listener.pressChatFriend(model.chatID)
+            listener.pressChatFriend(model.chatID, model)
         }
 
         holder.timeTextView.text = model.lastDateTime
         holder.timeTextView.setOnClickListener {
-            listener.pressChatFriend(model.chatID)
+            listener.pressChatFriend(model.chatID, model)
         }
     }
 

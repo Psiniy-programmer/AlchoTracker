@@ -87,7 +87,10 @@ class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>(), Ch
                                 lastMessage = i.child(Constants.LASTMESSAGE).value.toString(),
                                 lastDateTime = i.child(Constants.LASTDATETIME).value.toString(),
                                 userID = i.child(Constants.USERS).value.toString(),
-                                lastSenderID = lastSenderID
+                                lastSenderID = lastSenderID,
+                                friendID = i.child(Constants.USERS)
+                                    .value.toString().split(";")
+                                    .filter { it != currentUser!!.uid }.toString()
                             )
                             chatFriends.add(friend)
                         } else {
@@ -104,7 +107,10 @@ class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>(), Ch
                                 lastMessage = i.child(Constants.LASTMESSAGE).value.toString(),
                                 lastDateTime = i.child(Constants.LASTDATETIME).value.toString(),
                                 userID = i.child(Constants.USERS).value.toString(),
-                                lastSenderID = "lastSenderID"
+                                lastSenderID = "lastSenderID",
+                                friendID = i.child(Constants.USERS)
+                                    .value.toString().split(";")
+                                    .filter { it != currentUser!!.uid }.toString()
                             )
                             chatFriends.add(friend)
                         }

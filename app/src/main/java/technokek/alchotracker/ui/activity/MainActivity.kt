@@ -18,6 +18,7 @@ import technokek.alchotracker.api.ChatListListener
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FoundUserListener
 import technokek.alchotracker.api.FriendClickListener
+import technokek.alchotracker.data.models.ChatFriendModel
 import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.databinding.ActivityMainBinding
 
@@ -110,12 +111,17 @@ class MainActivity :
         )
     }
 
-    override fun pressChatFriend(chatID: String) {
+    override fun pressChatFriend(chatID: String, model: ChatFriendModel) {
         val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
         toast.show()
 
         val bundle = Bundle()
         bundle.putString("chatID", chatID)
+        bundle.putString("avatar", model.avatar)
+        bundle.putString("name", model.name)
+        bundle.putString("uid", model.friendID)
+
+        Log.d("SUKA", "PRESSCHATFRIEND: $chatID, $model")
 
         navHostFragment.navController.navigate(
             R.id.action_chatListFragment_to_chatFragment,
