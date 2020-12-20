@@ -7,6 +7,7 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import technokek.alchotracker.api.ChatInterFace
 import technokek.alchotracker.data.ChatFriendLiveData
 import technokek.alchotracker.data.ChatListFriendLiveData
 import technokek.alchotracker.data.FriendLiveData
@@ -14,7 +15,7 @@ import technokek.alchotracker.data.models.ChatFriendModel
 import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.data.models.SearchFriendModel
 
-class ChatViewModel : ViewModel() {
+class ChatViewModel : ViewModel(), ChatInterFace {
 
     private val chatListLiveData = ChatListFriendLiveData(HOT_STOCK_REF)
     private val chatFriendLiveData = ChatFriendLiveData(HOT_STOCK_CHAT)
@@ -58,6 +59,11 @@ class ChatViewModel : ViewModel() {
 
     fun refresh(chatID: HashMap<String, MutableList<SearchFriendModel>>) {
         chatFriendLiveData.refreshChatID(chatID)
+    }
+
+    override fun createChat(model: FriendModel) {
+        chatListLiveData.createChat(model)
+        chatFriendLiveData.createChat(model)
     }
 
     companion object {

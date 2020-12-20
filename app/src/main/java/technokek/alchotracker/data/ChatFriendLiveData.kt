@@ -4,11 +4,12 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import technokek.alchotracker.api.ChatInterFace
 import technokek.alchotracker.data.models.ChatFriendModel
 import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.data.models.SearchFriendModel
 
-class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>() {
+class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>(), ChatInterFace {
 
     private lateinit var query: Query
     private val chatListener = ChatListener()
@@ -43,6 +44,18 @@ class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>() {
         query.addListenerForSingleValueEvent(chatListener)
     }
 
+    override fun createChat(model: FriendModel) {
+        if (model.bool) {
+            query.ref.child(model.chatID).apply {
+                child(Constants.ALLMESSAGES).setValue("")
+                child(Constants.LASTMESSAGE).setValue("")
+                child(Constants.LASTSENDERID).setValue("")
+                child(Constants.LASTDATETIME).setValue("")
+                child(Constants.USERS).setValue(model.chatID)
+            }
+        }
+    }
+
     companion object {
         const val TAG = "ChatFriendLiveData"
     }
@@ -58,21 +71,43 @@ class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>() {
 
                 for (i in snapshot.children) {
                     if (chatKeys.contains(i.key.toString())) {
-                        lastSenderID = i.child(Constants.LASTSENDERID).value.toString()
+                        if (!lastSenderID.isNullOrEmpty()) {
+                            lastSenderID = i.child(Constants.LASTSENDERID).value.toString()
 
-                        val list: MutableList<SearchFriendModel> = chatID!!.getValue(i.key.toString())
-                        val lastSearchFriend = list.filter { it.id == lastSenderID }
+                            val list: MutableList<SearchFriendModel> =
+                                chatID!!.getValue(i.key.toString())
+                            val lastSearchFriend = list.filter { it.id != currentUser!!.uid }
 
-                        val friend = ChatFriendModel(
-                            chatID = i.key.toString(),
-                            name = lastSearchFriend.first().name,
-                            avatar = lastSearchFriend.first().avatar,
-                            lastMessage = i.child(Constants.LASTMESSAGE).value.toString(),
-                            lastDateTime = i.child(Constants.LASTDATETIME).value.toString(),
-                            userID = i.child(Constants.USERS).value.toString(),
-                            lastSenderID = lastSenderID
-                        )
-                        chatFriends.add(friend)
+                            Log.d("SUKA", "CRASHif: $lastSearchFriend")
+
+                            val friend = ChatFriendModel(
+                                chatID = i.key.toString(),
+                                name = lastSearchFriend.first().name,
+                                avatar = lastSearchFriend.first().avatar,
+                                lastMessage = i.child(Constants.LASTMESSAGE).value.toString(),
+                                lastDateTime = i.child(Constants.LASTDATETIME).value.toString(),
+                                userID = i.child(Constants.USERS).value.toString(),
+                                lastSenderID = lastSenderID
+                            )
+                            chatFriends.add(friend)
+                        } else {
+                            val list: MutableList<SearchFriendModel> =
+                                chatID!!.getValue(i.key.toString())
+                            val lastSearchFriend = list.filter { it.id != currentUser!!.uid }
+
+                            Log.d("SUKA", "CRASHelse: $lastSearchFriend")
+
+                            val friend = ChatFriendModel(
+                                chatID = i.key.toString(),
+                                name = lastSearchFriend.first().name,
+                                avatar = lastSearchFriend.first().avatar,
+                                lastMessage = i.child(Constants.LASTMESSAGE).value.toString(),
+                                lastDateTime = i.child(Constants.LASTDATETIME).value.toString(),
+                                userID = i.child(Constants.USERS).value.toString(),
+                                lastSenderID = "lastSenderID"
+                            )
+                            chatFriends.add(friend)
+                        }
                     }
                 }
 

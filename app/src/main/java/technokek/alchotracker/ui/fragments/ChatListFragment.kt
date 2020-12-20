@@ -17,9 +17,10 @@ import technokek.alchotracker.adapters.ChatListAdapter
 import technokek.alchotracker.adapters.FriendAdapter
 import technokek.alchotracker.api.ChatListListener
 import technokek.alchotracker.api.FriendClickListener
+import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.viewmodels.ChatViewModel
 
-class ChatListFragment : Fragment() {
+class ChatListFragment : Fragment(), FriendClickListener {
 
     private lateinit var mChatViewModel: ChatViewModel
     private lateinit var chatListRecyclerView: RecyclerView
@@ -70,10 +71,10 @@ class ChatListFragment : Fragment() {
         chatFriendListAdapter = if (mChatViewModel.mediatorFriendLiveData.value != null) {
             FriendAdapter(
                 mChatViewModel.mediatorFriendLiveData.value!!,
-                activity as FriendClickListener
+                this
             )
         } else {
-            FriendAdapter(mutableListOf(), activity as FriendClickListener)
+            FriendAdapter(mutableListOf(), this)
         }
 
         mChatViewModel.mediatorFriendLiveData.observe(
@@ -143,5 +144,15 @@ class ChatListFragment : Fragment() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun pressFriend(uid: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun pressChat(chatID: String, model: FriendModel) {
+        mChatViewModel.createChat(model)
+
+        (activity as FriendClickListener).pressChat(chatID, model)
     }
 }

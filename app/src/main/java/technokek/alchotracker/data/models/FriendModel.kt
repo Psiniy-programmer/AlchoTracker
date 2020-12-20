@@ -8,5 +8,6 @@ data class FriendModel(
     var outgoing: String = "",
     var friendsCount: Int = 0,
     var friendsList: String = "",
-    var chatID: String = ""
+    var chatID: String = "",
+    var bool: Boolean = true
 )

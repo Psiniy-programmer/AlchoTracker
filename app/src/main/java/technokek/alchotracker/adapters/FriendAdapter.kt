@@ -3,10 +3,9 @@ package technokek.alchotracker.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.viewholders.FriendViewHolder
 import technokek.alchotracker.api.FriendClickListener
@@ -35,10 +34,7 @@ class FriendAdapter(
             if (model.chatID.isNullOrEmpty()) {
                 listener.pressFriend(model.id)
             } else {
-                CoroutineScope(Dispatchers.IO).launch {
-
-                    listener.pressChat(model.id)
-                }
+                listener.pressChat(model.id, model)
             }
         }
     }
