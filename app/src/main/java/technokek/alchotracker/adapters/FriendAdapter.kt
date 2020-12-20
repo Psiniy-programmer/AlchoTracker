@@ -3,6 +3,8 @@ package technokek.alchotracker.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,10 +37,32 @@ class FriendAdapter(
             if (model.chatID.isNullOrEmpty()) {
                 listener.pressFriend(model.id)
             } else {
-                CoroutineScope(Dispatchers.IO).launch {
+//                CoroutineScope(Dispatchers.IO).launch {
+                    val ref = FirebaseDatabase
+                        .getInstance()
+                        .getReference("users")
+                    val refChats = FirebaseDatabase
+                        .getInstance()
+                        .getReference("chats")
+                    val currentUser = FirebaseAuth.getInstance().currentUser
 
-                    listener.pressChat(model.id)
+                if (model.bool) {
+                    ref.child(currentUser!!.uid).child(CHATID).child(model.chatID).apply {
+                        child(USERS).setValue(model.chatID)
+                    }
+                    ref.child(model.id).child(CHATID).child(model.chatID).apply {
+                        child(USERS).setValue(model.chatID)
+                    }
+                    refChats.child(model.chatID).apply {
+                        child(ALLMESSAGES).setValue("")
+                        child(LASTMESSAGE).setValue("")
+                        child(LASTSENDERID).setValue("")
+                        child(LASTDATETIME).setValue("")
+                        child(USERS).setValue(model.chatID)
+                    }
                 }
+                    listener.pressChat(model.id)
+//                }
             }
         }
     }

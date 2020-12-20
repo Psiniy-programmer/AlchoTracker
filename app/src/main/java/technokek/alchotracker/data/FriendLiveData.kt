@@ -73,7 +73,6 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
                     listChatID.add(i.key.toString())
                 }
 
-                Log.d("SUKA", listChatID.toString())
                 var chatID = ""
 
                 for (i in snapshot.children) {
@@ -85,8 +84,6 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
                                 chatID = j
                                 break
                             }
-
-                            Log.d("SUKA", j)
                         }
 
                         if (bool) {
@@ -99,10 +96,10 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
                                 friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
                                     .getValue(Int::class.java)!!,
                                 friendsList = i.child(FRIENDS).child(LIST).value.toString(),
-                                chatID = chatID
+                                chatID = chatID,
+                                bool = false
                             )
                             friends.add(friend)
-                            Log.d("SUKA", true.toString())
                         } else {
                             val friend = FriendModel(
                                 id = i.key.toString(),
@@ -113,9 +110,9 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
                                 friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
                                     .getValue(Int::class.java)!!,
                                 friendsList = i.child(FRIENDS).child(LIST).value.toString(),
-                                chatID = "${currentUser.uid};${i.key}"
+                                chatID = "${currentUser.uid};${i.key}",
+                                bool = true
                             )
-                            Log.d("SUKA", friend.chatID)
                             friends.add(friend)
                         }
                     }
