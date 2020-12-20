@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.theartofdev.edmodo.cropper.CropImage
 import technokek.alchotracker.R
 import technokek.alchotracker.ui.activity.LoginActivity
@@ -24,7 +25,8 @@ class ProfileSettingsFragment : Fragment() {
     private lateinit var signOutBtn: Button
     private lateinit var inputStatus: EditText
     private lateinit var inputDrink: EditText
-    private lateinit var mProfileViewModel: ProfileSettingsViewModel
+    private lateinit var alchooSwitcher: SwitchMaterial
+    private lateinit var mSettingsViewModel: ProfileSettingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,12 +45,17 @@ class ProfileSettingsFragment : Fragment() {
         signOutBtn = view.findViewById(R.id.sign_out_btn)
         inputStatus = view.findViewById(R.id.edit_status)
         inputDrink = view.findViewById(R.id.edit_drink)
+        alchooSwitcher = view.findViewById(R.id.alchoo_switcher)
 
-        mProfileViewModel =
+        mSettingsViewModel =
             ViewModelProvider(this)[ProfileSettingsViewModel(Application())::class.java]
 
+        mSettingsViewModel.profileSettings.observe(viewLifecycleOwner, {
+            alchooSwitcher.isChecked = it.alchoo
+        })
+
         changeStatusBtn.setOnClickListener {
-            mProfileViewModel.setStatus(inputStatus.text.toString())
+            mSettingsViewModel.setStatus(inputStatus.text.toString())
             inputStatus.setText("")
         }
 
@@ -59,13 +66,20 @@ class ProfileSettingsFragment : Fragment() {
                 .start(activity as MainActivity, this)
         }
         changeDrinkBtn.setOnClickListener {
-            mProfileViewModel.setDrink(inputDrink.text.toString())
+            mSettingsViewModel.setDrink(inputDrink.text.toString())
             inputDrink.setText("")
         }
 
         signOutBtn.setOnClickListener {
-            mProfileViewModel.signOut()
+            mSettingsViewModel.signOut()
             startActivity(Intent(context, LoginActivity::class.java))
+        }
+
+        alchooSwitcher.setOnCheckedChangeListener { buttonView, isChecheck ->
+            if (alchooSwitcher.isChecked)
+                mSettingsViewModel.onAlchoo()
+            else
+                mSettingsViewModel.offAlchoo()
         }
     }
 
@@ -75,7 +89,7 @@ class ProfileSettingsFragment : Fragment() {
             resultCode == RESULT_OK && data != null
         ) {
             val uri = CropImage.getActivityResult(data).uri
-            mProfileViewModel.setAvatar(uri)
+            mSettingsViewModel.setAvatar(uri)
         }
     }
 }

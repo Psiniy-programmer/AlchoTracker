@@ -10,8 +10,8 @@ public class Constants {
     public static final String FRIENDS = "friends";
     public static final String LIST = "list";
     public static final String REQUESTS = "requests";
-    public static final String OUTGOING = "outgoing";
-    public static final String INCOMING = "incoming";
+    public static final String OUTGOING_REQUESTS = "outgoing";
+    public static final String INCOMING_REQUESTS = "incoming";
     public static final String ALCHOINFO = "alchoinfo";
     public static final String EVENTSCOUNT = "eventsCount";
     public static final String FRIENDSCOUNT = "friendsCount";
@@ -24,6 +24,9 @@ public class Constants {
     public static final String NOTEQUALPASSWORERROR = "Пароли не совпадают.";
     public static final String MISSINGNAMEERROR = "Введите имя.";
     public static final String SHORTPASSWORDERROR = "Минимальная длина пароля 6 симв.";
+    public static final String ALCHOO = "alchoo";
+    public static final String FINDER = "finder";
+    public static final String DECLINE_LIST = "declineList";
     public static final String CHATS = "chats";
     public static final String LASTMESSAGE = "last_message";
     public static final String LASTDATETIME = "last_time";

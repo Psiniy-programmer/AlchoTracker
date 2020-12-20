@@ -14,8 +14,9 @@ import technokek.alchotracker.api.ProfileSettingsInterface
 import technokek.alchotracker.data.ProfileSettingsLiveData
 import technokek.alchotracker.data.models.SettingsProfileModel
 
-class ProfileSettingsViewModel(application: Application) : AndroidViewModel(application), ProfileSettingsInterface {
-    private var profileSettings = ProfileSettingsLiveData(dbRef, sRef, aRef)
+class ProfileSettingsViewModel(application: Application) : AndroidViewModel(application),
+    ProfileSettingsInterface {
+    var profileSettings = ProfileSettingsLiveData(dbRef, sRef, aRef)
     private val mMediatorLiveData = MediatorLiveData<SettingsProfileModel>()
 
     init {
@@ -48,9 +49,23 @@ class ProfileSettingsViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
+    override fun onAlchoo() {
+        CoroutineScope(Dispatchers.IO).launch {
+            profileSettings.onAlchoo()
+        }
+    }
+
+    override fun offAlchoo() {
+        CoroutineScope(Dispatchers.IO).launch {
+            profileSettings.offAlchoo()
+        }
+    }
+
     override fun signOut() {
         profileSettings.signOut()
     }
+
+
 
     companion object {
         private val dbRef = FirebaseDatabase.getInstance().getReference("users")

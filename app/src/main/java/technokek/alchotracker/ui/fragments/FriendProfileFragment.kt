@@ -1,9 +1,8 @@
 package technokek.alchotracker.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -26,9 +25,9 @@ class FriendProfileFragment : Fragment() {
     private lateinit var avatarView: ImageView
     private lateinit var favouriteDrink: TextView
     private lateinit var preferencesBtn: Button
-    private lateinit var addFriendBtn: ImageButton
-    private lateinit var deleteFriendBtn: ImageButton
-    private lateinit var cancelRequestBtn: ImageButton
+    private lateinit var addBtn: MenuItem
+    private lateinit var deleteBtn: MenuItem
+    private lateinit var cancelBtn: MenuItem
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +40,8 @@ class FriendProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         uid = arguments?.get("uid") as String
+        activity?.title = ""
+        setHasOptionsMenu(true)
 
         savedInstanceState?.let {
             uid = savedInstanceState.getString("uid").toString()
@@ -68,6 +69,7 @@ class FriendProfileFragment : Fragment() {
                 friendsCounter.text = it.friendsCount.toString()
                 eventsCounter.text = it.eventCount.toString()
                 Picasso.get().load(it.avatar).into(avatarView)
+                activity?.title = it.name
             }
         )
         preferencesBtn = view.findViewById(R.id.friend_preferences_list)
@@ -82,38 +84,36 @@ class FriendProfileFragment : Fragment() {
                 arguments
             )
         }
-        addFriendBtn = view.findViewById(R.id.add_friend_button)
-        deleteFriendBtn = view.findViewById(R.id.delete_friend_button)
-        cancelRequestBtn = view.findViewById(R.id.cancel_friend_button)
+    }
 
-        mProfileViewModel.requests.observe(
-            viewLifecycleOwner,
-            {
-                if (it.inFriend) {
-                    deleteFriendBtn.visibility = View.VISIBLE
-                    addFriendBtn.visibility = View.GONE
-                    cancelRequestBtn.visibility = View.GONE
-                } else if (it.requestIsSended) {
-                    cancelRequestBtn.visibility = View.VISIBLE
-                    deleteFriendBtn.visibility = View.GONE
-                    addFriendBtn.visibility = View.GONE
-                } else {
-                    addFriendBtn.visibility = View.VISIBLE
-                    deleteFriendBtn.visibility = View.GONE
-                    cancelRequestBtn.visibility = View.GONE
-                }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.friend_profile_menu, menu)
+
+        addBtn = menu.findItem(R.id.action_add_friend_button)
+        deleteBtn = menu.findItem(R.id.action_delete_friend_button)
+        cancelBtn = menu.findItem(R.id.action_cancel_request_button)
+
+        mProfileViewModel.requests.observe(viewLifecycleOwner, {
+            if (it.requestIsSended) {
+                addBtn.isVisible = false
+                deleteBtn.isVisible = false
+                cancelBtn.isVisible = true
+            } else {
+                addBtn.isVisible = !it.inFriend
+                deleteBtn.isVisible = it.inFriend
+                cancelBtn.isVisible = false
             }
-        )
-        addFriendBtn.setOnClickListener {
-            mProfileViewModel.addFriend()
-        }
+        })
+    }
 
-        deleteFriendBtn.setOnClickListener {
-            mProfileViewModel.deleteFriend()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_add_friend_button -> mProfileViewModel.addFriend()
+            R.id.action_delete_friend_button -> mProfileViewModel.deleteFriend()
+            R.id.action_cancel_request_button -> mProfileViewModel.cancelRequest()
         }
-
-        cancelRequestBtn.setOnClickListener {
-        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

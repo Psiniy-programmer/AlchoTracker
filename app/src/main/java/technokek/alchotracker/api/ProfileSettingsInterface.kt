@@ -6,5 +6,7 @@ interface ProfileSettingsInterface {
     fun setStatus(newStatus: String)
     fun setAvatar(newAvatar: Uri)
     fun setDrink(newDrink: String)
+    fun onAlchoo()
+    fun offAlchoo()
     fun signOut()
 }
