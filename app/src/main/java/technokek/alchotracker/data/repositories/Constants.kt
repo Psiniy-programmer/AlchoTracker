@@ -20,6 +20,7 @@ object Constants {
     const val DECLINELIST = "declineList"
     const val FINDER = "finder"
     const val EVENTSCOUNT = "eventsCount"
+    const val EVENTS = "events"
     const val FRIENDSCOUNT = "friendsCount"
     const val PREFERENCES = "preferences"
     const val NAME = "name"
