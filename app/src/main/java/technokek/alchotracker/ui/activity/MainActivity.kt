@@ -1,12 +1,13 @@
 package technokek.alchotracker.ui.activity
 
+import android.content.SharedPreferences
+import android.content.Context
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -18,6 +19,8 @@ import technokek.alchotracker.api.ChatListListener
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FoundUserListener
 import technokek.alchotracker.api.FriendClickListener
+import technokek.alchotracker.api.SharedPreferencesHolder
+import technokek.alchotracker.data.Constants
 import technokek.alchotracker.data.models.ChatFriendModel
 import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.databinding.ActivityMainBinding
@@ -25,12 +28,13 @@ import technokek.alchotracker.databinding.ActivityMainBinding
 class MainActivity :
     AppCompatActivity(), EventClickListener,
     FriendClickListener, FoundUserListener,
-    ChatListListener {
+    ChatListListener, SharedPreferencesHolder {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
-    private lateinit var notificationManager: NotificationManagerCompat
     private lateinit var binding: ActivityMainBinding
+    override lateinit var sharedPreferences: SharedPreferences
+    private lateinit var notificationManager: NotificationManagerCompat
     lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +43,7 @@ class MainActivity :
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        sharedPreferences = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)!!
 
         // Mandatory for notifications!!!
         notificationManager = NotificationManagerCompat.from(this)
@@ -126,24 +131,5 @@ class MainActivity :
             R.id.action_chatListFragment_to_chatFragment,
             bundle
         )
-    }
-
-    fun sendTimerFragmentNotificationChannel1(id: Int, title: String, text: String) {
-        val builder = NotificationCompat.Builder(this, NotificationActivity.CHANNEL_1_ID)
-            .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
-            .setContentTitle(title)
-            .setContentText(text)
-        val notification = builder.build()
-        notificationManager.notify(id, notification)
-        Log.d("Notification1", "Im here")
-    }
-
-    fun sendTimerFragmentNotificationChannel2(id: Int, title: String, text: String) {
-        val builder = NotificationCompat.Builder(this, NotificationActivity.CHANNEL_2_ID)
-            .setSmallIcon(R.drawable.ic_notification_time_interval)
-            .setContentTitle(title)
-            .setContentText(text)
-        val notification = builder.build()
-        notificationManager.notify(id, notification)
     }
 }
