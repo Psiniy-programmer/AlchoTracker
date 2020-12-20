@@ -43,4 +43,7 @@
     <string name="cardavatar">cardAvatar</string>
     <string name="alchooHintListOver">Потенциальные собутыльники кончились</string>
     <string name="alchooRefreshList">Обновить список</string>
+    <string name="addfriend">addFriend</string>
+    <string name="deletefriend">deleteFriend</string>
+    <string name="cancelbtn">cancelBtn</string>
 </resources>

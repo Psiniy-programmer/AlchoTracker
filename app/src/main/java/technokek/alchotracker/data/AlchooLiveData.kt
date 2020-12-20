@@ -91,7 +91,7 @@ class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>(), Alchoo
     override fun acceptBody(uid: String) {
         val masterPath = getPath(mAuth.currentUser?.uid.toString(), REQUESTS)
         val friendPath = getPath(uid, REQUESTS)
-        if (!curUserOutgoingRequests.isNullOrEmpty()) {
+        if (curUserOutgoingRequests.isNullOrEmpty()) {
             masterPath.child(OUTGOING_REQUESTS)
                 .setValue(uid)
         } else {
@@ -101,7 +101,7 @@ class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>(), Alchoo
 
         for (item in value!!) {
             if (item.id == uid) {
-                if (item.incomingRequests.isNullOrEmpty())
+                if (!item.incomingRequests.isNullOrEmpty())
                     friendPath.child(INCOMING_REQUESTS)
                         .setValue(mAuth.currentUser?.uid.toString())
                 else
