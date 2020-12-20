@@ -72,8 +72,8 @@ class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>(), Alchoo
                                 x.child(ID).value.toString(),
                                 x.child(FRIENDS).child(INCOMING_REQUESTS).value.toString(),
                                 x.child(FRIENDS).child(OUTGOING_REQUESTS).value.toString(),
-                                x.child(ALCHOINFO).child(ALCHOO)
-                                    .child(DECLINE_LIST).value.toString()
+                                x.child(ALCHOINFO).child(ALCHOO).child(DECLINE_LIST).value.toString(),
+                                x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString()
                             )
                         )
                     }

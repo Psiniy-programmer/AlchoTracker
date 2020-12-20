@@ -13,6 +13,7 @@ class SingleChatAdapter(
     private var mData: MutableList<SingleChatMessageModel>,
     private val friendID: String
 ) : RecyclerView.Adapter<ChatMessageViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatMessageViewHolder {
         return ChatMessageViewHolder(
             LayoutInflater

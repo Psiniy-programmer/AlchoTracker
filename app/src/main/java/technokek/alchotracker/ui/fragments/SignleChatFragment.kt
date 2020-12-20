@@ -5,14 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.SingleChatAdapter
 import technokek.alchotracker.viewmodels.SingleChatViewModel
@@ -30,6 +28,8 @@ class SignleChatFragment : Fragment() {
     private lateinit var mChatViewModel: SingleChatViewModel
     private lateinit var mButton: Button
     private lateinit var mEditText: EditText
+    private lateinit var mChatAvatar: ImageView
+    private lateinit var mChatTittle: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,8 +57,17 @@ class SignleChatFragment : Fragment() {
         mRecyclerView = view.findViewById(R.id.recycler_chat)
         mButton = view.findViewById(R.id.button_chat)
         mEditText = view.findViewById(R.id.edit_text_chat)
+        mChatAvatar = view.findViewById(R.id.chat_image)
+        mChatTittle = view.findViewById(R.id.chat_name)
         mRecyclerView.layoutManager = linearLayoutManager
         mRecyclerView.setHasFixedSize(true)
+
+        Picasso.get()
+            .load(avatar)
+            .fit()
+            .centerCrop()
+            .into(mChatAvatar)
+        mChatTittle.text = name
 
         activity?.application?.let {
             mChatViewModel = ViewModelProvider(

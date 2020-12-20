@@ -7,5 +7,6 @@ data class AlchooCardModel(
     var id: String = String(),
     var incomingRequests: String = String(),
     var outGoingRequests: String = String(),
-    var declineList: String = String()
-)
+    var declineList: String = String(),
+    val favouriteDrink: String = String()
+    )

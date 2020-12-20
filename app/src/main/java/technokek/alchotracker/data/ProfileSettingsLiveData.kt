@@ -66,19 +66,23 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
     }
 
     override fun setAvatar(newAvatar: Uri) {
-
-        storage.putFile(newAvatar).addOnCompleteListener { putTask ->
-            if (putTask.isSuccessful) {
-                storage.downloadUrl.addOnCompleteListener { downloadTask ->
-                    if (downloadTask.isSuccessful) {
-                        val avatarUrl = downloadTask.result.toString()
-                        query.ref.child(mAuth.currentUser?.uid.toString()).child(AVATAR)
-                            .setValue(avatarUrl)
-                    }
-                }
-            } else Log.e("ERROR", putTask.exception.toString())
-        }
+        val PICK_IMAGE_REQUEST = 71
+        
     }
+//    override fun setAvatar(newAvatar: Uri) {
+//
+//        storage.putFile(newAvatar).addOnCompleteListener { putTask ->
+//            if (putTask.isSuccessful) {
+//                storage.downloadUrl.addOnCompleteListener { downloadTask ->
+//                    if (downloadTask.isSuccessful) {
+//                        val avatarUrl = downloadTask.result.toString()
+//                        query.ref.child(mAuth.currentUser?.uid.toString()).child(AVATAR)
+//                            .setValue(avatarUrl)
+//                    }
+//                }
+//            } else Log.e("ERROR", putTask.exception.toString())
+//        }
+//    }
 
     override fun setDrink(newDrink: String) {
         query.ref.child(mAuth.currentUser?.uid.toString())

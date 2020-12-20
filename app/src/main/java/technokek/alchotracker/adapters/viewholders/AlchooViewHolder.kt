@@ -13,4 +13,6 @@ class AlchooViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private set
     var mStatus: TextView = itemView.findViewById(R.id.card_status)
         private set
+    var mFavouriteDrink: TextView = itemView.findViewById(R.id.card_favourite_drink)
+        private set
 }
