@@ -1,5 +1,6 @@
 package technokek.alchotracker.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,7 @@ class ChatListAdapter(
 
     override fun onBindViewHolder(holder: ChatListViewHolder, position: Int) {
         val model = mData[position]
+        Log.d("NESUKA", model.toString())
 
         Picasso.get().load(model.avatar).into(holder.mImageView)
         holder.mImageView.setOnClickListener {
