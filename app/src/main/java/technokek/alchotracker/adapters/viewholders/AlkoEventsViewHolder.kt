@@ -32,10 +32,16 @@ class AlkoEventsViewHolder(
         }
 
         val currentUser = mAuth.currentUser?.uid.toString()
-        Log.d("Condition:", (!calendarModel.adminId.equals(currentUser) && !calendarModel.userClicked).toString())
-        Log.d("Condition1:", (!calendarModel.adminId.equals(currentUser)).toString())
+        Log.d("Condition:", (calendarModel.adminId != currentUser && !calendarModel.userClicked).toString())
+        Log.d("Condition1:", (calendarModel.adminId != currentUser).toString())
         Log.d("Condition2:", (!calendarModel.userClicked).toString())
-        if (!calendarModel.adminId.equals(currentUser) && !calendarModel.userClicked) {
+
+        if (binding.acceptRequest.visibility == View.VISIBLE || binding.denyRequest.visibility == View.VISIBLE) {
+            binding.acceptRequest.visibility = View.GONE
+            binding.denyRequest.visibility = View.GONE
+        }
+
+        if (calendarModel.adminId != currentUser && !calendarModel.userClicked) {
             calendarModel.userClicked = true
             binding.acceptRequest.apply {
                 visibility = View.VISIBLE
