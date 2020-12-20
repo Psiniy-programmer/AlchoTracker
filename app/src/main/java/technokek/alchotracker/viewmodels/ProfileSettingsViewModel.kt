@@ -1,7 +1,12 @@
 package technokek.alchotracker.viewmodels
 
+import android.app.Activity
 import android.app.Application
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MediatorLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -13,6 +18,7 @@ import kotlinx.coroutines.launch
 import technokek.alchotracker.api.ProfileSettingsInterface
 import technokek.alchotracker.data.ProfileSettingsLiveData
 import technokek.alchotracker.data.models.SettingsProfileModel
+import java.io.IOException
 
 class ProfileSettingsViewModel(application: Application) : AndroidViewModel(application),
     ProfileSettingsInterface {
@@ -37,7 +43,7 @@ class ProfileSettingsViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
-    override fun setAvatar(newAvatar: Uri) {
+    override fun setAvatar(newAvatar: Bitmap) {
         CoroutineScope(Dispatchers.IO).launch {
             profileSettings.setAvatar(newAvatar)
         }

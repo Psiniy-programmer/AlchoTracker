@@ -1,6 +1,6 @@
 package technokek.alchotracker.data
 
-import android.net.Uri
+import android.graphics.Bitmap
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -9,14 +9,18 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 import technokek.alchotracker.api.ProfileSettingsInterface
 import technokek.alchotracker.data.models.SettingsProfileModel
 import technokek.alchotracker.data.Constants.*
+import java.io.ByteArrayOutputStream
+import java.io.IOException
 
 class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), ProfileSettingsInterface {
     private lateinit var query: Query
     private lateinit var storage: StorageReference
     private lateinit var mAuth: FirebaseAuth
+
     private var settingsListener = SettingsListener()
 
     constructor(query: Query, storage: StorageReference, mAuth: FirebaseAuth) : this() {
@@ -65,24 +69,27 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
             .setValue(newStatus)
     }
 
-    override fun setAvatar(newAvatar: Uri) {
-        val PICK_IMAGE_REQUEST = 71
-        
+    override fun setAvatar(newAvatar: Bitmap) {
+        val uid = mAuth.currentUser?.uid.toString()
+        val ref = storage.child("img").child(uid)
+        val baos = ByteArrayOutputStream()
+        newAvatar.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val byteArray: ByteArray = baos.toByteArray()
+        val uploadTask: UploadTask = ref.putBytes(byteArray)
+
+        uploadTask.continueWithTask{task ->
+            if (!task.isSuccessful) {
+                task.exception?.let {
+                    throw it
+                }
+            }
+            ref.downloadUrl}.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val downloadUri = task.result
+                query.ref.child(uid).child(AVATAR).setValue(downloadUri.toString())
+            }
+        }
     }
-//    override fun setAvatar(newAvatar: Uri) {
-//
-//        storage.putFile(newAvatar).addOnCompleteListener { putTask ->
-//            if (putTask.isSuccessful) {
-//                storage.downloadUrl.addOnCompleteListener { downloadTask ->
-//                    if (downloadTask.isSuccessful) {
-//                        val avatarUrl = downloadTask.result.toString()
-//                        query.ref.child(mAuth.currentUser?.uid.toString()).child(AVATAR)
-//                            .setValue(avatarUrl)
-//                    }
-//                }
-//            } else Log.e("ERROR", putTask.exception.toString())
-//        }
-//    }
 
     override fun setDrink(newDrink: String) {
         query.ref.child(mAuth.currentUser?.uid.toString())

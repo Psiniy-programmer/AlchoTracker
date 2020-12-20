@@ -1,22 +1,34 @@
 package technokek.alchotracker.ui.fragments
 
+import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.app.Application
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.theartofdev.edmodo.cropper.CropImage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import technokek.alchotracker.R
 import technokek.alchotracker.ui.activity.LoginActivity
 import technokek.alchotracker.ui.activity.MainActivity
 import technokek.alchotracker.viewmodels.ProfileSettingsViewModel
+import java.io.IOException
 
 class ProfileSettingsFragment : Fragment() {
     private lateinit var changeStatusBtn: Button
@@ -27,6 +39,7 @@ class ProfileSettingsFragment : Fragment() {
     private lateinit var inputDrink: EditText
     private lateinit var alchooSwitcher: SwitchMaterial
     private lateinit var mSettingsViewModel: ProfileSettingsViewModel
+    private lateinit var filePath: Uri
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,11 +73,14 @@ class ProfileSettingsFragment : Fragment() {
         }
 
         changeAvatarBtn.setOnClickListener {
-            CropImage.activity()
-                .setAspectRatio(1, 1)
-                .setRequestedSize(500, 500)
-                .start(activity as MainActivity, this)
+            val PICK_IMAGE_REQUEST = 71
+
+            val intent = Intent()
+            intent.type = "image/"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(Intent.createChooser(intent, "Select pic"), PICK_IMAGE_REQUEST)
         }
+
         changeDrinkBtn.setOnClickListener {
             mSettingsViewModel.setDrink(inputDrink.text.toString())
             inputDrink.setText("")
@@ -83,13 +99,22 @@ class ProfileSettingsFragment : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE &&
-            resultCode == RESULT_OK && data != null
-        ) {
-            val uri = CropImage.getActivityResult(data).uri
-            mSettingsViewModel.setAvatar(uri)
+        CoroutineScope(Dispatchers.IO).launch {
+            if (requestCode == 71 && resultCode == RESULT_OK && data != null && data.data != null) {
+                filePath = data.data!!
+                try {
+                    val result = context?.contentResolver?.let { ImageDecoder.createSource(it, filePath) }
+                    val bitmap: Bitmap? = result?.let { ImageDecoder.decodeBitmap(it) }
+                    if (bitmap != null) {
+                        mSettingsViewModel.setAvatar(bitmap)
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
         }
-    }
+    }0
 }
