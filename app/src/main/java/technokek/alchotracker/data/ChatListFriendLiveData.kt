@@ -4,10 +4,13 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import technokek.alchotracker.api.ChatInterFace
+import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.data.models.SearchFriendModel
 
 class ChatListFriendLiveData() :
-    MutableLiveData<HashMap<String, MutableList<SearchFriendModel>>>() {
+    MutableLiveData<HashMap<String, MutableList<SearchFriendModel>>>(),
+    ChatInterFace {
 
     private lateinit var queryForChats: Query
     private val chatListListener = ChatListListener()
@@ -32,6 +35,20 @@ class ChatListFriendLiveData() :
 
         queryForChats.removeEventListener(chatListListener)
         Log.d(TAG, "onInactive")
+    }
+
+    override fun createChat(model: FriendModel) {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+
+        if (model.bool) {
+            queryForChats.ref.child(currentUser!!.uid).child(Constants.CHATID).child(model.chatID)
+                .apply {
+                    child(Constants.USERS).setValue(model.chatID)
+                }
+            queryForChats.ref.child(model.id).child(Constants.CHATID).child(model.chatID).apply {
+                child(Constants.USERS).setValue(model.chatID)
+            }
+        }
     }
 
     companion object {

@@ -4,11 +4,12 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import technokek.alchotracker.api.ChatInterFace
 import technokek.alchotracker.data.models.ChatFriendModel
 import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.data.models.SearchFriendModel
 
-class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>() {
+class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>(), ChatInterFace {
 
     private lateinit var query: Query
     private val chatListener = ChatListener()
@@ -41,6 +42,18 @@ class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>() {
         this.chatID = chatID
         chatKeys = chatID.keys
         query.addListenerForSingleValueEvent(chatListener)
+    }
+
+    override fun createChat(model: FriendModel) {
+        if (model.bool) {
+            query.ref.child(model.chatID).apply {
+                child(Constants.ALLMESSAGES).setValue("")
+                child(Constants.LASTMESSAGE).setValue("")
+                child(Constants.LASTSENDERID).setValue("")
+                child(Constants.LASTDATETIME).setValue("")
+                child(Constants.USERS).setValue(model.chatID)
+            }
+        }
     }
 
     companion object {
