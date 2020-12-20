@@ -9,16 +9,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import technokek.alchotracker.data.ChatFriendLiveData
 import technokek.alchotracker.data.ChatListFriendLiveData
+import technokek.alchotracker.data.FriendLiveData
 import technokek.alchotracker.data.models.ChatFriendModel
+import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.data.models.SearchFriendModel
 
 class ChatViewModel : ViewModel() {
 
     private val chatListLiveData = ChatListFriendLiveData(HOT_STOCK_REF)
     private val chatFriendLiveData = ChatFriendLiveData(HOT_STOCK_CHAT)
+    private val friends = FriendLiveData(HOT_STOCK_REF)
     var mediatorChatListLiveData = MediatorLiveData<HashMap<String, MutableList<SearchFriendModel>>>()
         private set
     var mediatorChatLiveData = MediatorLiveData<MutableList<ChatFriendModel>>()
+        private set
+    var mediatorFriendLiveData = MediatorLiveData<MutableList<FriendModel>>()
         private set
 
     init {
@@ -38,6 +43,15 @@ class ChatViewModel : ViewModel() {
                 }
             } else {
                 mediatorChatLiveData.value = null
+            }
+        }
+        mediatorFriendLiveData.addSource(friends) {
+            if (it != null) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    mediatorFriendLiveData.postValue(it)
+                }
+            } else {
+                mediatorFriendLiveData.value = null
             }
         }
     }
