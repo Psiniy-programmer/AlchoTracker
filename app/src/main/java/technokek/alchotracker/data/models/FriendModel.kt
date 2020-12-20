@@ -7,5 +7,6 @@ data class FriendModel(
     var incoming: String = "",
     var outgoing: String = "",
     var friendsCount: Int = 0,
-    var friendsList: String = ""
+    var friendsList: String = "",
+    var chatID: String = ""
 )

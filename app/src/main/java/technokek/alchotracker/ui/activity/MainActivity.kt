@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import technokek.alchotracker.R
 import technokek.alchotracker.api.ChatListListener
 import technokek.alchotracker.api.EventClickListener
@@ -33,6 +34,7 @@ class MainActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -88,6 +90,19 @@ class MainActivity :
 
         navHostFragment.navController.navigate(
             R.id.action_friendFragment_to_friendProfileFragment,
+            bundle
+        )
+    }
+
+    override fun pressChat(chatID: String) {
+        val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
+        toast.show()
+
+        val bundle = Bundle()
+        bundle.putString("chatID", chatID)
+
+        navHostFragment.navController.navigate(
+            R.id.action_chatListFragment_to_chatFragment,
             bundle
         )
     }

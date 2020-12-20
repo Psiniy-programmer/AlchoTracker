@@ -15,7 +15,12 @@ object Constants {
     const val OUTGOING = "outgoing"
     const val INCOMING = "incoming"
     const val ALCHOINFO = "alchoinfo"
+    const val ALCHOO = "alchoo"
+    const val FALSE:Boolean = false
+    const val DECLINELIST = "declineList"
+    const val FINDER = "finder"
     const val EVENTSCOUNT = "eventsCount"
+    const val EVENTS = "events"
     const val FRIENDSCOUNT = "friendsCount"
     const val PREFERENCES = "preferences"
     const val NAME = "name"
