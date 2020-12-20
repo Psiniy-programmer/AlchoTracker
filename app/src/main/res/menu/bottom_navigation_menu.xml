@@ -27,9 +27,9 @@
         android:title="@string/text_label_4"
         app:showAsAction="always" />
     <item
-        android:id="@+id/timerFragment"
+        android:id="@+id/chatListFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_timer_24"
+        android:icon="@drawable/ic_baseline_chat_24"
         android:title="@string/text_label_5"
         app:showAsAction="always" />
 </menu>

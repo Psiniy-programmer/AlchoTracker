@@ -9,4 +9,6 @@
     <dimen name="start_button_width">110dp</dimen>
     <dimen name="light_step">10dp</dimen>
     <dimen name="input_width">300dp</dimen>
+    <dimen name="chat_vertical_margin">8dp</dimen>
+    <dimen name="chat_horizontal_margin">8dp</dimen>
 </resources>

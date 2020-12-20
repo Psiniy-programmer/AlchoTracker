@@ -1,12 +1,15 @@
 package technokek.alchotracker.ui.fragments
 
-import android.app.ActionBar
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.FriendAdapter
 import technokek.alchotracker.adapters.FriendRequestAdapter
+import technokek.alchotracker.adapters.SearchFriendAdapter
+import technokek.alchotracker.api.FoundUserListener
 import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.api.RequestClickListener
 import technokek.alchotracker.viewmodels.FriendViewModel
@@ -23,12 +28,15 @@ class FriendFragment : Fragment(), RequestClickListener {
     private lateinit var mFriendViewModel: FriendViewModel
     private lateinit var requestRecyclerView: RecyclerView
     private lateinit var friendRecyclerView: RecyclerView
+    private lateinit var searchFriendRecyclerView: RecyclerView
     private lateinit var adapterRequest: FriendRequestAdapter
     private lateinit var adapterFriend: FriendAdapter
+    private lateinit var adapterSearchFriend: SearchFriendAdapter
 
     private lateinit var requestTextView: TextView
     private lateinit var friendTextView: TextView
     private lateinit var mProgressBar: ProgressBar
+    private lateinit var searchView: SearchView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,21 +65,30 @@ class FriendFragment : Fragment(), RequestClickListener {
         requestRecyclerView.layoutManager = LinearLayoutManager(context)
         friendRecyclerView = view.findViewById(R.id.recycler_friend)
         friendRecyclerView.layoutManager = LinearLayoutManager(context)
-        val listener = context as FriendClickListener
+        searchFriendRecyclerView = view.findViewById(R.id.search_recycler)
+        searchFriendRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        val listenerFriend = context as FriendClickListener
+        val listenerSearch = context as FoundUserListener
 
         adapterRequest = if (mFriendViewModel.mediatorRequestLiveData.value != null) {
             FriendRequestAdapter(
                 mFriendViewModel.mediatorRequestLiveData.value!!,
-                listener,
+                listenerFriend,
                 this as RequestClickListener
             )
         } else {
-            FriendRequestAdapter(mutableListOf(), listener, this as RequestClickListener)
+            FriendRequestAdapter(mutableListOf(), listenerFriend, this as RequestClickListener)
         }
         adapterFriend = if (mFriendViewModel.mediatorFriendLiveData.value != null) {
-            FriendAdapter(mFriendViewModel.mediatorFriendLiveData.value!!, listener)
+            FriendAdapter(mFriendViewModel.mediatorFriendLiveData.value!!, listenerFriend)
         } else {
-            FriendAdapter(mutableListOf(), listener)
+            FriendAdapter(mutableListOf(), listenerFriend)
+        }
+        adapterSearchFriend = if (mFriendViewModel.mediatorSearchLiveData.value != null) {
+            SearchFriendAdapter(mFriendViewModel.mediatorSearchLiveData.value!!, listenerSearch)
+        } else {
+            SearchFriendAdapter(mutableListOf(), listenerSearch)
         }
 
         mFriendViewModel.mediatorFriendLiveData.observe(
@@ -80,9 +97,9 @@ class FriendFragment : Fragment(), RequestClickListener {
                 if (friendRecyclerView.adapter == null) {
                     mProgressBar.visibility = View.GONE
                     adapterFriend.refresh(mFriendViewModel.mediatorFriendLiveData.value!!)
-                    adapterFriend.notifyDataSetChanged()
                     friendRecyclerView.adapter = adapterFriend
                 }
+
                 adapterFriend.notifyDataSetChanged()
 
                 if (mFriendViewModel.mediatorFriendLiveData.value!!.isEmpty()) {
@@ -99,11 +116,11 @@ class FriendFragment : Fragment(), RequestClickListener {
                 if (requestRecyclerView.adapter == null) {
                     mProgressBar.visibility = View.GONE
                     adapterRequest.refresh(mFriendViewModel.mediatorRequestLiveData.value!!)
-                    adapterRequest.notifyDataSetChanged()
                     requestRecyclerView.adapter = adapterRequest
                 }
 
                 adapterRequest.notifyDataSetChanged()
+
                 if (mFriendViewModel.mediatorRequestLiveData.value!!.isEmpty()) {
                     requestTextView.visibility = View.GONE
                 } else {
@@ -141,18 +158,91 @@ class FriendFragment : Fragment(), RequestClickListener {
         )
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.search_friends, menu)
 
-        inflater.inflate(R.menu.user_info_menu, menu)
-    }
+        val searchItem: MenuItem = menu.findItem(R.id.search_friend)
+        searchItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                requestRecyclerView.visibility = View.GONE
+                requestTextView.visibility = View.GONE
+                friendRecyclerView.visibility = View.GONE
+                friendTextView.visibility = View.GONE
+                searchFriendRecyclerView.visibility = View.VISIBLE
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_search) {
+                mFriendViewModel.mediatorSearchLiveData.observe(
+                    viewLifecycleOwner,
+                    {
+                        if (searchFriendRecyclerView.adapter == null) {
+                            adapterSearchFriend.refresh(mFriendViewModel.mediatorSearchLiveData.value!!)
+                            adapterSearchFriend.notifyDataSetChanged()
+                            searchFriendRecyclerView.adapter = adapterSearchFriend
+                        }
 
-        }
+                        if (mFriendViewModel.mediatorSearchLiveData.value != null) {
+                            adapterSearchFriend.refresh(mFriendViewModel.mediatorSearchLiveData.value!!)
+                        }
 
-        return super.onOptionsItemSelected(item)
+                        adapterSearchFriend.notifyDataSetChanged()
+                    }
+                )
+
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                if (mFriendViewModel.mediatorFriendLiveData.value!!.isEmpty()) {
+                    friendTextView.visibility = View.GONE
+                    friendRecyclerView.visibility = View.GONE
+                } else {
+                    friendTextView.visibility = View.VISIBLE
+                    friendRecyclerView.visibility = View.VISIBLE
+                }
+
+                if (mFriendViewModel.mediatorRequestLiveData.value!!.isEmpty()) {
+                    requestTextView.visibility = View.GONE
+                    requestRecyclerView.visibility = View.GONE
+                } else {
+                    requestTextView.visibility = View.VISIBLE
+                    requestRecyclerView.visibility = View.VISIBLE
+                }
+
+                searchFriendRecyclerView.visibility = View.GONE
+
+                return true
+            }
+        })
+
+        searchView = searchItem.actionView as SearchView
+        searchView.setOnCloseListener { true }
+
+        val searchPlateView = searchView.findViewById<View>(androidx.appcompat.R.id.search_plate)
+        searchPlateView.setBackgroundColor(
+            ContextCompat.getColor(
+                requireContext(),
+                android.R.color.transparent
+            )
+        )
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    mFriendViewModel.setSearchName(newText)
+                }
+
+                return false
+            }
+        })
+
+        val searchManager =
+            activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
     }
 
     override fun accept(uid: String, pos: Int) {
