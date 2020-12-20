@@ -1,5 +1,7 @@
 package technokek.alchotracker.ui.activity
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -13,21 +15,23 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import technokek.alchotracker.R
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FriendClickListener
+import technokek.alchotracker.api.NotificationMethodsHolder
+import technokek.alchotracker.api.SharedPreferencesHolder
+import technokek.alchotracker.data.Constants
 import technokek.alchotracker.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener {
+class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener, SharedPreferencesHolder {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
-    private lateinit var notificationManager: NotificationManagerCompat
     internal lateinit var binding: ActivityMainBinding
+    override lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
-        // Mandatory for notifications!!!
-        notificationManager = NotificationManagerCompat.from(this)
+        sharedPreferences = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)!!
 
         setUpNavigation()
     }
@@ -62,22 +66,6 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
         )
     }
 
-    fun sendTimerFragmentNotificationChannel1(id: Int, title: String, text: String) {
-        val builder = NotificationCompat.Builder(this, NotificationActivity.CHANNEL_1_ID)
-            .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
-            .setContentTitle(title)
-            .setContentText(text)
-        val notification = builder.build()
-        notificationManager.notify(id, notification)
-        Log.d("Notification1", "Im here")
-    }
 
-    fun sendTimerFragmentNotificationChannel2(id: Int, title: String, text: String) {
-        val builder = NotificationCompat.Builder(this, NotificationActivity.CHANNEL_2_ID)
-            .setSmallIcon(R.drawable.ic_notification_time_interval)
-            .setContentTitle(title)
-            .setContentText(text)
-        val notification = builder.build()
-        notificationManager.notify(id, notification)
-    }
+
 }

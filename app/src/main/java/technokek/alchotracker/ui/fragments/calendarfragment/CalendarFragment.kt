@@ -1,17 +1,20 @@
 package technokek.alchotracker.ui.fragments.calendarfragment
 
+import android.app.AlarmManager
 import android.app.Dialog
+import android.app.PendingIntent
 import android.app.TimePickerDialog
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
+import android.view.Gravity
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +30,9 @@ import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.utils.next
 import com.kizitonwose.calendarview.utils.previous
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -36,11 +42,14 @@ import java.time.format.TextStyle
 import java.util.*
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.AlkoEventsAdapter
+import technokek.alchotracker.api.SharedPreferencesHolder
 import technokek.alchotracker.data.models.CalendarModel
 import technokek.alchotracker.databinding.*
+import technokek.alchotracker.receivers.AlertReceiver
 import technokek.alchotracker.ui.fragments.calendarfragment.utils.*
 import technokek.alchotracker.ui.fragments.calendarfragment.utils.setTextColorRes
 import technokek.alchotracker.viewmodels.CalendarViewModel
+import technokek.alchotracker.data.Constants.*
 
 class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter.ActionListener {
 
@@ -54,11 +63,19 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         generateAlkoEvents().groupBy { it.time.toLocalDate() } as MutableMap<LocalDate, MutableList<CalendarModel>>*/
     private lateinit var mCalendarViewModel: CalendarViewModel
     private lateinit var binding: CalendarFragmentBinding
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
+    private lateinit var alarmManager: AlarmManager
+    private lateinit var mAuth: FirebaseAuth
 
     private lateinit var dialog: Dialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mAuth = FirebaseAuth.getInstance()
+        sharedPreferences = (activity as SharedPreferencesHolder).sharedPreferences
+        editor = sharedPreferences.edit()
+        alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         // set ViewModel
         mCalendarViewModel = ViewModelProvider(this)[CalendarViewModel::class.java]
         alkoEventsAdapter = AlkoEventsAdapter(actionListener = this)
@@ -255,6 +272,8 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                 0,
                 true
             )
+            timePickerDialog.window?.attributes!!.gravity = requireActivity().window.attributes.gravity
+            //timePickerDialog.window?.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
             timePickerDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             // TODO fix this crash
             // timePickerDialog.updateTime(time.hour, time.minute)
@@ -273,6 +292,8 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                 )
                 // Прокидываем в VM
                 mCalendarViewModel.pushData(date!!, newAlkoEvent)
+                //TODO добавить Notification
+                getCalendarAndStartAlarm(newAlkoEvent.time)
                 updateAdapterForDate(date)
                 dialog.dismiss()
             }
@@ -298,7 +319,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
             eventTime,
             PlaceLoc(place, costs, place),
             R.color.teal_700,
-            adminId = FirebaseAuth.getInstance().currentUser.toString(),
+            adminId = mAuth.currentUser?.uid.toString(),
             id = (mCalendarViewModel.mMediatorLiveData.value!!
                 .values.flatMap { it.toList() }.size + 1).toString()
         )
@@ -314,6 +335,9 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         try {
             if (mCalendarViewModel.mMediatorLiveData.value!![date]!!.isNotEmpty()) {
                 mCalendarViewModel.pushDeleteEvent(date!!, calendarModel)
+                //Delete from SP
+
+                deleteTimestampFromSP(calendarModel.time)
             }
         } catch (e: Exception) {
             Toast.makeText(this.context, "Nothing to delete!", Toast.LENGTH_LONG).show()
@@ -324,10 +348,112 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         updateAdapterForDate(date)
     }
 
+    private fun getCalendarAndStartAlarm(timeStart: LocalDateTime) {
+        val calendar = Calendar.getInstance()
+        calendar.set(
+            timeStart.year,
+            timeStart.monthValue - 1,
+            timeStart.dayOfMonth,
+            timeStart.hour,
+            timeStart.minute
+        )
+        calendar.set(Calendar.SECOND, 0)
+        //startAlarm
+        startAlarm(calendar, timeStart)
+    }
+
+    private fun startAlarm(calendar: Calendar, timeStart: LocalDateTime) {
+        val intent: Intent = Intent(context, AlertReceiver::class.java)
+        val requestCode: Int = getRequestCode()
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_ONE_SHOT
+        )
+        //save in sp
+        saveTimestampInSP(timeStart, requestCode)
+        Log.d("SPAfterSave", sharedPreferences.getStringSet(TIMER_TIMESTAMPS_IN_SP, mutableSetOf()).toString())
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+    }
+
+    private fun saveTimestampInSP(timeStart: LocalDateTime, requestCode: Int) {
+        val now = LocalDateTime.now()
+        if (timeStart.isAfter(now)) {
+            val timestamps = sharedPreferences.getStringSet(
+                TIMER_TIMESTAMPS_IN_SP, mutableSetOf())
+            val ed = sharedPreferences.edit()
+            Log.d("SPBeforeSave", timestamps.toString())
+            timestamps!!.add("$timeStart;$requestCode")
+            ed.clear()
+            ed.putStringSet(TIMER_TIMESTAMPS_IN_SP, timestamps).apply()
+            //Log.d("SPAfterSave", timestamps.toString())
+        }
+    }
+
+    private fun deleteTimestampFromSP(timeStart: LocalDateTime) {
+        val now = LocalDateTime.now()
+        if (timeStart.isAfter(now)) {
+            val timestamps = sharedPreferences.getStringSet(
+                TIMER_TIMESTAMPS_IN_SP, mutableSetOf())
+            Log.d("SPBeforeDelete", timestamps.toString())
+            val ed = sharedPreferences.edit()
+            CoroutineScope(Dispatchers.IO).launch {
+                val parts = timestamps!!.find {
+                    it.contains(timeStart.toString())
+                }?.split(";")
+                //remove timestamp
+                timestamps.removeIf {
+                    it.contains(parts!![0])
+                }
+                ed.clear()
+                ed.putStringSet(TIMER_TIMESTAMPS_IN_SP, timestamps).commit()
+
+                //Cancel alarm
+                cancelAlarm(parts!![1].toInt())
+            }
+
+            Log.d("SPAfterDelete", timestamps.toString())
+        }
+    }
+
+
     override fun onEventClick(calendarModel: CalendarModel) {
         selectedCalendarModel = calendarModel
         binding.buttonDelete.isEnabled = true
     }
+
+    override fun onAcceptClick(calendarModel: CalendarModel) {
+        //TODO
+        mCalendarViewModel.onMemberAccepted(calendarModel)
+    }
+
+    override fun onDenyClick(calendarModel: CalendarModel) {
+        //DO NOTHING! Or delete?
+    }
+
+    private fun cancelAlarm(requestCode: Int) {
+        val intent = Intent(context, AlertReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_ONE_SHOT
+        )
+        alarmManager.cancel(pendingIntent)
+    }
+
+    companion object {
+        fun getRequestCode(): Int {
+            val random = Random()
+            //request code is null based in my shared preferences
+            /*val timestamps = sharedPreferences.getStringSet(
+                TIMER_TIMESTAMPS_IN_SP, mutableSetOf())*/
+            return random.nextInt(100000)
+        }
+    }
+
+
 }
 
 private typealias PlaceLoc = CalendarModel.Place

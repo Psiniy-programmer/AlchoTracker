@@ -139,11 +139,11 @@ public class TimerFragment extends Fragment implements TimerInterface {
     private void sendFinishNotification() {
         if (startHour != tHour || startMinute != tMinute) {
             String drinkingTime = (startHour - tHour) + ":" + (startMinute - tMinute);
-            ((technokek.alchotracker.ui.activity.MainActivity)getActivity()).sendTimerFragmentNotificationChannel1(
+            /*((technokek.alchotracker.ui.activity.MainActivity)getActivity()).sendTimerFragmentNotificationChannel1(
                     notificationIdCh1++,
                     "AlkoTime's up!",
                     "You've been drinking for " + drinkingTime
-            );
+            );*/
         }
     }
 
@@ -151,11 +151,11 @@ public class TimerFragment extends Fragment implements TimerInterface {
         if (((startMinute - tMinute) == 30 || (startMinute - tMinute) == 0) && (startHour != tHour ||
                 startMinute != tMinute)) {
             String drinkingTime = (startHour - tHour) + ":" + (startMinute - tMinute);
-            ((MainActivity)getActivity()).sendTimerFragmentNotificationChannel2(
+            /*((MainActivity)getActivity()).sendTimerFragmentNotificationChannel2(
                     notificationIdCh2++,
                     "Rest a bit!",
                     "You've been drinking for " + drinkingTime
-            );
+            );*/
         }
     }
 

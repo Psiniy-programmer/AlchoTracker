@@ -66,7 +66,7 @@
         android:orientation="vertical"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@id/itemAlkoEventImage"
-        app:layout_constraintDimensionRatio="W,5:1"
+        app:layout_constraintDimensionRatio="W,2.5:1"
         app:layout_constraintStart_toEndOf="@id/itemAlkoEventImage"
         app:layout_constraintTop_toTopOf="@id/itemAlkoEventImage">
 
@@ -90,6 +90,43 @@
             android:textSize="16sp"
             tools:text="Lagos" />
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemAlkoEventAcceptDeny"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/itemAlkoEventImage"
+        app:layout_constraintDimensionRatio="W,2.5:1"
+        app:layout_constraintStart_toEndOf="@id/itemAlkoEventLayout"
+        app:layout_constraintTop_toTopOf="@id/itemAlkoEventImage">
+
+        <ImageButton
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/accept_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/accept_event"
+            android:contentDescription="TODO"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
+            />
+
+        <ImageButton
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/deny_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/deny_event"
+            android:contentDescription="TODO"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <!--Edge dividers-->

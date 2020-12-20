@@ -2,6 +2,7 @@ package technokek.alchotracker.viewmodels
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import java.time.LocalDate
 import kotlinx.coroutines.CoroutineScope
@@ -11,7 +12,7 @@ import technokek.alchotracker.data.CalendarLiveData
 import technokek.alchotracker.data.models.CalendarModel
 
 class CalendarViewModel : ViewModel() {
-    private var calendarEvents = CalendarLiveData(STOCK_REF)
+    private var calendarEvents = CalendarLiveData(STOCK_REF, uRef)
     var mMediatorLiveData = MediatorLiveData<MutableMap<LocalDate, MutableList<CalendarModel>>>()
         private set
 
@@ -41,9 +42,18 @@ class CalendarViewModel : ViewModel() {
         }
     }
 
+    fun onMemberAccepted(calendarModel: CalendarModel) {
+        CoroutineScope(Dispatchers.IO).launch {
+            calendarEvents.pushOnMemberAccepted(calendarModel)
+        }
+    }
+
     companion object {
         private val STOCK_REF = FirebaseDatabase
             .getInstance()
             .getReference("events")
+        private val uRef = FirebaseDatabase
+            .getInstance()
+            .getReference("users")
     }
 }
