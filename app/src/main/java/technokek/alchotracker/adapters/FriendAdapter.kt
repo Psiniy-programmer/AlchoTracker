@@ -34,7 +34,7 @@ class FriendAdapter(
             if (model.chatID.isNullOrEmpty()) {
                 listener.pressFriend(model.id)
             } else {
-                listener.pressChat(model.id, model)
+                listener.pressChat(model.chatID, model)
             }
         }
     }
