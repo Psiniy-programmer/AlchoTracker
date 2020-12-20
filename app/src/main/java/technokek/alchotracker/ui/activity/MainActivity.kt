@@ -40,7 +40,6 @@ class MainActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)

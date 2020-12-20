@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -23,10 +24,13 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
     lateinit var manager: CardStackLayoutManager
     lateinit var adapter: AlchooAdapter
     private lateinit var mAlchooViewModel: AlchooViewModel
+    private lateinit var mAlchooStatusOnLayout: RelativeLayout
+    private lateinit var mAlchooStatusOffLayout: LinearLayout
     private lateinit var cardStackView:CardStackView
     private lateinit var touchedUid: String
     private lateinit var refresherView: LinearLayout
     private lateinit var refreshButton: Button
+    private lateinit var statusButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,9 +39,12 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
     ): View? {
         val view = inflater.inflate(R.layout.alchoo, container, false)
 
+        mAlchooStatusOnLayout = view.findViewById(R.id.alchoo_status_on)
+        mAlchooStatusOffLayout = view.findViewById(R.id.alchoo_status_off)
         cardStackView = view.findViewById(R.id.alchoo_card)
         refresherView = view.findViewById(R.id.alchoo_refresh)
         refreshButton = view.findViewById(R.id.alchoo_refresh__button)
+        statusButton = view.findViewById(R.id.alchoo_status__button)
         mAlchooViewModel = ViewModelProvider(this)[AlchooViewModel()::class.java]
         activity?.title = title
 
@@ -93,6 +100,16 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
             AlchooAdapter(mutableListOf(), listener)
         }
 
+        mAlchooViewModel.status.observe(viewLifecycleOwner, {
+            if (it.status) {
+                mAlchooStatusOnLayout.visibility = View.VISIBLE
+                mAlchooStatusOffLayout.visibility = View.GONE
+            } else {
+                mAlchooStatusOffLayout.visibility = View.VISIBLE
+                mAlchooStatusOnLayout.visibility = View.GONE
+            }
+        })
+
         mAlchooViewModel.alchoo.observe(viewLifecycleOwner, {
             if (cardStackView.adapter == null) {
                 adapter.setData(it)
@@ -114,6 +131,10 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
 
         refreshButton.setOnClickListener {
             mAlchooViewModel.refreshList()
+        }
+
+        statusButton.setOnClickListener {
+            mAlchooViewModel.changeStatus()
         }
         cardStackView.layoutManager = manager
         cardStackView.itemAnimator = DefaultItemAnimator()

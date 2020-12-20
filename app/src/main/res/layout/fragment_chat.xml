@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/chat_horizontal_margin"
-    android:paddingTop="@dimen/chat_vertical_margin"
     android:paddingRight="@dimen/chat_horizontal_margin"
     android:paddingBottom="@dimen/chat_vertical_margin">
 
@@ -17,7 +16,9 @@
         android:id="@+id/chat_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_friend"
-        android:layout_toEndOf="@id/chat_image" />
+        android:layout_toEndOf="@id/chat_image"
+        android:textSize="36sp"
+        android:gravity="center_vertical|center_horizontal"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_chat"

@@ -8,12 +8,17 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import technokek.alchotracker.api.AlchooInterface
+import technokek.alchotracker.api.AlchooStatusInterface
 import technokek.alchotracker.data.AlchooLiveData
+import technokek.alchotracker.data.AlchooStatusLiveData
 import technokek.alchotracker.data.models.AlchooCardModel
+import technokek.alchotracker.data.models.AlchooStatusModel
 
-class AlchooViewModel : ViewModel(), AlchooInterface {
+class AlchooViewModel : ViewModel(), AlchooInterface, AlchooStatusInterface {
     var alchoo = AlchooLiveData(dbRef, aRef)
+    var status = AlchooStatusLiveData(dbRef, aRef)
     private val mMediatorLiveData = MediatorLiveData<MutableList<AlchooCardModel>>()
+    private val mStatusMediatorLiveData = MediatorLiveData<AlchooStatusModel>()
 
     init {
         mMediatorLiveData.addSource(alchoo) {
@@ -23,6 +28,15 @@ class AlchooViewModel : ViewModel(), AlchooInterface {
                 }
             } else {
                 mMediatorLiveData.value = null
+            }
+        }
+        mStatusMediatorLiveData.addSource(status) {
+            if (it != null) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    mStatusMediatorLiveData.postValue(it)
+                }
+            } else {
+                mStatusMediatorLiveData.value = null
             }
         }
     }
@@ -42,6 +56,12 @@ class AlchooViewModel : ViewModel(), AlchooInterface {
     override fun refreshList() {
         CoroutineScope(Dispatchers.IO).launch {
             alchoo.refreshList()
+        }
+    }
+
+    override fun changeStatus() {
+        CoroutineScope(Dispatchers.IO).launch {
+            status.changeStatus()
         }
     }
 

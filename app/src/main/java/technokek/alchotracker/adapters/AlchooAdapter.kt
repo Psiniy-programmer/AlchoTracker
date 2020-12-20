@@ -37,6 +37,7 @@ class AlchooAdapter(
             .into(holder.mAvatar)
         holder.mName.text = model.name
         holder.mStatus.text = model.status
+        holder.mFavouriteDrink.text = model.favouriteDrink
         holder.itemView.setOnTouchListener { v, event ->
             listener.touchBody(model.id)
             true
