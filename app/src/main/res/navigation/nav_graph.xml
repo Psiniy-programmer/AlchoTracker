@@ -74,6 +74,6 @@
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
-        android:name="technokek.alchotracker.ui.fragments.ChatFragment"
+        android:name="technokek.alchotracker.ui.fragments.SignleChatFragment"
         android:label="ChatFragment" />
 </navigation>

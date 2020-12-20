@@ -3,11 +3,11 @@ package technokek.alchotracker.viewmodels.factories
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import technokek.alchotracker.viewmodels.FriendPreferencesViewModel
+import technokek.alchotracker.viewmodels.SingleChatViewModel
 
-class FriendPreferencesFactory(private var application: Application, val uid: String)
+class SingleChatViewModelFactory(private val application: Application, val chatId: String)
     : ViewModelProvider.AndroidViewModelFactory(application) {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return FriendPreferencesViewModel(application, uid) as T
+        return SingleChatViewModel(application, chatId) as T
     }
 }
