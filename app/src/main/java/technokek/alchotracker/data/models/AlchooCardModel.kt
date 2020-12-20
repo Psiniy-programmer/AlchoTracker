@@ -6,5 +6,6 @@ data class AlchooCardModel(
     val status: String = String(),
     var id: String = String(),
     var incomingRequests: String = String(),
-    var outGoingRequests: String = String()
+    var outGoingRequests: String = String(),
+    var declineList: String = String()
 )

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
+import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +25,8 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
     private lateinit var mAlchooViewModel: AlchooViewModel
     private lateinit var cardStackView:CardStackView
     private lateinit var touchedUid: String
+    private lateinit var refresherView: LinearLayout
+    private lateinit var refreshButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +36,8 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
         val view = inflater.inflate(R.layout.alchoo, container, false)
 
         cardStackView = view.findViewById(R.id.alchoo_card)
+        refresherView = view.findViewById(R.id.alchoo_refresh)
+        refreshButton = view.findViewById(R.id.alchoo_refresh__button)
         mAlchooViewModel = ViewModelProvider(this)[AlchooViewModel()::class.java]
         activity?.title = title
 
@@ -96,11 +102,25 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
                 adapter.setData(it)
                 adapter.notifyDataSetChanged()
             }
+
+            if (adapter.itemCount == 0) {
+                cardStackView.visibility = View.GONE
+                refresherView.visibility = View.VISIBLE
+            } else {
+                cardStackView.visibility = View.VISIBLE
+                refresherView.visibility = View.GONE
+            }
         })
+
+        refreshButton.setOnClickListener {
+            mAlchooViewModel.refreshList()
+        }
         cardStackView.layoutManager = manager
         cardStackView.itemAnimator = DefaultItemAnimator()
         super.onViewCreated(view, savedInstanceState)
     }
+
+
 
     companion object {
         const val TAG = "AlchooFragment"

@@ -55,7 +55,7 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
             x.child(AVATAR).value.toString(),
             x.child(STATUS).value.toString(),
             x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString(),
-            x.child(ALCHOINFO).child(ALCHOO).value as Boolean
+            x.child(ALCHOINFO).child(ALCHOO).child(FINDER).value as Boolean
         )
     }
 
@@ -91,6 +91,7 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
         query.ref.child(mAuth.currentUser?.uid.toString())
             .child(ALCHOINFO)
             .child(ALCHOO)
+            .child(FINDER)
             .setValue(true)
     }
 
@@ -98,6 +99,7 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
         query.ref.child(mAuth.currentUser?.uid.toString())
             .child(ALCHOINFO)
             .child(ALCHOO)
+            .child(FINDER)
             .setValue(false)
     }
 

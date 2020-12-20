@@ -41,4 +41,6 @@
     <string name="search_hint">search</string>
     <string name="settings_hint">settings</string>
     <string name="cardavatar">cardAvatar</string>
+    <string name="alchooHintListOver">Потенциальные собутыльники кончились</string>
+    <string name="alchooRefreshList">Обновить список</string>
 </resources>

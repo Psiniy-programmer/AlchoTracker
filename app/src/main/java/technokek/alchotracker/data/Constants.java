@@ -25,5 +25,7 @@ public class Constants {
     public static final String MISSINGNAMEERROR = "Введите имя.";
     public static final String SHORTPASSWORDERROR = "Минимальная длина пароля 6 симв.";
     public static final String ALCHOO = "alchoo";
+    public static final String FINDER = "finder";
+    public static final String DECLINE_LIST = "declineList";
 }
 

@@ -39,6 +39,12 @@ class AlchooViewModel : ViewModel(), AlchooInterface {
         }
     }
 
+    override fun refreshList() {
+        CoroutineScope(Dispatchers.IO).launch {
+            alchoo.refreshList()
+        }
+    }
+
     companion object {
         private val dbRef = FirebaseDatabase.getInstance().getReference("users")
         private val aRef = FirebaseAuth.getInstance()
