@@ -37,7 +37,6 @@ class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>(), Alchoo
     inner class AlchooListener : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val alchoo: MutableList<AlchooCardModel> = mutableListOf()
-//            Log.d("SYKA","snapshot ${snapshot.child(mAuth.currentUser!!.uid)}")
             curUserIncomeRequests = snapshot
                 .child(mAuth.currentUser!!.uid)
                 .child(FRIENDS)
@@ -76,10 +75,6 @@ class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>(), Alchoo
 
     }
 
-    companion object {
-        const val TAG = "AlchooLiveData"
-    }
-
     override fun acceptBody(uid: String) {
         val masterPath = getPath(mAuth.currentUser?.uid.toString(), REQUESTS)
         val friendPath = getPath(uid, REQUESTS)
@@ -101,7 +96,6 @@ class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>(), Alchoo
                         .setValue("${item.incomingRequests};${mAuth.currentUser?.uid.toString()}")
             }
         }
-        Log.d("SYKA", "accepted $uid")
     }
 
     private fun getPath(uid: String, type: String): DatabaseReference {
@@ -123,6 +117,10 @@ class AlchooLiveData() : MutableLiveData<MutableList<AlchooCardModel>>(), Alchoo
     }
 
     override fun declineBody(uid: String) {
-        Log.d("SYKA", "declined $uid")
+        Log.d(TAG, "declined $uid")
+    }
+
+    companion object {
+        const val TAG = "AlchooLiveData"
     }
 }
