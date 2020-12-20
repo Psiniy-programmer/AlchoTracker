@@ -11,6 +11,9 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
     private lateinit var uid: String
     private lateinit var query: Query
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var masterOutReq: String
+    private lateinit var masterInReq: String
+    private lateinit var masterList: String
     private var requestsListener = RequestsListener()
 
     constructor(query: Query, mAuth: FirebaseAuth, uid: String) : this() {
@@ -35,18 +38,22 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
 
     inner class RequestsListener : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
+
             val x = snapshot.child(mAuth.currentUser?.uid.toString())
                 .child(FRIENDS)
-            val y = snapshot.child(uid)
-                .child(FRIENDS)
-            val masterFriendList = x.child(LIST)
-                .value.toString()
-            val masterIncList = x.child(REQUESTS)
-                .child(INCOMING_REQUESTS)
-                .value.toString()
-            val masterOutList = x.child(REQUESTS)
+            masterOutReq =  x.child(REQUESTS)
                 .child(OUTGOING_REQUESTS)
                 .value.toString()
+            masterInReq = x.child(REQUESTS)
+                .child(INCOMING_REQUESTS)
+                .value.toString()
+            masterList = x.child(REQUESTS)
+                .child(OUTGOING_REQUESTS)
+                .value.toString()
+
+            val y = snapshot.child(uid)
+                .child(FRIENDS)
+            
             val friendIncList = y.child(INCOMING_REQUESTS)
                 .child(REQUESTS)
                 .value.toString()
@@ -54,37 +61,28 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
                 .child(REQUESTS)
                 .value.toString()
 
-            if (masterFriendList.split(";").contains(uid)) {
+            if (masterList.split(";").contains(uid)) {
                 value = FriendToggleRequestModel(
                     inFriend = true,
                     requestIsSended = false,
-                    masterOutList,
-                    masterIncList,
                     friendOutList,
                     friendIncList,
-                    x.child(LIST).value.toString(),
                     y.child(LIST).value.toString()
                 )
-            } else if (masterOutList.split(";").contains(uid)) {
+            } else if (masterOutReq.split(";").contains(uid)) {
                 value = FriendToggleRequestModel(
                     inFriend = false,
                     requestIsSended = true,
-                    masterOutList,
-                    masterIncList,
                     friendOutList,
                     friendIncList,
-                    x.child(LIST).value.toString(),
                     y.child(LIST).value.toString()
                 )
             } else {
                 value = FriendToggleRequestModel(
                     inFriend = false,
                     requestIsSended = false,
-                    masterOutList,
-                    masterIncList,
                     friendOutList,
                     friendIncList,
-                    x.child(LIST).value.toString(),
                     y.child(LIST).value.toString()
                 )
             }
@@ -98,12 +96,12 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
     fun addFriend() {
         val masterPath = getPath(mAuth.currentUser?.uid.toString(), REQUESTS)
         val friendPath = getPath(uid, REQUESTS)
-        if (value?.masterOutReq.isNullOrEmpty()) {
+        if (masterOutReq.isNullOrEmpty()) {
             masterPath.child(OUTGOING_REQUESTS)
                 .setValue(uid)
         } else {
             masterPath.child(OUTGOING_REQUESTS)
-                .setValue("${value?.masterOutReq};$uid")
+                .setValue("${masterOutReq};$uid")
         }
         if (!value?.friendInReq.isNullOrEmpty()) {
             friendPath.child(INCOMING_REQUESTS)
@@ -117,10 +115,11 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
     fun deleteFriend() {
         val masterPath = getPath(mAuth.currentUser?.uid.toString(), LIST)
         val friendPath = getPath(uid, LIST)
+
         val friendList =
             value?.friendList?.split(";")?.filter { it != mAuth.currentUser?.uid.toString() }
-        val masterList = value?.masterList?.split(";")?.filter { it != uid }
-        val masterStr = masterList?.let { setStr(it) }
+        val mMasterList = masterList.split(";").filter { it != uid }
+        val masterStr = setStr(mMasterList)
         val friendStr = friendList?.let { setStr(it) }
         masterPath.setValue(masterStr)
         friendPath.setValue(friendStr)
