@@ -104,7 +104,6 @@ class MainActivity :
         bundle.putString("name", model.name)
         bundle.putString("avatar", model.avatar)
         bundle.putString("uid", model.id)
-
         navHostFragment.navController.navigate(
             R.id.action_chatListFragment_to_chatFragment,
             bundle

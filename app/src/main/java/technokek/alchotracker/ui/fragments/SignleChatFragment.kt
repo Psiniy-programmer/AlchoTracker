@@ -1,10 +1,13 @@
 package technokek.alchotracker.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -25,14 +28,17 @@ class SignleChatFragment : Fragment() {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: SingleChatAdapter
     private lateinit var mChatViewModel: SingleChatViewModel
+    private lateinit var mButton: Button
+    private lateinit var mEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         chatID = arguments?.get("chatID") as String
-        friendID = arguments?.get("uid") as String
-        name = arguments?.get("name") as String
-        avatar = arguments?.get("avatar") as String
+//        friendID = arguments?.get("uid") as String
+        friendID = "zsdZKC8DDfYFfWNf5EULs6jbyMX2"
+//        name = arguments?.get("name") as String
+//        avatar = arguments?.get("avatar") as String
 
         savedInstanceState?.let {
             chatID = savedInstanceState.getString(chatID).toString()
@@ -50,6 +56,10 @@ class SignleChatFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(context)
         progressBar = view.findViewById(R.id.chat_progress_bar)
         mRecyclerView = view.findViewById(R.id.recycler_chat)
+        mButton = view.findViewById(R.id.button_chat)
+        mEditText = view.findViewById(R.id.edit_text_chat)
+        mRecyclerView.layoutManager = linearLayoutManager
+        mRecyclerView.setHasFixedSize(true)
 
         activity?.application?.let {
             mChatViewModel = ViewModelProvider(
@@ -57,8 +67,6 @@ class SignleChatFragment : Fragment() {
                 SingleChatViewModelFactory(it, chatID)
             )[SingleChatViewModel::class.java]
         }
-        mRecyclerView.layoutManager = linearLayoutManager
-        mRecyclerView.setHasFixedSize(true)
 
         mAdapter = if (mChatViewModel.chat.value != null)
             SingleChatAdapter(mChatViewModel.chat.value!!, friendID)
@@ -70,17 +78,19 @@ class SignleChatFragment : Fragment() {
                 mAdapter.setData(it)
                 mAdapter.notifyDataSetChanged()
                 mRecyclerView.adapter = mAdapter
+                progressBar.visibility = View.GONE
             } else {
                 mAdapter.setData(it)
                 mAdapter.notifyDataSetChanged()
             }
         })
 
-        return view
-    }
+        mButton.setOnClickListener {
+            mChatViewModel.sendMessage(mEditText.text.toString())
+            mEditText.setText("")
+        }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        return view
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

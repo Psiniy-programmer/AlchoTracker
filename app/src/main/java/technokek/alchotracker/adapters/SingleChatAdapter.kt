@@ -1,5 +1,6 @@
 package technokek.alchotracker.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,8 @@ class SingleChatAdapter(
 
     override fun onBindViewHolder(holder: ChatMessageViewHolder, position: Int) {
         val model = mData[position]
+//        Log.d("SYKA", "in - $friendID \n model - ${model.fromId}")
+//        Log.d("SYKA", "KEK = ${friendID == model.fromId}")
         if (friendID == model.fromId) {
             holder.mFriendLayout.visibility = View.VISIBLE
             holder.mFriendMessage.text = model.message

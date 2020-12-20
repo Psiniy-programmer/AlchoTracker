@@ -8,12 +8,12 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import technokek.alchotracker.api.ChatInterface
+import technokek.alchotracker.api.SingleChatInterface
 import technokek.alchotracker.data.SingleChatLiveData
 import technokek.alchotracker.data.models.SingleChatMessageModel
 
 class SingleChatViewModel(application: Application, chatId: String) : AndroidViewModel(application),
-    ChatInterface {
+    SingleChatInterface {
     var chat = SingleChatLiveData(dbRef, aRef, chatId)
     private val mMediatorLiveData = MediatorLiveData<MutableList<SingleChatMessageModel>>()
 

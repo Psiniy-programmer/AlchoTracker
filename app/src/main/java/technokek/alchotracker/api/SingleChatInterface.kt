@@ -1,5 +1,5 @@
 package technokek.alchotracker.api
 
-interface ChatInterface {
+interface SingleChatInterface {
     fun sendMessage(text: String)
 }
