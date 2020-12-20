@@ -36,6 +36,7 @@ class FirebaseSource {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if (!emitter.isDisposed) {
                 if (it.isSuccessful){
+                    setDefaultValue()
                     emitter.onComplete()
                 }
                 else
