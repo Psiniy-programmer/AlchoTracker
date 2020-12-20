@@ -36,10 +36,8 @@ class SignleChatFragment : Fragment() {
 
         chatID = arguments?.get("chatID") as String
         friendID = arguments?.get("uid") as String
-        Log.d("SYKA", "TEST == $friendID")
-//        friendID = "zsdZKC8DDfYFfWNf5EULs6jbyMX2"
-//        name = arguments?.get("name") as String
-//        avatar = arguments?.get("avatar") as String
+        name = arguments?.get("name") as String
+        avatar = arguments?.get("avatar") as String
 
         savedInstanceState?.let {
             chatID = savedInstanceState.getString(chatID).toString()
