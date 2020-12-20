@@ -128,8 +128,8 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
     }
 
     private fun pushEventToBD(date: LocalDate, event: CalendarModel, eventNumber: String) {
-        pushEventToEventsDB(date, event, eventNumber)
         pushEventToUsersDB(event, eventNumber)
+        pushEventToEventsDB(date, event, eventNumber)
     }
 
     private fun pushEventToEventsDB(date: LocalDate, event: CalendarModel, eventNumber: String) {
