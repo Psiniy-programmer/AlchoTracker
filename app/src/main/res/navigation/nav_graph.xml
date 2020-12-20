@@ -57,15 +57,23 @@
         android:name="technokek.alchotracker.ui.fragments.calendarfragment.CalendarFragment"
         android:label="CalendarFragment" >
         <action
-            android:id="@+id/action_calendarFragment_to_timerFragment"
-            app:destination="@id/timerFragment" />
+            android:id="@+id/action_calendarFragment_to_chatListFragment"
+            app:destination="@id/chatListFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/timerFragment"
-        android:name="technokek.alchotracker.ui.fragments.TimerFragment"
-        android:label="TimerFragment" />
     <fragment
         android:id="@+id/alchooFragment"
         android:name="technokek.alchotracker.ui.fragments.AlchooFragment"
         android:label="AlchooFragment" />
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="technokek.alchotracker.ui.fragments.ChatListFragment"
+        android:label="ChatListFragment" >
+        <action
+            android:id="@+id/action_chatListFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="technokek.alchotracker.ui.fragments.ChatFragment"
+        android:label="ChatFragment" />
 </navigation>

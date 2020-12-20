@@ -13,12 +13,16 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import technokek.alchotracker.R
+import technokek.alchotracker.api.ChatListListener
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FoundUserListener
 import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListener, FoundUserListener {
+class MainActivity :
+    AppCompatActivity(), EventClickListener,
+    FriendClickListener, FoundUserListener,
+    ChatListListener {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
@@ -84,6 +88,19 @@ class MainActivity : AppCompatActivity(), EventClickListener, FriendClickListene
 
         navHostFragment.navController.navigate(
             R.id.action_friendFragment_to_friendProfileFragment,
+            bundle
+        )
+    }
+
+    override fun pressChatFriend(chatID: String) {
+        val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
+        toast.show()
+
+        val bundle = Bundle()
+        bundle.putString("chatID", chatID)
+
+        navHostFragment.navController.navigate(
+            R.id.action_chatListFragment_to_chatFragment,
             bundle
         )
     }

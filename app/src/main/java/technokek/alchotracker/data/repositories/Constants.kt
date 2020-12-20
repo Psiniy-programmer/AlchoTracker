@@ -26,4 +26,11 @@ object Constants {
     const val NOTEQUALPASSWORERROR = "Пароли не совпадают."
     const val MISSINGNAMEERROR = "Введите имя."
     const val SHORTPASSWORDERROR = "Минимальная длина пароля 6 симв."
+    const val CHATS = "chats"
+    const val LASTMESSAGE = "last_message"
+    const val LASTDATETIME = "last_time"
+    const val ALLMESSAGES = "all_messages"
+    const val CHATID = "chat_id"
+    const val DATETIME = "date_time"
+    const val TEXTMESSAGE = "text_message"
 }

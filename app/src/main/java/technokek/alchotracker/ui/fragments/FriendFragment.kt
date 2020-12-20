@@ -38,18 +38,6 @@ class FriendFragment : Fragment(), RequestClickListener {
     private lateinit var mProgressBar: ProgressBar
     private lateinit var searchView: SearchView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-//        activity?.onBackPressedDispatcher?.addCallback(this, object: OnBackPressedCallback(true) {
-//            override fun handleOnBackPressed() {
-//                if (!searchView.isIconified) {
-//                    searchView.onActionViewCollapsed()
-//                }
-//            }
-//        })
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -225,7 +213,6 @@ class FriendFragment : Fragment(), RequestClickListener {
 
                 return true
             }
-
         })
 
         searchView = searchItem.actionView as SearchView

@@ -5,45 +5,57 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.FriendFragment">
 
-    <TextView
-        android:id="@+id/request_in_friends"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/request_in_friends"
-        android:textSize="24sp"
-        android:visibility="gone" />
+        android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_friend_request"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/request_in_friends" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/list_friends"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recycler_friend_request"
-        android:text="@string/list_friends"
-        android:textSize="24sp"
-        android:visibility="gone" />
+            <TextView
+                android:id="@+id/request_in_friends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/request_in_friends"
+                android:textSize="24sp"
+                android:visibility="gone" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_friend"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/list_friends" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_friend_request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/request_in_friends" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
+            <TextView
+                android:id="@+id/list_friends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycler_friend_request"
+                android:text="@string/list_friends"
+                android:textSize="24sp"
+                android:visibility="gone" />
 
-    <ProgressBar
-        android:id="@+id/indeterminateBarFriend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_friend"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/list_friends" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <ProgressBar
+                android:id="@+id/indeterminateBarFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

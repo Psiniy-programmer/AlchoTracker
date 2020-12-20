@@ -24,6 +24,13 @@ public class Constants {
     public static final String NOTEQUALPASSWORERROR = "Пароли не совпадают.";
     public static final String MISSINGNAMEERROR = "Введите имя.";
     public static final String SHORTPASSWORDERROR = "Минимальная длина пароля 6 симв.";
-
+    public static final String CHATS = "chats";
+    public static final String LASTMESSAGE = "last_message";
+    public static final String LASTDATETIME = "last_time";
+    public static final String ALLMESSAGES = "all_messages";
+    public static final String CHATID = "chat_id";
+    public static final String DATETIME = "date_time";
+    public static final String TEXTMESSAGE = "text_message";
+    public static final String LASTSENDERID = "last_sender_id";
 }
 

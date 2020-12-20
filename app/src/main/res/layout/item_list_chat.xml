@@ -15,15 +15,31 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/friend_image"
+            android:id="@+id/chat_friend_image"
             android:layout_width="@dimen/width_friend"
             android:layout_height="@dimen/height_friend" />
 
         <TextView
-            android:id="@+id/friend_text"
+            android:id="@+id/chat_friend_name"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_friend"
-            android:layout_toEndOf="@id/friend_image"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/chat_friend_image"
+            tools:text="Hello" />
+
+        <TextView
+            android:id="@+id/chat_friend_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chat_friend_name"
+            android:layout_toEndOf="@id/chat_friend_image"
+            tools:text="Hello" />
+
+        <TextView
+            android:id="@+id/chat_friend_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chat_friend_text"
+            android:layout_toEndOf="@id/chat_friend_image"
             tools:text="Hello" />
     </RelativeLayout>
 
