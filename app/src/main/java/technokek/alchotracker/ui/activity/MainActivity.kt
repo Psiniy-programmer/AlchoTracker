@@ -1,6 +1,5 @@
 package technokek.alchotracker.ui.activity
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.content.Context
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -21,7 +19,6 @@ import technokek.alchotracker.api.ChatListListener
 import technokek.alchotracker.api.EventClickListener
 import technokek.alchotracker.api.FoundUserListener
 import technokek.alchotracker.api.FriendClickListener
-import technokek.alchotracker.api.NotificationMethodsHolder
 import technokek.alchotracker.api.SharedPreferencesHolder
 import technokek.alchotracker.data.Constants
 import technokek.alchotracker.data.models.ChatFriendModel
@@ -38,7 +35,6 @@ class MainActivity :
     private lateinit var binding: ActivityMainBinding
     override lateinit var sharedPreferences: SharedPreferences
     private lateinit var notificationManager: NotificationManagerCompat
-    private lateinit var binding: ActivityMainBinding
     lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -137,7 +133,4 @@ class MainActivity :
             bundle
         )
     }
-
-
-
 }
