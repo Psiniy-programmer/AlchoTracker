@@ -48,6 +48,12 @@ class CalendarViewModel : ViewModel() {
         }
     }
 
+    fun onMemberDenied(calendarModel: CalendarModel) {
+        CoroutineScope(Dispatchers.IO).launch {
+            calendarEvents.pushOnMemberDenied(calendarModel)
+        }
+    }
+
     companion object {
         private val STOCK_REF = FirebaseDatabase
             .getInstance()

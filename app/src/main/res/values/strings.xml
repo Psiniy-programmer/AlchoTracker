@@ -48,4 +48,6 @@
     <string name="cancelbtn">cancelBtn</string>
     <string name="would_u_start_alchoo">Хотите ли вы начать поиск собутыльников?</string>
     <string name="start">Начать</string>
+    <string name="add_event">add_event</string>
+    <string name="delete_event">delete_event</string>
 </resources>
