@@ -2,9 +2,11 @@ package technokek.alchotracker.ui.activity
 
 import android.content.SharedPreferences
 import android.content.Context
+import android.graphics.Rect
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -30,7 +32,7 @@ class MainActivity :
     FriendClickListener, FoundUserListener,
     ChatListListener, SharedPreferencesHolder {
 
-    private lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var binding: ActivityMainBinding
     override lateinit var sharedPreferences: SharedPreferences

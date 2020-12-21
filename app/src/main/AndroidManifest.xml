@@ -19,10 +19,13 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
 
-        <activity android:name=".ui.activity.MainActivity" />
-        <activity android:name=".ui.activity.SignupActivity">
+        <activity android:name=".ui.activity.MainActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".ui.activity.SignupActivity"
+            android:windowSoftInputMode="adjustResize">
         </activity>
-        <activity android:name=".ui.activity.LoginActivity">
+        <activity android:name=".ui.activity.LoginActivity"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

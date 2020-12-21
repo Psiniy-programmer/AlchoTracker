@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.*
+import android.view.View.OnFocusChangeListener
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -24,6 +24,7 @@ import technokek.alchotracker.api.FoundUserListener
 import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.api.RequestClickListener
 import technokek.alchotracker.viewmodels.FriendViewModel
+
 
 class FriendFragment : Fragment(), RequestClickListener {
 
@@ -227,6 +228,18 @@ class FriendFragment : Fragment(), RequestClickListener {
                 android.R.color.transparent
             )
         )
+
+        val searchText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
+        searchText.setTextColor(R.color.primaryLightColor)
+        searchText.setHintTextColor(R.color.gray)
+        searchText.setHint(R.string.search_hint_text)
+        searchText.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                activity
+            } else {
+                //Reveal image
+            }
+        }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

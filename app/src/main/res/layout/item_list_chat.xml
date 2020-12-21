@@ -35,10 +35,10 @@
             android:id="@+id/chat_friend_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/chat_friend_name"
+            android:layout_alignParentBottom="true"
             android:layout_toEndOf="@id/chat_friend_image"
             android:paddingStart="16dp"
-            android:paddingTop="8dp"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/primaryLightColor"
             tools:text="Hello" />
 
