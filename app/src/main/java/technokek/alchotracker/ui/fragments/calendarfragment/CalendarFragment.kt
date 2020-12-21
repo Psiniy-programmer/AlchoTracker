@@ -12,8 +12,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
-import android.view.Gravity
-import android.view.View
+import android.view.*
 import android.widget.*
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
@@ -73,6 +72,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mAuth = FirebaseAuth.getInstance()
+        setHasOptionsMenu(true)
         sharedPreferences = (activity as SharedPreferencesHolder).sharedPreferences
         editor = sharedPreferences.edit()
         alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -441,6 +441,30 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
 
     override fun onDenyClick(calendarModel: CalendarModel) {
         mCalendarViewModel.onMemberDenied(calendarModel)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.calendar_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.add_event) {
+            if (selectedDate != null) {
+                showPopUp(selectedDate)
+            }
+        }
+        else if (item.itemId == R.id.delete_event) {
+            if (selectedDate != null && selectedCalendarModel != null) {
+                deleteEvent(selectedDate, selectedCalendarModel)
+            }
+            else {
+                Toast.makeText(context, "Either Date or/and Event hasnt been selected!", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun cancelAlarm(requestCode: Int) {
