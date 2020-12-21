@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/gray500"
     android:padding="10dp">
 
     <ImageView
@@ -14,6 +15,8 @@
         android:id="@+id/found_user_text"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_friend"
+        android:paddingTop="8dp"
+        android:paddingStart="16dp"
         android:textColor="@color/primaryLightColor"
         android:layout_toEndOf="@id/found_user_image"
         tools:text="Hello" />

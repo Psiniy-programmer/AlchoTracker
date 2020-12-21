@@ -39,4 +39,5 @@
     <color name="backgroundDays">#19191A</color>
     <color name="selectorColor">#FFFFFF</color>
     <color name="bottomNavGraph">#C4C8CC</color>
+    <color name="gray500">#76787A</color>
 </resources>

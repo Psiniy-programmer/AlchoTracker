@@ -8,11 +8,13 @@
     android:layout_marginTop="10dp"
     android:layout_marginBottom="20dp"
     android:scrollbars="vertical"
+    android:background="@color/gray500"
     app:cardCornerRadius="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/gray500">
 
         <ImageView
             android:id="@+id/friend_image"
@@ -24,6 +26,8 @@
             android:id="@+id/friend_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_friend"
+            android:paddingTop="8dp"
+            android:paddingStart="16dp"
             android:textColor="@color/primaryLightColor"
             android:layout_toEndOf="@id/friend_image"
             tools:text="Hello" />

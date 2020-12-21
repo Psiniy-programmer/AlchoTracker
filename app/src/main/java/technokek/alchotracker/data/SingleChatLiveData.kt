@@ -80,10 +80,20 @@ class SingleChatLiveData() : MutableLiveData<MutableList<SingleChatMessageModel>
         val sdf = SimpleDateFormat("hh:mm:ss")
         val currentDate = sdf.format(Date())
 
-        val message = SingleChatMessageModel(senderID, currentDate, text)
-        newNode.setValue(message)
-        val lastChatMessage = ChatInfoModel(text, senderID, currentDate)
-        query.ref.child(CHATID).setValue(lastChatMessage)
+//        val message = SingleChatMessageModel(senderID, currentDate, text)
+//        newNode.setValue(message)
+//        val lastChatMessage = ChatInfoModel(text, senderID, currentDate)
+//        query.ref.child(CHATID).setValue(lastChatMessage)
+
+        newNode.child(ID).setValue(senderID)
+        newNode.child(DATETIME).setValue(currentDate)
+        newNode.child(TEXTMESSAGE).setValue(text)
+
+        val chatNode = query.ref
+            .child(chatID)
+        chatNode.child(LASTMESSAGE).setValue(text)
+        chatNode.child(LASTSENDERID).setValue(senderID)
+        chatNode.child(LASTDATETIME).setValue(currentDate)
     }
 
     companion object {
