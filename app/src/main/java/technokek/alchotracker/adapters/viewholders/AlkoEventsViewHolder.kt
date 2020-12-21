@@ -18,6 +18,8 @@ class AlkoEventsViewHolder(
     RecyclerView.ViewHolder(binding.root) {
     private val formatter = DateTimeFormatter.ofPattern("EEE'\n'dd MMM'\n'HH:mm")
     private val mAuth = FirebaseAuth.getInstance()
+    private var buttonAcceptClicked = false
+    private var buttonDenyClicked = false
 
     fun bind(calendarModel: CalendarModel) {
         binding.itemAlkoEventDateText.apply {
@@ -41,14 +43,14 @@ class AlkoEventsViewHolder(
             binding.denyRequest.visibility = View.GONE
         }
 
-        if (calendarModel.adminId != currentUser && !calendarModel.userClicked) {
+        if (calendarModel.adminId != currentUser && !(buttonAcceptClicked || buttonDenyClicked)) {
             calendarModel.userClicked = true
             binding.acceptRequest.apply {
                 visibility = View.VISIBLE
                 isClickable = true
                 setOnClickListener {
                     actionListener.onAcceptClick(calendarModel)
-
+                    buttonAcceptClicked = true
                     visibility = View.GONE
                     isClickable = false
                     binding.denyRequest.visibility = View.GONE
@@ -60,7 +62,7 @@ class AlkoEventsViewHolder(
                 isClickable = true
                 setOnClickListener {
                     actionListener.onDenyClick(calendarModel)
-
+                    buttonDenyClicked = true
                     visibility = View.GONE
                     isClickable = false
                     binding.acceptRequest.visibility = View.GONE
