@@ -116,5 +116,5 @@ class ProfileSettingsFragment : Fragment() {
                 }
             }
         }
-    }0
+    }
 }
