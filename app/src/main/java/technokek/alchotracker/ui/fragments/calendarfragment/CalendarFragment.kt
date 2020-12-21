@@ -115,10 +115,9 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                         if (selectedDate != day.date) {
                             val oldDate = selectedDate
                             selectedDate = day.date
+                            selectedCalendarModel = null
                             val binding = this@CalendarFragment.binding
                             binding.calendarFragmentCalendar.notifyDateChanged(day.date)
-                            binding.buttonAdd.isEnabled = true
-                            // binding.buttonDelete.isEnabled = alkoEvents[day.date] != null
                             oldDate?.let { binding.calendarFragmentCalendar.notifyDateChanged(it) }
                             updateAdapterForDate(day.date)
                         }
@@ -208,9 +207,8 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
             selectedDate?.let {
                 // Clear selection if we scroll to a new month.
                 selectedDate = null
+                selectedCalendarModel = null
                 binding.calendarFragmentCalendar.notifyDateChanged(it)
-                binding.buttonAdd.isEnabled = false
-                binding.buttonDelete.isEnabled = false
                 updateAdapterForDate(null)
             }
         }
@@ -225,16 +223,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
             binding.calendarFragmentCalendar.findFirstVisibleMonth()?.let {
                 binding.calendarFragmentCalendar.smoothScrollToMonth(it.yearMonth.previous)
             }
-        }
-
-        // pop up dialog binding
-        binding.buttonAdd.setOnClickListener {
-            showPopUp(selectedDate)
-        }
-        // button delete logic
-        binding.buttonDelete.isEnabled = false
-        binding.buttonDelete.setOnClickListener {
-            deleteEvent(selectedDate, selectedCalendarModel)
         }
     }
 
@@ -342,9 +330,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         } catch (e: Exception) {
             Toast.makeText(this.context, "Nothing to delete!", Toast.LENGTH_LONG).show()
         }
-        /*else {
-            binding.buttonDelete.isEnabled = false
-        }*/
         updateAdapterForDate(date)
     }
 
@@ -431,7 +416,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
 
     override fun onEventClick(calendarModel: CalendarModel) {
         selectedCalendarModel = calendarModel
-        binding.buttonDelete.isEnabled = true
     }
 
     override fun onAcceptClick(calendarModel: CalendarModel) {
@@ -458,6 +442,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         else if (item.itemId == R.id.delete_event) {
             if (selectedDate != null && selectedCalendarModel != null) {
                 deleteEvent(selectedDate, selectedCalendarModel)
+                selectedCalendarModel = null
             }
             else {
                 Toast.makeText(context, "Either Date or/and Event hasnt been selected!", Toast.LENGTH_LONG).show()
