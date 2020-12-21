@@ -11,10 +11,8 @@ import com.google.firebase.database.ValueEventListener
 import technokek.alchotracker.api.SingleChatInterface
 import technokek.alchotracker.data.models.SingleChatMessageModel
 import technokek.alchotracker.data.Constants.*
+import technokek.alchotracker.data.models.ChatInfoModel
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -82,15 +80,10 @@ class SingleChatLiveData() : MutableLiveData<MutableList<SingleChatMessageModel>
         val sdf = SimpleDateFormat("hh:mm:ss")
         val currentDate = sdf.format(Date())
 
-        newNode.child(ID).setValue(senderID)
-        newNode.child(DATETIME).setValue(currentDate)
-        newNode.child(TEXTMESSAGE).setValue(text)
-
-        val chatNode = query.ref
-            .child(chatID)
-        chatNode.child(LASTMESSAGE).setValue(text)
-        chatNode.child(LASTSENDERID).setValue(senderID)
-        chatNode.child(LASTDATETIME).setValue(currentDate)
+        val message = SingleChatMessageModel(senderID, currentDate, text)
+        newNode.setValue(message)
+        val lastChatMessage = ChatInfoModel(text, senderID, currentDate)
+        query.ref.child(CHATID).setValue(lastChatMessage)
     }
 
     companion object {

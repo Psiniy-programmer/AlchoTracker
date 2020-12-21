@@ -1,6 +1,5 @@
 package technokek.alchotracker.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,15 +24,15 @@ class SingleChatAdapter(
     override fun onBindViewHolder(holder: ChatMessageViewHolder, position: Int) {
         val model = mData[position]
 
-        if (friendID == model.fromId) {
+        if (friendID == model.id) {
             holder.mFriendLayout.visibility = View.VISIBLE
-            holder.mFriendMessage.text = model.message
-            holder.mFriendDate.text = model.time
+            holder.mFriendMessage.text = model.text_message
+            holder.mFriendDate.text = model.date_time
             holder.mMasterLayout.visibility = View.GONE
         } else {
             holder.mMasterLayout.visibility = View.VISIBLE
-            holder.mMasterMessage.text = model.message
-            holder.mMasterDate.text = model.time
+            holder.mMasterMessage.text = model.text_message
+            holder.mMasterDate.text = model.date_time
             holder.mFriendLayout.visibility = View.GONE
         }
     }

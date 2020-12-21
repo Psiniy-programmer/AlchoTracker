@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.SingleChatAdapter
+import technokek.alchotracker.data.models.SingleChatMessageModel
 import technokek.alchotracker.viewmodels.SingleChatViewModel
 import technokek.alchotracker.viewmodels.factories.SingleChatViewModelFactory
 

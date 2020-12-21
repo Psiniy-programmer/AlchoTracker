@@ -3,7 +3,7 @@ package technokek.alchotracker.data.repositories
 
 object Constants {
     const val USERS = "users"
-    const val ID = "ID"
+    const val ID = "id"
     const val AVATAR = "avatar"
     const val DEFAULTPATH =
         "https://firebasestorage.googleapis.com/v0/b/alchotracker-4e1ca.appspot.com/o/testImg.jpg?alt=media&token=42b3875c-a68e-4956-8f3f-1056740a0f1b"
