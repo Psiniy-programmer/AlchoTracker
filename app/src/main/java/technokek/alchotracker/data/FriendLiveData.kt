@@ -11,7 +11,7 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
     private lateinit var query: Query
     private val friendListener = FriendListener()
-    private var boolean = false
+    private var checkFriendListChat = false
 
     constructor(ref: DatabaseReference) : this() {
         query = ref
@@ -19,7 +19,7 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
     constructor(ref: DatabaseReference, boolean: Boolean) : this() {
         this.query = ref
-        this.boolean = boolean
+        this.checkFriendListChat = boolean
     }
 
     override fun onActive() {
@@ -48,7 +48,7 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             val friends: MutableList<FriendModel> = mutableListOf()
             val listFriend: MutableList<String> = getListFriends(snapshot)
 
-            if (!boolean) {
+            if (!checkFriendListChat) {
                 for (i in snapshot.children) {
                     if (listFriend.contains(i.key)) {
                         val friend = FriendModel(

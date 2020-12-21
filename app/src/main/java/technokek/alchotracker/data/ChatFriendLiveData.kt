@@ -78,8 +78,6 @@ class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>(), Ch
                                 chatID!!.getValue(i.key.toString())
                             val lastSearchFriend = list.filter { it.id != currentUser!!.uid }
 
-                            Log.d("SUKA", "CRASHif: $lastSearchFriend")
-
                             val friend = ChatFriendModel(
                                 chatID = i.key.toString(),
                                 name = lastSearchFriend.first().name,
@@ -111,7 +109,6 @@ class ChatFriendLiveData() : MutableLiveData<MutableList<ChatFriendModel>>(), Ch
                                     .filter { it != currentUser!!.uid }[0]
                             )
 
-                            Log.d("SUKA", "CRASHelse: $friend")
                             chatFriends.add(friend)
                         }
                     }

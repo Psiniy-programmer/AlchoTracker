@@ -47,10 +47,8 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
             masterInReq = x.child(REQUESTS)
                 .child(INCOMING_REQUESTS)
                 .value.toString()
-            masterList = x.child(REQUESTS)
-                .child(OUTGOING_REQUESTS)
+            masterList = x.child(LIST)
                 .value.toString()
-
             val y = snapshot.child(uid)
                 .child(FRIENDS)
 

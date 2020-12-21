@@ -71,7 +71,6 @@ class ChatListFriendLiveData() :
                 for (j in snapshot.children) {
 
                     if (usersWithoutYou.contains(j.key.toString())) {
-                        Log.d("SUKA", "Users: $usersWithoutYou  ${j.key.toString()}")
                         val itemList = SearchFriendModel(
                             id = j.key.toString(),
                             name = j.child(Constants.NAME).value.toString(),
@@ -80,7 +79,6 @@ class ChatListFriendLiveData() :
 
                         listChats.add(itemList)
                     } else if (j.key == currentUser.uid) {
-                        Log.d("SUKA", "currentUser: $usersWithoutYou  ${j.key.toString()}")
                         val itemList = SearchFriendModel(
                             id = j.key.toString(),
                             name = j.child(Constants.NAME).value.toString(),
@@ -93,8 +91,6 @@ class ChatListFriendLiveData() :
 
                 chatHashMap[i.key.toString()] = listChats
             }
-
-//            Log.d("SUKA", "CRASH: $chatHashMap")
 
             value = chatHashMap
         }
