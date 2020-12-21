@@ -17,12 +17,14 @@
         <ImageView
             android:id="@+id/friend_image"
             android:layout_width="@dimen/width_friend"
+            android:textColor="@color/primaryLightColor"
             android:layout_height="@dimen/height_friend" />
 
         <TextView
             android:id="@+id/friend_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_friend"
+            android:textColor="@color/primaryLightColor"
             android:layout_toEndOf="@id/friend_image"
             tools:text="Hello" />
     </RelativeLayout>

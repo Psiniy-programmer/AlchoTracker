@@ -24,6 +24,7 @@
             android:id="@+id/friend_request_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_friend"
+            android:textColor="@color/primaryLightColor"
             android:layout_toEndOf="@id/friend_request_image"
             tools:text="Hello" />
 

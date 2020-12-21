@@ -1,10 +1,12 @@
 package technokek.alchotracker.ui.fragments
 
+import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
@@ -158,6 +160,7 @@ class FriendFragment : Fragment(), RequestClickListener {
     }
 
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.search_friends, menu)
