@@ -23,6 +23,7 @@
         android:layout_gravity="center_horizontal"
         android:textSize="36sp"
         android:textStyle="bold"
+        android:textColor="@color/primaryLightColor"
         tools:text="Brendan Moore"/>
 
     <TextView
@@ -33,6 +34,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginBottom="10dp"
         android:textSize="24sp"
+        android:textColor="@color/primaryLightColor"
         tools:text="Status"
         />
 
@@ -54,6 +56,7 @@
                 tools:text="20,583"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/primaryLightColor"
                 android:layout_marginEnd="10dp"
                 />
             <TextView
@@ -61,6 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/friends"
+                android:textColor="@color/primaryLightColor"
                 android:textSize="16sp"
                 />
         </LinearLayout>
@@ -78,6 +82,7 @@
                 tools:text="9,112,824"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/primaryLightColor"
                 android:layout_marginEnd="10dp"
                 />
             <TextView
@@ -85,6 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dates"
+                android:textColor="@color/primaryLightColor"
                 android:textSize="16sp"
                 />
         </LinearLayout>
@@ -98,6 +104,7 @@
         android:layout_marginTop="0dp"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/primaryLightColor"
         android:text="@string/Preferences"/>
 
     <TextView
@@ -107,6 +114,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="0dp"
         android:textSize="24sp"
+        android:textColor="@color/primaryLightColor"
         tools:text="Пивко"/>
 
     <Button

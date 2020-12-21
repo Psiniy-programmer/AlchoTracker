@@ -27,6 +27,7 @@
                 android:gravity="center"
                 android:text="@string/alchooHintListOver"
                 android:textSize="24sp"
+                android:textColor="@color/primaryLightColor"
                 android:layout_gravity="center_vertical|center_horizontal"/>
 
             <Button
@@ -35,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/alchooRefreshList"
+                android:textColor="@color/primaryLightColor"
                 android:textSize="24sp"
                 android:layout_gravity="center_vertical|center_horizontal"/>
         </LinearLayout>
@@ -67,6 +69,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:gravity="center"
+            android:textColor="@color/primaryLightColor"
             android:text="@string/would_u_start_alchoo"
             android:textSize="24sp" />
 
@@ -77,6 +80,7 @@
             android:layout_height="wrap_content"
             android:text="@string/start"
             android:textSize="24sp"
+            android:textColor="@color/primaryColor"
             android:layout_gravity="center_vertical|center_horizontal"/>
     </LinearLayout>
 </RelativeLayout>
