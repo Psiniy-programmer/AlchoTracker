@@ -404,13 +404,24 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                 }?.split(";")
                 //remove timestamp
                 timestamps.removeIf {
-                    it.contains(parts!![0])
+                    try {
+                        it.contains(parts!![0])
+                    }
+                    catch (e: Exception) {
+                        Log.d("Parts", parts.toString())
+                        false
+                    }
                 }
                 ed.clear()
-                ed.putStringSet(TIMER_TIMESTAMPS_IN_SP, timestamps).commit()
+                ed.putStringSet(TIMER_TIMESTAMPS_IN_SP, timestamps).apply()
 
                 //Cancel alarm
-                cancelAlarm(parts!![1].toInt())
+                try {
+                    cancelAlarm(parts!![1].toInt())
+                }
+                catch (e: Exception) {
+                    Log.d("Cancel null", "cancelAlarmReceived null")
+                }
             }
 
             Log.d("SPAfterDelete", timestamps.toString())
@@ -429,7 +440,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     }
 
     override fun onDenyClick(calendarModel: CalendarModel) {
-        //DO NOTHING! Or delete?
+        mCalendarViewModel.onMemberDenied(calendarModel)
     }
 
     private fun cancelAlarm(requestCode: Int) {

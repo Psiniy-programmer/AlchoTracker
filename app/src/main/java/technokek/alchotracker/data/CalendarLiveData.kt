@@ -59,6 +59,7 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
         const val ADMIN = "admin"
         const val TRUE = "true"
         const val FALSE = "false"
+        const val USERS_CLICKED = "users_clicked"
 
         fun stringDateToLocalDate(date: String): LocalDate {
             val dateInStringList: List<String?> = date.split(
@@ -158,6 +159,21 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
         }
     }
 
+    fun pushOnMemberDenied(calendarModel: CalendarModel) {
+        val usersClicked:String
+        if (calendarModel.usersClickedIDs.equals("")) {
+            usersClicked = mAuth.currentUser?.uid.toString()
+        }
+        else {
+            usersClicked = "${calendarModel.usersClickedIDs};${mAuth.currentUser?.uid.toString()}"
+        }
+        query.ref.child(calendarModel.id).apply {
+            child(MEMBERS)
+                .child(USERS_CLICKED)
+                .setValue(usersClicked)
+        }
+    }
+
     fun pushOnMemberAccepted(calendarModel: CalendarModel) {
         pushOnMemberAcceptedInEventsDB(calendarModel)
         pushOnMemberAcceptedInUsersDB(calendarModel)
@@ -171,10 +187,20 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
         else {
             membersIds = "${calendarModel.ordinaryMembersIds};${mAuth.currentUser?.uid.toString()}"
         }
+        val usersClicked:String
+        if (calendarModel.usersClickedIDs.equals("")) {
+            usersClicked = mAuth.currentUser?.uid.toString()
+        }
+        else {
+            usersClicked = "${calendarModel.usersClickedIDs};${mAuth.currentUser?.uid.toString()}"
+        }
         query.ref.child(calendarModel.id).apply {
             child(MEMBERS)
                 .child(ORDINARY_MEMBERS)
                 .setValue(membersIds)
+            child(MEMBERS)
+                .child(USERS_CLICKED)
+                .setValue(usersClicked)
         }
     }
 
@@ -220,7 +246,9 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
     private fun pushDeleteAsOrdinaryMember(calendarModel: CalendarModel) {
         //In events
         val allMembers: MutableList<String> = calendarModel.ordinaryMembersIds.split(";").toMutableList()
-        allMembers.remove(mAuth.currentUser?.uid.toString())
+        if (allMembers.contains(mAuth.currentUser?.uid.toString())) {
+            allMembers.remove(mAuth.currentUser?.uid.toString())
+        }
         var ordinaryMembers = ""
         allMembers.forEachIndexed { index, s ->
             if (index == allMembers.size - 1) {
@@ -230,10 +258,28 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
                 ordinaryMembers += "${allMembers[index]};"
             }
         }
-        query.ref.child(calendarModel.id)
-            .child(MEMBERS)
-            .child(ORDINARY_MEMBERS)
-            .setValue(ordinaryMembers)
+        val allMembersClicked: MutableList<String> = calendarModel.usersClickedIDs.split(";").toMutableList()
+        if (allMembersClicked.contains(mAuth.currentUser?.uid.toString())) {
+            allMembersClicked.remove(mAuth.currentUser?.uid.toString())
+        }
+        var usersClicked = ""
+        allMembersClicked.forEachIndexed { index, s ->
+            if (index == allMembersClicked.size - 1) {
+                usersClicked += allMembersClicked[index]
+            }
+            else {
+                usersClicked += "${allMembersClicked[index]};"
+            }
+        }
+        query.ref.child(calendarModel.id).apply {
+            child(MEMBERS)
+                .child(ORDINARY_MEMBERS)
+                .setValue(ordinaryMembers)
+            child(MEMBERS)
+                .child(USERS_CLICKED)
+                .setValue(usersClicked)
+        }
+
 
         //In users
         uRef.ref.child(mAuth.currentUser?.uid.toString())
@@ -286,7 +332,10 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
                 adminId = i.child("members")
                     .child(ADMIN_ID).value.toString(),
                 ordinaryMembersIds = i.child(MEMBERS)
-                    .child(ORDINARY_MEMBERS).value.toString()
+                    .child(ORDINARY_MEMBERS).value.toString(),
+                userClicked = i.child(MEMBERS)
+                    .child(USERS_CLICKED).value.toString()
+                    .contains(mAuth.currentUser?.uid.toString())
             )
             if (!calendarEvents.containsKey(localDate)) {
                 calendarEvents.put(localDate, mutableListOf(calendarEvent))
