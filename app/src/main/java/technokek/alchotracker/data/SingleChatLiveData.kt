@@ -70,6 +70,9 @@ class SingleChatLiveData() : MutableLiveData<MutableList<SingleChatMessageModel>
 
     @SuppressLint("SimpleDateFormat")
     override fun sendMessage(text: String) {
+        if (text.isEmpty())
+            return
+
         val senderID = mAuth.currentUser?.uid.toString()
         val newNode = query.ref
             .child(chatID)
@@ -82,6 +85,12 @@ class SingleChatLiveData() : MutableLiveData<MutableList<SingleChatMessageModel>
         newNode.child(ID).setValue(senderID)
         newNode.child(DATETIME).setValue(currentDate)
         newNode.child(TEXTMESSAGE).setValue(text)
+
+        val chatNode = query.ref
+            .child(chatID)
+        chatNode.child(LASTMESSAGE).setValue(text)
+        chatNode.child(LASTSENDERID).setValue(senderID)
+        chatNode.child(LASTDATETIME).setValue(currentDate)
     }
 
     companion object {

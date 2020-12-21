@@ -96,13 +96,19 @@ class FriendProfileFragment : Fragment() {
 
         mProfileViewModel.requests.observe(viewLifecycleOwner, {
             if (it.requestIsSended) {
+                cancelBtn.isVisible = true
                 addBtn.isVisible = false
                 deleteBtn.isVisible = false
-                cancelBtn.isVisible = true
             } else {
-                addBtn.isVisible = !it.inFriend
-                deleteBtn.isVisible = it.inFriend
-                cancelBtn.isVisible = false
+                if (it.inFriend) {
+                    deleteBtn.isVisible = true
+                    addBtn.isVisible =  false
+                    cancelBtn.isVisible = false
+                } else {
+                    addBtn.isVisible = true
+                    deleteBtn.isVisible = false
+                    cancelBtn.isVisible = false
+                }
             }
         })
     }
