@@ -153,7 +153,6 @@ class FriendFragment : Fragment(), RequestClickListener {
                         requestTextView.visibility = View.VISIBLE
                     }
                 }
-                Log.d("Currentuser", "СРАБАТЫВАЕТ")
             }
         )
     }
