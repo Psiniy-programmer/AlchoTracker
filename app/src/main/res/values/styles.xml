@@ -75,4 +75,41 @@
         <item name="android:paddingTop">10dp</item>
     </style>
 
+    <style name="settings_layout_row">
+        <item name="cardBackgroundColor">@color/secondaryColor</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="cardCornerRadius">10dp</item>
+    </style>
+
+    <style name="settings_view_text_main">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="settings_view_text_secondary">
+        <item name="android:textSize">10sp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="settings_view_text_secondary.edit">
+        <item name="android:layout_width">180dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:gravity">end|center</item>
+        <item name="android:background">@color/secondaryColor</item>
+    </style>
 </resources>

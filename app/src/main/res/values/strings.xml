@@ -63,4 +63,14 @@
     <string name="_0">0</string>
     <string name="chat">Чаты</string>
     <string name="master_chats">Ваши чаты</string>
+    <string name="settings_done" translatable="false">settings_done</string>
+    <string name="settings_toolbar">Настройки</string>
+    <string name="master_profile_toolbar">Мой профиль</string>
+    <string name="settings_profile_photo">Фото профиля</string>
+    <string name="download_photo" translatable="false">download_Photo</string>
+    <string name="settings_profile_name">Имя</string>
+    <string name="settings_favorite_drink">Любимый напиток</string>
+    <string name="settings_status">Статус</string>
+    <string name="settings_alchoo">Видимость в Alchoo</string>
+
 </resources>

@@ -35,6 +35,9 @@ class MasterProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.title = resources.getString(R.string.master_profile_toolbar)
+
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.master_profile_fragment, container, false)
     }
 
@@ -51,9 +54,7 @@ class MasterProfileFragment : Fragment() {
         partiesBtn = view.findViewById(R.id.master_profile_parties_btn)
         chatsBtn = view.findViewById(R.id.master_chats_btn)
         mProfileViewModel = ViewModelProvider(this)[MasterProfileViewModel()::class.java]
-        activity?.title = "Мой Профиль"
 
-        setHasOptionsMenu(true)
 
         mProfileViewModel.profile.observe(
             viewLifecycleOwner,

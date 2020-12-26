@@ -54,7 +54,7 @@ class ProfileSettingsViewModel(application: Application) : AndroidViewModel(appl
             if (requestCode == 71 && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
                 filePath = data.data!!
                 try {
-                    val result = context?.contentResolver?.let { ImageDecoder.createSource(it, filePath) }
+                    val result = context.contentResolver?.let { ImageDecoder.createSource(it, filePath) }
                     val bitmap: Bitmap? = result?.let { ImageDecoder.decodeBitmap(it) }
                     if (bitmap != null) {
                         profileSettings.setAvatar(bitmap)
