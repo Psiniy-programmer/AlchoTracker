@@ -43,12 +43,17 @@ class AlkoEventsViewHolder(
             binding.denyRequest.visibility = View.GONE
         }
 
-        if (calendarModel.adminId != currentUser && !(buttonAcceptClicked || buttonDenyClicked)) {
-            calendarModel.userClicked = true
+        if (calendarModel.userClicked) {
+            binding.acceptRequest.visibility = View.GONE
+            binding.denyRequest.visibility = View.GONE
+        }
+
+        if (calendarModel.adminId != currentUser && !calendarModel.userClicked) {
             binding.acceptRequest.apply {
                 visibility = View.VISIBLE
                 isClickable = true
                 setOnClickListener {
+                    calendarModel.userClicked = true
                     actionListener.onAcceptClick(calendarModel)
                     buttonAcceptClicked = true
                     visibility = View.GONE
@@ -61,6 +66,7 @@ class AlkoEventsViewHolder(
                 visibility = View.VISIBLE
                 isClickable = true
                 setOnClickListener {
+                    calendarModel.userClicked = true
                     actionListener.onDenyClick(calendarModel)
                     buttonDenyClicked = true
                     visibility = View.GONE

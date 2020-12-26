@@ -33,7 +33,7 @@
             android:text="Enter AlkoEvent data:"
             android:layout_marginTop="24dp"
             android:textSize="40sp"
-            android:textColor="@color/calendar_text_grey"
+            android:textColor="@color/primaryColor"
             android:textAlignment="center"
             />
 

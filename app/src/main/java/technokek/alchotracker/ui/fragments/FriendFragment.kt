@@ -1,13 +1,15 @@
 package technokek.alchotracker.ui.fragments
 
+import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.*
+import android.view.View.OnFocusChangeListener
+import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -22,6 +24,7 @@ import technokek.alchotracker.api.FoundUserListener
 import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.api.RequestClickListener
 import technokek.alchotracker.viewmodels.FriendViewModel
+
 
 class FriendFragment : Fragment(), RequestClickListener {
 
@@ -153,12 +156,12 @@ class FriendFragment : Fragment(), RequestClickListener {
                         requestTextView.visibility = View.VISIBLE
                     }
                 }
-                Log.d("Currentuser", "СРАБАТЫВАЕТ")
             }
         )
     }
 
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.search_friends, menu)
@@ -225,6 +228,9 @@ class FriendFragment : Fragment(), RequestClickListener {
                 android.R.color.transparent
             )
         )
+
+        val searchText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
+        searchText.setHintTextColor(R.color.gray)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

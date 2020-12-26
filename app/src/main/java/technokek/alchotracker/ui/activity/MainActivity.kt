@@ -1,7 +1,7 @@
 package technokek.alchotracker.ui.activity
 
-import android.content.SharedPreferences
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -11,26 +11,24 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 import technokek.alchotracker.R
-import technokek.alchotracker.api.ChatListListener
-import technokek.alchotracker.api.EventClickListener
-import technokek.alchotracker.api.FoundUserListener
-import technokek.alchotracker.api.FriendClickListener
-import technokek.alchotracker.api.SharedPreferencesHolder
+import technokek.alchotracker.api.*
 import technokek.alchotracker.data.Constants
 import technokek.alchotracker.data.models.ChatFriendModel
 import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.databinding.ActivityMainBinding
+
 
 class MainActivity :
     AppCompatActivity(), EventClickListener,
     FriendClickListener, FoundUserListener,
     ChatListListener, SharedPreferencesHolder {
 
-    private lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var binding: ActivityMainBinding
     override lateinit var sharedPreferences: SharedPreferences
@@ -48,7 +46,51 @@ class MainActivity :
         notificationManager = NotificationManagerCompat.from(this)
 
         setUpNavigation()
+//        getTokenInLog()
     }
+
+    private fun getTokenInLog() {
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("NEW_TOKEN_MAIN", "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new FCM registration token
+                val token = task.result
+
+                // Log and toast
+                val msg = token.toString()
+                Log.d("NEW_TOKEN_MAIN", msg)
+                //Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
+            })
+    }
+
+//    private fun checkKeyBoardUp() {
+//        bottomNavigationView
+//            .viewTreeObserver
+//            .addOnGlobalLayoutListener {
+//                val r: Rect = Rect()
+//                bottomNavigationView.getWindowVisibleDisplayFrame(r)
+//                val heightDiff = bottomNavigationView
+//            }
+//    }
+
+//    public void checkKeyBoardUp(){
+//        bottomNavigationView.getViewTreeObserver()
+//            .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//                @Override public void onGlobalLayout() {
+//                    Rect r = new Rect();
+//                    rootView.getWindowVisibleDisplayFrame(r);
+//                    int heightDiff = rootView.getRootView().getHeight() - (r.bottom - r.top);
+//                    if (heightDiff > 100) {
+//                        whatEverView.setVisibility(View.INVISIBLE);
+//                    } else { //ok now we know the keyboard is down...
+//                        whatEverView.setVisibility(View.VISIBLE); }
+//                }
+//            });
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)

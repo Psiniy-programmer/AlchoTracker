@@ -8,21 +8,27 @@
     android:layout_marginTop="10dp"
     android:layout_marginBottom="20dp"
     android:scrollbars="vertical"
+    android:background="@color/primaryColor"
     app:cardCornerRadius="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/primaryColor">
 
         <ImageView
             android:id="@+id/friend_image"
             android:layout_width="@dimen/width_friend"
+            android:textColor="@color/primaryColor"
             android:layout_height="@dimen/height_friend" />
 
         <TextView
             android:id="@+id/friend_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_friend"
+            android:paddingTop="8dp"
+            android:paddingStart="16dp"
+            android:textColor="@color/primaryColor"
             android:layout_toEndOf="@id/friend_image"
             tools:text="Hello" />
     </RelativeLayout>

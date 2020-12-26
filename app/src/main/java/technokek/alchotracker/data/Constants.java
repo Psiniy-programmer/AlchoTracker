@@ -2,7 +2,7 @@ package technokek.alchotracker.data;
 
 public class Constants {
     public static final String USERS = "users";
-    public static final String ID = "id";
+    public static final String ID = "ID";
     public static final String AVATAR = "avatar";
     public static final String DEFAULTPATH = "https://firebasestorage.googleapis.com/v0/b/alchotracker-4e1ca.appspot.com/o/testImg.jpg?alt=media&token=42b3875c-a68e-4956-8f3f-1056740a0f1b";
     public static final String EMAIL = "email";

@@ -7,12 +7,14 @@
     android:layout_marginHorizontal="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="20dp"
+    android:background="@color/primaryColor"
     android:scrollbars="vertical"
     app:cardCornerRadius="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/primaryColor">
 
         <ImageView
             android:id="@+id/friend_request_image"
@@ -24,6 +26,9 @@
             android:id="@+id/friend_request_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_friend"
+            android:paddingTop="8dp"
+            android:paddingStart="16dp"
+            android:textColor="@color/primaryColor"
             android:layout_toEndOf="@id/friend_request_image"
             tools:text="Hello" />
 
@@ -33,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:contentDescription="TODO"
+            android:layout_marginEnd="8dp"
             android:src="@drawable/accept" />
 
         <ImageButton
@@ -40,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/accept_request"
+            android:layout_marginEnd="8dp"
             android:layout_alignParentEnd="true"
             android:contentDescription="TODO"
             android:src="@drawable/deny" />

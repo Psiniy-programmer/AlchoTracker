@@ -15,6 +15,7 @@ data class CalendarModel(
     val id: String,
     val adminId: String,
     val ordinaryMembersIds: String = "",
+    val usersClickedIDs: String = "",
     var userClicked: Boolean = false
 ) {
     data class Place(val name: String, val price: String, val place: String)

@@ -12,8 +12,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
-import android.view.Gravity
-import android.view.View
+import android.view.*
 import android.widget.*
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
@@ -73,6 +72,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mAuth = FirebaseAuth.getInstance()
+        setHasOptionsMenu(true)
         sharedPreferences = (activity as SharedPreferencesHolder).sharedPreferences
         editor = sharedPreferences.edit()
         alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -115,10 +115,9 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                         if (selectedDate != day.date) {
                             val oldDate = selectedDate
                             selectedDate = day.date
+                            selectedCalendarModel = null
                             val binding = this@CalendarFragment.binding
                             binding.calendarFragmentCalendar.notifyDateChanged(day.date)
-                            binding.buttonAdd.isEnabled = true
-                            // binding.buttonDelete.isEnabled = alkoEvents[day.date] != null
                             oldDate?.let { binding.calendarFragmentCalendar.notifyDateChanged(it) }
                             updateAdapterForDate(day.date)
                         }
@@ -208,9 +207,8 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
             selectedDate?.let {
                 // Clear selection if we scroll to a new month.
                 selectedDate = null
+                selectedCalendarModel = null
                 binding.calendarFragmentCalendar.notifyDateChanged(it)
-                binding.buttonAdd.isEnabled = false
-                binding.buttonDelete.isEnabled = false
                 updateAdapterForDate(null)
             }
         }
@@ -225,16 +223,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
             binding.calendarFragmentCalendar.findFirstVisibleMonth()?.let {
                 binding.calendarFragmentCalendar.smoothScrollToMonth(it.yearMonth.previous)
             }
-        }
-
-        // pop up dialog binding
-        binding.buttonAdd.setOnClickListener {
-            showPopUp(selectedDate)
-        }
-        // button delete logic
-        binding.buttonDelete.isEnabled = false
-        binding.buttonDelete.setOnClickListener {
-            deleteEvent(selectedDate, selectedCalendarModel)
         }
     }
 
@@ -342,9 +330,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         } catch (e: Exception) {
             Toast.makeText(this.context, "Nothing to delete!", Toast.LENGTH_LONG).show()
         }
-        /*else {
-            binding.buttonDelete.isEnabled = false
-        }*/
         updateAdapterForDate(date)
     }
 
@@ -404,13 +389,24 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                 }?.split(";")
                 //remove timestamp
                 timestamps.removeIf {
-                    it.contains(parts!![0])
+                    try {
+                        it.contains(parts!![0])
+                    }
+                    catch (e: Exception) {
+                        Log.d("Parts", parts.toString())
+                        false
+                    }
                 }
                 ed.clear()
-                ed.putStringSet(TIMER_TIMESTAMPS_IN_SP, timestamps).commit()
+                ed.putStringSet(TIMER_TIMESTAMPS_IN_SP, timestamps).apply()
 
                 //Cancel alarm
-                cancelAlarm(parts!![1].toInt())
+                try {
+                    cancelAlarm(parts!![1].toInt())
+                }
+                catch (e: Exception) {
+                    Log.d("Cancel null", "cancelAlarmReceived null")
+                }
             }
 
             Log.d("SPAfterDelete", timestamps.toString())
@@ -420,7 +416,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
 
     override fun onEventClick(calendarModel: CalendarModel) {
         selectedCalendarModel = calendarModel
-        binding.buttonDelete.isEnabled = true
     }
 
     override fun onAcceptClick(calendarModel: CalendarModel) {
@@ -429,7 +424,32 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     }
 
     override fun onDenyClick(calendarModel: CalendarModel) {
-        //DO NOTHING! Or delete?
+        mCalendarViewModel.onMemberDenied(calendarModel)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.calendar_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.add_event) {
+            if (selectedDate != null) {
+                showPopUp(selectedDate)
+            }
+        }
+        else if (item.itemId == R.id.delete_event) {
+            if (selectedDate != null && selectedCalendarModel != null) {
+                deleteEvent(selectedDate, selectedCalendarModel)
+                selectedCalendarModel = null
+            }
+            else {
+                Toast.makeText(context, "Either Date or/and Event hasnt been selected!", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun cancelAlarm(requestCode: Int) {
