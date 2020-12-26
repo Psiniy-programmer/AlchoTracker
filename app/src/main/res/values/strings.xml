@@ -61,4 +61,6 @@
     <string name="preferences">Предпочтения</string>
     <string name="tastes_list">Список вкусов</string>
     <string name="_0">0</string>
+    <string name="chat">Чаты</string>
+    <string name="master_chats">Ваши чаты</string>
 </resources>

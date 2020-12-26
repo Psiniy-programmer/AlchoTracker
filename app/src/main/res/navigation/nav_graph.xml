@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_masterProfileFragment_to_eventFragment"
             app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_masterProfileFragment_to_chatListFragment"
+            app:destination="@id/chatListFragment" />
     </fragment>
     <fragment
         android:id="@+id/friendFragment"

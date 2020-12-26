@@ -180,6 +180,7 @@
     <LinearLayout style="@style/ProfileRowLayout">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/master_chats_btn"
             style="@style/card.default"
             android:layout_marginEnd="40dp">
 
@@ -187,8 +188,10 @@
 
                 <ImageView
                     style="@style/button_image"
+                    android:layout_width="73dp"
+                    android:layout_height="64dp"
                     android:contentDescription="@string/stat_desc"
-                    android:src="@drawable/ic_stat" />
+                    android:src="@drawable/ic_chat_logo" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -201,13 +204,13 @@
                         style="@style/ProfileTextApp.tittle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/stat" />
+                        android:text="@string/chat" />
 
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/ProfileTextApp.subTittle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/yours_stat" />
+                        android:text="@string/master_chats" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

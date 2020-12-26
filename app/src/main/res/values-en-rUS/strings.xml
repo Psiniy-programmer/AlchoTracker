@@ -13,4 +13,6 @@
     <string name="preferences">Preferences</string>
     <string name="tastes_list">List of your tastes</string>
     <string name="_0">0</string>
+    <string name="chat">Chats</string>
+    <string name="master_chats">Yours chats</string>
 </resources>

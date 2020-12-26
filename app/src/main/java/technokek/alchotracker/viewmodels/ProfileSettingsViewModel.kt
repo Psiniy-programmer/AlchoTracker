@@ -1,7 +1,14 @@
 package technokek.alchotracker.viewmodels
 
+import android.app.Activity
 import android.app.Application
+import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.ImageDecoder
+import android.net.Uri
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MediatorLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -18,9 +25,11 @@ import java.io.IOException
 class ProfileSettingsViewModel(application: Application) : AndroidViewModel(application),
     ProfileSettingsInterface {
     var profileSettings = ProfileSettingsLiveData(dbRef, sRef, aRef)
+    val context: Context = application.applicationContext
     private val mMediatorLiveData = MediatorLiveData<SettingsProfileModel>()
 
     init {
+        application.applicationContext
         mMediatorLiveData.addSource(profileSettings) {
             if (it != null) {
                 CoroutineScope(Dispatchers.IO).launch {
@@ -38,9 +47,22 @@ class ProfileSettingsViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
-    override fun setAvatar(newAvatar: Bitmap) {
+    @RequiresApi(Build.VERSION_CODES.P)
+    override fun setAvatar(requestCode: Int, resultCode: Int, data: Intent?) {
         CoroutineScope(Dispatchers.IO).launch {
-            profileSettings.setAvatar(newAvatar)
+            val filePath: Uri
+            if (requestCode == 71 && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+                filePath = data.data!!
+                try {
+                    val result = context?.contentResolver?.let { ImageDecoder.createSource(it, filePath) }
+                    val bitmap: Bitmap? = result?.let { ImageDecoder.decodeBitmap(it) }
+                    if (bitmap != null) {
+                        profileSettings.setAvatar(bitmap)
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
         }
     }
 

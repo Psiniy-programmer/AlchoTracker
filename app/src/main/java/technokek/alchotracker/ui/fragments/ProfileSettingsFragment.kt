@@ -39,7 +39,6 @@ class ProfileSettingsFragment : Fragment() {
     private lateinit var inputDrink: EditText
     private lateinit var alchooSwitcher: SwitchMaterial
     private lateinit var mSettingsViewModel: ProfileSettingsViewModel
-    private lateinit var filePath: Uri
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,7 +60,7 @@ class ProfileSettingsFragment : Fragment() {
         alchooSwitcher = view.findViewById(R.id.alchoo_switcher)
 
         mSettingsViewModel =
-            ViewModelProvider(this)[ProfileSettingsViewModel(Application())::class.java]
+            ViewModelProvider(this)[ProfileSettingsViewModel(activity!!.application)::class.java]
 
         mSettingsViewModel.profileSettings.observe(viewLifecycleOwner, {
             alchooSwitcher.isChecked = it.alchoo
@@ -102,19 +101,6 @@ class ProfileSettingsFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        CoroutineScope(Dispatchers.IO).launch {
-            if (requestCode == 71 && resultCode == RESULT_OK && data != null && data.data != null) {
-                filePath = data.data!!
-                try {
-                    val result = context?.contentResolver?.let { ImageDecoder.createSource(it, filePath) }
-                    val bitmap: Bitmap? = result?.let { ImageDecoder.decodeBitmap(it) }
-                    if (bitmap != null) {
-                        mSettingsViewModel.setAvatar(bitmap)
-                    }
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-        }
+        mSettingsViewModel.setAvatar(requestCode, resultCode, data)
     }
 }
