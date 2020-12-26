@@ -419,7 +419,9 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     }
 
     override fun onAcceptClick(calendarModel: CalendarModel) {
-        //TODO
+        //Запускаем аларм
+        getCalendarAndStartAlarm(calendarModel.time)
+        //Отправляем данные о принятии события
         mCalendarViewModel.onMemberAccepted(calendarModel)
     }
 
