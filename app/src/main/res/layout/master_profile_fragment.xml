@@ -1,127 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/master_profile"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:ignore="UseCompoundDrawables">
+    android:paddingTop="30dp"
+    android:paddingStart="50dp"
 
-    <ImageView
-        android:id="@+id/master_profile_avatar"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="0dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/avatar"
-        android:contentDescription="@string/avatar" />
+    tools:ignore="UseCompoundDrawables"
+    >
 
-    <TextView
-        android:id="@+id/master_profile_user_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:textColor="@color/primaryLightColor"
-        tools:text="Brendan Moore"/>
+    <LinearLayout style="@style/ProfileRowLayout">
 
-    <TextView
-        android:id="@+id/master_profile_status_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="10dp"
-        android:textSize="24sp"
-        android:textColor="@color/primaryLightColor"
-        tools:text="Status"
-        />
+        <com.google.android.material.card.MaterialCardView
+            style="@style/card.avatar"
+            android:layout_marginEnd="40dp">
 
-    <LinearLayout
-        android:id="@+id/master_profile_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+            <ImageView
+                android:id="@+id/master_profile_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:contentDescription="@string/avatar"
+                android:padding="8dp"
+                android:src="@drawable/avatar" />
+        </com.google.android.material.card.MaterialCardView>
+
         <LinearLayout
-            android:id="@+id/master_profile_friends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginEnd="15dp">
-            <TextView
-                android:id="@+id/master_profile_friends_counter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="20,583"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/primaryLightColor"
-                android:layout_marginEnd="10dp"
-                />
-            <TextView
-                android:id="@+id/master_profile_friends_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/friends"
-                android:textColor="@color/primaryLightColor"
-                android:textSize="16sp"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/master_profile_dates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="15dp">
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
 
-            <TextView
-                android:id="@+id/master_profile_events_counter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="9,112,824"
-                android:textSize="16sp"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/master_profile_user_text"
                 android:textStyle="bold"
-                android:textColor="@color/primaryLightColor"
-                android:layout_marginEnd="10dp"
-                />
-            <TextView
-                android:id="@+id/master_profile_dates_text"
+                android:textSize="20sp"
+                android:textColor="@color/secondaryTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dates"
-                android:textColor="@color/primaryLightColor"
-                android:textSize="16sp"
-                />
+                tools:text="profile name"
+                android:layout_marginBottom="5dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/master_profile_status_text"
+                android:textSize="15sp"
+                android:textColor="@color/grayPrimaryColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="profile status"
+                android:layout_marginBottom="3dp"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/master_drink"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/secondaryTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="favorite drink"/>
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/master_preferences"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="0dp"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/primaryLightColor"
-        android:text="@string/Preferences"/>
+    <LinearLayout
+        style="@style/ProfileRowLayout">
 
-    <TextView
-        android:id="@+id/master_drink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="0dp"
-        android:textSize="24sp"
-        android:textColor="@color/primaryLightColor"
-        tools:text="Пивко"/>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/master_profile_friends_btn"
+            style="@style/card.default"
+            android:layout_marginEnd="40dp">
 
-    <Button
-        android:id="@+id/master_preferences_list_btn"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:text="@string/preferences_text"
-        android:textSize="36sp"/>
+            <LinearLayout style="@style/ProfileButtonLayout">
+
+                <ImageView
+                    style="@style/button_image"
+                    android:contentDescription="@string/group_friends"
+                    android:src="@drawable/ic_group_friends" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="9.68dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/ProfileTextApp.tittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/friends" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ProfileTextApp.subTittle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="3dp"
+                            android:text="@string/friends_before_counter" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/master_profile_friends_counter"
+                            style="@style/ProfileTextApp.subTittle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="3dp"
+                            android:text="@string/_0" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ProfileTextApp.subTittle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/friends" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/master_profile_parties_btn"
+            style="@style/card.default">
+
+            <LinearLayout
+                style="@style/ProfileButtonLayout">
+
+                <ImageView
+                    style="@style/button_image"
+                    android:contentDescription="@string/partyes_desc"
+                    android:src="@drawable/ic_pic_glasses" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="9.68dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/ProfileTextApp.tittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dates" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ProfileTextApp.subTittle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="3dp"
+                            android:text="@string/dates_before_counter" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/master_profile_events_counter"
+                            style="@style/ProfileTextApp.subTittle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="3dp"
+                            android:text="@string/_0"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ProfileTextApp.subTittle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dates" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <LinearLayout style="@style/ProfileRowLayout">
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/card.default"
+            android:layout_marginEnd="40dp">
+
+            <LinearLayout style="@style/ProfileButtonLayout">
+
+                <ImageView
+                    style="@style/button_image"
+                    android:contentDescription="@string/stat_desc"
+                    android:src="@drawable/ic_stat" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="9.68dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/ProfileTextApp.tittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stat" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/ProfileTextApp.subTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/yours_stat" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/master_preferences_list_btn"
+            style="@style/card.default">
+            <LinearLayout style="@style/ProfileButtonLayout">
+
+                <ImageView
+                    style="@style/button_image"
+                    android:contentDescription="@string/like_desc"
+                    android:src="@drawable/ic_pic_heart" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="9.68dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/ProfileTextApp.tittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/preferences" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/ProfileTextApp.subTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tastes_list" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
 
 </LinearLayout>

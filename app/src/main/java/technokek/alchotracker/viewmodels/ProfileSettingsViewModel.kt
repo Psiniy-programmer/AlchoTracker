@@ -1,12 +1,7 @@
 package technokek.alchotracker.viewmodels
 
-import android.app.Activity
 import android.app.Application
-import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.ImageDecoder
-import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MediatorLiveData
 import com.google.firebase.auth.FirebaseAuth
