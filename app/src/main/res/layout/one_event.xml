@@ -14,7 +14,7 @@
         android:id="@+id/event_text"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_event"
-        android:textColor="@color/primaryLightColor"
+        android:textColor="@color/primaryColor"
         android:layout_toEndOf="@id/event_image"
         tools:text="Hello" />
 

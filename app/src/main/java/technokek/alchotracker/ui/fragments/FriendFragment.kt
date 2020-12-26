@@ -230,16 +230,7 @@ class FriendFragment : Fragment(), RequestClickListener {
         )
 
         val searchText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
-        searchText.setTextColor(R.color.primaryLightColor)
         searchText.setHintTextColor(R.color.gray)
-        searchText.setHint(R.string.search_hint_text)
-        searchText.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
-            if (hasFocus) {
-                activity
-            } else {
-                //Reveal image
-            }
-        }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

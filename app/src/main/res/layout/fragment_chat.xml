@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_friend"
         android:layout_toEndOf="@id/chat_image"
-        android:textColor="@color/primaryLightColor"
+        android:textColor="@color/primaryColor"
         android:textSize="36sp"
         android:gravity="center_vertical|center_horizontal"/>
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:textColor="@color/primaryLightColor"
+        android:textColor="@color/primaryColor"
         android:layout_toStartOf="@+id/button_chat"
         android:ems="10"
         android:hint="Введите сообщение"

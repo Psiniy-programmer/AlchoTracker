@@ -7,14 +7,14 @@
     android:layout_marginHorizontal="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="20dp"
-    android:background="@color/gray500"
+    android:background="@color/primaryColor"
     android:scrollbars="vertical"
     app:cardCornerRadius="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray500">
+        android:background="@color/primaryColor">
 
         <ImageView
             android:id="@+id/chat_friend_image"
@@ -28,7 +28,7 @@
             android:layout_toEndOf="@id/chat_friend_image"
             android:paddingStart="16dp"
             android:paddingTop="8dp"
-            android:textColor="@color/primaryLightColor"
+            android:textColor="@color/primaryColor"
             tools:text="Hello" />
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_toEndOf="@id/chat_friend_image"
             android:paddingStart="16dp"
             android:layout_marginBottom="8dp"
-            android:textColor="@color/primaryLightColor"
+            android:textColor="@color/primaryColor"
             tools:text="Hello" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_marginEnd="16dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:textColor="@color/primaryLightColor"
+            android:textColor="@color/primaryColor"
             tools:text="Hello" />
     </RelativeLayout>
 
