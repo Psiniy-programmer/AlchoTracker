@@ -11,18 +11,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.textview.MaterialTextView
 import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.viewmodels.MasterProfileViewModel
 
 class MasterProfileFragment : Fragment() {
-    private lateinit var userText: TextView
-    private lateinit var statusText: TextView
-    private lateinit var friendsCounter: TextView
-    private lateinit var eventsCounter: TextView
+    private lateinit var userText: MaterialTextView
+    private lateinit var statusText: MaterialTextView
+    private lateinit var friendsCounter: MaterialTextView
+    private lateinit var eventsCounter: MaterialTextView
     private lateinit var avatarView: ImageView
-    private lateinit var preferencesBtn: Button
-    private lateinit var favouriteDrink: TextView
+    private lateinit var preferencesBtn: MaterialCardView
+    private lateinit var friendsBtn: MaterialCardView
+    private lateinit var partiesBtn: MaterialCardView
+    private lateinit var favouriteDrink: MaterialTextView
     private lateinit var mProfileViewModel: MasterProfileViewModel
 
     override fun onCreateView(
@@ -41,6 +45,9 @@ class MasterProfileFragment : Fragment() {
         eventsCounter = view.findViewById(R.id.master_profile_events_counter)
         avatarView = view.findViewById(R.id.master_profile_avatar)
         favouriteDrink = view.findViewById(R.id.master_drink)
+        preferencesBtn = view.findViewById(R.id.master_preferences_list_btn)
+        friendsBtn = view.findViewById(R.id.master_profile_friends_btn)
+        partiesBtn = view.findViewById(R.id.master_profile_parties_btn)
         mProfileViewModel = ViewModelProvider(this)[MasterProfileViewModel()::class.java]
         activity?.title = "Мой Профиль"
 
@@ -57,7 +64,18 @@ class MasterProfileFragment : Fragment() {
                 Picasso.get().load(it.avatar).into(avatarView)
             }
         )
-        preferencesBtn = view.findViewById(R.id.master_preferences_list_btn)
+
+        friendsBtn.setOnClickListener{
+            val navController =
+                activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
+            navController?.navigate(R.id.action_masterProfileFragment_to_friendFragment)
+        }
+
+        partiesBtn.setOnClickListener {
+            val navController =
+                activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
+            navController?.navigate(R.id.action_masterProfileFragment_to_eventFragment)
+        }
 
         preferencesBtn.setOnClickListener {
             val navController =

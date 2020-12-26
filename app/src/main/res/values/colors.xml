@@ -26,16 +26,15 @@
     <color name="colorRed">#8F0303</color>
 
 <!--    Main Colors-->
-    <color name="primaryColor">#5E60CE</color>
-    <color name="primaryLightColor">#7953d2</color>
-    <color name="primaryDarkColor">#000070</color>
-    <color name="secondaryColor">#b39ddb</color>
-    <color name="secondaryLightColor">#e6ceff</color>
-    <color name="secondaryDarkColor">#836fa9</color>
+    <color name="primaryColor">#4B086D</color>
+    <color name="secondaryColor">#698EFF</color>
+    <color name="surface">#ACC0FE</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#000000</color>
-    <color name="backgroundColor">#4EA8DE</color>
-    <color name="surface">#5E60CE</color>
+    <color name="grayPrimaryColor">#6D6D6D</color>
+    <color name="graySecondaryColor">#979494</color>
+    <color name="grayLightColor">#C4C4C4</color>
+    <color name="backgroundColor">#ffffff</color>
     <color name="backgroundDays">#6930C3</color>
     <color name="selectorColor">#FFFFFF</color>
 </resources>

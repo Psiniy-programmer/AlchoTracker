@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Preferences">Preference drink</string>
+    <string name="friends">Friends</string>
+    <string name="friends_before_counter">You have</string>
+    <string name="dates">Parties</string>
+    <string name="dates_before_counter">You have</string>
+    <string name="partyes_desc">partyes_desc</string>
+    <string name="stat_desc">stat_desc</string>
+    <string name="stat">Statistic</string>
+    <string name="yours_stat">Yours Statistic</string>
+    <string name="like_desc">like_desc</string>
+    <string name="preferences">Preferences</string>
+    <string name="tastes_list">List of your tastes</string>
+    <string name="_0">0</string>
+</resources>
