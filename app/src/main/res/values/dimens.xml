@@ -2,8 +2,9 @@
 <resources>
     <dimen name="round_button_size">100dp</dimen>
     <dimen name="time_left_default_textSize">80sp</dimen>
-    <dimen name="width_friend">75dp</dimen>
-    <dimen name="height_friend">75dp</dimen>
+    <dimen name="width_friend">30dp</dimen>
+    <dimen name="height_friend">30dp</dimen>
+    <dimen name="image_margin">5dp</dimen>
     <dimen name="width_event">100dp</dimen>
     <dimen name="height_event">100dp</dimen>
     <dimen name="start_button_width">110dp</dimen>
@@ -11,4 +12,6 @@
     <dimen name="input_width">300dp</dimen>
     <dimen name="chat_vertical_margin">8dp</dimen>
     <dimen name="chat_horizontal_margin">8dp</dimen>
+    <dimen name="recycler_item_text_padding_top">8dp</dimen>
+    <dimen name="recycler_item_text_padding_start">16dp</dimen>
 </resources>

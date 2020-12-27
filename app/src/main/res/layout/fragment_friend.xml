@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/request_in_friends"
-                android:textColor="@color/primaryLightColor"
+                android:textColor="@color/primaryColor"
                 android:textSize="24sp"
                 android:visibility="gone" />
 
@@ -35,7 +35,7 @@
                 android:layout_below="@+id/recycler_friend_request"
                 android:text="@string/list_friends"
                 android:textSize="24sp"
-                android:textColor="@color/primaryLightColor"
+                android:textColor="@color/primaryColor"
                 android:visibility="gone" />
 
             <androidx.recyclerview.widget.RecyclerView

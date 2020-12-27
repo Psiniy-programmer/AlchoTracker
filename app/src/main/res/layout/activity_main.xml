@@ -8,9 +8,9 @@
     tools:context=".ui.activity.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
-        app:titleTextColor="@color/primaryLightColor"
+        app:titleTextColor="@color/backgroundColor"
         android:id="@+id/toolbar"
-        style="@style/Toolbar"/>
+        style="@style/Toolbar" />
 
     <fragment
         android:id="@+id/content"
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/bottomNavGraph"
+        android:background="@color/primaryColor"
         app:itemIconTint="@color/bnv_tab_item_foreground"
         app:itemTextColor="@color/bnv_tab_item_foreground"
         app:menu="@menu/bottom_navigation_menu" />

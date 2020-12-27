@@ -26,6 +26,7 @@ class MasterProfileFragment : Fragment() {
     private lateinit var preferencesBtn: MaterialCardView
     private lateinit var friendsBtn: MaterialCardView
     private lateinit var partiesBtn: MaterialCardView
+    private lateinit var chatsBtn: MaterialCardView
     private lateinit var favouriteDrink: MaterialTextView
     private lateinit var mProfileViewModel: MasterProfileViewModel
 
@@ -34,6 +35,9 @@ class MasterProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.title = resources.getString(R.string.master_profile_toolbar)
+
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.master_profile_fragment, container, false)
     }
 
@@ -48,10 +52,9 @@ class MasterProfileFragment : Fragment() {
         preferencesBtn = view.findViewById(R.id.master_preferences_list_btn)
         friendsBtn = view.findViewById(R.id.master_profile_friends_btn)
         partiesBtn = view.findViewById(R.id.master_profile_parties_btn)
+        chatsBtn = view.findViewById(R.id.master_chats_btn)
         mProfileViewModel = ViewModelProvider(this)[MasterProfileViewModel()::class.java]
-        activity?.title = "Мой Профиль"
 
-        setHasOptionsMenu(true)
 
         mProfileViewModel.profile.observe(
             viewLifecycleOwner,
@@ -65,22 +68,20 @@ class MasterProfileFragment : Fragment() {
             }
         )
 
-        friendsBtn.setOnClickListener{
-            val navController =
-                activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
-            navController?.navigate(R.id.action_masterProfileFragment_to_friendFragment)
+        friendsBtn.setOnClickListener {
+            navigateFun(R.id.action_masterProfileFragment_to_friendFragment)
         }
 
         partiesBtn.setOnClickListener {
-            val navController =
-                activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
-            navController?.navigate(R.id.action_masterProfileFragment_to_eventFragment)
+            navigateFun(R.id.action_masterProfileFragment_to_eventFragment)
+        }
+
+        chatsBtn.setOnClickListener {
+            navigateFun(R.id.action_masterProfileFragment_to_chatListFragment)
         }
 
         preferencesBtn.setOnClickListener {
-            val navController =
-                activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
-            navController?.navigate(R.id.action_masterProfileFragment_to_preferencesFragment)
+            navigateFun(R.id.action_masterProfileFragment_to_preferencesFragment)
         }
     }
 
@@ -97,6 +98,12 @@ class MasterProfileFragment : Fragment() {
             navController?.navigate(R.id.action_masterProfileFragment_to_profileSettingsFragment)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun navigateFun(resId: Int) {
+        val navController =
+            activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
+        navController?.navigate(resId)
     }
 
     companion object {

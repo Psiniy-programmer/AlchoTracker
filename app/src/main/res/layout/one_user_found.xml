@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/gray500"
+    android:background="@color/primaryColor"
     android:padding="10dp">
 
     <ImageView
@@ -17,7 +17,7 @@
         android:layout_height="@dimen/height_friend"
         android:paddingTop="8dp"
         android:paddingStart="16dp"
-        android:textColor="@color/primaryLightColor"
+        android:textColor="@color/primaryColor"
         android:layout_toEndOf="@id/found_user_image"
         tools:text="Hello" />
 

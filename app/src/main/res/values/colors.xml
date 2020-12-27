@@ -31,6 +31,7 @@
     <color name="surface">#ACC0FE</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#000000</color>
+    <color name="thirdTextColor">#100F10</color>
     <color name="grayPrimaryColor">#6D6D6D</color>
     <color name="graySecondaryColor">#979494</color>
     <color name="grayLightColor">#C4C4C4</color>
