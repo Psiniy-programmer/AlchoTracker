@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
 class MembersFragment: Fragment() {
+    private lateinit var eventId: String
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -20,7 +22,7 @@ class MembersFragment: Fragment() {
 
         if (arguments != null) {
             val args = MembersFragmentArgs.fromBundle(requireArguments())
-            val eventId = args.eventId
+            eventId = args.eventId
         }
     }
 }
