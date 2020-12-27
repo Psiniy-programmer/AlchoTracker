@@ -17,6 +17,7 @@ import android.widget.*
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -50,6 +51,7 @@ import technokek.alchotracker.ui.fragments.calendarfragment.utils.*
 import technokek.alchotracker.ui.fragments.calendarfragment.utils.setTextColorRes
 import technokek.alchotracker.viewmodels.CalendarViewModel
 import technokek.alchotracker.data.Constants.*
+import technokek.alchotracker.ui.fragments.AdminEventProfileFragment
 
 class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter.ActionListener {
 
@@ -235,6 +237,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     private fun formAlkoEvent(
         eventName: EditText,
         eventCosts: EditText,
+        eventDrinks: EditText,
         eventTime: LocalDateTime
     ): CalendarModel {
         val place = eventName.text.toString()
@@ -251,7 +254,8 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
             R.color.primaryColor,
             adminId = mAuth.currentUser?.uid.toString(),
             id = (mCalendarViewModel.mMediatorLiveData.value!!
-                .values.flatMap { it.toList() }.size + 1).toString()
+                .values.flatMap { it.toList() }.size + 1).toString(),
+            drinks = eventDrinks.text.toString()
         )
     }
 
@@ -357,6 +361,15 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
 
     override fun onEventClick(calendarModel: CalendarModel) {
         selectedCalendarModel = calendarModel
+        //TODO open event fragment
+        val navController =
+            activity?.let { it -> Navigation.findNavController(it, R.id.content) }
+        /*activity?.supportFragmentManager?.beginTransaction()
+            ?.add(R.id.content, AdminEventProfileFragment(calendarModel))?.addToBackStack("AlkoEvent Fragment")
+            ?.commit()*/
+        val action =
+            CalendarFragmentDirections.actionCalendarFragmentToAdminEventProfile(calendarModel)
+        navController?.navigate(action)
     }
 
 
@@ -408,6 +421,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         lateinit var time: LocalDateTime
         val etEventName = bottomSheetDialog.findViewById<EditText>(R.id.pop_up_place)
         val etEventCosts = bottomSheetDialog.findViewById<EditText>(R.id.pop_up_costs)
+        val etDrinks = bottomSheetDialog.findViewById<EditText>(R.id.pop_up_drinks)
         val openTimePicker = bottomSheetDialog.findViewById<Button>(R.id.pop_up_time)
         var openTimePickerClicked = false
         val buttonSubmit = bottomSheetDialog.findViewById<Button>(R.id.button_submit)
@@ -436,12 +450,13 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         // button submit logic
         buttonSubmit!!.isEnabled = false
         buttonSubmit.setOnClickListener {
-            if (isEmpty(etEventName!!) || isEmpty(etEventCosts!!)) {
+            if (isEmpty(etEventName!!) || isEmpty(etEventCosts!!) || isEmpty(etDrinks!!)) {
                 Toast.makeText(this.context, "Fill in all the fields!", Toast.LENGTH_LONG).show()
             } else {
                 val newAlkoEvent = formAlkoEvent(
                     etEventName,
                     etEventCosts,
+                    etDrinks,
                     time
                 )
                 // Прокидываем в VM

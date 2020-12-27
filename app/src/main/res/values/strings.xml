@@ -70,4 +70,12 @@
     <string name="drinks_list_csv">drinks list (csv)</string>
     <string name="submit">Submit</string>
     <string name="select_time">select time</string>
+    <string name="status">Status</string>
+    <string name="change_event_status">Change event status</string>
+    <string name="drinks">Drinks</string>
+    <string name="alkoevent_members">AlkoEvent members</string>
+    <string name="delete_alkoevent">Delete AlkoEvent</string>
+    <string name="change_drinks">Change drinks</string>
+    <string name="price">Price</string>
+    <string name="enter_drinks">Enter drinks</string>
 </resources>

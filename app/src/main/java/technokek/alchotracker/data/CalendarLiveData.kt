@@ -54,6 +54,8 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
         const val ORDINARY_MEMBERS = "users"
         private val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
         private const val stringSize: Int = 16
+        const val STATUS = "status"
+        const val DRINKS = "drinks"
 
         const val EVENTS = "events"
         const val ADMIN = "admin"
@@ -148,6 +150,8 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
             child(PLACE).setValue(event.eventPlace.place)
             child(PRICE).setValue(event.eventPlace.price)
             child(TIME).setValue(localDateTimeToTimeString(event.time))
+            child(STATUS).setValue(event.status)
+            child(DRINKS).setValue(event.drinks)
         }
     }
 
@@ -335,7 +339,9 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
                     .child(ORDINARY_MEMBERS).value.toString(),
                 userClicked = i.child(MEMBERS)
                     .child(USERS_CLICKED).value.toString()
-                    .contains(mAuth.currentUser?.uid.toString())
+                    .contains(mAuth.currentUser?.uid.toString()),
+                status = i.child(STATUS).value.toString(),
+                drinks = i.child(DRINKS).value.toString()
             )
             if (!calendarEvents.containsKey(localDate)) {
                 calendarEvents.put(localDate, mutableListOf(calendarEvent))
