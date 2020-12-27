@@ -5,7 +5,7 @@
     android:id="@+id/alko_event_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/calendar_item_view_bg_color">
+    android:background="@drawable/bg_alko_event">
 
     <TextView
         android:id="@+id/itemAlkoEventDateText"
@@ -37,7 +37,7 @@
     <View
         android:layout_width="0.7dp"
         android:layout_height="0dp"
-        android:background="@color/black"
+        android:background="@color/grayPrimaryColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/itemAlkoEventDateText"
         app:layout_constraintTop_toTopOf="parent" />
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/calendar_text_grey"
+            android:textColor="@color/selectorColor"
             android:textSize="16sp"
             tools:text="LOS" />
 
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/calendar_text_grey"
+            android:textColor="@color/selectorColor"
             android:textSize="16sp"
             tools:text="Lagos" />
     </LinearLayout>
@@ -103,8 +103,8 @@
         app:layout_constraintTop_toTopOf="@id/itemAlkoEventImage">
 
         <ImageButton
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/accept_request"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -112,12 +112,13 @@
             android:contentDescription="TODO"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_accept_deny"
             android:visibility="gone"
             />
 
         <ImageButton
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/deny_request"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,6 +126,7 @@
             android:contentDescription="TODO"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_accept_deny"
             android:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

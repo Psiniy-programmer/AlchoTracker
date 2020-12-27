@@ -22,5 +22,7 @@
     <string name="settings_favorite_drink">Favorite drink</string>
     <string name="settings_status">Status</string>
     <string name="settings_alchoo">Visibility in Alchoo</string>
+    <string name="delete_event">delete_event</string>
+    <string name="add_event">add_event</string>
     <string name="friend_title">Friends</string>
 </resources>

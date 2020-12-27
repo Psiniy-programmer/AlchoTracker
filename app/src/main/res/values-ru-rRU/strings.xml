@@ -70,4 +70,6 @@
     <string name="settings_alchoo">Видимость в Alchoo</string>
     <string name="friend_title">Друзья</string>
 
+    <string name="delete_event">Удалить событие</string>
+    <string name="add_event">Добавить событие</string>
 </resources>

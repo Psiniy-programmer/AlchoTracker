@@ -38,4 +38,9 @@ object Constants {
     const val CHATID = "chat_id"
     const val DATETIME = "date_time"
     const val TEXTMESSAGE = "text_message"
+    const val DEFAULT_EVENT_STATUS = "Default"
+    const val EVENT_STATUS = "Status:"
+    const val OK_BTN_TEXT = "OK"
+    const val CANCEL_BTN_TEXT = "CANCEL"
+    const val DRINKS = "Event drinks:"
 }
