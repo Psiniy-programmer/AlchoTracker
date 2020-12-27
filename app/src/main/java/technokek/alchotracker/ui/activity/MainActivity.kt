@@ -26,7 +26,8 @@ import technokek.alchotracker.databinding.ActivityMainBinding
 class MainActivity :
     AppCompatActivity(), EventClickListener,
     FriendClickListener, FoundUserListener,
-    ChatListListener, SharedPreferencesHolder {
+    ChatListListener, SharedPreferencesHolder,
+    ChatClickListener {
 
     lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment

@@ -12,28 +12,28 @@ class ChatListFriendLiveData() :
     MutableLiveData<HashMap<String, MutableList<SearchFriendModel>>>(),
     ChatInterFace {
 
-    private lateinit var queryForChats: Query
+    private lateinit var queryForUsers: Query
     private val chatListListener = ChatListListener()
 
     constructor(ref: DatabaseReference) : this() {
-        queryForChats = ref
+        queryForUsers = ref
     }
 
     constructor(queryForUsers: Query) : this() {
-        this.queryForChats = queryForUsers
+        this.queryForUsers = queryForUsers
     }
 
     override fun onActive() {
         super.onActive()
 
-        queryForChats.addValueEventListener(chatListListener)
+        queryForUsers.addValueEventListener(chatListListener)
         Log.d(TAG, "onActive")
     }
 
     override fun onInactive() {
         super.onInactive()
 
-        queryForChats.removeEventListener(chatListListener)
+        queryForUsers.removeEventListener(chatListListener)
         Log.d(TAG, "onInactive")
     }
 
@@ -41,11 +41,11 @@ class ChatListFriendLiveData() :
         val currentUser = FirebaseAuth.getInstance().currentUser
 
         if (model.bool) {
-            queryForChats.ref.child(currentUser!!.uid).child(Constants.CHATID).child(model.chatID)
+            queryForUsers.ref.child(currentUser!!.uid).child(Constants.CHATID).child(model.chatID)
                 .apply {
                     child(Constants.USERS).setValue(model.chatID)
                 }
-            queryForChats.ref.child(model.id).child(Constants.CHATID).child(model.chatID).apply {
+            queryForUsers.ref.child(model.id).child(Constants.CHATID).child(model.chatID).apply {
                 child(Constants.USERS).setValue(model.chatID)
             }
         }
@@ -96,7 +96,7 @@ class ChatListFriendLiveData() :
         }
 
         override fun onCancelled(error: DatabaseError) {
-            Log.d(TAG, "Can't listen query $queryForChats", error.toException())
+            Log.d(TAG, "Can't listen query $queryForUsers", error.toException())
         }
     }
 }

@@ -3,35 +3,31 @@ package technokek.alchotracker.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
-import technokek.alchotracker.adapters.viewholders.FriendViewHolder
-import technokek.alchotracker.api.FriendClickListener
-import technokek.alchotracker.data.Constants.*
+import technokek.alchotracker.adapters.viewholders.ChatCreateDialogViewHolder
+import technokek.alchotracker.api.ChatClickListener
 import technokek.alchotracker.data.models.FriendModel
 
-class FriendAdapter(
+class ChatCreateDialogAdapter(
     private var mData: MutableList<FriendModel>,
-    private val listener: FriendClickListener
-) :
-    RecyclerView.Adapter<FriendViewHolder>() {
+    private val listener: ChatClickListener
+) : RecyclerView.Adapter<ChatCreateDialogViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendViewHolder {
-        return FriendViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatCreateDialogViewHolder {
+        return ChatCreateDialogViewHolder(
             LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.one_friend, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: FriendViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ChatCreateDialogViewHolder, position: Int) {
         val model = mData[position]
         Picasso.get().load(model.avatar).into(holder.mImageView)
         holder.mTextView.text = model.name
         holder.mTextView.setOnClickListener {
-            listener.pressFriend(model.id)
+            listener.pressChat(model.chatID, model)
         }
     }
 
