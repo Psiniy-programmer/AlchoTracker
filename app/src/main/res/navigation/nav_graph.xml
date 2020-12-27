@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_friendProfileFragment_to_friendPreferencesFragment"
             app:destination="@id/friendPreferencesFragment" />
+        <action
+            android:id="@+id/action_friendProfileFragment_to_friendListFragment"
+            app:destination="@id/friendListFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileSettingsFragment"
@@ -89,4 +92,8 @@
         android:id="@+id/eventFragment"
         android:name="technokek.alchotracker.ui.fragments.EventFragment"
         android:label="EventFragment" />
+    <fragment
+        android:id="@+id/friendListFragment"
+        android:name="technokek.alchotracker.ui.fragments.FriendListFragment"
+        android:label="FriendListFragment" />
 </navigation>

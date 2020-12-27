@@ -72,5 +72,6 @@
     <string name="settings_favorite_drink">Любимый напиток</string>
     <string name="settings_status">Статус</string>
     <string name="settings_alchoo">Видимость в Alchoo</string>
+    <string name="friend_title">Friends</string>
 
 </resources>

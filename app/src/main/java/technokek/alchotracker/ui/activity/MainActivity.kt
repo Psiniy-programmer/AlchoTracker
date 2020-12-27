@@ -27,7 +27,7 @@ class MainActivity :
     AppCompatActivity(), EventClickListener,
     FriendClickListener, FoundUserListener,
     ChatListListener, SharedPreferencesHolder,
-    ChatClickListener {
+    ChatClickListener, FriendToFriendClickListener {
 
     lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
@@ -171,6 +171,16 @@ class MainActivity :
 
         navHostFragment.navController.navigate(
             R.id.action_chatListFragment_to_chatFragment,
+            bundle
+        )
+    }
+
+    override fun pressFriendToFriend(uid: String) {
+        val bundle = Bundle()
+        bundle.putString("uid", uid)
+
+        navHostFragment.navController.navigate(
+            R.id.action_friendProfileFragment_to_friendListFragment,
             bundle
         )
     }

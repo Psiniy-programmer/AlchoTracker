@@ -109,14 +109,9 @@ class ChatListFragment : Fragment(), ChatClickListener {
                     mProgressBar.visibility = View.GONE
                     chatListAdapter.refresh(mChatViewModel.mediatorChatLiveData.value!!)
                     chatListRecyclerView.adapter = chatListAdapter
-                    Log.d("TYTAKAYASUKA", "Адаптер установлен")
                 } else {
 
                     chatListAdapter.notifyDataSetChanged()
-                    Log.d(
-                        "TYTAKAYASUKA",
-                        "рефреш адаптера + ${mChatViewModel.mediatorChatLiveData.value!![0].lastMessage}"
-                    )
                 }
             }
         )

@@ -12,10 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
+import technokek.alchotracker.api.FriendToFriendClickListener
 import technokek.alchotracker.viewmodels.FriendProfileViewModel
 import technokek.alchotracker.viewmodels.factories.FriendProfileFactory
 
 class FriendProfileFragment : Fragment() {
+
     private lateinit var uid: String
     private lateinit var mProfileViewModel: FriendProfileViewModel
     private lateinit var userText: TextView
@@ -83,6 +85,10 @@ class FriendProfileFragment : Fragment() {
                 R.id.action_friendProfileFragment_to_friendPreferencesFragment,
                 arguments
             )
+        }
+
+        friendsCounter.setOnClickListener {
+            (activity as FriendToFriendClickListener).pressFriendToFriend(uid)
         }
     }
 
