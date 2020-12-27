@@ -38,4 +38,5 @@ object Constants {
     const val CHATID = "chat_id"
     const val DATETIME = "date_time"
     const val TEXTMESSAGE = "text_message"
+    const val PICK_IMAGE_REQUEST = 71
 }

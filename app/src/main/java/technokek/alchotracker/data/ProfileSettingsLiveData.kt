@@ -56,6 +56,7 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
 
     fun getModel(x: DataSnapshot) {
         value = SettingsProfileModel(
+            x.child(NAME).value.toString(),
             x.child(AVATAR).value.toString(),
             x.child(STATUS).value.toString(),
             x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString(),
@@ -116,6 +117,12 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
 
     fun signOut() {
         mAuth.signOut()
+    }
+
+    fun setName(newName: String) {
+        query.ref.child(mAuth.currentUser?.uid.toString())
+            .child(NAME)
+            .setValue(newName)
     }
 
     companion object {

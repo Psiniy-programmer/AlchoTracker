@@ -72,6 +72,12 @@ class ProfileSettingsViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
+    override fun setName(newName: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            profileSettings.setName(newName)
+        }
+    }
+
     override fun onAlchoo() {
         CoroutineScope(Dispatchers.IO).launch {
             profileSettings.onAlchoo()

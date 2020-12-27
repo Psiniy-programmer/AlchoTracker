@@ -14,29 +14,32 @@ import android.util.Log
 import android.view.*
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.android.material.textfield.TextInputEditText
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import technokek.alchotracker.R
+import technokek.alchotracker.data.repositories.Constants.PICK_IMAGE_REQUEST
 import technokek.alchotracker.ui.activity.LoginActivity
 import technokek.alchotracker.ui.activity.MainActivity
 import technokek.alchotracker.viewmodels.ProfileSettingsViewModel
 import java.io.IOException
 
 class ProfileSettingsFragment : Fragment() {
-    private lateinit var changeStatusBtn: Button
-    private lateinit var changeAvatarBtn: Button
-    private lateinit var changeDrinkBtn: Button
-    private lateinit var signOutBtn: Button
-    private lateinit var inputStatus: EditText
-    private lateinit var inputDrink: EditText
+    private lateinit var signOutBtn: MaterialCardView
+    private lateinit var inputName: TextInputEditText
+    private lateinit var inputStatus: TextInputEditText
+    private lateinit var inputDrink: TextInputEditText
     private lateinit var alchooSwitcher: SwitchMaterial
+    private lateinit var changeAvatarBtn: ImageButton
     private lateinit var mSettingsViewModel: ProfileSettingsViewModel
 
     override fun onCreateView(
@@ -53,51 +56,34 @@ class ProfileSettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        changeStatusBtn = view.findViewById(R.id.change_status_btn)
-//        changeAvatarBtn = view.findViewById(R.id.change_avatar_btn)
-//        changeDrinkBtn = view.findViewById(R.id.change_drink_btn)
-//        signOutBtn = view.findViewById(R.id.sign_out_btn)
-//        inputStatus = view.findViewById(R.id.edit_status)
-//        inputDrink = view.findViewById(R.id.edit_drink)
-//        alchooSwitcher = view.findViewById(R.id.alchoo_switcher)
-//
-//        mSettingsViewModel =
-//            ViewModelProvider(this)[ProfileSettingsViewModel(activity!!.application)::class.java]
-//
-//        mSettingsViewModel.profileSettings.observe(viewLifecycleOwner, {
-//            alchooSwitcher.isChecked = it.alchoo
-//        })
-//
-//        changeStatusBtn.setOnClickListener {
-//            mSettingsViewModel.setStatus(inputStatus.text.toString())
-//            inputStatus.setText("")
-//        }
-//
-//        changeAvatarBtn.setOnClickListener {
-//            val PICK_IMAGE_REQUEST = 71
-//
-//            val intent = Intent()
-//            intent.type = "image/"
-//            intent.action = Intent.ACTION_GET_CONTENT
-//            startActivityForResult(Intent.createChooser(intent, "Select pic"), PICK_IMAGE_REQUEST)
-//        }
-//
-//        changeDrinkBtn.setOnClickListener {
-//            mSettingsViewModel.setDrink(inputDrink.text.toString())
-//            inputDrink.setText("")
-//        }
-//
-//        signOutBtn.setOnClickListener {
-//            mSettingsViewModel.signOut()
-//            startActivity(Intent(context, LoginActivity::class.java))
-//        }
-//
-//        alchooSwitcher.setOnCheckedChangeListener { buttonView, isChecheck ->
-//            if (alchooSwitcher.isChecked)
-//                mSettingsViewModel.onAlchoo()
-//            else
-//                mSettingsViewModel.offAlchoo()
-//        }
+        changeAvatarBtn = view.findViewById(R.id.profile_settings_download_photo)
+        signOutBtn = view.findViewById(R.id.sign_out_btn)
+        inputName = view.findViewById(R.id.profile_settings_edit_name)
+        inputStatus = view.findViewById(R.id.profile_settings_edit_status)
+        inputDrink = view.findViewById(R.id.profile_settings_edit_fav)
+        alchooSwitcher = view.findViewById(R.id.alchoo_switcher)
+
+        mSettingsViewModel =
+            ViewModelProvider(this)[ProfileSettingsViewModel(activity!!.application)::class.java]
+
+        mSettingsViewModel.profileSettings.observe(viewLifecycleOwner, {
+            inputName.setText(it.name)
+            inputDrink.setText(it.drink)
+
+            alchooSwitcher.isChecked = it.alchoo
+        })
+
+        changeAvatarBtn.setOnClickListener {
+            val intent = Intent()
+            intent.type = "image/"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(Intent.createChooser(intent, "Select pic"), PICK_IMAGE_REQUEST)
+        }
+
+        signOutBtn.setOnClickListener {
+            mSettingsViewModel.signOut()
+            startActivity(Intent(context, LoginActivity::class.java))
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -108,7 +94,13 @@ class ProfileSettingsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_settings_save) {
-            // TODO save data in db
+            mSettingsViewModel.setName(inputName.text.toString())
+            mSettingsViewModel.setStatus(inputStatus.text.toString())
+            mSettingsViewModel.setDrink(inputDrink.text.toString())
+            if (alchooSwitcher.isChecked)
+                mSettingsViewModel.onAlchoo()
+            else
+                mSettingsViewModel.offAlchoo()
         }
         return super.onOptionsItemSelected(item)
     }
