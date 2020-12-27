@@ -158,7 +158,7 @@ class MainActivity :
     }
 
     override fun pressChatFriend(chatID: String, model: ChatFriendModel) {
-        val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
+        val toast = Toast.makeText(this, "Chat", Toast.LENGTH_SHORT)
         toast.show()
 
         val bundle = Bundle()

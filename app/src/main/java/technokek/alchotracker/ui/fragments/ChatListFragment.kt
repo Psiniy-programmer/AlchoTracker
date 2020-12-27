@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Button
 import android.widget.EditText
@@ -108,9 +109,15 @@ class ChatListFragment : Fragment(), ChatClickListener {
                     mProgressBar.visibility = View.GONE
                     chatListAdapter.refresh(mChatViewModel.mediatorChatLiveData.value!!)
                     chatListRecyclerView.adapter = chatListAdapter
-                }
+                    Log.d("TYTAKAYASUKA", "Адаптер установлен")
+                } else {
 
-                chatListAdapter.notifyDataSetChanged()
+                    chatListAdapter.notifyDataSetChanged()
+                    Log.d(
+                        "TYTAKAYASUKA",
+                        "рефреш адаптера + ${mChatViewModel.mediatorChatLiveData.value!![0].lastMessage}"
+                    )
+                }
             }
         )
     }
