@@ -69,7 +69,7 @@ class ProfileSettingsFragment : Fragment() {
         mSettingsViewModel.profileSettings.observe(viewLifecycleOwner, {
             inputName.setText(it.name)
             inputDrink.setText(it.drink)
-
+            inputStatus.setText(it.status)
             alchooSwitcher.isChecked = it.alchoo
         })
 
