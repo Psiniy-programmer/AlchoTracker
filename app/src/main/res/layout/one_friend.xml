@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="20dp"
-    android:scrollbars="vertical"
-    android:background="@color/primaryColor"
-    app:cardCornerRadius="20dp">
+    style="@style/recycler_card">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/primaryColor">
+        android:layout_height="match_parent">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/friend_image"
-            android:layout_width="@dimen/width_friend"
-            android:textColor="@color/primaryColor"
-            android:layout_height="@dimen/height_friend" />
+            style="@style/recycler_card_image"
+            />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/friend_text"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_friend"
-            android:paddingTop="8dp"
-            android:paddingStart="16dp"
-            android:textColor="@color/primaryColor"
-            android:layout_toEndOf="@id/friend_image"
+            style="@style/recycler_card_text"
             tools:text="Hello" />
     </RelativeLayout>
 
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

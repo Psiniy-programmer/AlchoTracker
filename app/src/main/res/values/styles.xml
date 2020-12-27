@@ -96,7 +96,7 @@
 
     <style name="settings_view_text_secondary">
         <item name="android:textSize">10sp</item>
-        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingEnd">8dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/primaryTextColor</item>
         <item name="android:layout_alignParentEnd">true</item>
@@ -111,5 +111,41 @@
         <item name="android:layout_alignParentEnd">true</item>
         <item name="android:gravity">end|center</item>
         <item name="android:background">@color/secondaryColor</item>
+    </style>
+
+<!--    Стили для Recycler items-->
+    <style name="recycler_card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginHorizontal">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:background">@color/surface</item>
+        <item name="cardCornerRadius">20dp</item>
+    </style>
+
+    <style name="recycler_card_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_friend</item>
+        <item name="android:paddingTop">@dimen/recycler_item_text_padding_top</item>
+        <item name="android:paddingStart">@dimen/recycler_item_text_padding_start</item>
+        <item name="android:textColor">@color/thirdTextColor</item>
+        <item name="android:layout_toEndOf">@id/friend_image</item>
+    </style>
+
+    <style name="recycler_card_image_rounder">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+        <item name="color">@color/surface</item>
+    </style>
+
+    <style name="recycler_card_image">
+        <item name="android:layout_width">@dimen/width_friend</item>
+        <item name="android:layout_height">@dimen/height_friend</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_margin">@dimen/image_margin</item>
+        <item name="shapeAppearanceOverlay">@style/recycler_card_image_rounder</item>
     </style>
 </resources>
