@@ -59,4 +59,6 @@
     <string name="preferences">Предпочтения</string>
     <string name="tastes_list">Список вкусов</string>
     <string name="_0">0</string>
+    <string name="delete_event">Удалить событие</string>
+    <string name="add_event">Добавить событие</string>
 </resources>

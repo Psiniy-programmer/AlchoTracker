@@ -26,16 +26,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/pop_up_titel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enter AlkoEvent data:"
-            android:layout_marginTop="24dp"
-            android:textSize="40sp"
-            android:textColor="@color/primaryLightColor"
-            android:textAlignment="center"
-            />
+
 
         <EditText
             android:id="@+id/pop_up_place"

@@ -327,7 +327,7 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
                     price = i.child("price").value.toString(),
                     place = i.child("place").value.toString(),
                 ),
-                color = R.color.teal_700,
+                color = R.color.primaryColor,
                 id = i.child("id").value.toString(),
                 adminId = i.child("members")
                     .child(ADMIN_ID).value.toString(),

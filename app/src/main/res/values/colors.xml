@@ -37,4 +37,11 @@
     <color name="backgroundColor">#ffffff</color>
     <color name="backgroundDays">#6930C3</color>
     <color name="selectorColor">#FFFFFF</color>
+
+    <color name="primaryLightColor">#E1E3E6</color>
+    <color name="primaryDarkColor">#19191A</color>
+    <color name="secondaryLightColor">#e6ceff</color>
+    <color name="secondaryDarkColor">#836fa9</color>
+    <color name="bottomNavGraph">#C4C8CC</color>
+    <color name="gray500">#76787A</color>
 </resources>

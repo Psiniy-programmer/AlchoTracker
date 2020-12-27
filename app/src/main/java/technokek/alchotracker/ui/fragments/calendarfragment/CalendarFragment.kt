@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.CalendarMonth
@@ -67,7 +68,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     private lateinit var alarmManager: AlarmManager
     private lateinit var mAuth: FirebaseAuth
 
-    private lateinit var dialog: Dialog
+    private lateinit var bottomSheetDialog: BottomSheetDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -139,7 +140,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                 alkoEventBottomView.background = null
 
                 if (day.owner == DayOwner.THIS_MONTH) {
-                    textView.setTextColorRes(R.color.calendar_text_grey)
+                    textView.setTextColorRes(R.color.selectorColor)
                     layout.setBackgroundResource(
                         if (selectedDate == day.date) R.drawable.calendar_selected_bg else 0
                     )
@@ -169,7 +170,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                         }
                     }
                 } else {
-                    textView.setTextColorRes(R.color.calendar_text_grey_light)
+                    textView.setTextColorRes(R.color.primaryColor)
                     layout.background = null
                 }
             }
@@ -192,7 +193,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
                                     Locale.ENGLISH
                                 )
                                     .toUpperCase(Locale.ENGLISH)
-                                tv.setTextColorRes(R.color.calendar_text_grey)
+                                tv.setTextColorRes(R.color.black)
                                 tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
                             }
                         month.yearMonth
@@ -231,65 +232,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         alkoEventsAdapter.notifyDataSetChanged()
     }
 
-    private fun showPopUp(date: LocalDate?) {
-        dialog = Dialog(this.requireContext())
-        dialog.setContentView(R.layout.popup_add_menu)
-        val buttonClose = dialog.findViewById<Button>(R.id.button_close)
-        lateinit var time: LocalDateTime
-        val etEventName = dialog.findViewById<EditText>(R.id.pop_up_place)
-        val etEventCosts = dialog.findViewById<EditText>(R.id.pop_up_costs)
-        val openTimePicker = dialog.findViewById<Button>(R.id.pop_up_time)
-        var openTimePickerClicked = false
-        val buttonSubmit = dialog.findViewById<Button>(R.id.button_submit)
-
-        buttonClose!!.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        openTimePicker.setOnClickListener {
-            val timePickerDialog = TimePickerDialog(
-                this.activity,
-                android.R.style.Theme_Holo_Light_DarkActionBar,
-                { view, hourOfDay, minute ->
-                    time = date!!.atTime(hourOfDay, minute)
-                    openTimePickerClicked = true
-                    buttonSubmit!!.isEnabled =
-                        !(isEmpty(etEventName) && isEmpty(etEventCosts) && !openTimePickerClicked)
-                },
-                0,
-                0,
-                true
-            )
-            timePickerDialog.window?.attributes!!.gravity = requireActivity().window.attributes.gravity
-            //timePickerDialog.window?.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
-            timePickerDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            // TODO fix this crash
-            // timePickerDialog.updateTime(time.hour, time.minute)
-            timePickerDialog.show()
-        }
-        // button submit logic
-        buttonSubmit.isEnabled = false
-        buttonSubmit.setOnClickListener {
-            if (isEmpty(etEventName) || isEmpty(etEventCosts)) {
-                Toast.makeText(this.context, "Fill in all the fields!", Toast.LENGTH_LONG).show()
-            } else {
-                val newAlkoEvent = formAlkoEvent(
-                    etEventName,
-                    etEventCosts,
-                    time
-                )
-                // Прокидываем в VM
-                mCalendarViewModel.pushData(date!!, newAlkoEvent)
-                //TODO добавить Notification
-                getCalendarAndStartAlarm(newAlkoEvent.time)
-                updateAdapterForDate(date)
-                dialog.dismiss()
-            }
-        }
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.show()
-    }
-
     private fun formAlkoEvent(
         eventName: EditText,
         eventCosts: EditText,
@@ -306,7 +248,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         return CalendarModel(
             eventTime,
             PlaceLoc(place, costs, place),
-            R.color.teal_700,
+            R.color.primaryColor,
             adminId = mAuth.currentUser?.uid.toString(),
             id = (mCalendarViewModel.mMediatorLiveData.value!!
                 .values.flatMap { it.toList() }.size + 1).toString()
@@ -413,10 +355,10 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         }
     }
 
-
     override fun onEventClick(calendarModel: CalendarModel) {
         selectedCalendarModel = calendarModel
     }
+
 
     override fun onAcceptClick(calendarModel: CalendarModel) {
         //Запускаем аларм
@@ -438,7 +380,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.add_event) {
             if (selectedDate != null) {
-                showPopUp(selectedDate)
+                showBottomSheet(selectedDate)
             }
         }
         else if (item.itemId == R.id.delete_event) {
@@ -452,6 +394,65 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showBottomSheet(date: LocalDate?) {
+        bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
+        val ll = requireView().findViewById<LinearLayout>(R.id.bottom_sheet_container)
+        val bottomSheetView = LayoutInflater.from(requireContext())
+            .inflate(
+                R.layout.new_popup_dialog_layout,
+                ll
+            )
+        bottomSheetDialog.setContentView(bottomSheetView)
+        lateinit var time: LocalDateTime
+        val etEventName = bottomSheetDialog.findViewById<EditText>(R.id.pop_up_place)
+        val etEventCosts = bottomSheetDialog.findViewById<EditText>(R.id.pop_up_costs)
+        val openTimePicker = bottomSheetDialog.findViewById<Button>(R.id.pop_up_time)
+        var openTimePickerClicked = false
+        val buttonSubmit = bottomSheetDialog.findViewById<Button>(R.id.button_submit)
+
+        openTimePicker!!.setOnClickListener {
+            val timePickerDialog = TimePickerDialog(
+                this.activity,
+                android.R.style.Theme_Holo_Light_DarkActionBar,
+                { view, hourOfDay, minute ->
+                    time = date!!.atTime(hourOfDay, minute)
+                    openTimePickerClicked = true
+                    buttonSubmit!!.isEnabled =
+                        !(isEmpty(etEventName!!) && isEmpty(etEventCosts!!) && !openTimePickerClicked)
+                },
+                0,
+                0,
+                true
+            )
+            timePickerDialog.window?.attributes!!.gravity = requireActivity().window.attributes.gravity
+            //timePickerDialog.window?.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+            timePickerDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            // TODO fix this crash
+            // timePickerDialog.updateTime(time.hour, time.minute)
+            timePickerDialog.show()
+        }
+        // button submit logic
+        buttonSubmit!!.isEnabled = false
+        buttonSubmit.setOnClickListener {
+            if (isEmpty(etEventName!!) || isEmpty(etEventCosts!!)) {
+                Toast.makeText(this.context, "Fill in all the fields!", Toast.LENGTH_LONG).show()
+            } else {
+                val newAlkoEvent = formAlkoEvent(
+                    etEventName,
+                    etEventCosts,
+                    time
+                )
+                // Прокидываем в VM
+                mCalendarViewModel.pushData(date!!, newAlkoEvent)
+                //TODO добавить Notification
+                getCalendarAndStartAlarm(newAlkoEvent.time)
+                updateAdapterForDate(date)
+                bottomSheetDialog.dismiss()
+            }
+        }
+        bottomSheetDialog.show()
     }
 
     private fun cancelAlarm(requestCode: Int) {
