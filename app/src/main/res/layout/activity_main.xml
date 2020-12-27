@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.Toolbar
         app:titleTextColor="@color/backgroundColor"
         android:id="@+id/toolbar"
-        style="@style/Toolbar"/>
+        style="@style/Toolbar" />
 
     <fragment
         android:id="@+id/content"

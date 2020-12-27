@@ -16,7 +16,7 @@ import technokek.alchotracker.data.Constants.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 
-class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), ProfileSettingsInterface {
+class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
     private lateinit var query: Query
     private lateinit var storage: StorageReference
     private lateinit var mAuth: FirebaseAuth
@@ -63,13 +63,13 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
         )
     }
 
-    override fun setStatus(newStatus: String) {
+    fun setStatus(newStatus: String) {
         query.ref.child(mAuth.currentUser?.uid.toString())
             .child(STATUS)
             .setValue(newStatus)
     }
 
-    override fun setAvatar(newAvatar: Bitmap) {
+    fun setAvatar(newAvatar: Bitmap) {
         val uid = mAuth.currentUser?.uid.toString()
         val ref = storage.child("img").child(uid)
         val baos = ByteArrayOutputStream()
@@ -91,14 +91,14 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
         }
     }
 
-    override fun setDrink(newDrink: String) {
+    fun setDrink(newDrink: String) {
         query.ref.child(mAuth.currentUser?.uid.toString())
             .child(ALCHOINFO)
             .child(FAVOURITEDRINK)
             .setValue(newDrink)
     }
 
-    override fun onAlchoo() {
+    fun onAlchoo() {
         query.ref.child(mAuth.currentUser?.uid.toString())
             .child(ALCHOINFO)
             .child(ALCHOO)
@@ -106,7 +106,7 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
             .setValue(true)
     }
 
-    override fun offAlchoo() {
+    fun offAlchoo() {
         query.ref.child(mAuth.currentUser?.uid.toString())
             .child(ALCHOINFO)
             .child(ALCHOO)
@@ -114,7 +114,7 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>(), Profi
             .setValue(false)
     }
 
-    override fun signOut() {
+    fun signOut() {
         mAuth.signOut()
     }
 

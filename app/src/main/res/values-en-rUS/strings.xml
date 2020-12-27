@@ -13,4 +13,13 @@
     <string name="preferences">Preferences</string>
     <string name="tastes_list">List of your tastes</string>
     <string name="_0">0</string>
+    <string name="chat">Chats</string>
+    <string name="master_chats">Yours chats</string>
+    <string name="settings_toolbar">Settings</string>
+    <string name="master_profile_toolbar">My profile</string>
+    <string name="settings_profile_photo">Profile Photo</string>
+    <string name="settings_profile_name">Name</string>
+    <string name="settings_favorite_drink">Favorite drink</string>
+    <string name="settings_status">Status</string>
+    <string name="settings_alchoo">Visibility in Alchoo</string>
 </resources>

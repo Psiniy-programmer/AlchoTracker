@@ -1,10 +1,10 @@
 package technokek.alchotracker.api
 
-import android.graphics.Bitmap
+import android.content.Intent
 
 interface ProfileSettingsInterface {
     fun setStatus(newStatus: String)
-    fun setAvatar(newAvatar: Bitmap)
+    fun setAvatar(requestCode: Int, resultCode: Int, data: Intent?)
     fun setDrink(newDrink: String)
     fun onAlchoo()
     fun offAlchoo()

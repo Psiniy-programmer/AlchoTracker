@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">@color/primaryColor</item>
+        <item name="android:titleTextColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="Theme.MyApp" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorAccent">@color/surface</item>
+        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="android:titleTextColor">@color/primaryTextColor</item>
+
+        <!-- New MaterialComponents attributes. -->
+        <item name="colorPrimaryVariant">@color/primaryColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryColor</item>
+        <item name="scrimBackground">@color/mtrl_scrim_color</item>
+    </style>
+</resources>
