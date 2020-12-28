@@ -7,9 +7,7 @@
     android:paddingRight="@dimen/chat_horizontal_margin"
     android:paddingBottom="@dimen/chat_vertical_margin">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/chat_image"
-        style="@style/recycler_card_image" />
+
 
     <TextView
         android:id="@+id/chat_name"

@@ -10,7 +10,14 @@
     <androidx.appcompat.widget.Toolbar
         app:titleTextColor="@color/backgroundColor"
         android:id="@+id/toolbar"
-        style="@style/Toolbar" />
+        style="@style/Toolbar">
+
+        <include
+            android:id="@+id/toolbar_chat"
+            android:visibility="gone"
+            layout="@layout/chat_toolbar"/>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <fragment
         android:id="@+id/content"

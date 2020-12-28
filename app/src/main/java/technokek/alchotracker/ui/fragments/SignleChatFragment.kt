@@ -1,7 +1,6 @@
 package technokek.alchotracker.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.SingleChatAdapter
-import technokek.alchotracker.data.models.SingleChatMessageModel
 import technokek.alchotracker.ui.activity.MainActivity
 import technokek.alchotracker.viewmodels.SingleChatViewModel
 import technokek.alchotracker.viewmodels.factories.SingleChatViewModelFactory
@@ -47,6 +47,16 @@ class SignleChatFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        (activity as MainActivity).supportActionBar?.hide()
+        super.onResume()
+    }
+
+    override fun onStop() {
+        (activity as MainActivity).supportActionBar?.show()
+        super.onStop()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,17 +70,17 @@ class SignleChatFragment : Fragment() {
         mRecyclerView = view.findViewById(R.id.recycler_chat)
         mButton = view.findViewById(R.id.button_chat)
         mEditText = view.findViewById(R.id.edit_text_chat)
-        mChatAvatar = view.findViewById(R.id.chat_image)
+//        mChatAvatar = view.findViewById(R.id.chat_image)
         mChatTittle = view.findViewById(R.id.chat_name)
         mRecyclerView.layoutManager = linearLayoutManager
         mRecyclerView.setHasFixedSize(true)
 
-        Picasso.get()
-            .load(avatar)
-            .fit()
-            .centerCrop()
-            .into(mChatAvatar)
-        mChatTittle.text = name
+//        Picasso.get()
+//            .load(avatar)
+//            .fit()
+//            .centerCrop()
+//            .into(mChatAvatar)
+//        mChatTittle.text = name
 
         activity?.application?.let {
             mChatViewModel = ViewModelProvider(
