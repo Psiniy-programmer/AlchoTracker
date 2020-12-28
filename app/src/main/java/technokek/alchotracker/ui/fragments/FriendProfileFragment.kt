@@ -30,6 +30,7 @@ class FriendProfileFragment : Fragment() {
     private lateinit var avatarView: ImageView
     private lateinit var preferencesBtn: MaterialCardView
     private lateinit var friendsBtn: MaterialCardView
+    private lateinit var chatBtn: MaterialCardView
     private lateinit var addBtn: MenuItem
     private lateinit var deleteBtn: MenuItem
     private lateinit var cancelBtn: MenuItem
@@ -56,6 +57,7 @@ class FriendProfileFragment : Fragment() {
         friendsCounter = view.findViewById(R.id.friend_profile_friends_counter)
         eventsCounter = view.findViewById(R.id.friend_profile_events_counter)
         avatarView = view.findViewById(R.id.friend_profile_avatar)
+        chatBtn = view.findViewById(R.id.friend_chats_btn)
         friendsBtn = view.findViewById(R.id.friend_profile_friends_btn)
         preferencesBtn = view.findViewById(R.id.friend_preferences_list_btn)
 
@@ -79,8 +81,12 @@ class FriendProfileFragment : Fragment() {
             }
         )
 
-        friendsBtn.setOnClickListener {
-//            (activity as FriendProfileChatClickListener).pressChatFromFriend(cha)
+        chatBtn.setOnClickListener {
+            mProfileViewModel.profile.value?.let { it1 ->
+                (activity as FriendProfileChatClickListener).pressChatFromFriend(
+                    it1.chatID, it1.avatar, it1.name, it1.userID
+                )
+            }
         }
 
         preferencesBtn.setOnClickListener {
@@ -115,7 +121,7 @@ class FriendProfileFragment : Fragment() {
             } else {
                 if (it.inFriend) {
                     deleteBtn.isVisible = true
-                    addBtn.isVisible =  false
+                    addBtn.isVisible = false
                     cancelBtn.isVisible = false
                 } else {
                     addBtn.isVisible = true

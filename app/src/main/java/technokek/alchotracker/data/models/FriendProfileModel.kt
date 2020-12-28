@@ -7,5 +7,6 @@ data class FriendProfileModel(
     var friendsCount: Int = 0,
     var eventCount: Int = 0,
     var favouriteDrink: String = "",
-    var chatID: String = ""
+    var chatID: String = "",
+    var userID: String = ""
 )

@@ -60,12 +60,6 @@ class FriendProfileViewModel(application: Application, uid: String) :
         }
     }
 
-    fun getChatID() {
-        CoroutineScope(Dispatchers.IO).launch {
-
-        }
-    }
-
     companion object {
         private val dbRef = FirebaseDatabase.getInstance().getReference("users")
         private val aRef = FirebaseAuth.getInstance()
