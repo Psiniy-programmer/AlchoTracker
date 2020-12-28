@@ -32,4 +32,6 @@
     <string name="friend_title">Friends</string>
     <string name="test_user_name">User name</string>
     <string name="write_message">Enter message</string>
+    <string name="out_of_chat">Chat doesn`t exist, create that</string>
+
 </resources>

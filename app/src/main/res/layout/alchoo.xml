@@ -30,7 +30,7 @@
                 android:textColor="@color/primaryTextColor"
                 android:layout_gravity="center_vertical|center_horizontal"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/alchoo_refresh__button"
                 android:padding="20dp"
                 android:layout_width="wrap_content"
@@ -73,14 +73,14 @@
             android:text="@string/would_u_start_alchoo"
             android:textSize="24sp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/alchoo_status__button"
             android:padding="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/start"
             android:textSize="24sp"
-            android:textColor="@color/primaryColor"
+            android:textColor="@color/primaryTextColor"
             android:layout_gravity="center_vertical|center_horizontal"/>
     </LinearLayout>
 </RelativeLayout>
