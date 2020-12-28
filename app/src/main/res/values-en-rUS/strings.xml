@@ -23,4 +23,5 @@
     <string name="settings_status">Status</string>
     <string name="settings_alchoo">Visibility in Alchoo</string>
     <string name="log_out_account">Log out of account</string>
+    <string name="calendar_toolbar">Calendar</string>
 </resources>

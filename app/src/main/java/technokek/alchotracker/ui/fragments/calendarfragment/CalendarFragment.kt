@@ -73,6 +73,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
         super.onViewCreated(view, savedInstanceState)
         mAuth = FirebaseAuth.getInstance()
         setHasOptionsMenu(true)
+        activity?.title = resources.getString(R.string.calendar_toolbar)
         sharedPreferences = (activity as SharedPreferencesHolder).sharedPreferences
         editor = sharedPreferences.edit()
         alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -315,7 +316,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
 
     private fun deleteEvent(date: LocalDate?, calendarModel: CalendarModel?) {
         // Прокидываем в VM
-        // TODO нужно сделать callback для отключения кнопки
         if (calendarModel == null || selectedDate != date) {
             Toast.makeText(this.context, "You didnt choose the event!", Toast.LENGTH_LONG).show()
             return

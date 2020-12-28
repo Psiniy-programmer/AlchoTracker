@@ -69,5 +69,6 @@
     <string name="settings_status">Статус</string>
     <string name="settings_alchoo">Видимость в Alchoo</string>
     <string name="log_out_account">Выйти из аккаунта</string>
+    <string name="calendar_toolbar">Календарь</string>
 
 </resources>
