@@ -11,7 +11,7 @@ data class CalendarModel(
     val time: LocalDateTime,
     val eventPlace: Place,
     @ColorRes val color: Int,
-    val avatar: String = "https://firebasestorage.googleapis.com/v0/b/alchotracker-4e1ca.appspot.com/o/UserImage.jpg?alt=media&token=23303a54-e59e-4f0c-a44c-bb9d7dffa328",
+    var avatar: String = "https://firebasestorage.googleapis.com/v0/b/alchotracker-4e1ca.appspot.com/o/UserImage.jpg?alt=media&token=23303a54-e59e-4f0c-a44c-bb9d7dffa328",
     val chatId: Int = 1,
     val id: String,
     val adminId: String,
@@ -21,5 +21,5 @@ data class CalendarModel(
     var status: String = "Default",
     var drinks: String = ""
 ) : Serializable {
-    data class Place(val name: String, val price: String, val place: String)
+    data class Place(val name: String, val price: String, val place: String) : Serializable
 }

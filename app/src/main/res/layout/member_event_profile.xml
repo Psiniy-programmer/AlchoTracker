@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/admin_event_profile"
+    android:id="@+id/member_event_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -15,11 +15,11 @@
 
         <com.google.android.material.card.MaterialCardView
             style="@style/card.avatar"
-            android:id="@+id/event_photo"
+            android:id="@+id/member_event_photo"
             android:layout_marginEnd="40dp">
 
             <ImageView
-                android:id="@+id/event_profile_avatar"
+                android:id="@+id/member_event_profile_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
@@ -36,7 +36,7 @@
             android:paddingBottom="20dp">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/event_name"
+                android:id="@+id/member_event_name"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:textColor="@color/secondaryTextColor"
@@ -46,7 +46,7 @@
                 android:layout_marginBottom="5dp"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/admin_event_status_text"
+                android:id="@+id/member_event_status_text"
                 android:textSize="15sp"
                 android:textColor="@color/grayPrimaryColor"
                 android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                 android:text="@string/price" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/price_number"
+                android:id="@+id/member_price_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="3dp"
@@ -74,16 +74,16 @@
         style="@style/ProfileRowLayout">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/event_status_change_btn"
             style="@style/card.default"
+            android:id="@+id/member_event_members_btn"
             android:layout_marginEnd="40dp">
 
             <LinearLayout style="@style/ProfileButtonLayout">
 
                 <ImageView
                     style="@style/button_image"
-                    android:contentDescription="@string/group_friends"
-                    android:src="@drawable/event_status" />
+                    android:contentDescription="@string/stat_desc"
+                    android:src="@drawable/event_members" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -96,27 +96,15 @@
                         style="@style/ProfileTextApp.tittle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/status" />
+                        android:text="@string/alkoevent_members" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
 
-                        <com.google.android.material.textview.MaterialTextView
-                            style="@style/ProfileTextApp.subTittle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="3dp"
-                            android:text="@string/change_event_status" />
-
-                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/event_drinks_btn"
+            android:id="@+id/member_event_drinks_btn"
             style="@style/card.default">
 
             <LinearLayout
@@ -158,64 +146,5 @@
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <LinearLayout style="@style/ProfileRowLayout">
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/card.default"
-            android:id="@+id/event_members_btn"
-            android:layout_marginEnd="40dp">
-
-            <LinearLayout style="@style/ProfileButtonLayout">
-
-                <ImageView
-                    style="@style/button_image"
-                    android:contentDescription="@string/stat_desc"
-                    android:src="@drawable/event_members" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="9.68dp"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        style="@style/ProfileTextApp.tittle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/alkoevent_members" />
-
-
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/delete_event_btn"
-            style="@style/card.delete">
-            <LinearLayout style="@style/ProfileButtonLayout">
-
-                <ImageView
-                    style="@style/button_image"
-                    android:contentDescription="@string/like_desc"
-                    android:src="@drawable/admin_delete_event" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="9.68dp"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        style="@style/ProfileTextApp.tittle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/delete_alkoevent" />
-
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
 
 </LinearLayout>
