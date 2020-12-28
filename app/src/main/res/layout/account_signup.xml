@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable name="viewmodel"
+            type="technokek.alchotracker.viewmodels.AuthViewModel"/>
+    </data>
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.auth.SignupActivity"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="486dp"
+            android:orientation="vertical"
+            android:background="@drawable/bg_login"
+            android:layout_gravity="center"
+            >
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="@string/alcho"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/selectorColor"
+                android:textSize="50sp"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="80dp"
+                android:textStyle="bold">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tracker"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/selectorColor"
+                android:textSize="50sp"
+                android:fontFamily="sans-serif"
+
+                android:textStyle="bold">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alcount_account"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/selectorColor"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="40dp"
+
+                android:textStyle="bold">
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_dialog6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:hintTextAppearance="@color/selectorColor"
+                android:orientation="vertical"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_name"
+                    android:layout_width="240dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_input"
+                    android:gravity="center"
+                    android:textColor="@color/selectorColor"
+                    android:textColorHint="@color/selectorColor"
+                    android:hint="@string/name"
+                    android:text="@={viewmodel.name}"
+                    android:layout_marginTop="16dp"
+                    android:ellipsize="start"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_dialog7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:hintTextAppearance="@color/selectorColor"
+                android:orientation="vertical"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_email"
+                    android:layout_width="240dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_input"
+                    android:gravity="center"
+                    android:textColor="@color/selectorColor"
+                    android:textColorHint="@color/selectorColor"
+                    android:hint="@string/email"
+                    android:layout_marginTop="16dp"
+                    android:text="@={viewmodel.email}"
+                    android:ellipsize="start"
+                    android:inputType="textEmailAddress"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_dialog8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:hintTextAppearance="@color/selectorColor"
+                android:orientation="vertical"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_password"
+                    android:labelFor="@id/edit_text_password"
+                    android:layout_width="240dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_input"
+                    android:gravity="center"
+                    android:textColor="@color/selectorColor"
+                    android:textColorHint="@color/selectorColor"
+                    android:hint="@string/password"
+                    android:layout_marginTop="16dp"
+                    android:text="@={viewmodel.password}"
+                    android:ellipsize="start"
+                    android:inputType="textPassword"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_sign_up"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/sign_up"
+            android:textAllCaps="false"
+            android:textColor="@color/selectorColor"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif"
+            android:background="@drawable/bg_button_log_in"
+            android:onClick="@{() -> viewmodel.signup()}"
+            >
+
+        </Button>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/already_have_an_account"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#979494"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="48dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/text_view_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login here"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="3dp"
+            android:onClick="@{(v) -> viewmodel.goToLogin(v)}"
+            >
+
+        </TextView>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </LinearLayout>
+
+</layout>
