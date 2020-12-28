@@ -28,6 +28,7 @@ class FriendProfileFragment : Fragment() {
     private lateinit var eventsCounter: MaterialTextView
     private lateinit var avatarView: ImageView
     private lateinit var preferencesBtn: MaterialCardView
+    private lateinit var friendsBtn: MaterialCardView
     private lateinit var addBtn: MenuItem
     private lateinit var deleteBtn: MenuItem
     private lateinit var cancelBtn: MenuItem
@@ -54,6 +55,7 @@ class FriendProfileFragment : Fragment() {
         friendsCounter = view.findViewById(R.id.friend_profile_friends_counter)
         eventsCounter = view.findViewById(R.id.friend_profile_events_counter)
         avatarView = view.findViewById(R.id.friend_profile_avatar)
+        friendsBtn = view.findViewById(R.id.friend_profile_friends_btn)
 
         activity?.application?.let {
             mProfileViewModel = ViewModelProvider(
@@ -87,7 +89,7 @@ class FriendProfileFragment : Fragment() {
             )
         }
 
-        friendsCounter.setOnClickListener {
+        friendsBtn.setOnClickListener {
             (activity as FriendToFriendClickListener).pressFriendToFriend(uid)
         }
     }

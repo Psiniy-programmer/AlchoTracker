@@ -166,12 +166,11 @@
     </style>
 
     <style name="recycler_card_text">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">@dimen/height_friend</item>
-        <item name="android:paddingTop">@dimen/recycler_item_text_padding_top</item>
-        <item name="android:paddingStart">@dimen/recycler_item_text_padding_start</item>
         <item name="android:textColor">@color/thirdTextColor</item>
-        <item name="android:layout_toEndOf">@id/friend_image</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="recycler_card_image_rounder">
@@ -184,6 +183,46 @@
         <item name="android:layout_width">@dimen/width_friend</item>
         <item name="android:layout_height">@dimen/height_friend</item>
         <item name="civ_border_color">@color/surface</item>
-        <item name="android:layout_margin">@dimen/image_margin</item>
+<!--        <item name="android:layout_margin">@dimen/image_margin</item>-->
+    </style>
+
+    <style name="recycler_item_friend_req">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:paddingTop">13dp</item>
+        <item name="iconGravity">textTop</item>
+        <item name="backgroundTint">@color/secondaryColor</item>
+    </style>
+
+<!--    Стили для Chat-->
+    <style name="chat_list_item_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/thirdTextColor</item>
+    </style>
+
+    <style name="chat_list_item_text.name">
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingStart">13dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:layout_toEndOf">@id/chat_friend_image</item>
+    </style>
+
+    <style name="chat_list_item_text.text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_toEndOf">@id/chat_friend_image</item>
+    </style>
+
+    <style name="chat_list_item_text.time">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
     </style>
 </resources>

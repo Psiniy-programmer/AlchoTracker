@@ -1,55 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="20dp"
-    android:background="@color/primaryColor"
-    android:scrollbars="vertical"
-    app:cardCornerRadius="20dp">
+    style="@style/recycler_card">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/primaryColor">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/friend_request_image"
-            android:layout_width="@dimen/width_friend"
-            android:layout_height="@dimen/height_friend"
-            android:contentDescription="TODO" />
-
-        <TextView
-            android:id="@+id/friend_request_text"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_friend"
-            android:paddingTop="8dp"
-            android:paddingStart="16dp"
-            android:textColor="@color/primaryColor"
-            android:layout_toEndOf="@id/friend_request_image"
-            tools:text="Hello" />
-
-        <ImageButton
-            android:id="@+id/accept_request"
+        <RelativeLayout
+            android:gravity="center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:contentDescription="TODO"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/accept" />
+            android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/deny_request"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/accept_request"
-            android:layout_marginEnd="8dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/friend_request_image"
+                style="@style/recycler_card_image" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/friend_request_text"
+                style="@style/recycler_card_text"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/friend_request_image"
+                tools:text="Hello" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/kek"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_width="110dp"
+            android:layout_height="60dp"
             android:layout_alignParentEnd="true"
-            android:contentDescription="TODO"
-            android:src="@drawable/deny" />
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/accept_request"
+                style="@style/recycler_item_friend_req"
+                android:layout_marginEnd="9dp"
+                app:icon="@drawable/accept" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/deny_request"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:paddingTop="13dp"
+                app:backgroundTint="@color/secondaryColor"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/deny"
+                app:iconGravity="textTop" />
+        </RelativeLayout>
+
     </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
