@@ -54,7 +54,11 @@ class MainActivity :
         FirebaseMessaging.getInstance().token
             .addOnCompleteListener(OnCompleteListener { task ->
                 if (!task.isSuccessful) {
-                    Log.w("NEW_TOKEN_MAIN", "Fetching FCM registration token failed", task.exception)
+                    Log.w(
+                        "NEW_TOKEN_MAIN",
+                        "Fetching FCM registration token failed",
+                        task.exception
+                    )
                     return@OnCompleteListener
                 }
 
@@ -111,9 +115,6 @@ class MainActivity :
     }
 
     override fun pressUser(uid: String) {
-        val toast = Toast.makeText(this, "FoundUser", Toast.LENGTH_SHORT)
-        toast.show()
-
         if (uid == FirebaseAuth.getInstance().uid) {
             navHostFragment.navController.navigate(
                 R.id.action_friendFragment_to_masterProfileFragment
@@ -130,9 +131,6 @@ class MainActivity :
     }
 
     override fun pressFriend(uid: String) {
-        val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
-        toast.show()
-
         val bundle = Bundle()
         bundle.putString("uid", uid)
 
@@ -143,9 +141,6 @@ class MainActivity :
     }
 
     override fun pressChat(chatID: String, model: FriendModel) {
-        val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
-        toast.show()
-
         val bundle = Bundle()
         bundle.putString("chatID", chatID)
         bundle.putString("name", model.name)
@@ -158,9 +153,6 @@ class MainActivity :
     }
 
     override fun pressChatFriend(chatID: String, model: ChatFriendModel) {
-        val toast = Toast.makeText(this, "Chat", Toast.LENGTH_SHORT)
-        toast.show()
-
         val bundle = Bundle()
         bundle.putString("chatID", chatID)
         bundle.putString("avatar", model.avatar)
@@ -173,6 +165,21 @@ class MainActivity :
             R.id.action_chatListFragment_to_chatFragment,
             bundle
         )
+    }
+
+    override fun pressFriendToProfile(uid: String) {
+        if (uid != FirebaseAuth.getInstance().currentUser?.uid) {
+            val bundle = Bundle()
+            bundle.putString("uid", uid)
+            navHostFragment.navController.navigate(
+                R.id.action_friendListFragment_to_friendProfileFragment,
+                bundle
+            )
+        } else {
+            navHostFragment.navController.navigate(
+                R.id.action_friendListFragment_to_masterProfileFragment
+            )
+        }
     }
 
     override fun pressFriendToFriend(uid: String) {

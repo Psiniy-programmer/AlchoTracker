@@ -98,7 +98,14 @@
     <fragment
         android:id="@+id/friendListFragment"
         android:name="technokek.alchotracker.ui.fragments.FriendListFragment"
-        android:label="FriendListFragment" />
+        android:label="FriendListFragment" >
+        <action
+            android:id="@+id/action_friendListFragment_to_friendProfileFragment"
+            app:destination="@id/friendProfileFragment" />
+        <action
+            android:id="@+id/action_friendListFragment_to_masterProfileFragment"
+            app:destination="@id/masterProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/adminEventProfile"
         android:name="technokek.alchotracker.ui.fragments.AdminEventProfileFragment"
