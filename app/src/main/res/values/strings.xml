@@ -106,7 +106,6 @@
     <string name="email">email</string>
     <string name="password">password</string>
     <string name="sign_up">sign up</string>
-    <string name="already_have_an_account">Already have an account?</string>
     <string name="calendar_toolbar" translatable="true">Календарь</string>
     <string name="alko_event_toolbar" translatable="true">Алко ивент</string>
     <string name="don_t_have_an_alcount_yet">Dont have an alcount yet?</string>
