@@ -43,4 +43,6 @@ object Constants {
     const val OK_BTN_TEXT = "OK"
     const val CANCEL_BTN_TEXT = "CANCEL"
     const val DRINKS = "Event drinks:"
+    const val LONG_CLICK_PHOTO_CHANGE_HINT = "Long click to change photo!"
+    const val PICK_IMAGE_REQUEST = 71
 }

@@ -1,5 +1,6 @@
 package technokek.alchotracker.ui.fragments
 
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +29,7 @@ class AdminEventProfileFragment() : Fragment() {
     private lateinit var alkoEventPlace: MaterialTextView
     private lateinit var alkoEventStatus: MaterialTextView
     private lateinit var priceNumber: MaterialTextView
+    private lateinit var changeEventPhoto: MaterialCardView
     private lateinit var changeEventStatus: MaterialCardView
     private lateinit var changeEventDrinks: MaterialCardView
     private lateinit var eventMembers: MaterialCardView
@@ -54,6 +56,7 @@ class AdminEventProfileFragment() : Fragment() {
         alkoEventPlace = view.findViewById(R.id.event_name)
         alkoEventStatus = view.findViewById(R.id.admin_event_status_text)
         priceNumber = view.findViewById(R.id.price_number)
+        changeEventPhoto = view.findViewById(R.id.event_photo)
         changeEventStatus = view.findViewById(R.id.event_status_change_btn)
         changeEventDrinks = view.findViewById(R.id.event_drinks_btn)
         eventMembers = view.findViewById(R.id.event_members_btn)
@@ -95,6 +98,17 @@ class AdminEventProfileFragment() : Fragment() {
                     = AdminEventProfileFragmentDirections
                 .actionAdminEventProfileToMembersFragment(calendarModel.id)
             navController?.navigate(action)
+        }
+        changeEventPhoto.setOnClickListener {
+            Toast.makeText(requireContext(), Constants.LONG_CLICK_PHOTO_CHANGE_HINT, Toast.LENGTH_LONG).show()
+        }
+        changeEventPhoto.setOnLongClickListener {
+            val intent = Intent()
+            intent.type = "image/"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(Intent.createChooser(intent, "Select pic"),
+            Constants.PICK_IMAGE_REQUEST)
+            return@setOnLongClickListener true
         }
     }
 
