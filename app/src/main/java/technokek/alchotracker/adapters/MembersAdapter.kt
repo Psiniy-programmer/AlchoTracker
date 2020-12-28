@@ -30,6 +30,9 @@ class MembersAdapter(
         holder.mTextView.setOnClickListener {
             listener.pressMember(model.id)
         }
+        holder.mRelativeLayout.setOnClickListener {
+            listener.pressMember(model.id)
+        }
     }
 
     override fun getItemCount(): Int {
