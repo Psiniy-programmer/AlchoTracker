@@ -34,4 +34,14 @@
     <string name="title_members">Members</string>
     <string name="chat_title">Chat</string>
     <string name="write_message">Enter message</string>
+    <string name="calendar_toolbar">Calendar</string>
+    <string name="alko_event_toolbar">AlkoEvent</string>
+    <string name="alco">Alco</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="don_t_have_an_alcount_yet">Dont have an alcount yet?</string>
+    <string name="alcount_account">Alcount Account</string>
+    <string name="name">name</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_here">Login here</string>
 </resources>

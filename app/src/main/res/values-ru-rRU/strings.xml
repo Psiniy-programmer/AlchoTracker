@@ -72,6 +72,8 @@
     <string name="friends_after_counter">друзей</string>
     <string name="dates_after_counter">тусовок</string>
     <string name="friend_chat_profile">Открыть чат</string>
+    <string name="calendar_toolbar">Календарь</string>
+    <string name="alko_event_toolbar">Алко ивент</string>
 
     <string name="friend_title">Друзья</string>
     <string name="title_members">Участники</string>
@@ -81,4 +83,12 @@
     <string name="test_user_name">Имя Юзер</string>
     <string name="chat_title">Чат</string>
     <string name="write_message">Введите сообщение</string>
+    <string name="alco">Alco</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="don_t_have_an_alcount_yet">Dont have an alcount yet?</string>
+    <string name="alcount_account">Alcount Account</string>
+    <string name="name">name</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_here">Login here</string>
 </resources>
