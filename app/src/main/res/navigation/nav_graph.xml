@@ -74,6 +74,9 @@
         <action
             android:id="@+id/action_calendarFragment_to_adminEventProfile"
             app:destination="@id/adminEventProfile" />
+        <action
+            android:id="@+id/action_calendarFragment_to_memberEventProfile"
+            app:destination="@id/memberEventProfile" />
     </fragment>
     <fragment
         android:id="@+id/alchooFragment"
@@ -116,6 +119,9 @@
         <action
             android:id="@+id/action_adminEventProfile_to_membersFragment"
             app:destination="@id/membersFragment" />
+        <action
+            android:id="@+id/action_adminEventProfile_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
     </fragment>
     <fragment
         android:id="@+id/membersFragment"
@@ -124,6 +130,17 @@
         <argument
             android:name="eventId"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/memberEventProfile"
+        android:name="technokek.alchotracker.ui.fragments.MemberEventProfile"
+        android:label="MemberEventProfile" >
+        <action
+            android:id="@+id/action_memberEventProfile_to_membersFragment"
+            app:destination="@id/membersFragment" />
+        <argument
+            android:name="calendarModel"
+            app:argType="technokek.alchotracker.data.models.CalendarModel" />
     </fragment>
 
 </navigation>
