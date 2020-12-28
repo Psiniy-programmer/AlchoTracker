@@ -14,6 +14,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textview.MaterialTextView
 import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
+import technokek.alchotracker.api.FriendProfileChatClickListener
 import technokek.alchotracker.api.FriendToFriendClickListener
 import technokek.alchotracker.viewmodels.FriendProfileViewModel
 import technokek.alchotracker.viewmodels.factories.FriendProfileFactory
@@ -56,6 +57,7 @@ class FriendProfileFragment : Fragment() {
         eventsCounter = view.findViewById(R.id.friend_profile_events_counter)
         avatarView = view.findViewById(R.id.friend_profile_avatar)
         friendsBtn = view.findViewById(R.id.friend_profile_friends_btn)
+        preferencesBtn = view.findViewById(R.id.friend_preferences_list_btn)
 
         activity?.application?.let {
             mProfileViewModel = ViewModelProvider(
@@ -76,7 +78,10 @@ class FriendProfileFragment : Fragment() {
                 activity?.title = it.name
             }
         )
-        preferencesBtn = view.findViewById(R.id.friend_preferences_list_btn)
+
+        friendsBtn.setOnClickListener {
+//            (activity as FriendProfileChatClickListener).pressChatFromFriend(cha)
+        }
 
         preferencesBtn.setOnClickListener {
             val navController =

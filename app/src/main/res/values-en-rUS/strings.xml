@@ -33,4 +33,5 @@
     <string name="test_user_name">User name</string>
     <string name="title_members">Members</string>
     <string name="chat_title">Chat</string>
+    <string name="write_message">Enter message</string>
 </resources>
