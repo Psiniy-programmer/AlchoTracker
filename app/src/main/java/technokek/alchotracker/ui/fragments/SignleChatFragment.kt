@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -29,10 +30,11 @@ class SignleChatFragment : Fragment() {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: SingleChatAdapter
     private lateinit var mChatViewModel: SingleChatViewModel
-    private lateinit var mButton: Button
+    private lateinit var mButton: ImageButton
     private lateinit var mEditText: EditText
     private lateinit var mChatAvatar: ImageView
     private lateinit var mChatTittle: TextView
+    private lateinit var mBackBtn: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,11 +51,13 @@ class SignleChatFragment : Fragment() {
 
     override fun onResume() {
         (activity as MainActivity).supportActionBar?.hide()
+        (activity as MainActivity).bottomNavigationView.visibility = View.GONE
         super.onResume()
     }
 
     override fun onStop() {
         (activity as MainActivity).supportActionBar?.show()
+        (activity as MainActivity).bottomNavigationView.visibility = View.VISIBLE
         super.onStop()
     }
 
@@ -68,10 +72,11 @@ class SignleChatFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(context)
         progressBar = view.findViewById(R.id.chat_progress_bar)
         mRecyclerView = view.findViewById(R.id.recycler_chat)
-        mButton = view.findViewById(R.id.button_chat)
+        mButton = view.findViewById(R.id.button_chat_send)
         mEditText = view.findViewById(R.id.edit_text_chat)
         mChatAvatar = view.findViewById(R.id.chat_image)
         mChatTittle = view.findViewById(R.id.chat_name)
+        mBackBtn = view.findViewById(R.id.chat_back_button)
         mRecyclerView.layoutManager = linearLayoutManager
         mRecyclerView.setHasFixedSize(true)
 
@@ -80,7 +85,7 @@ class SignleChatFragment : Fragment() {
             .fit()
             .centerCrop()
             .into(mChatAvatar)
-//        mChatTittle.text = name
+        mChatTittle.text = name
 
         activity?.application?.let {
             mChatViewModel = ViewModelProvider(
@@ -109,6 +114,10 @@ class SignleChatFragment : Fragment() {
         mButton.setOnClickListener {
             mChatViewModel.sendMessage(mEditText.text.toString())
             mEditText.setText("")
+        }
+
+        mBackBtn.setOnClickListener {
+            activity?.onBackPressed()
         }
 
         return view

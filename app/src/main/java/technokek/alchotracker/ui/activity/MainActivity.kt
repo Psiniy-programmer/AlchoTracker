@@ -27,7 +27,8 @@ class MainActivity :
     AppCompatActivity(), EventClickListener,
     FriendClickListener, FoundUserListener,
     ChatListListener, SharedPreferencesHolder,
-    ChatClickListener, FriendToFriendClickListener {
+    ChatClickListener, FriendToFriendClickListener,
+    FriendProfileChatClickListener {
 
     lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
@@ -152,14 +153,24 @@ class MainActivity :
         )
     }
 
+    override fun pressChatFromFriend(chatID: String, avatar: String, name: String, uid: String) {
+        val bundle = Bundle()
+        bundle.putString("chatID", chatID)
+        bundle.putString("name", name)
+        bundle.putString("avatar", avatar)
+        bundle.putString("uid", uid)
+        navHostFragment.navController.navigate(
+            R.id.action_chatListFragment_to_chatFragment,
+            bundle
+        )
+    }
+
     override fun pressChatFriend(chatID: String, model: ChatFriendModel) {
         val bundle = Bundle()
         bundle.putString("chatID", chatID)
         bundle.putString("avatar", model.avatar)
         bundle.putString("name", model.name)
         bundle.putString("uid", model.friendID)
-
-        Log.d("SUKA", "PRESSCHATFRIEND: $chatID, $model")
 
         navHostFragment.navController.navigate(
             R.id.action_chatListFragment_to_chatFragment,
