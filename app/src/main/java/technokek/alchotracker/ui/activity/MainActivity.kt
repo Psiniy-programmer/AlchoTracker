@@ -182,6 +182,10 @@ class MainActivity :
         }
     }
 
+    override fun pressMember(uid: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun pressFriendToFriend(uid: String) {
         val bundle = Bundle()
         bundle.putString("uid", uid)
