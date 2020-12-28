@@ -23,4 +23,8 @@
     <string name="settings_status">Status</string>
     <string name="settings_alchoo">Visibility in Alchoo</string>
     <string name="log_out_account">Log out of account</string>
+    <string name="friends_after_counter">friends</string>
+    <string name="dates_after_counter">dates</string>
+    <string name="friend_chat_profile">Open chat</string>
+
 </resources>

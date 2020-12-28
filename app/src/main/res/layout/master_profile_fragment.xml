@@ -7,8 +7,7 @@
     android:orientation="vertical"
     android:padding="30dp"
 
-    tools:ignore="UseCompoundDrawables"
-    >
+    tools:ignore="UseCompoundDrawables">
 
     <LinearLayout style="@style/ProfileRowLayout">
 
@@ -16,14 +15,14 @@
             style="@style/card.avatar"
             android:layout_marginEnd="40dp">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/master_profile_avatar"
+                android:scaleType="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:contentDescription="@string/avatar"
-                android:padding="8dp"
-                android:src="@drawable/avatar" />
+                android:src="@drawable/avatar"/>
         </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
@@ -51,14 +50,6 @@
                 android:layout_height="wrap_content"
                 tools:text="profile status"
                 android:layout_marginBottom="3dp"/>
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/master_drink"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="@color/secondaryTextColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="favorite drink"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -114,7 +105,7 @@
                             style="@style/ProfileTextApp.subTittle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/friends" />
+                            android:text="@string/friends_after_counter" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -169,7 +160,7 @@
                             style="@style/ProfileTextApp.subTittle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/dates" />
+                            android:text="@string/dates_after_counter" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

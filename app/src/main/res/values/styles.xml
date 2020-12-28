@@ -164,16 +164,14 @@
 
     <style name="recycler_card_image_rounder">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">10dp</item>
+        <item name="cornerSize">30dp</item>
         <item name="color">@color/surface</item>
     </style>
 
     <style name="recycler_card_image">
         <item name="android:layout_width">@dimen/width_friend</item>
         <item name="android:layout_height">@dimen/height_friend</item>
-        <item name="android:adjustViewBounds">true</item>
-        <item name="android:scaleType">fitCenter</item>
+        <item name="civ_border_color">@color/surface</item>
         <item name="android:layout_margin">@dimen/image_margin</item>
-        <item name="shapeAppearanceOverlay">@style/recycler_card_image_rounder</item>
     </style>
 </resources>

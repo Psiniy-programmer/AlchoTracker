@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.textview.MaterialTextView
 import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.viewmodels.FriendProfileViewModel
@@ -18,13 +20,12 @@ import technokek.alchotracker.viewmodels.factories.FriendProfileFactory
 class FriendProfileFragment : Fragment() {
     private lateinit var uid: String
     private lateinit var mProfileViewModel: FriendProfileViewModel
-    private lateinit var userText: TextView
-    private lateinit var statusText: TextView
-    private lateinit var friendsCounter: TextView
-    private lateinit var eventsCounter: TextView
+    private lateinit var userText: MaterialTextView
+    private lateinit var statusText: MaterialTextView
+    private lateinit var friendsCounter: MaterialTextView
+    private lateinit var eventsCounter: MaterialTextView
     private lateinit var avatarView: ImageView
-    private lateinit var favouriteDrink: TextView
-    private lateinit var preferencesBtn: Button
+    private lateinit var preferencesBtn: MaterialCardView
     private lateinit var addBtn: MenuItem
     private lateinit var deleteBtn: MenuItem
     private lateinit var cancelBtn: MenuItem
@@ -40,7 +41,7 @@ class FriendProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         uid = arguments?.get("uid") as String
-        activity?.title = ""
+
         setHasOptionsMenu(true)
 
         savedInstanceState?.let {
@@ -51,7 +52,6 @@ class FriendProfileFragment : Fragment() {
         friendsCounter = view.findViewById(R.id.friend_profile_friends_counter)
         eventsCounter = view.findViewById(R.id.friend_profile_events_counter)
         avatarView = view.findViewById(R.id.friend_profile_avatar)
-        favouriteDrink = view.findViewById(R.id.friend_drink)
 
         activity?.application?.let {
             mProfileViewModel = ViewModelProvider(
@@ -60,19 +60,19 @@ class FriendProfileFragment : Fragment() {
             )[FriendProfileViewModel::class.java]
         }
 
+        activity?.title = mProfileViewModel.profile.value?.name
         mProfileViewModel.profile.observe(
             viewLifecycleOwner,
             {
                 userText.text = it.name
                 statusText.text = it.status
-                favouriteDrink.text = it.favouriteDrink
                 friendsCounter.text = it.friendsCount.toString()
                 eventsCounter.text = it.eventCount.toString()
                 Picasso.get().load(it.avatar).into(avatarView)
                 activity?.title = it.name
             }
         )
-        preferencesBtn = view.findViewById(R.id.friend_preferences_list)
+        preferencesBtn = view.findViewById(R.id.friend_preferences_list_btn)
 
         preferencesBtn.setOnClickListener {
             val navController =

@@ -1,7 +1,7 @@
 <resources>
     <string name="Preferences">Любимый напиток</string>
-    <string name="friends">Друзей</string>
-    <string name="dates">Тусовок</string>
+    <string name="friends">Друзья</string>
+    <string name="dates">Тусовки</string>
     <string name="text_label_1">Profile</string>
     <string name="text_label_2">Alchoo</string>
     <string name="text_label_3">Friends</string>
@@ -69,5 +69,9 @@
     <string name="settings_status">Статус</string>
     <string name="settings_alchoo">Видимость в Alchoo</string>
     <string name="log_out_account">Выйти из аккаунта</string>
+    <string name="friends_after_counter">друзей</string>
+    <string name="dates_after_counter">тусовок</string>
+    <string name="friend_chat_profile">Открыть чат</string>
+
 
 </resources>

@@ -49,8 +49,8 @@
     <string name="group_friends" translatable="false">group_friends</string>
 
     <string name="Preferences">Любимый напиток</string>
-    <string name="friends">Друзей</string>
-    <string name="dates">Тусовок</string>
+    <string name="friends">Друзья</string>
+    <string name="dates">Тусовки</string>
     <string name="friends_before_counter">У вас</string>
     <string name="dates_before_counter">У вас</string>
     <string name="partyes_desc">partyes_desc</string>
@@ -73,5 +73,8 @@
     <string name="settings_status">Статус</string>
     <string name="settings_alchoo">Видимость в Alchoo</string>
     <string name="log_out_account">Выйти из аккаунта</string>
+    <string name="friends_after_counter">друзей</string>
+    <string name="dates_after_counter">тусовок</string>
+    <string name="friend_chat_profile">Открыть чат</string>
 
 </resources>
