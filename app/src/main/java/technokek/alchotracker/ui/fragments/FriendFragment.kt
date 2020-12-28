@@ -50,7 +50,7 @@ class FriendFragment : Fragment(), RequestClickListener {
 
         requestTextView = view.findViewById(R.id.request_in_friends)
         mProgressBar = view.findViewById(R.id.indeterminateBarFriend)
-        activity?.title = "Friends"
+        activity?.title = resources.getString(R.string.friend_title)
 
         setHasOptionsMenu(true)
 
