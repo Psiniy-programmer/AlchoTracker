@@ -30,4 +30,5 @@
     <string name="delete_event">delete_event</string>
     <string name="add_event">add_event</string>
     <string name="friend_title">Friends</string>
+    <string name="title_members">Members</string>
 </resources>

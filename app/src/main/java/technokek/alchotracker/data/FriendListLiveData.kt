@@ -37,7 +37,7 @@ class FriendListLiveData() : MutableLiveData<MutableList<FriendModel>>() {
     }
 
     companion object {
-        const val TAG = "FriendLiveData"
+        const val TAG = "FriendListLiveData"
     }
 
     inner class FriendListListener : ValueEventListener {

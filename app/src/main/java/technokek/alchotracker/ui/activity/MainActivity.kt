@@ -183,7 +183,18 @@ class MainActivity :
     }
 
     override fun pressMember(uid: String) {
-        TODO("Not yet implemented")
+        if (uid != FirebaseAuth.getInstance().currentUser?.uid) {
+            val bundle = Bundle()
+            bundle.putString("uid", uid)
+            navHostFragment.navController.navigate(
+                R.id.action_membersFragment_to_friendProfileFragment,
+                bundle
+            )
+        } else {
+            navHostFragment.navController.navigate(
+                R.id.action_membersFragment_to_masterProfileFragment
+            )
+        }
     }
 
     override fun pressFriendToFriend(uid: String) {

@@ -74,6 +74,7 @@
     <string name="friend_chat_profile">Открыть чат</string>
 
     <string name="friend_title">Друзья</string>
+    <string name="title_members">Участники</string>
 
     <string name="delete_event">Удалить событие</string>
     <string name="add_event">Добавить событие</string>

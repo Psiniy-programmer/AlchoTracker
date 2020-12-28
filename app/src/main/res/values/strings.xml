@@ -80,6 +80,7 @@
 
     <string name="delete_event">delete_event</string>
     <string name="add_event">add_event</string>
+    <string name="title_members">Members</string>
     <string name="enter_alkoevent_data">Enter AlkoEvent Data:</string>
     <string name="enter_your_alcorithm">Enter your Alcorithm:</string>
     <string name="place">place</string>
