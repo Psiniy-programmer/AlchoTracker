@@ -40,7 +40,7 @@ class FriendProfileLiveData() : MutableLiveData<FriendProfileModel>() {
 
         override fun onDataChange(snapshot: DataSnapshot) {
             val chats = snapshot.child(uid).child(CHATID).children
-            var chatID = "none"
+            var chatID = ""
             for (item in chats) {
                 if (item.key?.contains(
                         aRef.currentUser?.uid.toString(),

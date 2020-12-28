@@ -1,12 +1,10 @@
 package technokek.alchotracker.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -16,6 +14,7 @@ import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.api.FriendProfileChatClickListener
 import technokek.alchotracker.api.FriendToFriendClickListener
+import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.viewmodels.FriendProfileViewModel
 import technokek.alchotracker.viewmodels.factories.FriendProfileFactory
 
@@ -43,6 +42,7 @@ class FriendProfileFragment : Fragment() {
         return inflater.inflate(R.layout.friend_profile_fragment, container, false)
     }
 
+    @SuppressLint("ShowToast")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         uid = arguments?.get("uid") as String
@@ -83,9 +83,13 @@ class FriendProfileFragment : Fragment() {
 
         chatBtn.setOnClickListener {
             mProfileViewModel.profile.value?.let { it1 ->
-                (activity as FriendProfileChatClickListener).pressChatFromFriend(
-                    it1.chatID, it1.avatar, it1.name, it1.userID
-                )
+                if (it1.chatID.isNotEmpty()) {
+                    (activity as FriendProfileChatClickListener).pressChatFromFriend(
+                        it1.chatID, it1.avatar, it1.name, it1.userID
+                    )
+                } else {
+                    Toast.makeText(context, resources.getString(R.string.out_of_chat), Toast.LENGTH_LONG).show()
+                }
             }
         }
 
