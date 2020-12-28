@@ -70,16 +70,16 @@ class SignleChatFragment : Fragment() {
         mRecyclerView = view.findViewById(R.id.recycler_chat)
         mButton = view.findViewById(R.id.button_chat)
         mEditText = view.findViewById(R.id.edit_text_chat)
-//        mChatAvatar = view.findViewById(R.id.chat_image)
+        mChatAvatar = view.findViewById(R.id.chat_image)
         mChatTittle = view.findViewById(R.id.chat_name)
         mRecyclerView.layoutManager = linearLayoutManager
         mRecyclerView.setHasFixedSize(true)
 
-//        Picasso.get()
-//            .load(avatar)
-//            .fit()
-//            .centerCrop()
-//            .into(mChatAvatar)
+        Picasso.get()
+            .load(avatar)
+            .fit()
+            .centerCrop()
+            .into(mChatAvatar)
 //        mChatTittle.text = name
 
         activity?.application?.let {
