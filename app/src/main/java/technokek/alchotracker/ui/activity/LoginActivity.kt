@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        val binding: AccountLoginBinding = DataBindingUtil.setContentView(this, R.layout.account_login)
         viewModel = ViewModelProviders.of(this, factory).get(AuthViewModel::class.java)
         binding.viewmodel = viewModel
         viewModel.authListener = this
