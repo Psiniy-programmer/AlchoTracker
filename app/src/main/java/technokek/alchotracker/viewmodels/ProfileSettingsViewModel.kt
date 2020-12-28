@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
+import android.provider.MediaStore
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MediatorLiveData
@@ -47,18 +48,13 @@ class ProfileSettingsViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.P)
     override fun setAvatar(requestCode: Int, resultCode: Int, data: Intent?) {
         CoroutineScope(Dispatchers.IO).launch {
             val filePath: Uri
             if (requestCode == 71 && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
                 filePath = data.data!!
                 try {
-                    val result = context.contentResolver?.let { ImageDecoder.createSource(it, filePath) }
-                    val bitmap: Bitmap? = result?.let { ImageDecoder.decodeBitmap(it) }
-                    if (bitmap != null) {
-                        profileSettings.setAvatar(bitmap)
-                    }
+                    profileSettings.setAvatar(filePath)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }

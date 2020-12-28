@@ -1,6 +1,7 @@
 package technokek.alchotracker.data
 
 import android.graphics.Bitmap
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -70,13 +71,10 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
             .setValue(newStatus)
     }
 
-    fun setAvatar(newAvatar: Bitmap) {
+    fun setAvatar(newAvatar: Uri) {
         val uid = mAuth.currentUser?.uid.toString()
         val ref = storage.child("img").child(uid)
-        val baos = ByteArrayOutputStream()
-        newAvatar.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val byteArray: ByteArray = baos.toByteArray()
-        val uploadTask: UploadTask = ref.putBytes(byteArray)
+        val uploadTask: UploadTask = ref.putFile(newAvatar)
 
         uploadTask.continueWithTask{task ->
             if (!task.isSuccessful) {
