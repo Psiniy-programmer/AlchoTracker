@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_friendProfileFragment_to_friendListFragment"
             app:destination="@id/friendListFragment" />
+        <action
+            android:id="@+id/action_friendProfileFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileSettingsFragment"

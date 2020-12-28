@@ -31,9 +31,9 @@
     <string name="add_event">add_event</string>
     <string name="friend_title">Friends</string>
     <string name="test_user_name">User name</string>
-    <string name="title_members">Members</string>
-    <string name="chat_title">Chat</string>
     <string name="write_message">Enter message</string>
+    <string name="out_of_chat">Create chat from Chat view</string>
+
     <string name="calendar_toolbar">Calendar</string>
     <string name="alko_event_toolbar">AlkoEvent</string>
     <string name="alco">Alco</string>
@@ -44,4 +44,6 @@
     <string name="name">name</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="login_here">Login here</string>
+    <string name="title_members">Members</string>
+    <string name="chat_title">Chat</string>
 </resources>

@@ -135,7 +135,7 @@ class MainActivity :
         bundle.putString("avatar", avatar)
         bundle.putString("uid", uid)
         navHostFragment.navController.navigate(
-            R.id.action_chatListFragment_to_chatFragment,
+            R.id.action_friendProfileFragment_to_chatFragment,
             bundle
         )
     }

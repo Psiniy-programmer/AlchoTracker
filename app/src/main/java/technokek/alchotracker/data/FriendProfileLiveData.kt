@@ -40,7 +40,7 @@ class FriendProfileLiveData() : MutableLiveData<FriendProfileModel>() {
 
         override fun onDataChange(snapshot: DataSnapshot) {
             val chats = snapshot.child(uid).child(CHATID).children
-            var chatID = String()
+            var chatID = ""
             for (item in chats) {
                 if (item.key?.contains(
                         aRef.currentUser?.uid.toString(),
@@ -50,9 +50,7 @@ class FriendProfileLiveData() : MutableLiveData<FriendProfileModel>() {
                     chatID = item.key!!
                 }
             }
-            setChatID(chatID)
-            setProfile(snapshot.child(uid))
-            value?.let { Log.d("SYKA", it.chatID) }
+            setProfile(snapshot.child(uid), chatID, uid)
         }
 
         override fun onCancelled(error: DatabaseError) {
@@ -60,7 +58,7 @@ class FriendProfileLiveData() : MutableLiveData<FriendProfileModel>() {
         }
     }
 
-    fun setProfile(x: DataSnapshot) {
+    fun setProfile(x: DataSnapshot, chatID: String, uid: String) {
 
         value = FriendProfileModel(
             x.child(AVATAR).value.toString(),
@@ -69,17 +67,9 @@ class FriendProfileLiveData() : MutableLiveData<FriendProfileModel>() {
             x.child(ALCHOINFO).child(FRIENDSCOUNT).getValue(Int::class.java)!!,
             x.child(ALCHOINFO).child(EVENTSCOUNT).getValue(Int::class.java)!!,
             x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString(),
-            x.child(CHATID).value.toString()
+            chatID,
+            uid
         )
-    }
-
-    fun setChatID(id: String) {
-        if (id.isNotEmpty())
-            query.ref.child(aRef.currentUser?.uid.toString())
-                .child(CHATID).setValue(id)
-        else
-            query.ref.child(aRef.currentUser?.uid.toString())
-                .child(CHATID).setValue("none")
     }
 
     companion object {

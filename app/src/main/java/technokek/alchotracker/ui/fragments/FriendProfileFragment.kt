@@ -1,12 +1,10 @@
 package technokek.alchotracker.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -16,6 +14,7 @@ import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.api.FriendProfileChatClickListener
 import technokek.alchotracker.api.FriendToFriendClickListener
+import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.viewmodels.FriendProfileViewModel
 import technokek.alchotracker.viewmodels.factories.FriendProfileFactory
 
@@ -30,6 +29,7 @@ class FriendProfileFragment : Fragment() {
     private lateinit var avatarView: ImageView
     private lateinit var preferencesBtn: MaterialCardView
     private lateinit var friendsBtn: MaterialCardView
+    private lateinit var chatBtn: MaterialCardView
     private lateinit var addBtn: MenuItem
     private lateinit var deleteBtn: MenuItem
     private lateinit var cancelBtn: MenuItem
@@ -42,6 +42,7 @@ class FriendProfileFragment : Fragment() {
         return inflater.inflate(R.layout.friend_profile_fragment, container, false)
     }
 
+    @SuppressLint("ShowToast")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         uid = arguments?.get("uid") as String
@@ -56,6 +57,7 @@ class FriendProfileFragment : Fragment() {
         friendsCounter = view.findViewById(R.id.friend_profile_friends_counter)
         eventsCounter = view.findViewById(R.id.friend_profile_events_counter)
         avatarView = view.findViewById(R.id.friend_profile_avatar)
+        chatBtn = view.findViewById(R.id.friend_chats_btn)
         friendsBtn = view.findViewById(R.id.friend_profile_friends_btn)
         preferencesBtn = view.findViewById(R.id.friend_preferences_list_btn)
 
@@ -79,8 +81,16 @@ class FriendProfileFragment : Fragment() {
             }
         )
 
-        friendsBtn.setOnClickListener {
-//            (activity as FriendProfileChatClickListener).pressChatFromFriend(cha)
+        chatBtn.setOnClickListener {
+            mProfileViewModel.profile.value?.let { it1 ->
+                if (it1.chatID.isNotEmpty()) {
+                    (activity as FriendProfileChatClickListener).pressChatFromFriend(
+                        it1.chatID, it1.avatar, it1.name, it1.userID
+                    )
+                } else {
+                    Toast.makeText(context, resources.getString(R.string.out_of_chat), Toast.LENGTH_LONG).show()
+                }
+            }
         }
 
         preferencesBtn.setOnClickListener {
@@ -115,7 +125,7 @@ class FriendProfileFragment : Fragment() {
             } else {
                 if (it.inFriend) {
                     deleteBtn.isVisible = true
-                    addBtn.isVisible =  false
+                    addBtn.isVisible = false
                     cancelBtn.isVisible = false
                 } else {
                     addBtn.isVisible = true
