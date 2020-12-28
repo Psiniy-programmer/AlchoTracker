@@ -362,14 +362,23 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     override fun onEventClick(calendarModel: CalendarModel) {
         selectedCalendarModel = calendarModel
         //TODO open event fragment
+        navigateToEventFragment(calendarModel)
+    }
+
+    private fun navigateToEventFragment(calendarModel: CalendarModel) {
         val navController =
             activity?.let { it -> Navigation.findNavController(it, R.id.content) }
-        /*activity?.supportFragmentManager?.beginTransaction()
-            ?.add(R.id.content, AdminEventProfileFragment(calendarModel))?.addToBackStack("AlkoEvent Fragment")
-            ?.commit()*/
-        val action =
-            CalendarFragmentDirections.actionCalendarFragmentToAdminEventProfile(calendarModel)
-        navController?.navigate(action)
+        val admin = mAuth.currentUser?.uid.toString() == calendarModel.adminId
+        if (admin) {
+            val action =
+                CalendarFragmentDirections.actionCalendarFragmentToAdminEventProfile(calendarModel)
+            navController?.navigate(action)
+        }
+        else {
+            val action =
+                CalendarFragmentDirections.actionCalendarFragmentToMemberEventProfile(calendarModel)
+            navController?.navigate(action)
+        }
     }
 
 

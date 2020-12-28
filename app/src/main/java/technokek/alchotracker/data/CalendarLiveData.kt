@@ -341,7 +341,8 @@ class CalendarLiveData() : MutableLiveData<MutableMap<LocalDate, MutableList<Cal
                     .child(USERS_CLICKED).value.toString()
                     .contains(mAuth.currentUser?.uid.toString()),
                 status = i.child(STATUS).value.toString(),
-                drinks = i.child(DRINKS).value.toString()
+                drinks = i.child(DRINKS).value.toString(),
+                avatar = i.child(AVATAR).value.toString()
             )
             if (!calendarEvents.containsKey(localDate)) {
                 calendarEvents.put(localDate, mutableListOf(calendarEvent))
