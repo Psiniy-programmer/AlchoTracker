@@ -53,6 +53,7 @@ class MasterProfileFragment : Fragment() {
         chatsBtn = view.findViewById(R.id.master_chats_btn)
         mProfileViewModel = ViewModelProvider(this)[MasterProfileViewModel()::class.java]
 
+        activity?.title = resources.getString(R.string.alko_event_toolbar)
 
         mProfileViewModel.profile.observe(
             viewLifecycleOwner,

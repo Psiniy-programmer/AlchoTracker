@@ -42,4 +42,11 @@
     <string name="password">password</string>
     <string name="sign_up">sign up</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="calendar_toolbar">Calendar</string>
+    <string name="alko_event_toolbar">AlkoEvent</string>
+    <string name="alco">Alco</string>
+    <string name="don_t_have_an_alcount_yet">Dont have an alcount yet?</string>
+    <string name="login_here">Login here</string>
+    <string name="title_members">Members</string>
+    <string name="chat_title">Chat</string>
 </resources>

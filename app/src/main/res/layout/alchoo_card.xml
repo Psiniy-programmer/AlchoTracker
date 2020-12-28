@@ -10,6 +10,7 @@
     <ImageView
         android:layout_gravity="center_horizontal"
         android:id="@+id/card_avatar"
+        android:scaleType="fitCenter"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:contentDescription="@string/cardavatar"
@@ -21,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="36sp"
+        android:background="@color/backgroundColor"
         android:gravity="center_horizontal|center_vertical"/>
 
     <TextView
@@ -28,6 +30,7 @@
         android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
         android:textSize="24sp"
         android:gravity="center_horizontal|center_vertical"/>
 
@@ -36,6 +39,7 @@
         android:id="@+id/card_favourite_drink"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
         android:textSize="18sp"
         android:gravity="center_horizontal|center_vertical"/>
 

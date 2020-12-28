@@ -81,6 +81,7 @@ class AdminEventProfileFragment() : Fragment(), AdminEventInterface, AdminEventP
         deleteEvent = view.findViewById(R.id.delete_event_btn)
         eventAvatarView = view.findViewById(R.id.event_profile_avatar)
 
+        activity?.title = resources.getString(R.string.alko_event_toolbar)
 
         if (arguments != null) {
             val args = AdminEventProfileFragmentArgs.fromBundle(requireArguments())

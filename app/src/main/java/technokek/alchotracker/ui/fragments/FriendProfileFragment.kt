@@ -1,5 +1,6 @@
 package technokek.alchotracker.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.api.FriendProfileChatClickListener
 import technokek.alchotracker.api.FriendToFriendClickListener
+import technokek.alchotracker.data.models.FriendModel
 import technokek.alchotracker.viewmodels.FriendProfileViewModel
 import technokek.alchotracker.viewmodels.factories.FriendProfileFactory
 
@@ -40,6 +42,7 @@ class FriendProfileFragment : Fragment() {
         return inflater.inflate(R.layout.friend_profile_fragment, container, false)
     }
 
+    @SuppressLint("ShowToast")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         uid = arguments?.get("uid") as String

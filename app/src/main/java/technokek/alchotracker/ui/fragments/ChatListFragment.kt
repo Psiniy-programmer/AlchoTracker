@@ -9,6 +9,7 @@ import android.view.*
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -46,7 +47,8 @@ class ChatListFragment : Fragment(), ChatClickListener {
             .inflate(R.layout.fragment_list_chat, container, false)
 
         mProgressBar = view.findViewById(R.id.chat_list_progress_bar)
-        activity?.title = "Chat"
+        activity?.title = resources.getString(R.string.chat_title)
+
         setHasOptionsMenu(true)
 
         return view
@@ -161,6 +163,7 @@ class ChatListFragment : Fragment(), ChatClickListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
 //                    FriendAdapter.setSearchName(newText)
+                    Toast.makeText(context, "HELLO EPTA", Toast.LENGTH_SHORT)
                 }
 
                 return false

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import technokek.alchotracker.R
@@ -14,6 +15,7 @@ import technokek.alchotracker.adapters.FriendListAdapter
 import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.api.FriendToFriendClickListener
 import technokek.alchotracker.viewmodels.FriendListViewModel
+import technokek.alchotracker.viewmodels.FriendViewModel
 
 class FriendListFragment : Fragment() {
 
@@ -48,7 +50,7 @@ class FriendListFragment : Fragment() {
         friendListRecyclerView = view.findViewById(R.id.recycler_friend_to_friend)
         friendListRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        friendListViewModel = FriendListViewModel()
+        friendListViewModel = ViewModelProvider(this)[FriendListViewModel::class.java]
         friendListViewModel.setFriendID(uid)
 
         friendListAdapter = if (friendListViewModel.mediatorFriendLiveData.value != null) {

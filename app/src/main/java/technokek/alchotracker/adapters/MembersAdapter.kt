@@ -6,11 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.viewholders.FriendViewHolder
-import technokek.alchotracker.api.FriendClickListener
 import technokek.alchotracker.api.FriendToFriendClickListener
 import technokek.alchotracker.data.models.FriendModel
 
-class FriendListAdapter(
+class MembersAdapter(
     private var mData: MutableList<FriendModel>,
     private val listener: FriendToFriendClickListener
 ) :
@@ -29,11 +28,10 @@ class FriendListAdapter(
         Picasso.get().load(model.avatar).into(holder.mImageView)
         holder.mTextView.text = model.name
         holder.mTextView.setOnClickListener {
-            listener.pressFriendToProfile(model.id)
+            listener.pressMember(model.id)
         }
-
         holder.mRelativeLayout.setOnClickListener {
-            listener.pressFriendToProfile(model.id)
+            listener.pressMember(model.id)
         }
     }
 
