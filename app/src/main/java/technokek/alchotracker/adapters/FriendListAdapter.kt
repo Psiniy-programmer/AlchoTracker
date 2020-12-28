@@ -31,6 +31,10 @@ class FriendListAdapter(
         holder.mTextView.setOnClickListener {
             listener.pressFriendToProfile(model.id)
         }
+
+        holder.mRelativeLayout.setOnClickListener {
+            listener.pressFriendToProfile(model.id)
+        }
     }
 
     override fun getItemCount(): Int {
