@@ -92,6 +92,7 @@ class ChatListFragment : Fragment(), ChatClickListener {
                     chatFriendListRecyclerView.adapter = chatFriendListAdapter
                 }
 
+                chatFriendListAdapter.refresh(mChatViewModel.mediatorFriendLiveData.value!!)
                 chatFriendListAdapter.notifyDataSetChanged()
             }
         )
@@ -112,7 +113,7 @@ class ChatListFragment : Fragment(), ChatClickListener {
                     chatListAdapter.refresh(mChatViewModel.mediatorChatLiveData.value!!)
                     chatListRecyclerView.adapter = chatListAdapter
                 } else {
-
+                    chatListAdapter.refresh(mChatViewModel.mediatorChatLiveData.value!!)
                     chatListAdapter.notifyDataSetChanged()
                 }
             }
@@ -163,7 +164,6 @@ class ChatListFragment : Fragment(), ChatClickListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
 //                    FriendAdapter.setSearchName(newText)
-                    Toast.makeText(context, "HELLO EPTA", Toast.LENGTH_SHORT)
                 }
 
                 return false
