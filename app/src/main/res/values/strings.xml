@@ -98,5 +98,17 @@
     <string name="test_user_name">Имя Юзер</string>
     <string name="write_message">Введите сообщение</string>
     <string name="out_of_chat">Создайте чат</string>
+    <string name="calendar_toolbar" translatable="true">Календарь</string>
+    <string name="alko_event_toolbar" translatable="true">Алко ивент</string>
+    <string name="alco">Alco</string>
+    <string name="tracker">Tracker</string>
+    <string name="alcho">Alcho</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="don_t_have_an_alcount_yet">Dont have an alcount yet?</string>
+    <string name="alcount_account">Alcount Account</string>
+    <string name="name">name</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_here">Login here</string>
 
 </resources>
