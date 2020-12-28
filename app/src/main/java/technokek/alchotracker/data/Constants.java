@@ -41,5 +41,7 @@ public class Constants {
     public static final String TIMER_TIMESTAMPS_IN_SP = "TIMER_TIMESTAMPS_IN_SP";
     public static final String SHARED_PREFS = "SHARED_PREFS";
     public static final String TOTAL_MESSAGE = "total_message";
+    public static final String MEMBERS = "members";
+    public static final String ADMIN_ID = "adminid";
 }
 

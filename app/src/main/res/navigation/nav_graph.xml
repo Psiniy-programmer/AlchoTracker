@@ -133,6 +133,12 @@
         <argument
             android:name="eventId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_membersFragment_to_masterProfileFragment"
+            app:destination="@id/masterProfileFragment" />
+        <action
+            android:id="@+id/action_membersFragment_to_friendProfileFragment"
+            app:destination="@id/friendProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/memberEventProfile"

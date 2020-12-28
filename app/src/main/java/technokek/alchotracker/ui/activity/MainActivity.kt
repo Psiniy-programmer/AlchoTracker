@@ -73,31 +73,6 @@ class MainActivity :
             })
     }
 
-//    private fun checkKeyBoardUp() {
-//        bottomNavigationView
-//            .viewTreeObserver
-//            .addOnGlobalLayoutListener {
-//                val r: Rect = Rect()
-//                bottomNavigationView.getWindowVisibleDisplayFrame(r)
-//                val heightDiff = bottomNavigationView
-//            }
-//    }
-
-//    public void checkKeyBoardUp(){
-//        bottomNavigationView.getViewTreeObserver()
-//            .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//                @Override public void onGlobalLayout() {
-//                    Rect r = new Rect();
-//                    rootView.getWindowVisibleDisplayFrame(r);
-//                    int heightDiff = rootView.getRootView().getHeight() - (r.bottom - r.top);
-//                    if (heightDiff > 100) {
-//                        whatEverView.setVisibility(View.INVISIBLE);
-//                    } else { //ok now we know the keyboard is down...
-//                        whatEverView.setVisibility(View.VISIBLE); }
-//                }
-//            });
-//    }
-
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -194,7 +169,18 @@ class MainActivity :
     }
 
     override fun pressMember(uid: String) {
-        TODO("Not yet implemented")
+        if (uid != FirebaseAuth.getInstance().currentUser?.uid) {
+            val bundle = Bundle()
+            bundle.putString("uid", uid)
+            navHostFragment.navController.navigate(
+                R.id.action_membersFragment_to_friendProfileFragment,
+                bundle
+            )
+        } else {
+            navHostFragment.navController.navigate(
+                R.id.action_membersFragment_to_masterProfileFragment
+            )
+        }
     }
 
     override fun pressFriendToFriend(uid: String) {

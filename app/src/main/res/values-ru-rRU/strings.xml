@@ -76,6 +76,7 @@
     <string name="alko_event_toolbar">Алко ивент</string>
 
     <string name="friend_title">Друзья</string>
+    <string name="title_members">Участники</string>
 
     <string name="delete_event">Удалить событие</string>
     <string name="add_event">Добавить событие</string>
@@ -91,4 +92,5 @@
     <string name="name">name</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="login_here">Login here</string>
+    <string name="chat_title">Чат</string>
 </resources>
