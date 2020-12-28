@@ -37,7 +37,6 @@ class FriendFragment : Fragment(), RequestClickListener {
     private lateinit var adapterSearchFriend: SearchFriendAdapter
 
     private lateinit var requestTextView: TextView
-//    private lateinit var friendTextView: TextView
     private lateinit var mProgressBar: ProgressBar
     private lateinit var searchView: SearchView
 
@@ -50,7 +49,6 @@ class FriendFragment : Fragment(), RequestClickListener {
             .inflate(R.layout.fragment_friend, container, false)
 
         requestTextView = view.findViewById(R.id.request_in_friends)
-//        friendTextView = view.findViewById(R.id.list_friends)
         mProgressBar = view.findViewById(R.id.indeterminateBarFriend)
         activity?.title = "Friends"
 
@@ -104,12 +102,6 @@ class FriendFragment : Fragment(), RequestClickListener {
                 }
 
                 adapterFriend.notifyDataSetChanged()
-
-//                if (mFriendViewModel.mediatorFriendLiveData.value!!.isEmpty()) {
-//                    friendTextView.visibility = View.GONE
-//                } else {
-//                    friendTextView.visibility = View.VISIBLE
-//                }
             }
         )
 
@@ -138,12 +130,6 @@ class FriendFragment : Fragment(), RequestClickListener {
                 if (mFriendViewModel.mediatorFriendLiveData.value != null) {
                     adapterFriend.refresh(mFriendViewModel.mediatorFriendLiveData.value!!)
                     adapterFriend.notifyDataSetChanged()
-
-//                    if (mFriendViewModel.mediatorFriendLiveData.value!!.isEmpty()) {
-//                        friendTextView.visibility = View.GONE
-//                    } else {
-//                        friendTextView.visibility = View.VISIBLE
-//                    }
                 }
 
                 if (mFriendViewModel.mediatorRequestLiveData.value != null) {
@@ -172,7 +158,6 @@ class FriendFragment : Fragment(), RequestClickListener {
                 requestRecyclerView.visibility = View.GONE
                 requestTextView.visibility = View.GONE
                 friendRecyclerView.visibility = View.GONE
-//                friendTextView.visibility = View.GONE
                 searchFriendRecyclerView.visibility = View.VISIBLE
 
                 mFriendViewModel.mediatorSearchLiveData.observe(
@@ -196,13 +181,11 @@ class FriendFragment : Fragment(), RequestClickListener {
             }
 
             override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-//                if (mFriendViewModel.mediatorFriendLiveData.value!!.isEmpty()) {
-//                    friendTextView.visibility = View.GONE
-//                    friendRecyclerView.visibility = View.GONE
-//                } else {
-//                    friendTextView.visibility = View.VISIBLE
-//                    friendRecyclerView.visibility = View.VISIBLE
-//                }
+                if (mFriendViewModel.mediatorFriendLiveData.value!!.isEmpty()) {
+                    friendRecyclerView.visibility = View.GONE
+                } else {
+                    friendRecyclerView.visibility = View.VISIBLE
+                }
 
                 if (mFriendViewModel.mediatorRequestLiveData.value!!.isEmpty()) {
                     requestTextView.visibility = View.GONE

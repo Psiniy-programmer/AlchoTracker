@@ -7,19 +7,18 @@
     android:paddingRight="@dimen/chat_horizontal_margin"
     android:paddingBottom="@dimen/chat_vertical_margin">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/chat_image"
-        android:layout_width="@dimen/width_friend"
-        android:layout_height="@dimen/height_friend" />
+        style="@style/recycler_card_image" />
 
     <TextView
         android:id="@+id/chat_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_friend"
         android:layout_toEndOf="@id/chat_image"
+        android:gravity="center_vertical|center_horizontal"
         android:textColor="@color/primaryColor"
-        android:textSize="36sp"
-        android:gravity="center_vertical|center_horizontal"/>
+        android:textSize="36sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_chat"
@@ -35,12 +34,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:textColor="@color/primaryColor"
         android:layout_toStartOf="@+id/button_chat"
         android:ems="10"
         android:hint="Введите сообщение"
-        android:textColorHint="@color/gray"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="@color/primaryColor"
+        android:textColorHint="@color/gray" />
 
     <Button
         android:id="@+id/button_chat"

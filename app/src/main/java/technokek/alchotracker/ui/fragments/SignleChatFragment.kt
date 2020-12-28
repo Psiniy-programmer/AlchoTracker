@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,7 @@ import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.SingleChatAdapter
 import technokek.alchotracker.data.models.SingleChatMessageModel
+import technokek.alchotracker.ui.activity.MainActivity
 import technokek.alchotracker.viewmodels.SingleChatViewModel
 import technokek.alchotracker.viewmodels.factories.SingleChatViewModelFactory
 
