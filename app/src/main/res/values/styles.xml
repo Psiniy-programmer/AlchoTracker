@@ -68,6 +68,10 @@
         <item name="cardBackgroundColor">@color/secondaryColor</item>
     </style>
 
+    <style name="card.delete">
+        <item name="cardBackgroundColor">@color/red_800</item>
+    </style>
+
     <style name="button_image">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -76,6 +80,14 @@
     </style>
 
 <!--    Стили для Settings-->
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
     <style name="settings_layout_row">
         <item name="cardBackgroundColor">@color/secondaryColor</item>
         <item name="android:layout_width">match_parent</item>

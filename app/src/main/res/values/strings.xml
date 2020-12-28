@@ -76,5 +76,23 @@
     <string name="friends_after_counter">друзей</string>
     <string name="dates_after_counter">тусовок</string>
     <string name="friend_chat_profile">Открыть чат</string>
+    <string name="friend_title">Friends</string>
 
+    <string name="delete_event">delete_event</string>
+    <string name="add_event">add_event</string>
+    <string name="enter_alkoevent_data">Enter AlkoEvent Data:</string>
+    <string name="enter_your_alcorithm">Enter your Alcorithm:</string>
+    <string name="place">place</string>
+    <string name="costs">costs</string>
+    <string name="drinks_list_csv">drinks list (csv)</string>
+    <string name="submit">Submit</string>
+    <string name="select_time">select time</string>
+    <string name="status">Status</string>
+    <string name="change_event_status">Change event status</string>
+    <string name="drinks">Drinks</string>
+    <string name="alkoevent_members">AlkoEvent members</string>
+    <string name="delete_alkoevent">Delete AlkoEvent</string>
+    <string name="change_drinks">Change drinks</string>
+    <string name="price">Price</string>
+    <string name="enter_drinks">Enter drinks</string>
 </resources>

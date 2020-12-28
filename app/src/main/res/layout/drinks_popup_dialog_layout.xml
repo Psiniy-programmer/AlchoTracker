@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/drinks_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/pop_up_titel_drinks"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_drinks"
+        android:textSize="32sp"
+        android:textColor="@color/selectorColor"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_dialog_drinks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:hintTextAppearance="@color/selectorColor"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pop_up_drinks_add"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:background="@drawable/text_input"
+            android:gravity="center"
+            android:textColor="@color/selectorColor"
+            android:textColorHint="@color/selectorColor"
+            android:hint="@string/drinks_list_csv"
+            android:layout_marginTop="12dp"
+            android:ellipsize="start"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/button_submit_drinks"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="@string/submit"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/selectorColor"
+        android:background="@drawable/bg_button_submit"
+        android:layout_marginBottom="24dp"
+        />
+
+</LinearLayout>

@@ -7,6 +7,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import technokek.alchotracker.api.AuthListener
+import technokek.alchotracker.api.SignUpInterface
 import technokek.alchotracker.data.repositories.UserRepository
 import technokek.alchotracker.ui.activity.LoginActivity
 import technokek.alchotracker.ui.activity.SignupActivity
@@ -22,6 +23,7 @@ class AuthViewModel(
 
     //auth listener
     var authListener: AuthListener? = null
+    lateinit var callback: SignUpInterface
 
     //disposable to dispose the Completable
     private val disposables = CompositeDisposable()
@@ -64,7 +66,7 @@ class AuthViewModel(
         }
 
         authListener?.onStarted()
-        val disposable = repository.register(email!!, password!!, name!!)
+        val disposable = repository.register(email!!, password!!, name!!, callback)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -74,8 +76,6 @@ class AuthViewModel(
             })
         disposables.add(disposable)
     }
-
-    fun setDefaultValue() = repository.setDefaultValue()
 
     fun goToSignup(view: View) {
         Intent(view.context, SignupActivity::class.java).also {

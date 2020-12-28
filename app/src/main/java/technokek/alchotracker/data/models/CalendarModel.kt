@@ -1,6 +1,7 @@
 package technokek.alchotracker.data.models
 
 import androidx.annotation.ColorRes
+import java.io.Serializable
 import java.time.LocalDateTime
 
 /*
@@ -16,7 +17,9 @@ data class CalendarModel(
     val adminId: String,
     val ordinaryMembersIds: String = "",
     val usersClickedIDs: String = "",
-    var userClicked: Boolean = false
-) {
+    var userClicked: Boolean = false,
+    var status: String = "Default",
+    var drinks: String = ""
+) : Serializable {
     data class Place(val name: String, val price: String, val place: String)
 }

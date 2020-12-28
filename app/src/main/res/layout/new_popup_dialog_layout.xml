@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/bottom_sheet_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/pop_up_titel"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_alkoevent_data"
+        android:textSize="32sp"
+        android:textColor="@color/selectorColor"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/tv_alcorithm"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_your_alcorithm"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        android:textColor="@color/selectorColor"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
+        />
+    
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_dialog1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:hintTextAppearance="@color/selectorColor"
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pop_up_place"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:background="@drawable/text_input"
+            android:gravity="center"
+            android:textColor="@color/selectorColor"
+            android:textColorHint="@color/selectorColor"
+            android:hint="@string/place"
+            android:layout_marginTop="12dp"
+            android:ellipsize="start"
+        />
+
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_dialog2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:hintTextAppearance="@color/selectorColor"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pop_up_costs"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:background="@drawable/text_input"
+            android:gravity="center"
+            android:textColor="@color/selectorColor"
+            android:textColorHint="@color/selectorColor"
+            android:hint="@string/costs"
+            android:layout_marginTop="12dp"
+            android:ellipsize="start"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_dialog3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:hintTextAppearance="@color/selectorColor"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pop_up_drinks"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:background="@drawable/text_input"
+            android:gravity="center"
+            android:textColor="@color/selectorColor"
+            android:textColorHint="@color/selectorColor"
+            android:hint="@string/drinks_list_csv"
+            android:layout_marginTop="12dp"
+            android:ellipsize="start"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <Button
+        android:id="@+id/pop_up_time"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="@string/select_time"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/selectorColor"
+        android:background="@drawable/bg_button_submit"
+        />
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="@string/submit"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/selectorColor"
+        android:background="@drawable/bg_button_submit"
+        android:layout_marginBottom="24dp"
+        />
+
+</LinearLayout>

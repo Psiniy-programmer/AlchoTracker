@@ -2,7 +2,7 @@ package technokek.alchotracker.api
 
 import technokek.alchotracker.data.models.FriendModel
 
-interface FriendClickListener {
+interface ChatClickListener {
 
-    fun pressFriend(uid: String)
+    fun pressChat(chatID: String, model: FriendModel)
 }

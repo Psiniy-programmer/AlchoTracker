@@ -26,7 +26,8 @@ import technokek.alchotracker.databinding.ActivityMainBinding
 class MainActivity :
     AppCompatActivity(), EventClickListener,
     FriendClickListener, FoundUserListener,
-    ChatListListener, SharedPreferencesHolder {
+    ChatListListener, SharedPreferencesHolder,
+    ChatClickListener, FriendToFriendClickListener {
 
     lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
@@ -157,7 +158,7 @@ class MainActivity :
     }
 
     override fun pressChatFriend(chatID: String, model: ChatFriendModel) {
-        val toast = Toast.makeText(this, "FriendList", Toast.LENGTH_SHORT)
+        val toast = Toast.makeText(this, "Chat", Toast.LENGTH_SHORT)
         toast.show()
 
         val bundle = Bundle()
@@ -170,6 +171,16 @@ class MainActivity :
 
         navHostFragment.navController.navigate(
             R.id.action_chatListFragment_to_chatFragment,
+            bundle
+        )
+    }
+
+    override fun pressFriendToFriend(uid: String) {
+        val bundle = Bundle()
+        bundle.putString("uid", uid)
+
+        navHostFragment.navController.navigate(
+            R.id.action_friendProfileFragment_to_friendListFragment,
             bundle
         )
     }
