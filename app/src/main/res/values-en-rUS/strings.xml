@@ -23,5 +23,22 @@
     <string name="settings_status">Status</string>
     <string name="settings_alchoo">Visibility in Alchoo</string>
     <string name="log_out_account">Log out of account</string>
+    <string name="friends_after_counter">friends</string>
+    <string name="dates_after_counter">dates</string>
+    <string name="friend_chat_profile">Open chat</string>
+
+    <string name="delete_event">delete_event</string>
+    <string name="add_event">add_event</string>
+    <string name="friend_title">Friends</string>
+    <string name="test_user_name">User name</string>
     <string name="calendar_toolbar">Calendar</string>
+    <string name="alko_event_toolbar">AlkoEvent</string>
+    <string name="alco">Alco</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="don_t_have_an_alcount_yet">Dont have an alcount yet?</string>
+    <string name="alcount_account">Alcount Account</string>
+    <string name="name">name</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_here">Login here</string>
 </resources>

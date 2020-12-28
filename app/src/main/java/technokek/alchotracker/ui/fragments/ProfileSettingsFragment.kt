@@ -105,7 +105,6 @@ class ProfileSettingsFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    @RequiresApi(Build.VERSION_CODES.P)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         mSettingsViewModel.setAvatar(requestCode, resultCode, data)

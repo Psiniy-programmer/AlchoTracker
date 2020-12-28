@@ -1,19 +1,21 @@
 package technokek.alchotracker.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.SingleChatAdapter
-import technokek.alchotracker.data.models.SingleChatMessageModel
+import technokek.alchotracker.ui.activity.MainActivity
 import technokek.alchotracker.viewmodels.SingleChatViewModel
 import technokek.alchotracker.viewmodels.factories.SingleChatViewModelFactory
 
@@ -45,6 +47,16 @@ class SignleChatFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        (activity as MainActivity).supportActionBar?.hide()
+        super.onResume()
+    }
+
+    override fun onStop() {
+        (activity as MainActivity).supportActionBar?.show()
+        super.onStop()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -68,7 +80,7 @@ class SignleChatFragment : Fragment() {
             .fit()
             .centerCrop()
             .into(mChatAvatar)
-        mChatTittle.text = name
+//        mChatTittle.text = name
 
         activity?.application?.let {
             mChatViewModel = ViewModelProvider(

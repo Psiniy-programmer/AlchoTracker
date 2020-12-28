@@ -31,11 +31,7 @@ class FriendAdapter(
         Picasso.get().load(model.avatar).into(holder.mImageView)
         holder.mTextView.text = model.name
         holder.mTextView.setOnClickListener {
-            if (model.chatID.isNullOrEmpty()) {
-                listener.pressFriend(model.id)
-            } else {
-                listener.pressChat(model.chatID, model)
-            }
+            listener.pressFriend(model.id)
         }
     }
 

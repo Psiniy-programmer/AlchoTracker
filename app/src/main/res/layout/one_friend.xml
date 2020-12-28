@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/recycler_card">
 
@@ -7,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/friend_image"
             style="@style/recycler_card_image"
             />
@@ -15,7 +16,8 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/friend_text"
             style="@style/recycler_card_text"
-            tools:text="Hello" />
+            tools:text="Hello"
+            android:layout_toEndOf="@id/friend_image"/>
     </RelativeLayout>
 
 

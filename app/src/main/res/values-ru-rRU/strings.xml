@@ -1,7 +1,7 @@
 <resources>
     <string name="Preferences">Любимый напиток</string>
-    <string name="friends">Друзей</string>
-    <string name="dates">Тусовок</string>
+    <string name="friends">Друзья</string>
+    <string name="dates">Тусовки</string>
     <string name="text_label_1">Profile</string>
     <string name="text_label_2">Alchoo</string>
     <string name="text_label_3">Friends</string>
@@ -69,6 +69,23 @@
     <string name="settings_status">Статус</string>
     <string name="settings_alchoo">Видимость в Alchoo</string>
     <string name="log_out_account">Выйти из аккаунта</string>
+    <string name="friends_after_counter">друзей</string>
+    <string name="dates_after_counter">тусовок</string>
+    <string name="friend_chat_profile">Открыть чат</string>
     <string name="calendar_toolbar">Календарь</string>
+    <string name="alko_event_toolbar">Алко ивент</string>
 
+    <string name="friend_title">Друзья</string>
+
+    <string name="delete_event">Удалить событие</string>
+    <string name="add_event">Добавить событие</string>
+    <string name="test_user_name">Имя Юзер</string>
+    <string name="alco">Alco</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="don_t_have_an_alcount_yet">Dont have an alcount yet?</string>
+    <string name="alcount_account">Alcount Account</string>
+    <string name="name">name</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_here">Login here</string>
 </resources>

@@ -27,7 +27,6 @@ class MasterProfileFragment : Fragment() {
     private lateinit var friendsBtn: MaterialCardView
     private lateinit var partiesBtn: MaterialCardView
     private lateinit var chatsBtn: MaterialCardView
-    private lateinit var favouriteDrink: MaterialTextView
     private lateinit var mProfileViewModel: MasterProfileViewModel
 
     override fun onCreateView(
@@ -48,20 +47,19 @@ class MasterProfileFragment : Fragment() {
         friendsCounter = view.findViewById(R.id.master_profile_friends_counter)
         eventsCounter = view.findViewById(R.id.master_profile_events_counter)
         avatarView = view.findViewById(R.id.master_profile_avatar)
-        favouriteDrink = view.findViewById(R.id.master_drink)
         preferencesBtn = view.findViewById(R.id.master_preferences_list_btn)
         friendsBtn = view.findViewById(R.id.master_profile_friends_btn)
         partiesBtn = view.findViewById(R.id.master_profile_parties_btn)
         chatsBtn = view.findViewById(R.id.master_chats_btn)
         mProfileViewModel = ViewModelProvider(this)[MasterProfileViewModel()::class.java]
 
+        activity?.title = resources.getString(R.string.alko_event_toolbar)
 
         mProfileViewModel.profile.observe(
             viewLifecycleOwner,
             {
                 userText.text = it.name
                 statusText.text = it.status
-                favouriteDrink.text = it.favouriteDrink
                 friendsCounter.text = it.friendsCount.toString()
                 eventsCounter.text = it.eventCount.toString()
                 Picasso.get().load(it.avatar).into(avatarView)

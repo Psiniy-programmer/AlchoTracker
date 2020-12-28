@@ -11,15 +11,13 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
 
     private lateinit var query: Query
     private val friendListener = FriendListener()
-    private var checkFriendListChat = false
 
-    constructor(ref: DatabaseReference) : this() {
-        query = ref
+    constructor(query: Query) : this() {
+        this.query = query
     }
 
-    constructor(ref: DatabaseReference, boolean: Boolean) : this() {
+    constructor(ref: DatabaseReference) : this() {
         this.query = ref
-        this.checkFriendListChat = boolean
     }
 
     override fun onActive() {
@@ -48,74 +46,19 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
             val friends: MutableList<FriendModel> = mutableListOf()
             val listFriend: MutableList<String> = getListFriends(snapshot)
 
-            if (!checkFriendListChat) {
-                for (i in snapshot.children) {
-                    if (listFriend.contains(i.key)) {
-                        val friend = FriendModel(
-                            id = i.key.toString(),
-                            name = i.child(NAME).value.toString(),
-                            avatar = i.child(AVATAR).value.toString(),
-                            incoming = i.child(FRIENDS).child(INCOMING_REQUESTS).value.toString(),
-                            outgoing = i.child(FRIENDS).child(OUTGOING_REQUESTS).value.toString(),
-                            friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
-                                .getValue(Int::class.java)!!,
-                            friendsList = i.child(FRIENDS).child(LIST).value.toString()
-                        )
-                        friends.add(friend)
-                    }
-                }
-            } else {
-                val listChatID: MutableList<String> = mutableListOf()
-                val snap = snapshot
-                    .child(currentUser!!.uid)
-                    .child(Constants.CHATID)
-                for (i in snap.children) {
-                    listChatID.add(i.key.toString())
-                }
-
-                var chatID = ""
-
-                for (i in snapshot.children) {
-                    var bool = false
-                    if (listFriend.contains(i.key)) {
-                        for (j in listChatID) {
-                            if (j.contains(i.key.toString())) {
-                                bool = true
-                                chatID = j
-                                break
-                            }
-                        }
-
-                        if (bool) {
-                            val friend = FriendModel(
-                                id = i.key.toString(),
-                                name = i.child(NAME).value.toString(),
-                                avatar = i.child(AVATAR).value.toString(),
-                                incoming = i.child(FRIENDS).child(INCOMING_REQUESTS).value.toString(),
-                                outgoing = i.child(FRIENDS).child(OUTGOING_REQUESTS).value.toString(),
-                                friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
-                                    .getValue(Int::class.java)!!,
-                                friendsList = i.child(FRIENDS).child(LIST).value.toString(),
-                                chatID = chatID,
-                                bool = false
-                            )
-                            friends.add(friend)
-                        } else {
-                            val friend = FriendModel(
-                                id = i.key.toString(),
-                                name = i.child(NAME).value.toString(),
-                                avatar = i.child(AVATAR).value.toString(),
-                                incoming = i.child(FRIENDS).child(INCOMING_REQUESTS).value.toString(),
-                                outgoing = i.child(FRIENDS).child(OUTGOING_REQUESTS).value.toString(),
-                                friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
-                                    .getValue(Int::class.java)!!,
-                                friendsList = i.child(FRIENDS).child(LIST).value.toString(),
-                                chatID = "${currentUser.uid};${i.key}",
-                                bool = true
-                            )
-                            friends.add(friend)
-                        }
-                    }
+            for (i in snapshot.children) {
+                if (listFriend.contains(i.key)) {
+                    val friend = FriendModel(
+                        id = i.key.toString(),
+                        name = i.child(NAME).value.toString(),
+                        avatar = i.child(AVATAR).value.toString(),
+                        incoming = i.child(FRIENDS).child(INCOMING_REQUESTS).value.toString(),
+                        outgoing = i.child(FRIENDS).child(OUTGOING_REQUESTS).value.toString(),
+                        friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
+                            .getValue(Int::class.java)!!,
+                        friendsList = i.child(FRIENDS).child(LIST).value.toString()
+                    )
+                    friends.add(friend)
                 }
             }
 

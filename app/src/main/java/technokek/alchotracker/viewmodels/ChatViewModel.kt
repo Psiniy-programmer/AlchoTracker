@@ -8,6 +8,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import technokek.alchotracker.api.ChatInterFace
+import technokek.alchotracker.data.ChatCreateDialog
 import technokek.alchotracker.data.ChatFriendLiveData
 import technokek.alchotracker.data.ChatListFriendLiveData
 import technokek.alchotracker.data.FriendLiveData
@@ -19,7 +20,7 @@ class ChatViewModel : ViewModel(), ChatInterFace {
 
     private val chatListLiveData = ChatListFriendLiveData(HOT_STOCK_REF)
     private val chatFriendLiveData = ChatFriendLiveData(HOT_STOCK_CHAT)
-    private val friends = FriendLiveData(HOT_STOCK_REF, true)
+    private val friends = ChatCreateDialog(HOT_STOCK_REF)
     var mediatorChatListLiveData = MediatorLiveData<HashMap<String, MutableList<SearchFriendModel>>>()
         private set
     var mediatorChatLiveData = MediatorLiveData<MutableList<ChatFriendModel>>()
@@ -57,7 +58,7 @@ class ChatViewModel : ViewModel(), ChatInterFace {
         }
     }
 
-    fun refresh(chatID: HashMap<String, MutableList<SearchFriendModel>>) {
+    fun refreshChatID(chatID: HashMap<String, MutableList<SearchFriendModel>>) {
         chatFriendLiveData.refreshChatID(chatID)
     }
 
