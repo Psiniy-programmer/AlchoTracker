@@ -24,4 +24,5 @@
     <string name="settings_alchoo">Visibility in Alchoo</string>
     <string name="delete_event">delete_event</string>
     <string name="add_event">add_event</string>
+    <string name="log_out_account">Log out of account</string>
 </resources>

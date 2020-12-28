@@ -72,6 +72,7 @@
     <string name="settings_favorite_drink">Любимый напиток</string>
     <string name="settings_status">Статус</string>
     <string name="settings_alchoo">Видимость в Alchoo</string>
+    <string name="log_out_account">Выйти из аккаунта</string>
 
     <string name="delete_event">delete_event</string>
     <string name="add_event">add_event</string>

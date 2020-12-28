@@ -87,11 +87,24 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+<!--    Стили для Settings-->
     <style name="settings_layout_row">
         <item name="cardBackgroundColor">@color/secondaryColor</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40dp</item>
         <item name="cardCornerRadius">10dp</item>
+    </style>
+
+    <style name="settings_layout_row.button">
+        <item name="cardBackgroundColor">@color/primaryColor</item>
+    </style>
+
+    <style name="settings_view_image">
+        <item name="android:layout_width">@dimen/settings_image_view_width</item>
+        <item name="android:layout_height">@dimen/settings_image_view_height</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:contentDescription">@string/download_photo</item>
     </style>
 
     <style name="settings_view_text_main">
@@ -106,8 +119,12 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
 
+    <style name="settings_view_text_main.button">
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="settings_view_text_secondary">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:paddingEnd">8dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/primaryTextColor</item>
@@ -123,6 +140,17 @@
         <item name="android:layout_alignParentEnd">true</item>
         <item name="android:gravity">end|center</item>
         <item name="android:background">@color/secondaryColor</item>
+        <item name="android:inputType">textNoSuggestions</item>
+    </style>
+
+    <style name="settings_view_switch">
+        <item name="android:layout_width">@dimen/settings_aclhoo_switch_width</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:checked">true</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="trackTint">@color/selectorColor</item>
+        <item name="useMaterialThemeColors">false</item>
     </style>
 
 <!--    Стили для Recycler items-->

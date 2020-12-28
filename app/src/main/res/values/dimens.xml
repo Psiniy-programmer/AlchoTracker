@@ -14,4 +14,7 @@
     <dimen name="chat_horizontal_margin">8dp</dimen>
     <dimen name="recycler_item_text_padding_top">8dp</dimen>
     <dimen name="recycler_item_text_padding_start">16dp</dimen>
+    <dimen name="settings_aclhoo_switch_width">50dp</dimen>
+    <dimen name="settings_image_view_width">30dp</dimen>
+    <dimen name="settings_image_view_height">30dp</dimen>
 </resources>
