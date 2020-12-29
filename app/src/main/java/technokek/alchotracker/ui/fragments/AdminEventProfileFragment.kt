@@ -161,9 +161,11 @@ class AdminEventProfileFragment() : Fragment(), AdminEventInterface, AdminEventP
                 Toast.makeText(this.context, "Fill in the field!", Toast.LENGTH_LONG).show()
             } else {
                 //TODO push new drinks to BD
-                val newDrinks = calendarModel.drinks + "," + etDrinks.text.toString()
-                drinks = newDrinks.split(",").toTypedArray()
+                val newDrinks = thisDrinks.joinToString(separator = ",") + "," + etDrinks.text.toString()
+                thisDrinks = newDrinks.split(",") as MutableList<String>
+                drinks = thisDrinks.toTypedArray()
                 renewDrinksDialog(drinks)
+                drinksDialog = buildDrinksDialog(calendarModel)
                 pushDrinksToBD(newDrinks, calendarModel.id)
                 bottomSheetDialog.dismiss()
             }
@@ -276,14 +278,18 @@ class AdminEventProfileFragment() : Fragment(), AdminEventInterface, AdminEventP
     }
 
     private fun pushStatusToDB(status: String, eventNumber: String) {
-        query.ref.child(eventNumber).apply {
-            child(CalendarLiveData.STATUS).setValue(status)
+        CoroutineScope(Dispatchers.IO).launch {
+            query.ref.child(eventNumber).apply {
+                child(CalendarLiveData.STATUS).setValue(status)
+            }
         }
     }
 
     private fun pushDrinksToBD(drinks: String, eventNumber: String) {
-        query.ref.child(eventNumber).apply {
-            child(CalendarLiveData.DRINKS).setValue(drinks)
+        CoroutineScope(Dispatchers.IO).launch {
+            query.ref.child(eventNumber).apply {
+                child(CalendarLiveData.DRINKS).setValue(drinks)
+            }
         }
     }
 

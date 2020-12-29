@@ -362,6 +362,11 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment), AlkoEventsAdapter
     override fun onEventClick(calendarModel: CalendarModel) {
         selectedCalendarModel = calendarModel
         //TODO open event fragment
+        Toast.makeText(context, "Long click to open AlchoEvent!", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onLongEventClick(calendarModel: CalendarModel) {
+        selectedCalendarModel = calendarModel
         navigateToEventFragment(calendarModel)
     }
 

@@ -95,4 +95,5 @@
     <string name="don_t_have_an_alcount_yet">Dont have an alcount yet?</string>
     <string name="login_here">Login here</string>
     <string name="chat_title">Чат</string>
+    <string name="unsubscribe">Unsubscribe</string>
 </resources>
