@@ -26,7 +26,6 @@ class ChatListAdapter(
 
     override fun onBindViewHolder(holder: ChatListViewHolder, position: Int) {
         val model = mData[position]
-        Log.d("NESUKA", model.toString())
 
         Picasso.get().load(model.avatar).into(holder.mImageView)
         holder.mImageView.setOnClickListener {
@@ -45,6 +44,10 @@ class ChatListAdapter(
 
         holder.timeTextView.text = model.lastDateTime
         holder.timeTextView.setOnClickListener {
+            listener.pressChatFriend(model.chatID, model)
+        }
+
+        holder.lineLayout.setOnClickListener {
             listener.pressChatFriend(model.chatID, model)
         }
     }
