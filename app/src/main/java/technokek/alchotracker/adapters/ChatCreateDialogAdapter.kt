@@ -29,6 +29,10 @@ class ChatCreateDialogAdapter(
         holder.mTextView.setOnClickListener {
             listener.pressChat(model.chatID, model)
         }
+
+        holder.relativeLayout.setOnClickListener {
+            listener.pressChat(model.chatID, model)
+        }
     }
 
     override fun getItemCount(): Int {
