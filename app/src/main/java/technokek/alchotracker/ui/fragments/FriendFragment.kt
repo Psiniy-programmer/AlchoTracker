@@ -3,6 +3,7 @@ package technokek.alchotracker.ui.fragments
 import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.view.View.OnFocusChangeListener
@@ -213,7 +214,8 @@ class FriendFragment : Fragment(), RequestClickListener {
         )
 
         val searchText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
-        searchText.setHintTextColor(R.color.gray)
+        searchText.setHintTextColor(R.color.primaryTextColor)
+        searchText.setTextColor(Color.rgb(255,255,255))
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
