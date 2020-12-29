@@ -21,6 +21,6 @@ class FriendRequestViewHolder(itemView: View) :
         private set
     var denyImageButton: MaterialButton = itemView.findViewById(R.id.deny_request)
         private set
-    var relativeLayout: RelativeLayout = itemView.findViewById(R.id.relative_friend)
+    var relativeLayout: RelativeLayout = itemView.findViewById(R.id.relarive_request)
         private set
 }
