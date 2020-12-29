@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primaryColor"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/found_user_image"
+        android:layout_width="@dimen/width_friend"
+        android:layout_height="@dimen/height_friend" />
+
+    <TextView
+        android:id="@+id/found_user_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_friend"
+        android:paddingTop="8dp"
+        android:paddingStart="16dp"
+        android:textColor="@color/primaryColor"
+        android:layout_toEndOf="@id/found_user_image"
+        tools:text="Hello" />
+
+</RelativeLayout>

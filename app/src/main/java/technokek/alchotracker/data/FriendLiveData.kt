@@ -12,12 +12,12 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
     private lateinit var query: Query
     private val friendListener = FriendListener()
 
-    constructor(ref: DatabaseReference) : this() {
-        query = ref
-    }
-
     constructor(query: Query) : this() {
         this.query = query
+    }
+
+    constructor(ref: DatabaseReference) : this() {
+        this.query = ref
     }
 
     override fun onActive() {
@@ -52,8 +52,8 @@ class FriendLiveData() : MutableLiveData<MutableList<FriendModel>>() {
                         id = i.key.toString(),
                         name = i.child(NAME).value.toString(),
                         avatar = i.child(AVATAR).value.toString(),
-                        incoming = i.child(FRIENDS).child(INCOMING).value.toString(),
-                        outgoing = i.child(FRIENDS).child(OUTGOING).value.toString(),
+                        incoming = i.child(FRIENDS).child(INCOMING_REQUESTS).value.toString(),
+                        outgoing = i.child(FRIENDS).child(OUTGOING_REQUESTS).value.toString(),
                         friendsCount = i.child(ALCHOINFO).child(FRIENDSCOUNT)
                             .getValue(Int::class.java)!!,
                         friendsList = i.child(FRIENDS).child(LIST).value.toString()

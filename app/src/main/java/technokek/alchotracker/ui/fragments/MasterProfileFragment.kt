@@ -1,9 +1,8 @@
 package technokek.alchotracker.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -12,25 +11,32 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.textview.MaterialTextView
 import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.viewmodels.MasterProfileViewModel
 
 class MasterProfileFragment : Fragment() {
-    private lateinit var userText: TextView
-    private lateinit var statusText: TextView
-    private lateinit var friendsCounter: TextView
-    private lateinit var eventsCounter: TextView
+    private lateinit var userText: MaterialTextView
+    private lateinit var statusText: MaterialTextView
+    private lateinit var friendsCounter: MaterialTextView
+    private lateinit var eventsCounter: MaterialTextView
     private lateinit var avatarView: ImageView
-    private lateinit var settingsBtn: ImageButton
-    private lateinit var preferencesBtn: Button
-    private lateinit var favouriteDrink: TextView
+    private lateinit var preferencesBtn: MaterialCardView
+    private lateinit var friendsBtn: MaterialCardView
+    private lateinit var partiesBtn: MaterialCardView
+    private lateinit var chatsBtn: MaterialCardView
+    private lateinit var mProfileViewModel: MasterProfileViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.title = resources.getString(R.string.master_profile_toolbar)
+
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.master_profile_fragment, container, false)
     }
 
@@ -41,34 +47,59 @@ class MasterProfileFragment : Fragment() {
         friendsCounter = view.findViewById(R.id.master_profile_friends_counter)
         eventsCounter = view.findViewById(R.id.master_profile_events_counter)
         avatarView = view.findViewById(R.id.master_profile_avatar)
-        favouriteDrink = view.findViewById(R.id.master_drink)
-        val mProfileViewModel = ViewModelProvider(this)[MasterProfileViewModel()::class.java]
+        preferencesBtn = view.findViewById(R.id.master_preferences_list_btn)
+        friendsBtn = view.findViewById(R.id.master_profile_friends_btn)
+        partiesBtn = view.findViewById(R.id.master_profile_parties_btn)
+        chatsBtn = view.findViewById(R.id.master_chats_btn)
+        mProfileViewModel = ViewModelProvider(this)[MasterProfileViewModel()::class.java]
 
         mProfileViewModel.profile.observe(
             viewLifecycleOwner,
             {
                 userText.text = it.name
                 statusText.text = it.status
-                favouriteDrink.text = it.favouriteDrink
                 friendsCounter.text = it.friendsCount.toString()
                 eventsCounter.text = it.eventCount.toString()
                 Picasso.get().load(it.avatar).into(avatarView)
             }
         )
-        settingsBtn = view.findViewById(R.id.settings_button)
-        preferencesBtn = view.findViewById(R.id.master_preferences_list_btn)
 
-        settingsBtn.setOnClickListener {
+        friendsBtn.setOnClickListener {
+            navigateFun(R.id.action_masterProfileFragment_to_friendFragment)
+        }
+
+        partiesBtn.setOnClickListener {
+            navigateFun(R.id.action_masterProfileFragment_to_eventFragment)
+        }
+
+        chatsBtn.setOnClickListener {
+            navigateFun(R.id.action_masterProfileFragment_to_chatListFragment)
+        }
+
+        preferencesBtn.setOnClickListener {
+            navigateFun(R.id.action_masterProfileFragment_to_preferencesFragment)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.master_profile_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_settings) {
             val navController =
                 activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
             navController?.navigate(R.id.action_masterProfileFragment_to_profileSettingsFragment)
         }
+        return super.onOptionsItemSelected(item)
+    }
 
-        preferencesBtn.setOnClickListener {
-            val navController =
-                activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
-            navController?.navigate(R.id.action_masterProfileFragment_to_preferencesFragment)
-        }
+    private fun navigateFun(resId: Int) {
+        val navController =
+            activity?.let { it1 -> Navigation.findNavController(it1, R.id.content) }
+        navController?.navigate(resId)
     }
 
     companion object {

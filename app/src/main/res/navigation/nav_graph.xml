@@ -9,22 +9,23 @@
         android:name="technokek.alchotracker.ui.fragments.MasterProfileFragment"
         android:label="MasterProfileFragment" >
         <action
-            android:id="@+id/action_masterProfileFragment_to_eventFragment"
-            app:destination="@id/eventFragment" />
-        <action
             android:id="@+id/action_masterProfileFragment_to_profileSettingsFragment"
             app:destination="@id/profileSettingsFragment" />
         <action
             android:id="@+id/action_masterProfileFragment_to_preferencesFragment"
             app:destination="@id/preferencesFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/eventFragment"
-        android:name="technokek.alchotracker.ui.fragments.EventFragment"
-        android:label="EventFragment" >
         <action
-            android:id="@+id/action_eventFragment_to_friendFragment"
+            android:id="@+id/action_masterProfileFragment_to_alchooFragment2"
+            app:destination="@id/alchooFragment" />
+        <action
+            android:id="@+id/action_masterProfileFragment_to_friendFragment"
             app:destination="@id/friendFragment" />
+        <action
+            android:id="@+id/action_masterProfileFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_masterProfileFragment_to_chatListFragment"
+            app:destination="@id/chatListFragment" />
     </fragment>
     <fragment
         android:id="@+id/friendFragment"
@@ -36,6 +37,9 @@
         <action
             android:id="@+id/action_friendFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_friendFragment_to_masterProfileFragment"
+            app:destination="@id/masterProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/friendProfileFragment"
@@ -44,6 +48,12 @@
         <action
             android:id="@+id/action_friendProfileFragment_to_friendPreferencesFragment"
             app:destination="@id/friendPreferencesFragment" />
+        <action
+            android:id="@+id/action_friendProfileFragment_to_friendListFragment"
+            app:destination="@id/friendListFragment" />
+        <action
+            android:id="@+id/action_friendProfileFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileSettingsFragment"
@@ -62,11 +72,84 @@
         android:name="technokek.alchotracker.ui.fragments.calendarfragment.CalendarFragment"
         android:label="CalendarFragment" >
         <action
-            android:id="@+id/action_calendarFragment_to_timerFragment"
-            app:destination="@id/timerFragment" />
+            android:id="@+id/action_calendarFragment_to_chatListFragment"
+            app:destination="@id/chatListFragment" />
+        <action
+            android:id="@+id/action_calendarFragment_to_adminEventProfile"
+            app:destination="@id/adminEventProfile" />
+        <action
+            android:id="@+id/action_calendarFragment_to_memberEventProfile"
+            app:destination="@id/memberEventProfile" />
     </fragment>
     <fragment
-        android:id="@+id/timerFragment"
-        android:name="technokek.alchotracker.ui.fragments.TimerFragment"
-        android:label="TimerFragment" />
+        android:id="@+id/alchooFragment"
+        android:name="technokek.alchotracker.ui.fragments.AlchooFragment"
+        android:label="AlchooFragment" />
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="technokek.alchotracker.ui.fragments.ChatListFragment"
+        android:label="ChatListFragment" >
+        <action
+            android:id="@+id/action_chatListFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="technokek.alchotracker.ui.fragments.SignleChatFragment"
+        android:label="ChatFragment" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="technokek.alchotracker.ui.fragments.EventFragment"
+        android:label="EventFragment" />
+    <fragment
+        android:id="@+id/friendListFragment"
+        android:name="technokek.alchotracker.ui.fragments.FriendListFragment"
+        android:label="FriendListFragment" >
+        <action
+            android:id="@+id/action_friendListFragment_to_friendProfileFragment"
+            app:destination="@id/friendProfileFragment" />
+        <action
+            android:id="@+id/action_friendListFragment_to_masterProfileFragment"
+            app:destination="@id/masterProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminEventProfile"
+        android:name="technokek.alchotracker.ui.fragments.AdminEventProfileFragment"
+        android:label="AdminEventProfile">
+        <argument
+            android:name="calendarModel"
+            app:argType="technokek.alchotracker.data.models.CalendarModel" />
+        <action
+            android:id="@+id/action_adminEventProfile_to_membersFragment"
+            app:destination="@id/membersFragment" />
+        <action
+            android:id="@+id/action_adminEventProfile_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/membersFragment"
+        android:name="technokek.alchotracker.ui.fragments.MembersFragment"
+        android:label="MembersFragment" >
+        <argument
+            android:name="eventId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_membersFragment_to_masterProfileFragment"
+            app:destination="@id/masterProfileFragment" />
+        <action
+            android:id="@+id/action_membersFragment_to_friendProfileFragment"
+            app:destination="@id/friendProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memberEventProfile"
+        android:name="technokek.alchotracker.ui.fragments.MemberEventProfile"
+        android:label="MemberEventProfile" >
+        <action
+            android:id="@+id/action_memberEventProfile_to_membersFragment"
+            app:destination="@id/membersFragment" />
+        <argument
+            android:name="calendarModel"
+            app:argType="technokek.alchotracker.data.models.CalendarModel" />
+    </fragment>
+
 </navigation>

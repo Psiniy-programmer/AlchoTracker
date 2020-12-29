@@ -17,11 +17,41 @@
     <color name="green_700">#388E3C</color>
     <color name="teal_700">#00796B</color>
     <color name="pink_700">#C2185B</color>
-    <color name="red_800">#c62828</color>
+    <color name="red_100">#1AC62828</color>
+    <color name="red_200">#33C62828</color>
+    <color name="red_300">#4DC62828</color>
+    <color name="red_400">#66C62828</color>
+    <color name="red_500">#80C62828</color>
+    <color name="red_600">#99C62828</color>
+    <color name="red_700">#B3C62828</color>
+    <color name="red_800">#CCC62828</color>
+    <color name="red_900">#E6C62828</color>
+    <color name="red_1000">#C62828</color>
     <color name="blue_800">#1565C0</color>
     <color name="cyan_700">#0097A7</color>
     <color name="colorGray">#9E9E9E</color>
     <color name="colorBlack">#000000</color>
     <color name="colorLightGray">#B8B8B8</color>
     <color name="colorRed">#8F0303</color>
+
+<!--    Main Colors-->
+    <color name="primaryColor">#4B086D</color>
+    <color name="secondaryColor">#698EFF</color>
+    <color name="surface">#ACC0FE</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
+    <color name="thirdTextColor">#100F10</color>
+    <color name="grayPrimaryColor">#6D6D6D</color>
+    <color name="graySecondaryColor">#979494</color>
+    <color name="grayLightColor">#C4C4C4</color>
+    <color name="backgroundColor">#ffffff</color>
+    <color name="backgroundDays">#6930C3</color>
+    <color name="selectorColor">#FFFFFF</color>
+
+    <color name="primaryLightColor">#E1E3E6</color>
+    <color name="primaryDarkColor">#19191A</color>
+    <color name="secondaryLightColor">#e6ceff</color>
+    <color name="secondaryDarkColor">#836fa9</color>
+    <color name="bottomNavGraph">#C4C8CC</color>
+    <color name="gray500">#76787A</color>
 </resources>

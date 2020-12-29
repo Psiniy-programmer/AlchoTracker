@@ -5,11 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import technokek.alchotracker.data.models.FriendToggleRequestModel
+import technokek.alchotracker.data.Constants.*
 
 class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>() {
     private lateinit var uid: String
     private lateinit var query: Query
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var masterOutReq: String
+    private lateinit var masterInReq: String
+    private lateinit var masterList: String
     private var requestsListener = RequestsListener()
 
     constructor(query: Query, mAuth: FirebaseAuth, uid: String) : this() {
@@ -34,57 +38,50 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
 
     inner class RequestsListener : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
+
             val x = snapshot.child(mAuth.currentUser?.uid.toString())
-                .child("friends")
+                .child(FRIENDS)
+            masterOutReq =  x.child(REQUESTS)
+                .child(OUTGOING_REQUESTS)
+                .value.toString()
+            masterInReq = x.child(REQUESTS)
+                .child(INCOMING_REQUESTS)
+                .value.toString()
+            masterList = x.child(LIST)
+                .value.toString()
             val y = snapshot.child(uid)
-                .child("friends")
-            val masterFriendList = x.child("list")
+                .child(FRIENDS)
+
+            val friendIncList = y.child(INCOMING_REQUESTS)
+                .child(REQUESTS)
                 .value.toString()
-            val masterIncList = x.child("requests")
-                .child("incoming")
-                .value.toString()
-            val masterOutList = x.child("requests")
-                .child("outgoing")
-                .value.toString()
-            val friendIncList = y.child("incoming")
-                .child("requests")
-                .value.toString()
-            val friendOutList = y.child("outgoing")
-                .child("requests")
+            val friendOutList = y.child(OUTGOING_REQUESTS)
+                .child(REQUESTS)
                 .value.toString()
 
-            if (masterFriendList.split(";").contains(uid)) {
+            if (masterList.split(";").contains(uid)) {
                 value = FriendToggleRequestModel(
                     inFriend = true,
                     requestIsSended = false,
-                    masterOutList,
-                    masterIncList,
                     friendOutList,
                     friendIncList,
-                    x.child("list").value.toString(),
-                    y.child("list").value.toString()
+                    y.child(LIST).value.toString()
                 )
-            } else if (masterOutList.split(";").contains(uid)) {
+            } else if (masterOutReq.split(";").contains(uid)) {
                 value = FriendToggleRequestModel(
                     inFriend = false,
                     requestIsSended = true,
-                    masterOutList,
-                    masterIncList,
                     friendOutList,
                     friendIncList,
-                    x.child("list").value.toString(),
-                    y.child("list").value.toString()
+                    y.child(LIST).value.toString()
                 )
             } else {
                 value = FriendToggleRequestModel(
                     inFriend = false,
                     requestIsSended = false,
-                    masterOutList,
-                    masterIncList,
                     friendOutList,
                     friendIncList,
-                    x.child("list").value.toString(),
-                    y.child("list").value.toString()
+                    y.child(LIST).value.toString()
                 )
             }
         }
@@ -95,31 +92,32 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
     }
 
     fun addFriend() {
-        val masterPath = getPath(mAuth.currentUser?.uid.toString(), "requests")
-        val friendPath = getPath(uid, "requests")
-        if (value?.masterOutReq.isNullOrEmpty()) {
-            masterPath.child("outgoing")
+        val masterPath = getPath(mAuth.currentUser?.uid.toString(), REQUESTS)
+        val friendPath = getPath(uid, REQUESTS)
+        if (masterOutReq.isNullOrEmpty()) {
+            masterPath.child(OUTGOING_REQUESTS)
                 .setValue(uid)
         } else {
-            masterPath.child("outgoing")
-                .setValue("${value?.masterOutReq};$uid")
+            masterPath.child(OUTGOING_REQUESTS)
+                .setValue("${masterOutReq};$uid")
         }
         if (!value?.friendInReq.isNullOrEmpty()) {
-            friendPath.child("incoming")
+            friendPath.child(INCOMING_REQUESTS)
                 .setValue(mAuth.currentUser?.uid.toString())
         } else {
-            friendPath.child("incoming")
+            friendPath.child(INCOMING_REQUESTS)
                 .setValue("${value?.friendInReq};${mAuth.currentUser?.uid}")
         }
     }
 
     fun deleteFriend() {
-        val masterPath = getPath(mAuth.currentUser?.uid.toString(), "list")
-        val friendPath = getPath(uid, "list")
+        val masterPath = getPath(mAuth.currentUser?.uid.toString(), LIST)
+        val friendPath = getPath(uid, LIST)
+
         val friendList =
             value?.friendList?.split(";")?.filter { it != mAuth.currentUser?.uid.toString() }
-        val masterList = value?.masterList?.split(";")?.filter { it != uid }
-        val masterStr = masterList?.let { setStr(it) }
+        val mMasterList = masterList.split(";").filter { it != uid }
+        val masterStr = setStr(mMasterList)
         val friendStr = friendList?.let { setStr(it) }
         masterPath.setValue(masterStr)
         friendPath.setValue(friendStr)
@@ -136,7 +134,7 @@ class FriendToggleRequestLiveData() : MutableLiveData<FriendToggleRequestModel>(
 
     private fun getPath(uid: String, type: String): DatabaseReference {
         return query.ref.child(uid)
-            .child("friends")
+            .child(FRIENDS)
             .child(type)
     }
 

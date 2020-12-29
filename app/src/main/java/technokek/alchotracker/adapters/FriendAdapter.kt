@@ -3,10 +3,13 @@ package technokek.alchotracker.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import technokek.alchotracker.R
 import technokek.alchotracker.adapters.viewholders.FriendViewHolder
 import technokek.alchotracker.api.FriendClickListener
+import technokek.alchotracker.data.Constants.*
 import technokek.alchotracker.data.models.FriendModel
 
 class FriendAdapter(
@@ -28,6 +31,10 @@ class FriendAdapter(
         Picasso.get().load(model.avatar).into(holder.mImageView)
         holder.mTextView.text = model.name
         holder.mTextView.setOnClickListener {
+            listener.pressFriend(model.id)
+        }
+
+        holder.mRelativeLayout.setOnClickListener {
             listener.pressFriend(model.id)
         }
     }

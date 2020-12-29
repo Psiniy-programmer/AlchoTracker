@@ -4,6 +4,7 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
+import com.google.firebase.database.FirebaseDatabase
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -18,6 +19,7 @@ import technokek.alchotracker.viewmodels.factories.AuthViewModelFactory
 class NotificationActivity : Application(), KodeinAware {
 
     override fun onCreate() {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
         super.onCreate()
         createNotificationChannels()
     }

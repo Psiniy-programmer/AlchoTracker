@@ -46,11 +46,11 @@ class FriendPreferencesFragment : Fragment() {
         recyclerView = view.findViewById(R.id.friend_preferences_list)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val adapter = if (mPreferencesViewModel.preferences.value != null) {
+        val adapter = if (mPreferencesViewModel.preferences.value != null)
             FriendPreferencesAdapter(mPreferencesViewModel.preferences.value!!)
-        } else {
+        else
             FriendPreferencesAdapter(mutableListOf())
-        }
+
 
         mPreferencesViewModel.preferences.observe(viewLifecycleOwner) {
             if (recyclerView.adapter == null) {
@@ -63,6 +63,7 @@ class FriendPreferencesFragment : Fragment() {
             }
         }
     }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 

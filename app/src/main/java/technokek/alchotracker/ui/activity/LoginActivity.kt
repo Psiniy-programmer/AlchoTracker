@@ -14,6 +14,7 @@ import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
 import technokek.alchotracker.R
 import technokek.alchotracker.api.AuthListener
+import technokek.alchotracker.databinding.AccountLoginBinding
 import technokek.alchotracker.databinding.ActivityLoginBinding
 import technokek.alchotracker.ui.utils.startMainActivity
 import technokek.alchotracker.viewmodels.AuthViewModel
@@ -29,12 +30,9 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
-
-        val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        val binding: AccountLoginBinding = DataBindingUtil.setContentView(this, R.layout.account_login)
         viewModel = ViewModelProviders.of(this, factory).get(AuthViewModel::class.java)
         binding.viewmodel = viewModel
-
         viewModel.authListener = this
     }
 

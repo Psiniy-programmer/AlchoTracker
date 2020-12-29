@@ -15,7 +15,7 @@ import technokek.alchotracker.data.models.FriendToggleRequestModel
 
 class FriendProfileViewModel(application: Application, uid: String) :
     AndroidViewModel(application) {
-    var profile = FriendProfileLiveData(dbRef, uid)
+    var profile = FriendProfileLiveData(dbRef, aRef, uid)
     var requests = FriendToggleRequestLiveData(dbRef, aRef, uid)
     private val mMediatorProfileLiveData = MediatorLiveData<FriendProfileModel>()
     private val mMediatorRequestsLiveData =

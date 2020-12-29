@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alchoo_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    
+    <RelativeLayout
+        android:id="@+id/alchoo_status_on"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent"
+        android:visibility="gone">
+        <LinearLayout
+            android:id="@+id/alchoo_refresh"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/alchooHintListOver"
+                android:textSize="24sp"
+                android:textColor="@color/primaryTextColor"
+                android:layout_gravity="center_vertical|center_horizontal"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/alchoo_refresh__button"
+                android:padding="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alchooRefreshList"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="24sp"
+                android:layout_gravity="center_vertical|center_horizontal"/>
+        </LinearLayout>
+
+        <com.yuyakaido.android.cardstackview.CardStackView
+            android:id="@+id/alchoo_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/alchoo_status_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:textColor="@color/primaryTextColor"
+            android:text="@string/would_u_start_alchoo"
+            android:textSize="24sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/alchoo_status__button"
+            android:padding="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start"
+            android:textSize="24sp"
+            android:textColor="@color/primaryTextColor"
+            android:layout_gravity="center_vertical|center_horizontal"/>
+    </LinearLayout>
+</RelativeLayout>
+

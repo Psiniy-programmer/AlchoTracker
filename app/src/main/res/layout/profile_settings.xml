@@ -1,77 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profile_settings"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        tools:ignore="UselessParent">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/settings_below_photo"
+        style="@style/settings_layout_row"
+        android:layout_marginBottom="20dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/change_status_btn"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="@string/change_profile_status"
-                android:textSize="24sp" />
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/settings_view_text_main"
+                android:text="@string/settings_profile_photo"
+                tools:ignore="RtlSymmetry" />
 
-            <EditText
-                android:id="@+id/edit_status"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:autofillHints=""
-                android:hint="@string/input_new_status"
-                android:inputType="text"
-                tools:ignore="LabelFor" />
-        </LinearLayout>
+            <ImageButton
+                android:id="@+id/profile_settings_download_photo"
+                style="@style/settings_view_image"
+                android:src="@drawable/ic_download_photo"/>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-        <LinearLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/settings_below_name"
+        android:layout_below="@id/settings_below_photo"
+        style="@style/settings_layout_row"
+        android:layout_marginBottom="20dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/change_drink_btn"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/change_profile_drink"
-                android:textSize="24sp" />
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/settings_view_text_main"
+                android:text="@string/settings_profile_name" />
 
-            <EditText
-                android:id="@+id/edit_drink"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/input_new_drink"
-                android:inputType="text"
-                tools:ignore="LabelFor" />
-        </LinearLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_settings_edit_name"
+                style="@style/settings_view_text_secondary.edit"
+                tools:text="cur user name" />
 
-        <Button
-            android:id="@+id/change_avatar_btn"
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/settings_below_fav"
+        android:layout_below="@id/settings_below_name"
+        style="@style/settings_layout_row"
+        android:layout_marginBottom="20dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/change_profile_avatar"
-            android:textSize="24sp" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/sign_out_btn"
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/settings_view_text_main"
+                android:text="@string/settings_favorite_drink" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_settings_edit_fav"
+                style="@style/settings_view_text_secondary.edit"
+                tools:text="cur user fav drink" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/settings_below_status"
+        android:layout_below="@id/settings_below_fav"
+        style="@style/settings_layout_row"
+        android:layout_marginBottom="20dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/sign_out"
-            android:textSize="24sp" />
-    </LinearLayout>
+            android:layout_height="match_parent">
 
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/settings_view_text_main"
+                android:text="@string/settings_status" />
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_settings_edit_status"
+                style="@style/settings_view_text_secondary.edit"
+                tools:text="cur user status" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/settings_below_alchoo"
+        style="@style/settings_layout_row"
+        android:layout_below="@id/settings_below_status">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/settings_view_text_main"
+                android:text="@string/settings_alchoo" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/alchoo_switcher"
+                style="@style/settings_view_switch" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/sign_out_btn"
+        style="@style/settings_layout_row.button"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/settings_view_text_main.button"
+            android:text="@string/log_out_account" />
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>

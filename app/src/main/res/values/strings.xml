@@ -1,39 +1,116 @@
 <resources>
-    <string name="app_name">Alchotracker</string>
+    <string name="app_name" translatable="false">Alchotracker</string>
+
+    <string name="text_label_1" translatable="false">Profile</string>
+    <string name="text_label_2" translatable="false">Alchoo</string>
+    <string name="text_label_3" translatable="false">Friends</string>
+    <string name="settings" translatable="false">settingsButton</string>
+    <string name="avatar" translatable="false">avatar</string>
+    <string name="add" translatable="false">add</string>
+    <string name="change_profile_avatar" translatable="false">Изменить фото профиля</string>
+    <string name="change_profile_status" translatable="false">Изменить статус профиля</string>
+    <string name="change_profile_drink" translatable="false">Изменить любимый напиток</string>
+    <string name="input_new_status" translatable="false">Введите новый статус</string>
+    <string name="input_new_drink" translatable="false">Введите новый любимый напиток</string>
+    <string name="sign_out" translatable="false">Выйти из аккаунта</string>
+    <string name="preferences_text" translatable="false">Список предпочтений</string>
+    <string name="add_preference" translatable="false">Добавить</string>
+    <string name="delete_preference_item" translatable="false">Удалить</string>
+    <string name="stop_button_text" translatable="false">Stop</string>
+    <string name="select_timer_hint" translatable="false">Select time</string>
+    <string name="button_interrupt_text" translatable="false">Interrupt</string>
+    <string name="button_start_text" translatable="false">Start</string>
+    <string name="button_pause_text" translatable="false">Pause</string>
+    <string name="button_continue_text" translatable="false">Continue</string>
+    <string name="time_left_default" translatable="false">00:00</string>
+    <string name="calendar_title" translatable="false">Calendar</string>
+    <string name="text_label_4" translatable="false">Calendar</string>
+    <string name="text_label_5" translatable="false">Chat</string>
+    <string name="registration" translatable="false">Регистрация</string>
+    <string name="autentification" translatable="false">Вход</string>
+    <string name="type_login" translatable="false">Введите login</string>
+    <string name="type_password" translatable="false">Введите пароль</string>
+    <string name="type_name" translatable="false">Введите имя</string>
+    <string name="type_password_again" translatable="false">Введите пароль ещё раз</string>
+    <string name="confirm" translatable="false">Подтвердить</string>
+    <string name="signOut" translatable="false">Выйти</string>
+    <string name="request_in_friends" translatable="false">Заявки в друзья</string>
+    <string name="list_friends" translatable="false">Друзья</string>
+    <string name="search_hint" translatable="false">search</string>
+    <string name="settings_hint" translatable="false">settings</string>
+    <string name="cardavatar" translatable="false">cardAvatar</string>
+    <string name="alchooHintListOver" translatable="false">Потенциальные собутыльники кончились</string>
+    <string name="alchooRefreshList" translatable="false">Обновить список</string>
+    <string name="addfriend" translatable="false">addFriend</string>
+    <string name="deletefriend" translatable="false">deleteFriend</string>
+    <string name="cancelbtn" translatable="false">cancelBtn</string>
+    <string name="would_u_start_alchoo" translatable="false">Хотите ли вы начать поиск собутыльников?</string>
+    <string name="start" translatable="false">Начать</string>
+    <string name="group_friends" translatable="false">group_friends</string>
+
     <string name="Preferences">Любимый напиток</string>
-    <string name="friends">Друзей</string>
-    <string name="dates">Тусовок</string>
-    <string name="text_label_1">Profile</string>
-    <string name="text_label_2">Events</string>
-    <string name="text_label_3">Friends</string>
-    <string name="settings">settingsButton</string>
-    <string name="avatar">avatar</string>
-    <string name="add">add</string>
-    <string name="change_profile_avatar">Изменить фото профиля</string>
-    <string name="change_profile_status">Изменить статус профиля</string>
-    <string name="change_profile_drink">Изменить любимый напиток</string>
-    <string name="input_new_status">Введите новый статус</string>
-    <string name="input_new_drink">Введите новый любимый напиток</string>
-    <string name="sign_out">Выйти из аккаунта</string>
-    <string name="preferences_text">Список предпочтений</string>
-    <string name="add_preference">Добавить</string>
-    <string name="delete_preference_item">Удалить</string>
-    <string name="stop_button_text">Stop</string>
-    <string name="select_timer_hint">Select time</string>
-    <string name="button_interrupt_text">Interrupt</string>
-    <string name="button_start_text">Start</string>
-    <string name="button_pause_text">Pause</string>
-    <string name="button_continue_text">Continue</string>
-    <string name="time_left_default">00:00</string>
-    <string name="calendar_title">Calendar</string>
-    <string name="text_label_4">Calendar</string>
-    <string name="text_label_5">Timer</string>
-    <string name="registration">Регистрация</string>
-    <string name="autentification">Вход</string>
-    <string name="type_login">Введите login</string>
-    <string name="type_password">Введите пароль</string>
-    <string name="type_name">Введите имя</string>
-    <string name="type_password_again">Введите пароль ещё раз</string>
-    <string name="confirm">Подтвердить</string>
-    <string name="signOut">Выйти</string>
+    <string name="friends">Друзья</string>
+    <string name="dates">Тусовки</string>
+    <string name="friends_before_counter">У вас</string>
+    <string name="dates_before_counter">У вас</string>
+    <string name="partyes_desc">partyes_desc</string>
+    <string name="stat_desc">описание к иконке статистики</string>
+    <string name="stat">Статистика</string>
+    <string name="yours_stat">Ваша статистика</string>
+    <string name="like_desc">like_desc</string>
+    <string name="preferences">Предпочтения</string>
+    <string name="tastes_list">Список вкусов</string>
+    <string name="_0">0</string>
+    <string name="chat">Чаты</string>
+    <string name="master_chats">Ваши чаты</string>
+    <string name="settings_done" translatable="false">settings_done</string>
+    <string name="settings_toolbar">Настройки</string>
+    <string name="master_profile_toolbar">Мой профиль</string>
+    <string name="settings_profile_photo">Фото профиля</string>
+    <string name="download_photo" translatable="false">download_Photo</string>
+    <string name="settings_profile_name">Имя</string>
+    <string name="settings_favorite_drink">Любимый напиток</string>
+    <string name="settings_status">Статус</string>
+    <string name="settings_alchoo">Видимость в Alchoo</string>
+    <string name="log_out_account">Выйти из аккаунта</string>
+    <string name="friends_after_counter">друзей</string>
+    <string name="dates_after_counter">тусовок</string>
+    <string name="friend_chat_profile">Открыть чат</string>
+    <string name="friend_title">Friends</string>
+
+    <string name="delete_event">delete_event</string>
+    <string name="add_event">add_event</string>
+    <string name="title_members">Members</string>
+    <string name="enter_alkoevent_data">Enter AlkoEvent Data:</string>
+    <string name="enter_your_alcorithm">Enter your Alcorithm:</string>
+    <string name="place">place</string>
+    <string name="costs">costs</string>
+    <string name="drinks_list_csv">drinks list (csv)</string>
+    <string name="submit">Submit</string>
+    <string name="select_time">select time</string>
+    <string name="status">Status</string>
+    <string name="change_event_status">Change event status</string>
+    <string name="drinks">Drinks</string>
+    <string name="alkoevent_members">AlkoEvent members</string>
+    <string name="delete_alkoevent">Delete AlkoEvent</string>
+    <string name="change_drinks">Change drinks</string>
+    <string name="price">Price</string>
+    <string name="enter_drinks">Enter drinks</string>
+    <string name="test_user_name">Имя Юзер</string>
+    <string name="write_message">Введите сообщение</string>
+    <string name="out_of_chat">Чата не существует, создайте его</string>
+    <string name="alcho">Alcho</string>
+    <string name="tracker">Tracker</string>
+    <string name="alcount_account">Alcount account</string>
+    <string name="name">name</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="sign_up">sign up</string>
+    <string name="calendar_toolbar" translatable="true">Календарь</string>
+    <string name="alko_event_toolbar" translatable="true">Алко ивент</string>
+    <string name="don_t_have_an_alcount_yet">Dont have an alcount yet?</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_here">Login here</string>
+
+    <string name="chat_title">Chat</string>
 </resources>

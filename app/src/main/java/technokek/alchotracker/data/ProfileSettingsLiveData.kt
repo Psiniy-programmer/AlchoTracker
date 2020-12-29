@@ -1,5 +1,6 @@
 package technokek.alchotracker.data
 
+import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -9,13 +10,18 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
+import technokek.alchotracker.api.ProfileSettingsInterface
 import technokek.alchotracker.data.models.SettingsProfileModel
 import technokek.alchotracker.data.Constants.*
+import java.io.ByteArrayOutputStream
+import java.io.IOException
 
 class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
     private lateinit var query: Query
     private lateinit var storage: StorageReference
     private lateinit var mAuth: FirebaseAuth
+
     private var settingsListener = SettingsListener()
 
     constructor(query: Query, storage: StorageReference, mAuth: FirebaseAuth) : this() {
@@ -40,6 +46,7 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
 
     inner class SettingsListener : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
+
             getModel(snapshot.child(mAuth.currentUser?.uid.toString()))
         }
 
@@ -50,9 +57,11 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
 
     fun getModel(x: DataSnapshot) {
         value = SettingsProfileModel(
+            x.child(NAME).value.toString(),
             x.child(AVATAR).value.toString(),
             x.child(STATUS).value.toString(),
-            x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString()
+            x.child(ALCHOINFO).child(FAVOURITEDRINK).value.toString(),
+            x.child(ALCHOINFO).child(ALCHOO).child(FINDER).value as Boolean
         )
     }
 
@@ -63,17 +72,21 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
     }
 
     fun setAvatar(newAvatar: Uri) {
+        val uid = mAuth.currentUser?.uid.toString()
+        val ref = storage.child("img").child(uid)
+        val uploadTask: UploadTask = ref.putFile(newAvatar)
 
-        storage.putFile(newAvatar).addOnCompleteListener { putTask ->
-            if (putTask.isSuccessful) {
-                storage.downloadUrl.addOnCompleteListener { downloadTask ->
-                    if (downloadTask.isSuccessful) {
-                        val avatarUrl = downloadTask.result.toString()
-                        query.ref.child(mAuth.currentUser?.uid.toString()).child(AVATAR)
-                            .setValue(avatarUrl)
-                    }
+        uploadTask.continueWithTask{task ->
+            if (!task.isSuccessful) {
+                task.exception?.let {
+                    throw it
                 }
-            } else Log.e("ERROR", putTask.exception.toString())
+            }
+            ref.downloadUrl}.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val downloadUri = task.result
+                query.ref.child(uid).child(AVATAR).setValue(downloadUri.toString())
+            }
         }
     }
 
@@ -84,8 +97,30 @@ class ProfileSettingsLiveData() : MutableLiveData<SettingsProfileModel>() {
             .setValue(newDrink)
     }
 
+    fun onAlchoo() {
+        query.ref.child(mAuth.currentUser?.uid.toString())
+            .child(ALCHOINFO)
+            .child(ALCHOO)
+            .child(FINDER)
+            .setValue(true)
+    }
+
+    fun offAlchoo() {
+        query.ref.child(mAuth.currentUser?.uid.toString())
+            .child(ALCHOINFO)
+            .child(ALCHOO)
+            .child(FINDER)
+            .setValue(false)
+    }
+
     fun signOut() {
         mAuth.signOut()
+    }
+
+    fun setName(newName: String) {
+        query.ref.child(mAuth.currentUser?.uid.toString())
+            .child(NAME)
+            .setValue(newName)
     }
 
     companion object {

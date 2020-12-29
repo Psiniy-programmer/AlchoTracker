@@ -8,9 +8,9 @@
         android:title="@string/text_label_1"
         app:showAsAction="always" />
     <item
-        android:id="@+id/eventFragment"
+        android:id="@+id/alchooFragment"
         android:enabled="true"
-        android:icon="@drawable/icon_2"
+        android:icon="@drawable/ic_emoji_people_black_24dp"
         android:title="@string/text_label_2"
         app:showAsAction="always" />
     <item
@@ -27,9 +27,9 @@
         android:title="@string/text_label_4"
         app:showAsAction="always" />
     <item
-        android:id="@+id/timerFragment"
+        android:id="@+id/chatListFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_timer_24"
+        android:icon="@drawable/ic_baseline_chat_24"
         android:title="@string/text_label_5"
         app:showAsAction="always" />
 </menu>

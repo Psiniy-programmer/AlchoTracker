@@ -9,18 +9,23 @@ import kotlinx.coroutines.launch
 import technokek.alchotracker.data.CurrentUserLiveData
 import technokek.alchotracker.data.FriendLiveData
 import technokek.alchotracker.data.FriendRequestLiveData
+import technokek.alchotracker.data.SearchFriendLiveData
 import technokek.alchotracker.data.models.FriendModel
+import technokek.alchotracker.data.models.SearchFriendModel
 
 class FriendViewModel : ViewModel() {
 
     private val friends = FriendLiveData(HOT_STOCK_REF)
     private val friendRequests = FriendRequestLiveData(HOT_STOCK_REF)
     private val currentUser = CurrentUserLiveData(HOT_STOCK_REF)
+    private val searchFriend = SearchFriendLiveData(HOT_STOCK_REF)
     var mediatorFriendLiveData = MediatorLiveData<MutableList<FriendModel>>()
         private set
     var mediatorRequestLiveData = MediatorLiveData<MutableList<FriendModel>>()
         private set
     var mediatorCurrentUser = MediatorLiveData<FriendModel>()
+        private set
+    var mediatorSearchLiveData = MediatorLiveData<MutableList<SearchFriendModel>>()
         private set
 
     init {
@@ -53,6 +58,20 @@ class FriendViewModel : ViewModel() {
                 mediatorCurrentUser.value = null
             }
         }
+
+        mediatorSearchLiveData.addSource(searchFriend) {
+            if (it != null) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    mediatorSearchLiveData.postValue(it)
+                }
+            } else {
+                mediatorSearchLiveData.value = null
+            }
+        }
+    }
+
+    fun setSearchName(name: String) {
+        searchFriend.setSearchName(name)
     }
 
     fun acceptRequest(uid: String, pos: Int) {

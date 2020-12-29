@@ -13,12 +13,14 @@ import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_signup.*
 import technokek.alchotracker.R
 import technokek.alchotracker.api.AuthListener
+import technokek.alchotracker.api.SignUpInterface
+import technokek.alchotracker.databinding.AccountSignupBinding
 import technokek.alchotracker.databinding.ActivitySignupBinding
 import technokek.alchotracker.ui.utils.startMainActivity
 import technokek.alchotracker.viewmodels.AuthViewModel
 import technokek.alchotracker.viewmodels.factories.AuthViewModelFactory
 
-class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware {
+class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware, SignUpInterface {
 
     override val kodein by kodein()
     private val factory : AuthViewModelFactory by instance()
@@ -29,11 +31,12 @@ class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        val binding: ActivitySignupBinding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
+        val binding: AccountSignupBinding = DataBindingUtil.setContentView(this, R.layout.account_signup)
         viewModel = ViewModelProviders.of(this, factory).get(AuthViewModel::class.java)
         binding.viewmodel = viewModel
 
         viewModel.authListener = this
+        viewModel.callback = this
     }
 
     override fun onStarted() {
@@ -41,13 +44,16 @@ class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware {
     }
 
     override fun onSuccess() {
-        viewModel.setDefaultValue()
-        progressbar.visibility = View.GONE
-        startMainActivity()
+//        viewModel.setDefaultValue()
     }
 
     override fun onFailure(message: String) {
         progressbar.visibility = View.GONE
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onSuccessStartActivity() {
+        progressbar.visibility = View.GONE
+        startMainActivity()
     }
 }
