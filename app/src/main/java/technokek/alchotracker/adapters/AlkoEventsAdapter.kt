@@ -56,5 +56,6 @@ class AlkoEventsAdapter(
         fun onEventClick(calendarModel: CalendarModel)
         fun onAcceptClick(calendarModel: CalendarModel)
         fun onDenyClick(calendarModel: CalendarModel)
+        fun onLongEventClick(calendarModel: CalendarModel)
     }
 }

@@ -32,6 +32,10 @@ class AlkoEventsViewHolder(
         binding.alkoEventItem.setOnClickListener {
             actionListener.onEventClick(calendarModel)
         }
+        binding.alkoEventItem.setOnLongClickListener {
+            actionListener.onLongEventClick(calendarModel)
+            return@setOnLongClickListener true
+        }
 
         val currentUser = mAuth.currentUser?.uid.toString()
         Log.d("Condition:", (calendarModel.adminId != currentUser && !calendarModel.userClicked).toString())
