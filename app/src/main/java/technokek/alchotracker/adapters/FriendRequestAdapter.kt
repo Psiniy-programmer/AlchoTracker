@@ -39,6 +39,9 @@ class FriendRequestAdapter(
         holder.denyImageButton.setOnClickListener {
             requestListener.deny(model.id, position)
         }
+        holder.relativeLayout.setOnClickListener {
+            requestListener.deny(model.id, position)
+        }
     }
 
     override fun getItemCount(): Int {

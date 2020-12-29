@@ -3,6 +3,7 @@ package technokek.alchotracker.adapters.viewholders
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
@@ -19,5 +20,7 @@ class FriendRequestViewHolder(itemView: View) :
     var acceptImageButton: MaterialButton = itemView.findViewById(R.id.accept_request)
         private set
     var denyImageButton: MaterialButton = itemView.findViewById(R.id.deny_request)
+        private set
+    var relativeLayout: RelativeLayout = itemView.findViewById(R.id.relative_friend)
         private set
 }
