@@ -35,6 +35,7 @@ class MemberEventProfile : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.title = resources.getString(R.string.alko_event_toolbar)
         return inflater.inflate(R.layout.member_event_profile, container, false)
     }
 

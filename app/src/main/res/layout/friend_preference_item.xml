@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    style="@style/recycler_card">
 
     <TextView
         android:id="@+id/friend_preference_item_text"
@@ -11,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:padding="10dp"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         tools:text="test" />
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

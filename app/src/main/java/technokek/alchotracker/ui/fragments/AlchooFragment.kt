@@ -1,5 +1,6 @@
 package technokek.alchotracker.ui.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,11 +27,12 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
     private lateinit var mAlchooViewModel: AlchooViewModel
     private lateinit var mAlchooStatusOnLayout: RelativeLayout
     private lateinit var mAlchooStatusOffLayout: LinearLayout
-    private lateinit var cardStackView:CardStackView
+    private lateinit var cardStackView: CardStackView
     private lateinit var touchedUid: String
     private lateinit var refresherView: LinearLayout
     private lateinit var refreshButton: Button
     private lateinit var statusButton: Button
+    private lateinit var mAlchooLayout: RelativeLayout
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +46,7 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
         cardStackView = view.findViewById(R.id.alchoo_card)
         refresherView = view.findViewById(R.id.alchoo_refresh)
         refreshButton = view.findViewById(R.id.alchoo_refresh__button)
+        mAlchooLayout = view.findViewById(R.id.alchoo_fragment)
         statusButton = view.findViewById(R.id.alchoo_status__button)
         mAlchooViewModel = ViewModelProvider(this)[AlchooViewModel()::class.java]
         activity?.title = title
@@ -57,10 +60,21 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
         manager = CardStackLayoutManager(context, object : CardStackListener {
             override fun onCardDragging(direction: Direction?, ratio: Float) {
                 if (direction != null) {
-                    Log.d(TAG, "onCardDragging: d=" + direction.name + " ratio=" + ratio)
+                    val kek: Float = ratio * ratio * 255
+                    val res: Int = kek.toInt()
+                    when (direction) {
+                        Direction.Left -> {
+                            mAlchooLayout.setBackgroundColor(Color.rgb(255, 255 - res, 255 - res))
+                        }
+                        Direction.Right -> {
+                            mAlchooLayout.setBackgroundColor(Color.rgb(255 - res, 255, 255 - res))
+                        }
+                    }
                 }
             }
+
             override fun onCardSwiped(direction: Direction?) {
+                mAlchooLayout.setBackgroundColor(Color.rgb(255, 255, 255))
                 when (direction) {
                     Direction.Right -> mAlchooViewModel.acceptBody(touchedUid)
                     Direction.Left -> mAlchooViewModel.declineBody(touchedUid)
@@ -69,10 +83,13 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
 
             override fun onCardRewound() {
                 Log.d(TAG, "onCardRewound: " + manager.topPosition);
+                mAlchooLayout.setBackgroundColor(Color.rgb(255, 255, 255))
             }
 
             override fun onCardCanceled() {
                 Log.d(TAG, "onCardRewound: " + manager.topPosition);
+                mAlchooLayout.setBackgroundColor(Color.rgb(255, 255, 255))
+
             }
 
             override fun onCardAppeared(view: View?, position: Int) {
@@ -140,8 +157,6 @@ class AlchooFragment : Fragment(), AlchooTouchListener {
         cardStackView.itemAnimator = DefaultItemAnimator()
         super.onViewCreated(view, savedInstanceState)
     }
-
-
 
     companion object {
         const val TAG = "AlchooFragment"
