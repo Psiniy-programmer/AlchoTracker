@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
 
@@ -9,7 +10,6 @@
             type="technokek.alchotracker.viewmodels.AuthViewModel"/>
     </data>
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -64,6 +64,13 @@
 
                 android:textStyle="bold">
             </TextView>
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal|center_vertical" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textField_dialog6"
@@ -87,6 +94,8 @@
                     android:layout_marginTop="16dp"
                     android:ellipsize="start"
                     />
+
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -190,14 +199,6 @@
             >
 
         </TextView>
-
-        <ProgressBar
-            android:id="@+id/progressbar"
-            android:visibility="gone"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
 
 
     </LinearLayout>
