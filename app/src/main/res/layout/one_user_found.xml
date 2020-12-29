@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/primaryColor"
-    android:padding="10dp">
+    style="@style/recycler_card">
 
-    <ImageView
-        android:id="@+id/found_user_image"
-        android:layout_width="@dimen/width_friend"
-        android:layout_height="@dimen/height_friend" />
-
-    <TextView
-        android:id="@+id/found_user_text"
+    <RelativeLayout
+        android:padding="8dp"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_friend"
-        android:paddingTop="8dp"
-        android:paddingStart="16dp"
-        android:textColor="@color/primaryColor"
-        android:layout_toEndOf="@id/found_user_image"
-        tools:text="Hello" />
+        android:layout_height="match_parent">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/found_user_image"
+            style="@style/recycler_card_image"
+            android:layout_marginEnd="8dp"/>
 
-</RelativeLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/found_user_text"
+            style="@style/recycler_card_text"
+            android:layout_toEndOf="@id/found_user_image"
+            tools:text="Hello" />
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

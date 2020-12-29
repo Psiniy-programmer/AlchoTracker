@@ -1,10 +1,12 @@
 package technokek.alchotracker.ui.fragments
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.app.Application
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
